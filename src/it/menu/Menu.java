@@ -11,7 +11,6 @@ public class Menu {
     private String type;
     private Map<TypeFood,FoodList> foodListsMap;
 
-    public Menu () { }
     public Menu (String type){
         this.type = type;
         this.foodListsMap = new HashMap<>();

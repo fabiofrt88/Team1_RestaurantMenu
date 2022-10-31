@@ -1,7 +1,5 @@
 package it.foods;
-
 import it.menu.TypeFood;
-
 import java.util.List;
 
 public class Drink extends Food {
