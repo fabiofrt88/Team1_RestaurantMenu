@@ -1,4 +1,4 @@
-package it.user;
+package it.team1Restaurant.user;
 
 import java.util.ArrayList;
 import java.util.Arrays;

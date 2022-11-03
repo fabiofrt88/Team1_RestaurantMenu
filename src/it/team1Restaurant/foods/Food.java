@@ -1,6 +1,6 @@
-package it.foods;
+package it.team1Restaurant.foods;
 
-import it.menu.TypeFood;
+import it.team1Restaurant.menu.TypeFood;
 
 import java.util.ArrayList;
 import java.util.Arrays;

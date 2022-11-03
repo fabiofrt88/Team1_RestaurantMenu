@@ -1,4 +1,4 @@
-package it.user;
+package it.team1Restaurant.user;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,7 +27,13 @@ public class Group {
     public int getNumberOfAdult(){
      return clientList.stream().filter(client -> client.isChild() == false).collect(Collectors.toList()).size(); }
 
-
+    public String printDetails () {
+        String str = "";
+        for(Client client:clientList){
+            str+= client.toString() + "\n";
+        }
+        return str;
+    }
     @Override
     public String toString() {
         return "Group{" +

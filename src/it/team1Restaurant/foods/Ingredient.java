@@ -1,4 +1,4 @@
-package it.foods;
+package it.team1Restaurant.foods;
 
 public class Ingredient {
 

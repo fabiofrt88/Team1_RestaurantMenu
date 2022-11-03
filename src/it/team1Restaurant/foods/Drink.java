@@ -1,5 +1,6 @@
-package it.foods;
-import it.menu.TypeFood;
+package it.team1Restaurant.foods;
+import it.team1Restaurant.menu.TypeFood;
+
 import java.util.List;
 
 public class Drink extends Food {

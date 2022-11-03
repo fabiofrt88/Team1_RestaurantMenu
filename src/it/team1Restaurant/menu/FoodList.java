@@ -1,5 +1,5 @@
-package it.menu;
-import it.foods.Food;
+package it.team1Restaurant.menu;
+import it.team1Restaurant.foods.Food;
 
 import java.util.ArrayList;
 

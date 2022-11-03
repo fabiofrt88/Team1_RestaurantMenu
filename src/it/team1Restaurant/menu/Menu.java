@@ -1,7 +1,8 @@
-package it.menu;
-import it.foods.Drink;
-import it.foods.Food;
-import it.foods.Ingredient;
+package it.team1Restaurant.menu;
+import it.team1Restaurant.foods.Drink;
+import it.team1Restaurant.foods.Food;
+import it.team1Restaurant.foods.Ingredient;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
