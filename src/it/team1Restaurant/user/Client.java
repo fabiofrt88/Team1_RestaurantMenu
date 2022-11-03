@@ -1,7 +1,5 @@
 package it.team1Restaurant.user;
-
 import it.team1Restaurant.bookings.Booking;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -17,7 +15,7 @@ public class Client {
 
     public Client () {} ;
 
-    public Client ( boolean isChild){
+    public Client (boolean isChild){
         this.isChild = isChild;
     }
 
