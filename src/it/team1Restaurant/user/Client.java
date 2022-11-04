@@ -58,20 +58,6 @@ public class Client {
 
     public void setChild(boolean child) {isChild = child;}
 
-    /*public Booking book(LocalDate date, LocalTime time, int peopleNumber, int childNumber) throws Exception {
-        if(childNumber > peopleNumber) throw new Exception("The number of children must be less than the people number");
-        List<Client> clientList = new ArrayList<>();
-        clientList.add(this);
-        for(int i=1; i<peopleNumber-childNumber; i++) {
-            clientList.add(new Client(false));
-        }
-        for(int i=0; i<childNumber; i++){
-            clientList.add(new Client(true));
-        }
-        Group group = new Group(clientList);
-        return new Booking(this, group, date, time);
-    }*/
-
     public Booking book(Group group, LocalDate date, LocalTime time) {
 
         return new Booking(this, group, this.getBookedAtDate(), date, time);
