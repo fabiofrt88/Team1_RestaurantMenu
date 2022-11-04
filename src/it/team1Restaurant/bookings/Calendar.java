@@ -20,9 +20,9 @@ public class Calendar {
         return calendar;
     }
 
-    public void addBooking (Booking  booking){
-        if(bookingsMap.get(booking.getDate())==null){
-            bookingsMap.put(booking.getDate(),new ArrayList<>());
+    public void addBooking (Booking booking){
+        if(bookingsMap.get(booking.getDate()) == null){
+            bookingsMap.put(booking.getDate(), new ArrayList<>());
         }
         bookingsMap.get(booking.getDate()).add(booking);
     }
@@ -33,15 +33,24 @@ public class Calendar {
     }*/
 
 
-    public String printDetails ( ) {
+    public String getCalendarDetails() {
         String str = "";
-        for(List<Booking> dayBookingList :  bookingsMap.values()){
+        for(List<Booking> dayBookingList : bookingsMap.values()){
             String dayStr = "";
             for(Booking booking:dayBookingList){
-                dayStr += booking.printDetails();
+                dayStr += booking.getBookingDetails();
             }
             str += dayStr;
         }
         return str;
     }
+
+    public void printDetails() {
+        for(List<Booking> dayBookingList : bookingsMap.values()){
+            for(Booking booking : dayBookingList){
+                booking.printDetails();
+            }
+        }
+    }
+
 }

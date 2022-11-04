@@ -12,19 +12,20 @@ public class TestMenu {
     public static void test(List<Menu> menuList){
         Scanner input = new Scanner(System.in);
         System.out.println("Quale menù vuoi consultare? <1> MENU DI CARNE | <2> MENU DI PESCE | <3> MENU VEGANO | <4> MENU BAMBINI");
+        System.out.print("Risposta: ");
         String firstStep = input.nextLine();
         switch (firstStep) {
             case "1":
-                System.out.println(menuList.get(0).printMenuDetails());
+                System.out.println(menuList.get(0).getMenuDetails());
                 break;
             case "2":
-                System.out.println(menuList.get(1).printMenuDetails());
+                System.out.println(menuList.get(1).getMenuDetails());
                 break;
             case "3":
-                System.out.println(menuList.get(2).printMenuDetails());
+                System.out.println(menuList.get(2).getMenuDetails());
                 break;
             case "4":
-                System.out.println(menuList.get(3).printMenuDetails());
+                System.out.println(menuList.get(3).getMenuDetails());
                 break;
         }
     }
@@ -166,9 +167,10 @@ public class TestMenu {
         Scanner scanner = new Scanner(System.in);
         String exit = "S";
 
-        while(!exit.equals("N")){
+        while(!exit.equalsIgnoreCase("N")){
             test(menuList);
             System.out.println("Vuoi consultare un altro menù? <S> <N>");
+            System.out.print("Risposta: ");
             exit = scanner.nextLine();
         }
     }
