@@ -67,7 +67,7 @@ public class Food {
         this.price = price;
     }
 
-    public String printDetails() {
+    public String getFoodDetails() {
         String ingredientsPrint = "";
         for(Ingredient ingredient : ingredientList){
             ingredientsPrint +=ingredient.getName().toLowerCase() + "  ";
@@ -75,4 +75,5 @@ public class Food {
 
         return String.format("%-50s%-5s €\n\tIngredients: %-5s\n", name, String.format("%.2f", price), ingredientsPrint);
     }
+
 }

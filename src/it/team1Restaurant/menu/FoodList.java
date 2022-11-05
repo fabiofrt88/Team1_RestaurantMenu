@@ -52,10 +52,10 @@ public class FoodList<T extends Food> extends ArrayList<Food> {
         }
     }*/
 
-    public String printDetails () {
+    public String getFoodListDetails () {
         String str = "";
         for(Food food : this) {
-            str += "\n" + food.printDetails();
+            str += "\n" + food.getFoodDetails();
         };
         return str;
     }

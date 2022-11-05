@@ -69,17 +69,27 @@ public class Menu {
     }
 
 
-    public String printMenuDetails() {
+    /*public String getMenuDetails() {
         String str = String.format("%34s\n\n", restaurantName)
                 + String.format("%24s %s", "MENU", type.toUpperCase());
         for (FoodList foodList : foodListsMap.values()) {
             str += "\n\n---------------------------------------------------------"
-                    + "\n\n" + foodList.getTypeFood().name() + ":\n" + foodList.printDetails()
+                    + "\n\n" + foodList.getTypeFood().name() + ":\n" + foodList.getFoodListDetails()
+                    + "\n---------------------------------------------------------";
+        }
+        return str;
+    }*/
+
+    public String getMenuDetails() {
+        String str = String.format("%34s\n\n", restaurantName)
+                + String.format("%24s %s", "MENU", type.toUpperCase());
+        for (TypeFood typefood : TypeFood.values()) {
+            FoodList foodList = foodListsMap.get(typefood);
+            str += "\n\n---------------------------------------------------------"
+                    + "\n\n" + typefood.name() + ":\n" + foodList.getFoodListDetails()
                     + "\n---------------------------------------------------------";
         }
         return str;
     }
-
-
 
 }

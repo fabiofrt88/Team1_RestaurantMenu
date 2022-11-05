@@ -1,9 +1,13 @@
 package it.team1Restaurant.user;
 import it.team1Restaurant.bookings.Booking;
+
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class Client {
 
@@ -54,22 +58,37 @@ public class Client {
 
     public void setChild(boolean child) {isChild = child;}
 
-    public Booking book (LocalDate date, LocalTime time, int peopleNumber, int childNumber) throws Exception {
-        if(childNumber>peopleNumber) throw new Exception("The number of children must be less than the people number");
-        List<Client> clientList = new ArrayList<>();
-        clientList.add(this);
-        for(int i=1; i<peopleNumber-childNumber; i++) {
-            clientList.add(new Client(false));
-        }
-        for(int i=0; i<childNumber; i++){
-            clientList.add(new Client(true));
-        }
-        Group group = new Group(clientList);
-        return new Booking(group,date,time);
+    public Booking book(Group group, LocalDate date, LocalTime time) {
+
+        return new Booking(this, group, this.getBookedAtDate(), date, time);
     }
 
+    public Booking book(LocalDate date, LocalTime time, int peopleNumber, int childNumber) throws Exception {
+        Group group = this.createGroup(peopleNumber, childNumber);
+        return new Booking(this, group, this.getBookedAtDate(), date, time);
+    }
 
-    public void printDetail(){
+    public Group createGroup(int peopleNumber, int childNumber) throws Exception {
+        if(childNumber > peopleNumber) throw new Exception("The number of children must be less than the people number");
+        if(this.isChild) throw new Exception("A child cannot book");
+        Group group = new Group();
+        group.addClient(this);
+        for(int i=1; i<peopleNumber-childNumber; i++) {
+            group.addClient(new Client(false));
+        }
+        for(int i=0; i<childNumber; i++){
+            group.addClient(new Client(true));
+        }
+        return group;
+    }
+
+    public String getBookedAtDate(){
+        String pattern = "yyyy-MM-dd HH:mm:ss";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("en", "EN"));
+        return simpleDateFormat.format(new Date());
+    }
+
+    public void printDetails(){
         System.out.println("User details" +
                 "\nName: " + name +
                 "\nSurname: " + surname +
