@@ -1,7 +1,6 @@
 package it.team1Restaurant.bookings;
 
 import it.team1Restaurant.user.Client;
-import it.team1Restaurant.user.Group;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -10,30 +9,41 @@ public class Booking {
 
     private final int bookingNumber;
     private Client client;
-    private Group group;
-    private String bookedAt;
+    private final String bookedAt;
     private LocalDate date;
     private LocalTime time;
     private int tableNumber;
+    private int numberOfAdult;
+    private int numberOfChildren;
     private static int bookingNumbers = 0;
 
-    public Booking (Client client, Group group, String bookedAt, LocalDate date, LocalTime time) {
+    public Booking (Client client, String bookedAt, LocalDate date, LocalTime time, int numberOfAdult, int numberOfChildren) {
         this.bookingNumber = incrementBookingNumbers();
         this.client = client;
-        this.group = group;
         this.bookedAt = bookedAt;
         this.date = date;
         this.time = time;
+        if(numberOfAdult == 0) {
+            this.numberOfAdult = numberOfAdult + 1;
+        }else {
+            this.numberOfAdult = numberOfAdult;
+        }
+        this.numberOfChildren = numberOfChildren;
     }
 
-    public Booking (Client client, Group group, String bookedAt, LocalDate date, LocalTime time, int tableNumber) {
+    public Booking (Client client, String bookedAt, LocalDate date, LocalTime time, int tableNumber, int numberOfAdult, int numberOfChildren) {
         this.bookingNumber = incrementBookingNumbers();
         this.client = client;
-        this.group = group;
         this.bookedAt = bookedAt;
         this.date = date;
         this.time = time;
         this.tableNumber = tableNumber;
+        if(numberOfAdult == 0) {
+            this.numberOfAdult = numberOfAdult + 1;
+        }else {
+            this.numberOfAdult = numberOfAdult;
+        }
+        this.numberOfChildren = numberOfChildren;
     }
 
     public int getBookingNumber() {
@@ -48,20 +58,8 @@ public class Booking {
         this.client = client;
     }
 
-    public Group getGroup() {
-        return group;
-    }
-
-    public void setGroup(Group group) {
-        this.group = group;
-    }
-
     public String getBookedAt() {
         return bookedAt;
-    }
-
-    public void setBookedAt(String bookedAt) {
-        this.bookedAt = bookedAt;
     }
 
     public LocalDate getDate() {
@@ -88,6 +86,22 @@ public class Booking {
         this.tableNumber = tableNumber;
     }
 
+    public int getNumberOfAdult() {
+        return numberOfAdult;
+    }
+
+    public void setNumberOfAdult(int numberOfAdult) {
+        this.numberOfAdult = numberOfAdult;
+    }
+
+    public int getNumberOfChildren() {
+        return numberOfChildren;
+    }
+
+    public void setNumberOfChildren(int numberOfChildren) {
+        this.numberOfChildren = numberOfChildren;
+    }
+
     public static int getBookingNumbers() {
         return bookingNumbers;
     }
@@ -101,23 +115,24 @@ public class Booking {
     public String getBookingDetails() {
         return "Booking #" + bookingNumber +
                 "\n\nBooked by: " + client +
-                "\n\nGroup:" + group.getGroupDetails() +
                 "\nBooked at: " + bookedAt +
                 "\nDate: " + date +
                 "\nTime: " + time +
-                "\ntableNumber: " + tableNumber;
+                //"\ntableNumber: " + tableNumber +
+                "\nNumber of People: " + (numberOfAdult + numberOfChildren) +
+                "\nNumber of Adults: " + numberOfAdult +
+                "\nNumber of Children: " + numberOfChildren;
     }
 
     public void printDetails(){
         System.out.println("Booking #" + bookingNumber +
                 "\n\nBooked by: " + client +
-                "\n\nGroup:" + group.getGroupDetails() +
                 "\nBooked at: " + bookedAt +
                 "\nDate: " + date +
                 "\nTime: " + time +
                 //"\nTable Number: " + tableNumber +
-                "\nNumber of People: " + group.getClientList().size() +
-                "\nNumber of Adults: " + group.getNumberOfAdult() +
-                "\nNumber of Children: " + group.getNumberOfChild() + "\n");
+                "\nNumber of People: " + (numberOfAdult + numberOfChildren) +
+                "\nNumber of Adults: " + numberOfAdult +
+                "\nNumber of Children: " + numberOfChildren + "\n");
     }
 }

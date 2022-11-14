@@ -16,6 +16,7 @@ public class Client {
     private String email;
     private String phoneNumber;
     private boolean isChild;
+    //private List<Booking> bookingList = new ArrayList<>();
 
     public Client () {} ;
 
@@ -58,28 +59,18 @@ public class Client {
 
     public void setChild(boolean child) {isChild = child;}
 
-    public Booking book(Group group, LocalDate date, LocalTime time) {
-
-        return new Booking(this, group, this.getBookedAtDate(), date, time);
+    /*public List<Booking> getBookingList() {
+        return bookingList;
     }
 
-    public Booking book(LocalDate date, LocalTime time, int peopleNumber, int childNumber) throws Exception {
-        Group group = this.createGroup(peopleNumber, childNumber);
-        return new Booking(this, group, this.getBookedAtDate(), date, time);
-    }
+    public void setBookingList(List<Booking> bookingList) {
+        this.bookingList = bookingList;
+    }*/
 
-    public Group createGroup(int peopleNumber, int childNumber) throws Exception {
-        if(childNumber > peopleNumber) throw new Exception("The number of children must be less than the people number");
-        if(this.isChild) throw new Exception("A child cannot book");
-        Group group = new Group();
-        group.addClient(this);
-        for(int i=1; i<peopleNumber-childNumber; i++) {
-            group.addClient(new Client(false));
-        }
-        for(int i=0; i<childNumber; i++){
-            group.addClient(new Client(true));
-        }
-        return group;
+    public Booking book(LocalDate date, LocalTime time, int numberOfAdults, int numberOfChildren) throws Exception {
+        Booking book = new Booking(this, this.getBookedAtDate(), date, time, numberOfAdults, numberOfChildren);
+        //this.bookingList.add(book);
+        return book;
     }
 
     public String getBookedAtDate(){
@@ -87,6 +78,13 @@ public class Client {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("en", "EN"));
         return simpleDateFormat.format(new Date());
     }
+
+    /*public void printBookingsDetails(){
+        System.out.printf("Bookings of %s %s\n\n", this.name, this.surname);
+        for(Booking book : bookingList){
+            System.out.println(book.getBookingDetails() + "\n");
+        }
+    }*/
 
     public void printDetails(){
         System.out.println("User details" +

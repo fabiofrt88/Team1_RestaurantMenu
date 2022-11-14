@@ -20,6 +20,14 @@ public class Calendar {
         return calendar;
     }
 
+    public Map<LocalDate, List<Booking>> getBookingsMap() {
+        return bookingsMap;
+    }
+
+    public void setBookingsMap(Map<LocalDate, List<Booking>> bookingsMap) {
+        this.bookingsMap = bookingsMap;
+    }
+
     public void addBooking (Booking booking){
         if(bookingsMap.get(booking.getDate()) == null){
             bookingsMap.put(booking.getDate(), new ArrayList<>());
