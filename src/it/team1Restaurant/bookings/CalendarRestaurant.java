@@ -14,8 +14,33 @@ public class CalendarRestaurant {
            this.notWorkingDays = new ArrayList<>();
        };
 
-       public CalendarRestaurant getInstance () {
+       public static CalendarRestaurant getInstance() {
            return calendarRestaurant;
+       }
+
+    public List<LocalDate> getNotWorkingDays() {
+        return notWorkingDays;
+    }
+
+    public void setNotWorkingDays(List<LocalDate> notWorkingDays) {
+        this.notWorkingDays = notWorkingDays;
+    }
+
+
+    public void removeWorkingDay (LocalDate date) {
+           this.notWorkingDays.remove(date);
+       }
+
+       public void addNotWorkingDay (LocalDate date,CalendarBookings calendarBookings) throws Exception {
+           if(calendarBookings.checkDateInCalendar(date)){
+               if(calendarBookings.getBookingsMap().get(date).isEmpty()){
+                    notWorkingDays.add(date);
+               }else{
+                   throw new Exception("Attenzione: ci sono già delle prenotazioni per questo giorno!");
+               }
+           }else{
+               notWorkingDays.add(date);
+           }
        }
 
 

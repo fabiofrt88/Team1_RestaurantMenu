@@ -26,11 +26,7 @@ public class Booking {
         this.bookedAt = bookedAt;
         this.date = date;
         this.time = time;
-        if(numberOfAdult == 0) {
-            this.numberOfAdult = numberOfAdult + 1;
-        }else {
-            this.numberOfAdult = numberOfAdult;
-        }
+        this.numberOfAdult = numberOfAdult;
         this.numberOfChildren = numberOfChildren;
     }
 
@@ -41,11 +37,7 @@ public class Booking {
         this.date = date;
         this.time = time;
         this.tableNumber = tableNumber;
-        if(numberOfAdult == 0) {
-            this.numberOfAdult = numberOfAdult + 1;
-        }else {
-            this.numberOfAdult = numberOfAdult;
-        }
+        this.numberOfAdult = numberOfAdult;
         this.numberOfChildren = numberOfChildren;
     }
 
@@ -113,6 +105,7 @@ public class Booking {
     public static void setBookingNumbers(int bookingNumbers) {
         Booking.bookingNumbers = bookingNumbers;
     }
+
 
     public static int incrementBookingNumbers(){ return ++bookingNumbers; }
 

@@ -11,10 +11,12 @@ public class CalendarBookings {
 
     private Map<LocalDate,List<Booking>> bookingsMap;
 
+    private CalendarRestaurant calendarRestaurant;
     private static CalendarBookings calendarBookings = new CalendarBookings();
 
-    public CalendarBookings( ){
+    public CalendarBookings(){
         bookingsMap = new TreeMap<>();
+        calendarRestaurant = CalendarRestaurant.getInstance();
     }
 
     public static CalendarBookings getInstance(){
@@ -30,7 +32,7 @@ public class CalendarBookings {
     }
 
     public void addBooking (Booking booking) throws Exception {
-        if(bookingsMap.keySet().contains(booking.getDate())) {
+        if(checkDateInCalendar(booking.getDate())) {
             bookingsMap.get(booking.getDate()).add(booking);
         }else{
             throw new Exception("La data per cui si vuole prenotare non è al momento attiva.");
@@ -39,6 +41,7 @@ public class CalendarBookings {
 
 
     public void book (Client client, LocalDate date, LocalTime time, int numberOfAdults, int numberOfChildren) throws Exception {
+        //Mettere un controllo su numberOfAdults e numberChildren ???
         Booking book = new Booking(client,createBookedAtDate(), date, time, numberOfAdults, numberOfChildren);
         //client.bookingList.add(book);
         addBooking(book);
@@ -52,9 +55,14 @@ public class CalendarBookings {
         return simpleDateFormat.format(new Date());
     }
 
+
     public void createBookingsIntervalFromStartDate (LocalDate startDate, int numberOfDays){
         for(int i=0; i<=numberOfDays; i++){
-            bookingsMap.put(startDate.plusDays(i),new ArrayList<>());
+            if(calendarRestaurant.getNotWorkingDays().contains(startDate.plusDays(i))){
+                System.out.println("Il giorno non è lavorativo");
+            }else {
+                bookingsMap.put(startDate.plusDays(i), new ArrayList<>());
+            }
         }
     }
 
@@ -67,6 +75,9 @@ public class CalendarBookings {
         createBookingsIntervalFromStartDate(LocalDate.now(),numberOfDays);
     }
 
+    public boolean checkDateInCalendar (LocalDate date) {
+        return bookingsMap.keySet().contains(date);
+    }
 
 
     /*DA IMPLEMENTARE
