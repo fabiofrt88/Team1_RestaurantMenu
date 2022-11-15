@@ -27,8 +27,9 @@ public class CalendarRestaurant {
     }
 
 
-    public void removeWorkingDay (LocalDate date) {
+    public void removeNotWorkingDay (LocalDate date) {
            this.notWorkingDays.remove(date);
+           // settare Map
        }
 
        public void addNotWorkingDay (LocalDate date,CalendarBookings calendarBookings) throws Exception {

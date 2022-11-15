@@ -1,6 +1,7 @@
 package it.team1Restaurant.bookings;
 import it.team1Restaurant.user.Client;
 
+
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -59,7 +60,7 @@ public class CalendarBookings {
     public void createBookingsIntervalFromStartDate (LocalDate startDate, int numberOfDays){
         for(int i=0; i<=numberOfDays; i++){
             if(calendarRestaurant.getNotWorkingDays().contains(startDate.plusDays(i))){
-                System.out.println("Il giorno non è lavorativo");
+                bookingsMap.put(startDate.plusDays(i), new ArrayList<>());
             }else {
                 bookingsMap.put(startDate.plusDays(i), new ArrayList<>());
             }
@@ -98,21 +99,28 @@ public class CalendarBookings {
         return str;
     }
 
-
+    /*
 
     public void printDetails () {
         for(LocalDate date : bookingsMap.keySet()){
-            List <Booking> dayBoolingList = bookingsMap.get(date);
-            if(dayBoolingList.isEmpty()) {
-                System.out.println(date);
-                System.out.println("Non ci sono prenotazioni per questo giorno\n");
-            }else{
-                for(Booking booking : dayBoolingList) {
-                    System.out.println(date);
-                    booking.printDetails();
-                }
+            switch(day.getWorkingDay()){
+                case NOT_WORKING:
+                    System.out.println(day.getDate());
+                    System.out.println("Non è un giorno lavorativo\n");
+                    break;
+                case WORKING:
+                    List<Booking> dayBoolingList = bookingsMap.get(day);
+                    if (dayBoolingList.isEmpty()) {
+                        System.out.println(day.getDate());
+                        System.out.println("Non ci sono prenotazioni per questo giorno\n");
+                    } else {
+                        for (Booking booking : dayBoolingList) {
+                            System.out.println(day.getDate());
+                            booking.printDetails();
+                        }
+                    }
+                    break;
             }
-
         }
-    }
+    }*/
 }
