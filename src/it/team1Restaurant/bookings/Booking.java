@@ -2,8 +2,11 @@ package it.team1Restaurant.bookings;
 
 import it.team1Restaurant.user.Client;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
+import java.util.Locale;
 
 public class Booking {
 
@@ -61,6 +64,7 @@ public class Booking {
     public String getBookedAt() {
         return bookedAt;
     }
+
 
     public LocalDate getDate() {
         return date;

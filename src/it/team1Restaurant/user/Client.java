@@ -67,17 +67,6 @@ public class Client {
         this.bookingList = bookingList;
     }*/
 
-    public Booking book(LocalDate date, LocalTime time, int numberOfAdults, int numberOfChildren) throws Exception {
-        Booking book = new Booking(this, this.getBookedAtDate(), date, time, numberOfAdults, numberOfChildren);
-        //this.bookingList.add(book);
-        return book;
-    }
-
-    public String getBookedAtDate(){
-        String pattern = "yyyy-MM-dd HH:mm:ss";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("en", "EN"));
-        return simpleDateFormat.format(new Date());
-    }
 
     /*public void printBookingsDetails(){
         System.out.printf("Bookings of %s %s\n\n", this.name, this.surname);

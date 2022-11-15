@@ -1,9 +1,11 @@
 package it.team1Restaurant.bookings;
+import it.team1Restaurant.user.Client;
+
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.util.*;
 
 public class Calendar {
 
@@ -33,6 +35,21 @@ public class Calendar {
             bookingsMap.put(booking.getDate(), new ArrayList<>());
         }
         bookingsMap.get(booking.getDate()).add(booking);
+    }
+
+
+    public void book (Client client, LocalDate date, LocalTime time, int numberOfAdults, int numberOfChildren)  {
+        Booking book = new Booking(client,createBookedAtDate(), date, time, numberOfAdults, numberOfChildren);
+        //client.bookingList.add(book);
+        addBooking(book);
+        System.out.println("La prenotazione per " + client.getName() + " e' stata effettuata con successo: " +
+                            "\n" + book.getBookingDetails());
+    }
+
+    private String createBookedAtDate(){
+        String pattern = "yyyy-MM-dd HH:mm:ss";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("en", "EN"));
+        return simpleDateFormat.format(new Date());
     }
 
     /*DA IMPLEMENTARE
