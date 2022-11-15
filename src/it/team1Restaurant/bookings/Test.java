@@ -8,9 +8,9 @@ public class Test {
         CalendarRestaurant calendarRestaurant = CalendarRestaurant.getInstance();
         calendarRestaurant.addNotWorkingDay(LocalDate.of(2022,11,29),calendarBookings);
         //calendarBookings.createBookingsIntervalFromTwoDates(LocalDate.now(),LocalDate.of(2022,11,20));
-        calendarBookings.createBookingsIntervalFromStartDate(LocalDate.now(),30);
+        calendarBookings.createBookingsIntervalFromStartDate(LocalDate.now(),10);
         calendarBookings.printDetails();
-
+        
     }
 
 }

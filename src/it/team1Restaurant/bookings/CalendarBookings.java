@@ -1,22 +1,29 @@
 package it.team1Restaurant.bookings;
 import it.team1Restaurant.user.Client;
-
-
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class CalendarBookings {
 
-    private Map<LocalDate,List<Booking>> bookingsMap;
+    private Map<Day,List<Booking>> bookingsMap;
 
     private CalendarRestaurant calendarRestaurant;
     private static CalendarBookings calendarBookings = new CalendarBookings();
 
     public CalendarBookings(){
-        bookingsMap = new TreeMap<>();
+        bookingsMap = new TreeMap<>(new Comparator<Day>() {
+            @Override
+            public int compare(Day day1, Day day2) {
+                if(day1.getDate().equals(day2.getDate())) return 0;
+                if(day1.getDate().isBefore(day2.getDate())) return -1;
+                else return 1;
+            }
+        });
+
         calendarRestaurant = CalendarRestaurant.getInstance();
     }
 
@@ -24,19 +31,37 @@ public class CalendarBookings {
         return calendarBookings;
     }
 
-    public Map<LocalDate, List<Booking>> getBookingsMap() {
+    public Map<Day, List<Booking>> getBookingsMap() {
         return bookingsMap;
     }
 
-    public void setBookingsMap(Map<LocalDate, List<Booking>> bookingsMap) {
+    public void setBookingsMap(Map<Day, List<Booking>> bookingsMap) {
         this.bookingsMap = bookingsMap;
     }
+
+    public void setWorkingDay (LocalDate date,WorkingDayEnum workingDayEnum) throws Exception {
+        //if(!checkDateInCalendar(date)) throw new DateOutOfCalendar; toDo check da inserire?
+        getDayByDate(date).setWorkingDay(workingDayEnum);
+    }
+
+    public List<Booking> getBookingsListByDate (LocalDate date) throws Exception {
+        return bookingsMap.get(getDayByDate(date));
+    }
+
+    public Day getDayByDate (LocalDate date) throws Exception {
+        if(!checkDateInCalendar(date)) throw new DateOutOfCalendar();
+        for(Day day : bookingsMap.keySet()){
+            if(day.getDate().equals(date)) return day;
+        }
+        return null; //Non accadrà mai perchè c è il check iniziale
+    }
+
 
     public void addBooking (Booking booking) throws Exception {
         if(checkDateInCalendar(booking.getDate())) {
             bookingsMap.get(booking.getDate()).add(booking);
         }else{
-            throw new Exception("La data per cui si vuole prenotare non è al momento attiva.");
+            throw new DateOutOfCalendar();
         }
     }
 
@@ -60,9 +85,9 @@ public class CalendarBookings {
     public void createBookingsIntervalFromStartDate (LocalDate startDate, int numberOfDays){
         for(int i=0; i<=numberOfDays; i++){
             if(calendarRestaurant.getNotWorkingDays().contains(startDate.plusDays(i))){
-                bookingsMap.put(startDate.plusDays(i), new ArrayList<>());
+                bookingsMap.put(new Day(startDate.plusDays(i),WorkingDayEnum.NOT_WORKING), new ArrayList<>());
             }else {
-                bookingsMap.put(startDate.plusDays(i), new ArrayList<>());
+                bookingsMap.put(new Day(startDate.plusDays(i),WorkingDayEnum.WORKING), new ArrayList<>());
             }
         }
     }
@@ -77,7 +102,10 @@ public class CalendarBookings {
     }
 
     public boolean checkDateInCalendar (LocalDate date) {
-        return bookingsMap.keySet().contains(date);
+        return bookingsMap.keySet().stream()
+                                    .map(day -> day.getDate())
+                                    .collect(Collectors.toSet())
+                                    .contains(date);
     }
 
 
@@ -99,14 +127,14 @@ public class CalendarBookings {
         return str;
     }
 
-    /*
+
 
     public void printDetails () {
-        for(LocalDate date : bookingsMap.keySet()){
+        for(Day day : bookingsMap.keySet()){
             switch(day.getWorkingDay()){
                 case NOT_WORKING:
                     System.out.println(day.getDate());
-                    System.out.println("Non è un giorno lavorativo\n");
+                    System.out.println("Non e' un giorno lavorativo\n");
                     break;
                 case WORKING:
                     List<Booking> dayBoolingList = bookingsMap.get(day);
@@ -122,5 +150,5 @@ public class CalendarBookings {
                     break;
             }
         }
-    }*/
+    }
 }

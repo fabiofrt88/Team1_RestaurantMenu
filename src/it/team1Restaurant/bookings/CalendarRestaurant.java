@@ -27,15 +27,20 @@ public class CalendarRestaurant {
     }
 
 
-    public void removeNotWorkingDay (LocalDate date) {
+    public void removeNotWorkingDay (LocalDate date,CalendarBookings calendarBookings)  {
            this.notWorkingDays.remove(date);
-           // settare Map
-       }
+           try {
+                calendarBookings.setWorkingDay(date,WorkingDayEnum.WORKING);
+            } catch (Exception e) {
+                e.getMessage();
+            }
+    }
 
        public void addNotWorkingDay (LocalDate date,CalendarBookings calendarBookings) throws Exception {
            if(calendarBookings.checkDateInCalendar(date)){
-               if(calendarBookings.getBookingsMap().get(date).isEmpty()){
+               if(calendarBookings.getBookingsListByDate(date).isEmpty()){
                     notWorkingDays.add(date);
+                    calendarBookings.setWorkingDay(date,WorkingDayEnum.NOT_WORKING);
                }else{
                    throw new Exception("Attenzione: ci sono già delle prenotazioni per questo giorno!");
                }
