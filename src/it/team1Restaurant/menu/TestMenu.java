@@ -1,15 +1,20 @@
 package it.team1Restaurant.menu;
+import it.team1Restaurant.bookings.Booking;
+import it.team1Restaurant.bookings.Calendar;
 import it.team1Restaurant.foods.Ingredient;
+import it.team1Restaurant.user.Client;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.*;
+
+import static it.team1Restaurant.bookings.Booking.checkBookingInfo;
+import static it.team1Restaurant.menu.TypeMenu.*;
 
 
 public class TestMenu {
 
-    public static void test(List<Menu> menuList){
+    /*public static void test(List<Menu> menuList){
         Scanner input = new Scanner(System.in);
         System.out.println("Quale menù vuoi consultare? <1> MENU DI CARNE | <2> MENU DI PESCE | <3> MENU VEGANO | <4> MENU BAMBINI");
         System.out.print("Risposta: ");
@@ -27,12 +32,12 @@ public class TestMenu {
             case "4":
                 System.out.println(menuList.get(3).getMenuDetails());
                 break;
-        }
-    }
+        }*/
+
     public static void main(String[] args) {
 
 
-        Menu meatMenu = new Menu("Carne");
+        Menu meatMenu = new Menu("Carne", MEAT);
 
         //create the drinks:
         meatMenu.addDrink("Acqua", new Ingredient("Acqua"), 2);
@@ -66,7 +71,7 @@ public class TestMenu {
 
         //--------------------------------------------------------------------------------------------------------------
 
-        Menu fishMenu = new Menu("Pesce");
+        Menu fishMenu = new Menu("Pesce", TypeMenu.FISH);
 
         //create the drinks:
         fishMenu.addDrink("Acqua", new Ingredient("Acqua"), 2);
@@ -99,7 +104,7 @@ public class TestMenu {
 
         //--------------------------------------------------------------------------------------------------------------
 
-        Menu veganMenu = new Menu("Vegano");
+        Menu veganMenu = new Menu("Vegano", TypeMenu.VEGAN);
 
         //create the drinks:
         veganMenu.addDrink("Acqua", new Ingredient("Acqua"), 2);
@@ -131,7 +136,7 @@ public class TestMenu {
 
         //--------------------------------------------------------------------------------------------------------------
 
-        Menu childMenu = new Menu("Bambino");
+        Menu childMenu = new Menu("Bambino", TypeMenu.CHILD);
 
         //create the drinks:
         childMenu.addDrink("Acqua", new Ingredient("Acqua"), 2);
@@ -162,9 +167,13 @@ public class TestMenu {
 
         //--------------------------------------------------------------------------------------------------------------
 
-        List<Menu> menuList = new ArrayList<>(Arrays.asList(meatMenu, fishMenu, veganMenu, childMenu));
+        EnumMap<TypeMenu, Menu> menuMap = new EnumMap<>(TypeMenu.class);
+        menuMap.put(MEAT, meatMenu);
+        menuMap.put(FISH, fishMenu);
+        menuMap.put(VEGAN, veganMenu);
+        menuMap.put(CHILD, childMenu);
 
-        Scanner scanner = new Scanner(System.in);
+        /*Scanner scanner = new Scanner(System.in);
         String exit = "S";
 
         while(!exit.equalsIgnoreCase("N")){
@@ -172,6 +181,14 @@ public class TestMenu {
             System.out.println("Vuoi consultare un altro menù? <S> <N>");
             System.out.print("Risposta: ");
             exit = scanner.nextLine();
-        }
+        }*/
+
+        Client client = new Client("Pippo","Franco","pippofranco@gmail.com", "389-5264589", false);
+
+        Client client2 = new Client("Mario","Rossi","mariorossio@gmail.com", "389-6578904", false);
+
+        Booking booking1 = new Booking(client, "2022-11-15 21:00:00", LocalDate.of(2022,11,11), LocalTime.of(12,30), 3,1,0,1,0);
+        checkBookingInfo(booking1, menuMap);
+
     }
 }

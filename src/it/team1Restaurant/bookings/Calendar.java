@@ -46,6 +46,14 @@ public class Calendar {
                             "\n" + book.getBookingDetails());
     }
 
+    public void book2 (Client client, LocalDate date, LocalTime time, int numberOfAdults, int numberOfChildren, int numberOfVegetarian, int numberOfVegan, int numberOfCeliac)  {
+        Booking book = new Booking(client,createBookedAtDate(), date, time, numberOfAdults, numberOfChildren, numberOfVegetarian, numberOfVegan, numberOfCeliac);
+        //client.bookingList.add(book);
+        addBooking(book);
+        System.out.println("La prenotazione per " + client.getName() + " e' stata effettuata con successo: " +
+                "\n" + book.getBookingDetails());
+    }
+
     private String createBookedAtDate(){
         String pattern = "yyyy-MM-dd HH:mm:ss";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("en", "EN"));
