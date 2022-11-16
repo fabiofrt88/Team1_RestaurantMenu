@@ -28,4 +28,9 @@ public class Day {
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
+    public String getDetails () {
+        return "Date: " +date + " - " + workingDay.name().toLowerCase() + " day";
+    }
+
 }

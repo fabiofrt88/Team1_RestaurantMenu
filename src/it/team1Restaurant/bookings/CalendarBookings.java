@@ -133,17 +133,17 @@ public class CalendarBookings {
         for(Day day : bookingsMap.keySet()){
             switch(day.getWorkingDay()){
                 case NOT_WORKING:
-                    System.out.println(day.getDate());
+                    System.out.println(day.getDetails());
                     System.out.println("Non e' un giorno lavorativo\n");
                     break;
                 case WORKING:
                     List<Booking> dayBoolingList = bookingsMap.get(day);
                     if (dayBoolingList.isEmpty()) {
-                        System.out.println(day.getDate());
+                        System.out.println(day.getDetails());
                         System.out.println("Non ci sono prenotazioni per questo giorno\n");
                     } else {
                         for (Booking booking : dayBoolingList) {
-                            System.out.println(day.getDate());
+                            System.out.println(day.getDetails());
                             booking.printDetails();
                         }
                     }
