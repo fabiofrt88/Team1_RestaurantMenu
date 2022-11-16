@@ -12,7 +12,10 @@ public class Menu {
     private String type;
     private Map<TypeFood,FoodList> foodListsMap;
 
-    public Menu (String type){
+    private TypeMenu typeMenu;
+
+    public Menu (String type, TypeMenu typeMenu){
+        this.typeMenu = typeMenu;
         this.type = type;
         this.foodListsMap = new HashMap<>();
         this.foodListsMap.put(TypeFood.STARTER,new FoodList(TypeFood.STARTER));
@@ -38,6 +41,14 @@ public class Menu {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public TypeMenu getTypeMenu() {
+        return typeMenu;
+    }
+
+    public void setTypeMenu(TypeMenu typeMenu) {
+        this.typeMenu = typeMenu;
     }
 
     public Map<TypeFood, FoodList> getFoodListsMap() {

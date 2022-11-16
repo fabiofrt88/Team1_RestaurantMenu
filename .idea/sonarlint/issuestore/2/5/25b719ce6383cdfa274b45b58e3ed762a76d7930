@@ -1,0 +1,11 @@
+
+2
+java:S1643:"Use a StringBuilder instead.(Çüæ¿
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÞçœŽ
+F
+java:S2160"+Override the "equals" method in this class.(ã§ë×ùÿÿÿÿ
+6
+java:S2326"T is not used in the class.(ã§ë×ùÿÿÿÿ
+Q	java:S125$"<This block of commented-out lines of code should be removed.(‘Ÿï¦
+7
+java:S1116;"Remove this empty statement.(ôŸŽìúÿÿÿÿ
