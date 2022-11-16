@@ -5,6 +5,7 @@ import it.team1Restaurant.menu.TypeFood;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 public class Food {
     private TypeFood type;
@@ -69,11 +70,10 @@ public class Food {
 
     public String getFoodDetails() {
         String ingredientsPrint = "";
-        for(Ingredient ingredient : ingredientList){
-            ingredientsPrint +=ingredient.getName().toLowerCase() + "  ";
+        for (Ingredient ingredient : ingredientList) {
+            ingredientsPrint += ingredient.getName().toLowerCase() + "  ";
         }
 
         return String.format("%-50s%-5s €\n\tIngredients: %-5s\n", name, String.format("%.2f", price), ingredientsPrint);
     }
-
 }

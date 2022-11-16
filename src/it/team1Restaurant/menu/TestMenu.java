@@ -1,6 +1,7 @@
 package it.team1Restaurant.menu;
 import it.team1Restaurant.bookings.Booking;
 import it.team1Restaurant.bookings.Calendar;
+import it.team1Restaurant.foods.Food;
 import it.team1Restaurant.foods.Ingredient;
 import it.team1Restaurant.user.Client;
 
@@ -189,6 +190,5 @@ public class TestMenu {
 
         Booking booking1 = new Booking(client, "2022-11-15 21:00:00", LocalDate.of(2022,11,11), LocalTime.of(12,30), 3,1,0,1,0);
         checkBookingInfo(booking1, menuMap);
-
     }
 }
