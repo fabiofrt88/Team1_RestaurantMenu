@@ -1,6 +1,7 @@
 package it.team1Restaurant.menu;
 import it.team1Restaurant.bookings.Booking;
 import it.team1Restaurant.bookings.Calendar;
+import it.team1Restaurant.foods.Food;
 import it.team1Restaurant.foods.Ingredient;
 import it.team1Restaurant.user.Client;
 
@@ -115,24 +116,24 @@ public class TestMenu {
 
         //create the First:
         veganMenu.addFood(TypeFood.FIRST, "Insalata di riso e melone", new ArrayList<>(Arrays.asList(
-                new Ingredient("Riso"), new Ingredient("melone"))), 11);
+                new Ingredient("Riso"), new Ingredient("melone"))), 11, TypeDish.VEGAN);
         veganMenu.addFood(TypeFood.FIRST, "Spaghetti ai carciofi e limone", new ArrayList<>(Arrays.asList(
-                new Ingredient("Carciofi"), new Ingredient("Limone"))), 14);
+                new Ingredient("Carciofi"), new Ingredient("Limone"))), 14, TypeDish.VEGAN);
 
 
         //create the Seconds:
         veganMenu.addFood(TypeFood.SECOND, "Polpettone di fagioli e tofu alle erbe",
-                new ArrayList<>(Arrays.asList(new Ingredient("Tofu"), new Ingredient("Fagioli"), new Ingredient("Erbe"))), 13);
+                new ArrayList<>(Arrays.asList(new Ingredient("Tofu"), new Ingredient("Fagioli"), new Ingredient("Erbe"))), 13, TypeDish.VEGAN);
         veganMenu.addFood(TypeFood.SECOND, "Zucchine ripiene con crema di fagioli bianchi",
-                new ArrayList<>(Arrays.asList(new Ingredient("Zucchine"), new Ingredient("Fagioli Bianchi"))), 14);
+                new ArrayList<>(Arrays.asList(new Ingredient("Zucchine"), new Ingredient("Fagioli Bianchi"))), 14, TypeDish.VEGAN);
 
         //create the Desserts:
         veganMenu.addFood(TypeFood.DESSERT, "Tiramisu' vegano", new ArrayList<>(Arrays.asList(new Ingredient("Biscotti Vegani"),
                 new Ingredient("Caffè"), new Ingredient("Cacao"), new Ingredient("Yogurt di soia"),
-                new Ingredient("Panna di soia"))), 12);
+                new Ingredient("Panna di soia"))), 12,  TypeDish.VEGAN);
         veganMenu.addFood(TypeFood.DESSERT, "Ciambellone vegano", new ArrayList<>(Arrays.asList(new Ingredient("Latte Vegetale"),
                 new Ingredient("Farina 0"), new Ingredient("Lievito"),
-                new Ingredient("Cacao Amaro"), new Ingredient("Zucchero"))), 15);
+                new Ingredient("Cacao Amaro"), new Ingredient("Zucchero"))), 15,  TypeDish.VEGAN);
 
         //--------------------------------------------------------------------------------------------------------------
 
@@ -148,22 +149,22 @@ public class TestMenu {
 
         //create the First:
         childMenu.addFood(TypeFood.FIRST, "Pasta al sugo", new ArrayList<>(Arrays.asList(
-                new Ingredient("Passato di pomodoro"))), 8);
+                new Ingredient("Passato di pomodoro"))), 8, TypeDish.CHILD);
         childMenu.addFood(TypeFood.FIRST, "Pasta al pesto", new ArrayList<>(Arrays.asList(
-                new Ingredient("Basilico"), new Ingredient("Parmigiano"))), 10);
+                new Ingredient("Basilico"), new Ingredient("Parmigiano"))), 10, TypeDish.CHILD);
 
 
         //create the Seconds:
         childMenu.addFood(TypeFood.SECOND, "Cotoletta e Patatine",
-                new ArrayList<>(Arrays.asList(new Ingredient("Pollo"), new Ingredient("Patate"))), 12);
+                new ArrayList<>(Arrays.asList(new Ingredient("Pollo"), new Ingredient("Patate"))), 12, TypeDish.CHILD);
         childMenu.addFood(TypeFood.SECOND, "Hamburger e insalata",
-                new ArrayList<>(Arrays.asList(new Ingredient("Carne di manzo"), new Ingredient("Insalata"))),13);
+                new ArrayList<>(Arrays.asList(new Ingredient("Carne di manzo"), new Ingredient("Insalata"))),13, TypeDish.CHILD);
 
         //create the Desserts:
         childMenu.addFood(TypeFood.DESSERT, "Gelato alla fragola", new ArrayList<>(Arrays.asList(new Ingredient("Latte"),
-                new Ingredient("Fragole"))), 8);
+                new Ingredient("Fragole"))), 8, TypeDish.CHILD);
         childMenu.addFood(TypeFood.DESSERT, "Gelato alla cioccolato", new ArrayList<>(Arrays.asList(new Ingredient("Latte"),
-                new Ingredient("Cioccolato"))), 8);
+                new Ingredient("Cioccolato"))), 8, TypeDish.CHILD);
 
         //--------------------------------------------------------------------------------------------------------------
 
@@ -190,5 +191,39 @@ public class TestMenu {
         Booking booking1 = new Booking(client, "2022-11-15 21:00:00", LocalDate.of(2022,11,11), LocalTime.of(12,30), 3,1,0,1,0);
         checkBookingInfo(booking1, menuMap);
 
+/*
+        System.out.println("______________________________AAAAAAAAAAAAAAAAAAAAAAAAAAA______________________________________-");
+
+        Food pastaAlSugo = new Food(TypeFood.FIRST, "Pasta al sugo", new ArrayList<>(Arrays.asList(
+                new Ingredient("Passato di pomodoro"))), 8, TypeDish.CHILD);
+
+        Food carbonaraVegetariana = new Food(TypeFood.FIRST, "Pasta al sugo", new ArrayList<>(Arrays.asList(
+                new Ingredient("Passato di pomodoro"))), 8, TypeDish.VEGETARIAN);
+
+        Food carbonaraVegetariana2 = new Food(TypeFood.FIRST, "Pasta al sugo", new ArrayList<>(Arrays.asList(
+                new Ingredient("Passato di pomodoro"))), 8, TypeDish.VEGETARIAN);
+
+        Food pastaCeliac = new Food(TypeFood.FIRST, "Pasta al sugo", new ArrayList<>(Arrays.asList(
+                new Ingredient("Passato di pomodoro"))), 8, TypeDish.CELIAC);
+
+        Food pastaVegana = new Food(TypeFood.FIRST, "Pasta al sugo", new ArrayList<>(Arrays.asList(
+                new Ingredient("Passato di pomodoro"))), 8, TypeDish.VEGAN);
+
+
+        Map<String, Food> dishMap = new HashMap<>();
+        dishMap.put(pastaAlSugo.getName(), pastaAlSugo);
+        dishMap.put(carbonaraVegetariana.getName(), carbonaraVegetariana);
+        dishMap.put(carbonaraVegetariana2.getName(), carbonaraVegetariana2);
+        dishMap.put(pastaCeliac.getName(), pastaCeliac);
+        dishMap.put(pastaVegana.getName(), pastaVegana);
+
+
+        dishFilter(dishMap);
+
+        */
     }
+
+
+
+
 }

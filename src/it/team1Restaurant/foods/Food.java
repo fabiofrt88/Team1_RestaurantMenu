@@ -1,13 +1,16 @@
 package it.team1Restaurant.foods;
 
+import it.team1Restaurant.bookings.Booking;
+import it.team1Restaurant.menu.Menu;
+import it.team1Restaurant.menu.TypeDish;
 import it.team1Restaurant.menu.TypeFood;
+import it.team1Restaurant.menu.TypeMenu;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Food {
     private TypeFood type;
+    private TypeDish typeDish;
     private String name;
 
     private List<Ingredient> ingredientList;
@@ -29,6 +32,13 @@ public class Food {
     }
 
     public Food(TypeFood typeFood, String name, List<Ingredient> ingredient, double price) {
+        this.type = typeFood;
+        this.name = name;
+        this.price = price;
+        this.ingredientList = ingredient;
+    }
+
+    public Food(TypeFood typeFood, String name, List<Ingredient> ingredient, double price, TypeDish typeDish) {
         this.type = typeFood;
         this.name = name;
         this.price = price;
@@ -67,6 +77,10 @@ public class Food {
         this.price = price;
     }
 
+    public TypeDish getTypeDish() {return typeDish; }
+
+    public void setTypeDish(TypeDish typeDish) { this.typeDish = typeDish; }
+
     public String getFoodDetails() {
         String ingredientsPrint = "";
         for(Ingredient ingredient : ingredientList){
@@ -76,4 +90,15 @@ public class Food {
         return String.format("%-50s%-5s €\n\tIngredients: %-5s\n", name, String.format("%.2f", price), ingredientsPrint);
     }
 
+/*
+    public static void dishFilter(Map<String , Food> dishMap) {
+        for (Food food : dishMap.values()) {
+            if (food.getTypeDish().equals(TypeDish.VEGETARIAN)) {
+                System.out.println(food);
+                }
+            }
+        }*/
+
 }
+
+
