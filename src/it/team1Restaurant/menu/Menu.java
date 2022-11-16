@@ -79,6 +79,10 @@ public class Menu {
         foodListsMap.get(typeFood).add(new Food(typeFood, name, ingredient, price));
     }
 
+    public void addFood (TypeFood typeFood, String name, List<Ingredient> ingredient, double price, TypeDish typeDish){
+        foodListsMap.get(typeFood).add(new Food(typeFood, name, ingredient, price, typeDish));
+    }
+
 
     /*public String getMenuDetails() {
         String str = String.format("%34s\n\n", restaurantName)
