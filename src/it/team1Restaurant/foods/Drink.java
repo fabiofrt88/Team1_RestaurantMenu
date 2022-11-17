@@ -1,5 +1,4 @@
 package it.team1Restaurant.foods;
-import it.team1Restaurant.menu.TypeFood;
 
 import java.util.List;
 

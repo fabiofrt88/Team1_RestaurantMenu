@@ -1,7 +1,5 @@
 package it.team1Restaurant.menu;
-import it.team1Restaurant.foods.Drink;
-import it.team1Restaurant.foods.Food;
-import it.team1Restaurant.foods.Ingredient;
+import it.team1Restaurant.foods.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,7 +8,7 @@ import java.util.Map;
 public class Menu {
     private static String restaurantName = "Team-1 restaurant";
     private String type;
-    private Map<TypeFood,FoodList> foodListsMap;
+    private Map<TypeFood, FoodList> foodListsMap;
 
     private TypeMenu typeMenu;
 
@@ -73,10 +71,10 @@ public class Menu {
     //ADD FOOD METHODS:
 
     public void addFood (TypeFood typeFood, String name, Ingredient ingredient, double price){
-        foodListsMap.get(typeFood).add(new Food(typeFood, name, ingredient,price));
+        foodListsMap.get(typeFood).add(new Dish(typeFood, name, ingredient,price));
     }
     public void addFood (TypeFood typeFood, String name, List<Ingredient> ingredient, double price){
-        foodListsMap.get(typeFood).add(new Food(typeFood, name, ingredient, price));
+        foodListsMap.get(typeFood).add(new Dish(typeFood, name, ingredient, price));
     }
 
 
@@ -94,11 +92,11 @@ public class Menu {
     public String getMenuDetails() {
         String str = String.format("%34s\n\n", restaurantName)
                 + String.format("%24s %s", "MENU", type.toUpperCase());
+        str += "\n\n---------------------------------------------------------\n";
         for (TypeFood typefood : TypeFood.values()) {
             FoodList foodList = foodListsMap.get(typefood);
-            str += "\n\n---------------------------------------------------------"
-                    + "\n\n" + typefood.name() + ":\n" + foodList.getFoodListDetails()
-                    + "\n---------------------------------------------------------";
+            str += "\n" + typefood.name() + ":\n" + foodList.getFoodListDetails()
+                    + "\n---------------------------------------------------------\n";
         }
         return str;
     }
