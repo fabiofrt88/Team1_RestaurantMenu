@@ -7,6 +7,8 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
 
+
+
 public class CalendarBookings {
 
     private Map<Day,List<Booking>> bookingsMap;
@@ -50,11 +52,16 @@ public class CalendarBookings {
 
     public Day getDayByDate (LocalDate date) throws Exception {
         if(!checkDateInCalendar(date)) throw new DateOutOfCalendar();
+        Day dayFound = null;
         for(Day day : bookingsMap.keySet()){
-            if(day.getDate().equals(date)) return day;
+            if(day.getDate().equals(date)){
+                dayFound = day;
+                break;
+            }
         }
-        return null; //Non accadrà mai perchè c è il check iniziale
+        return dayFound;
     }
+
 
 
     public void addBooking (Booking booking) throws Exception {
@@ -82,7 +89,8 @@ public class CalendarBookings {
     }
 
 
-    public void createBookingsIntervalFromStartDate (LocalDate startDate, int numberOfDays){
+    public void createBookingsIntervalFromStartDateUsingCalendarRestourant (LocalDate startDate, int numberOfDays){
+        //mettere mercoledì not working.
         for(int i=0; i<=numberOfDays; i++){
             if(calendarRestaurant.getNotWorkingDays().contains(startDate.plusDays(i))){
                 bookingsMap.put(new Day(startDate.plusDays(i),WorkingDayEnum.NOT_WORKING), new ArrayList<>());
@@ -91,6 +99,19 @@ public class CalendarBookings {
             }
         }
     }
+
+    public void createBookingsIntervalFromStartDate (LocalDate startDate, int numberOfDays){
+        //mettere mercoledì not working
+        for(int i=0; i<=numberOfDays; i++){
+            if(calendarRestaurant.getNotWorkingDays().contains(startDate.plusDays(i))){
+                bookingsMap.put(new Day(startDate.plusDays(i),WorkingDayEnum.NOT_WORKING), new ArrayList<>());
+            }else {
+                bookingsMap.put(new Day(startDate.plusDays(i),WorkingDayEnum.WORKING), new ArrayList<>());
+            }
+        }
+    }
+
+
 
     public void createBookingsIntervalFromTwoDates (LocalDate startDate, LocalDate endDate){
         int numberOfDays = (int)ChronoUnit.DAYS.between(startDate,endDate);
