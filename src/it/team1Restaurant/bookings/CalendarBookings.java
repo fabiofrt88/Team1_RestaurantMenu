@@ -1,6 +1,7 @@
 package it.team1Restaurant.bookings;
 import it.team1Restaurant.user.Client;
 import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
@@ -16,7 +17,7 @@ public class CalendarBookings {
     private CalendarRestaurant calendarRestaurant;
     private static CalendarBookings calendarBookings = new CalendarBookings();
 
-    public CalendarBookings(){
+    private CalendarBookings(){
         bookingsMap = new TreeMap<>(new Comparator<Day>() {
             @Override
             public int compare(Day day1, Day day2) {
@@ -41,6 +42,7 @@ public class CalendarBookings {
         this.bookingsMap = bookingsMap;
     }
 
+    // toDo pensare meglio al collegamento con calendarRestaurant
     public void setWorkingDay (LocalDate date,WorkingDayEnum workingDayEnum) throws Exception {
         //if(!checkDateInCalendar(date)) throw new DateOutOfCalendar; toDo check da inserire?
         getDayByDate(date).setWorkingDay(workingDayEnum);
@@ -100,17 +102,27 @@ public class CalendarBookings {
         }
     }
 
-    public void createBookingsIntervalFromStartDate (LocalDate startDate, int numberOfDays){
+
+    public void createBookingsIntervalFromStartDate (LocalDate startDate, int numberOfDays) {
         //mettere mercoledì not working
-        for(int i=0; i<=numberOfDays; i++){
-            if(calendarRestaurant.getNotWorkingDays().contains(startDate.plusDays(i))){
-                bookingsMap.put(new Day(startDate.plusDays(i),WorkingDayEnum.NOT_WORKING), new ArrayList<>());
-            }else {
-                bookingsMap.put(new Day(startDate.plusDays(i),WorkingDayEnum.WORKING), new ArrayList<>());
+        for (int i = 0; i <= numberOfDays; i++) {
+            if (calendarRestaurant.getNotWorkingDays().contains(startDate.plusDays(i))) {
+                bookingsMap.put(new Day(startDate.plusDays(i), WorkingDayEnum.NOT_WORKING), new ArrayList<>());
+            } else {
+                bookingsMap.put(new Day(startDate.plusDays(i), WorkingDayEnum.WORKING), new ArrayList<>());
             }
         }
     }
 
+    public void setDefaultNotWorkingDayOfWeek (DayOfWeek dayOfWeek) {
+        for (Day day : bookingsMap.keySet()) {
+            if(day.getDate().getDayOfWeek() == dayOfWeek){
+                day.setWorkingDay(WorkingDayEnum.NOT_WORKING);
+                calendarRestaurant.notWorkingDays.add(day.getDate());
+
+            }
+        }
+    }
 
 
     public void createBookingsIntervalFromTwoDates (LocalDate startDate, LocalDate endDate){
@@ -154,17 +166,17 @@ public class CalendarBookings {
         for(Day day : bookingsMap.keySet()){
             switch(day.getWorkingDay()){
                 case NOT_WORKING:
-                    System.out.println(day.getDate());
+                    System.out.println(day.getDetails());
                     System.out.println("Non e' un giorno lavorativo\n");
                     break;
                 case WORKING:
-                    List<Booking> dayBoolingList = bookingsMap.get(day);
-                    if (dayBoolingList.isEmpty()) {
-                        System.out.println(day.getDate());
+                    List<Booking> dayBookingList = bookingsMap.get(day);
+                    if (dayBookingList.isEmpty()) {
+                        System.out.println(day.getDetails());
                         System.out.println("Non ci sono prenotazioni per questo giorno\n");
                     } else {
-                        for (Booking booking : dayBoolingList) {
-                            System.out.println(day.getDate());
+                        for (Booking booking : dayBookingList) {
+                            System.out.println(day.getDetails());
                             booking.printDetails();
                         }
                     }
