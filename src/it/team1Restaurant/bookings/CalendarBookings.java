@@ -62,6 +62,12 @@ public class CalendarBookings {
             }
         }
         return dayFound;
+        /*Con gli stream:
+        return bookingsMap.keySet().stream()
+                                    .filter(day -> day.getDate().equals(date))
+                                    .findFirst()
+                                    .get();
+         */
     }
 
 
@@ -118,8 +124,7 @@ public class CalendarBookings {
         for (Day day : bookingsMap.keySet()) {
             if(day.getDate().getDayOfWeek() == dayOfWeek){
                 day.setWorkingDay(WorkingDayEnum.NOT_WORKING);
-                calendarRestaurant.notWorkingDays.add(day.getDate());
-
+                calendarRestaurant.getNotWorkingDays().add(day.getDate());
             }
         }
     }

@@ -1,13 +1,12 @@
 package it.team1Restaurant.bookings;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class CalendarRestaurant {
 
-       List<LocalDate> notWorkingDays;
+       private List<LocalDate> notWorkingDays;
 
        private static CalendarRestaurant calendarRestaurant = new CalendarRestaurant();
 
