@@ -14,6 +14,7 @@ public class Test {
         calendarBookings.getBookingsMap().put(new Day(LocalDate.now(), WorkingDayEnum.WORKING), new ArrayList<>());
         calendarBookings.getBookingsMap().put(new Day(LocalDate.now(),WorkingDayEnum.NOT_WORKING),new ArrayList<>());
         calendarBookings.printDetails();
+        calendarBookings.getBookingsMap().keySet().stream().forEach(key -> System.out.println(key.getDetails()));
     }
 
 }
