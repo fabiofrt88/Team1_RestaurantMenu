@@ -1,6 +1,7 @@
 package it.team1Restaurant.bookings;
 
 import it.team1Restaurant.menu.Menu;
+import it.team1Restaurant.menu.MenuB;
 import it.team1Restaurant.menu.TypeMenu;
 import it.team1Restaurant.user.Client;
 
@@ -214,5 +215,54 @@ public class Booking {
         }
 
     }
+
+
+    public static void checkBookingInfoB(Booking booking, EnumMap<TypeMenu, List<MenuB>> menuMap) {
+        for(MenuB meatMenu : menuMap.get(TypeMenu.MEAT)){
+            System.out.println(meatMenu.getMenuDetails());
+        }
+        for(MenuB fishMenu : menuMap.get(TypeMenu.FISH)){
+            System.out.println(fishMenu.getMenuDetails());
+        }
+        if (booking.getNumberOfChildren() > 0) {
+            for (TypeMenu typeMenu : menuMap.keySet()) {
+                if (typeMenu.equals(TypeMenu.CHILD)) {
+                    for(MenuB childMenu : menuMap.get(typeMenu)){
+                        System.out.println(childMenu.getMenuDetails());
+                    }
+                }
+            }
+        }
+        if (booking.getNumberOfVegetarian() > 0) {
+            for (TypeMenu typeMenu : menuMap.keySet()) {
+                if (typeMenu.equals(TypeMenu.VEGETARIAN)) {
+                    for(MenuB vegetarianMenu : menuMap.get(typeMenu)){
+                        System.out.println(vegetarianMenu.getMenuDetails());
+                    }
+                }
+            }
+        }
+        if (booking.getNumberOfVegan() > 0) {
+            for (TypeMenu typeMenu : menuMap.keySet()) {
+                if (typeMenu.equals(TypeMenu.VEGAN)) {
+                    for(MenuB veganMenu : menuMap.get(typeMenu)){
+                        System.out.println(veganMenu.getMenuDetails());
+                    }
+                }
+            }
+        }
+        if (booking.getNumberOfCeliac() > 0) {
+            for (TypeMenu typeMenu : menuMap.keySet()) {
+                if (typeMenu.equals(TypeMenu.CELIAC)) {
+                    for(MenuB celiacMenu : menuMap.get(typeMenu)){
+                        System.out.println(celiacMenu.getMenuDetails());
+                    }
+                }
+            }
+        }
+
+    }
+
+
 }
 

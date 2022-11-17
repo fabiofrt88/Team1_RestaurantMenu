@@ -1,4 +1,4 @@
-package it.team1Restaurant.menu;
+package it.team1Restaurant.foods;
 
 public enum TypeFood {
     DRINK,

@@ -1,8 +1,9 @@
 package it.team1Restaurant.menu;
 import it.team1Restaurant.bookings.Booking;
-import it.team1Restaurant.bookings.Calendar;
+
 import it.team1Restaurant.foods.Food;
 import it.team1Restaurant.foods.Ingredient;
+import it.team1Restaurant.foods.TypeFood;
 import it.team1Restaurant.user.Client;
 
 import java.time.LocalDate;
@@ -37,7 +38,6 @@ public class TestMenu {
         }*/
 
     public static void main(String[] args) {
-
 
         Menu meatMenu = new Menu("Carne", MEAT);
 
