@@ -1,6 +1,7 @@
 package it.team1Restaurant.bookings;
 import it.team1Restaurant.user.Client;
 import java.text.SimpleDateFormat;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
@@ -14,7 +15,7 @@ public class CalendarBookings {
     private CalendarRestaurant calendarRestaurant;
     private static CalendarBookings calendarBookings = new CalendarBookings();
 
-    public CalendarBookings(){
+    private CalendarBookings(){
         bookingsMap = new TreeMap<>(new Comparator<Day>() {
             @Override
             public int compare(Day day1, Day day2) {
@@ -39,6 +40,7 @@ public class CalendarBookings {
         this.bookingsMap = bookingsMap;
     }
 
+    // toDo pensare meglio al collegamento con calendarRestaurant
     public void setWorkingDay (LocalDate date,WorkingDayEnum workingDayEnum) throws Exception {
         //if(!checkDateInCalendar(date)) throw new DateOutOfCalendar; toDo check da inserire?
         getDayByDate(date).setWorkingDay(workingDayEnum);
@@ -92,6 +94,15 @@ public class CalendarBookings {
         }
     }
 
+    public void setDefaultNotWorkingDayOfWeek (DayOfWeek dayOfWeek) {
+        for (Day day : bookingsMap.keySet()) {
+            if(day.getDate().getDayOfWeek() == dayOfWeek){
+                day.setWorkingDay(WorkingDayEnum.NOT_WORKING);
+                calendarRestaurant.notWorkingDays.add(day.getDate());
+            }
+        }
+    }
+
     public void createBookingsIntervalFromTwoDates (LocalDate startDate, LocalDate endDate){
         int numberOfDays = (int)ChronoUnit.DAYS.between(startDate,endDate);
         createBookingsIntervalFromStartDate(startDate,numberOfDays);
@@ -137,12 +148,12 @@ public class CalendarBookings {
                     System.out.println("Non e' un giorno lavorativo\n");
                     break;
                 case WORKING:
-                    List<Booking> dayBoolingList = bookingsMap.get(day);
-                    if (dayBoolingList.isEmpty()) {
+                    List<Booking> dayBookingList = bookingsMap.get(day);
+                    if (dayBookingList.isEmpty()) {
                         System.out.println(day.getDetails());
                         System.out.println("Non ci sono prenotazioni per questo giorno\n");
                     } else {
-                        for (Booking booking : dayBoolingList) {
+                        for (Booking booking : dayBookingList) {
                             System.out.println(day.getDetails());
                             booking.printDetails();
                         }
