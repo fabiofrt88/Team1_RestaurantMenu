@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-public class Food {
+public abstract class Food {
     private TypeFood type;
     private TypeDish typeDish;
     private String name;
@@ -17,8 +17,6 @@ public class Food {
 
     public Food() {
     }
-
-    ;
 
     public Food(TypeFood typeFood, String name, double price) {
         this.type = typeFood;
