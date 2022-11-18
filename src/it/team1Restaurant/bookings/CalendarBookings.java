@@ -17,7 +17,6 @@ public class CalendarBookings {
 
     private CalendarBookings(){
         bookingsMap = new TreeMap<>(new CompareDaysByDate());
-
         calendarRestaurant = CalendarRestaurant.getInstance();
     }
 
@@ -128,11 +127,31 @@ public class CalendarBookings {
         createBookingsIntervalFromStartDate(LocalDate.now(),numberOfDays);
     }
 
+    public void removeBookingsIntervalFromStartDate (LocalDate startDate,  int numberOfDays) throws Exception {
+        for (int i = 0; i <= numberOfDays; i++) {
+            LocalDate nextDate = startDate.plusDays(i);
+            if(getBookingsListByDate(nextDate).isEmpty()) {
+                bookingsMap.remove(getDayByDate(nextDate));
+            }else{
+                throw new Exception("La data da rimuovere contiene delle prenotazioni");
+            }
+        }
+    }
+
+    public void removeBookingsIntervalFromTwoDates (LocalDate startDate, LocalDate endDate) throws Exception {
+        int numberOfDays = (int)ChronoUnit.DAYS.between(startDate,endDate);
+        removeBookingsIntervalFromStartDate(startDate,numberOfDays);
+    }
+
     public boolean checkDateInCalendar (LocalDate date) {
         return bookingsMap.keySet().stream()
                                     .map(day -> day.getDate())
                                     .collect(Collectors.toSet())
                                     .contains(date);
+    }
+
+    public void reset () {
+        bookingsMap = new TreeMap<>(new CompareDaysByDate());
     }
 
 
