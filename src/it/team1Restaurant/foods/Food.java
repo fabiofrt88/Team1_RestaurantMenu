@@ -2,33 +2,19 @@ package it.team1Restaurant.foods;
 
 import it.team1Restaurant.menu.TypeDish;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public abstract class Food {
     private TypeFood type;
-    private TypeDish typeDish;
+    private EnumSet<TypeDish> typeSet;
     private String name;
-
     private List<Ingredient> ingredientList;
     private double price;
-
-    public Food() {
-    }
 
     public Food(TypeFood typeFood, String name, double price) {
         this.type = typeFood;
         this.name = name;
         this.price = price;
-    }
-
-    public Food(TypeFood typeFood, String name, Ingredient ingredient, double price) {
-        this.type = typeFood;
-        this.name = name;
-        this.price = price;
-        this.ingredientList = new ArrayList<>(Arrays.asList(ingredient));
     }
 
     public Food(TypeFood typeFood, String name, List<Ingredient> ingredient, double price) {
@@ -38,12 +24,12 @@ public abstract class Food {
         this.ingredientList = ingredient;
     }
 
-    public Food(TypeFood typeFood, String name, List<Ingredient> ingredient, double price, TypeDish typeDish) {
+    public Food(TypeFood typeFood, String name, List<Ingredient> ingredient, double price, EnumSet<TypeDish> typeSet) {
         this.type = typeFood;
         this.name = name;
         this.price = price;
         this.ingredientList = ingredient;
-        this.typeDish = typeDish;
+        this.typeSet = typeSet;
     }
 
     public TypeFood getType() {
@@ -78,14 +64,13 @@ public abstract class Food {
         this.price = price;
     }
 
-    public TypeDish getTypeDish() {
-        return typeDish;
+    public EnumSet<TypeDish> getTypeSet() {
+        return typeSet;
     }
 
-    public void setTypeDish(TypeDish typeDish) {
-        this.typeDish = typeDish;
+    public void setTypeSet(EnumSet<TypeDish> typeSet) {
+        this.typeSet = typeSet;
     }
-
 
     public String getFoodDetails() {
         String ingredientsPrint = "";
@@ -100,7 +85,7 @@ public abstract class Food {
 
     public static void dishFilter(Map<String, Food> dishMap, TypeDish typeDishRequired) {
         for (Food food : dishMap.values()) {
-            if (food.typeDish.equals(typeDishRequired)) {
+            if (food.typeSet.contains(typeDishRequired)) {
                 System.out.println(food.getName());
             }
         }

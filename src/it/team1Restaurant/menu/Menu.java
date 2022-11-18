@@ -1,6 +1,7 @@
 package it.team1Restaurant.menu;
 import it.team1Restaurant.foods.*;
 
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -64,9 +65,7 @@ public class Menu {
         foodListsMap.get(TypeFood.DRINK).add(new Drink(name, price));
     }
 
-    public void addDrink (String name, Ingredient ingredient, double price){
-        foodListsMap.get(TypeFood.DRINK).add(new Drink(name, ingredient, price));
-    }
+
     public void addDrink (String name, List<Ingredient> ingredient, double price){
         foodListsMap.get(TypeFood.DRINK).add(new Drink(name, ingredient, price));
 
@@ -75,15 +74,13 @@ public class Menu {
 
     //ADD FOOD METHODS:
 
-    public void addDish (TypeFood typeFood, String name, Ingredient ingredient, double price){
-        foodListsMap.get(typeFood).add(new Dish(typeFood, name, ingredient,price));
-    }
+
     public void addDish (TypeFood typeFood, String name, List<Ingredient> ingredient, double price){
         foodListsMap.get(typeFood).add(new Dish(typeFood, name, ingredient, price));
     }
 
-    public void addDish (TypeFood typeFood, String name, List<Ingredient> ingredient, double price, TypeDish typeDish){
-        foodListsMap.get(typeFood).add(new Dish(typeFood, name, ingredient, price, typeDish));
+    public void addDish (TypeFood typeFood, String name, List<Ingredient> ingredient, double price, EnumSet<TypeDish> typeSet){
+        foodListsMap.get(typeFood).add(new Dish(typeFood, name, ingredient, price, typeSet));
     }
 
 

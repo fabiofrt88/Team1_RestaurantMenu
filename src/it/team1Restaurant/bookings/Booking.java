@@ -182,7 +182,7 @@ public class Booking {
                 "\nNumber of Children: " + numberOfChildren + "\n");
     }
 
-    public static void checkBookingInfo(Booking booking, EnumMap<TypeMenu, Menu> menuMap) {
+    public static void checkBookingInfo(Booking booking, EnumMap<TypeMenu, MenuB> menuMap) {
         System.out.println(menuMap.get(TypeMenu.MEAT).getMenuDetails());
         System.out.println(menuMap.get(TypeMenu.FISH).getMenuDetails());
         if (booking.getNumberOfChildren() > 0) {
@@ -213,56 +213,6 @@ public class Booking {
                 }
             }
         }
-
     }
-
-
-    public static void checkBookingInfoB(Booking booking, EnumMap<TypeMenu, List<MenuB>> menuMap) {
-        for(MenuB meatMenu : menuMap.get(TypeMenu.MEAT)){
-            System.out.println(meatMenu.getMenuDetails());
-        }
-        for(MenuB fishMenu : menuMap.get(TypeMenu.FISH)){
-            System.out.println(fishMenu.getMenuDetails());
-        }
-        if (booking.getNumberOfChildren() > 0) {
-            for (TypeMenu typeMenu : menuMap.keySet()) {
-                if (typeMenu.equals(TypeMenu.CHILD)) {
-                    for(MenuB childMenu : menuMap.get(typeMenu)){
-                        System.out.println(childMenu.getMenuDetails());
-                    }
-                }
-            }
-        }
-        if (booking.getNumberOfVegetarian() > 0) {
-            for (TypeMenu typeMenu : menuMap.keySet()) {
-                if (typeMenu.equals(TypeMenu.VEGETARIAN)) {
-                    for(MenuB vegetarianMenu : menuMap.get(typeMenu)){
-                        System.out.println(vegetarianMenu.getMenuDetails());
-                    }
-                }
-            }
-        }
-        if (booking.getNumberOfVegan() > 0) {
-            for (TypeMenu typeMenu : menuMap.keySet()) {
-                if (typeMenu.equals(TypeMenu.VEGAN)) {
-                    for(MenuB veganMenu : menuMap.get(typeMenu)){
-                        System.out.println(veganMenu.getMenuDetails());
-                    }
-                }
-            }
-        }
-        if (booking.getNumberOfCeliac() > 0) {
-            for (TypeMenu typeMenu : menuMap.keySet()) {
-                if (typeMenu.equals(TypeMenu.CELIAC)) {
-                    for(MenuB celiacMenu : menuMap.get(typeMenu)){
-                        System.out.println(celiacMenu.getMenuDetails());
-                    }
-                }
-            }
-        }
-
-    }
-
-
 }
 
