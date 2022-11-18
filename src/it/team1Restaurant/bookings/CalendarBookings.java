@@ -1,13 +1,11 @@
 package it.team1Restaurant.bookings;
 import it.team1Restaurant.user.Client;
 import java.text.SimpleDateFormat;
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
-
 
 
 public class CalendarBookings {
@@ -18,14 +16,7 @@ public class CalendarBookings {
     private static CalendarBookings calendarBookings = new CalendarBookings();
 
     private CalendarBookings(){
-        bookingsMap = new TreeMap<>(new Comparator<Day>() {
-            @Override
-            public int compare(Day day1, Day day2) {
-                if(day1.getDate().equals(day2.getDate())) return 0;
-                if(day1.getDate().isBefore(day2.getDate())) return -1;
-                else return 1;
-            }
-        });
+        bookingsMap = new TreeMap<>(new CompareDaysByDate());
 
         calendarRestaurant = CalendarRestaurant.getInstance();
     }
@@ -42,11 +33,26 @@ public class CalendarBookings {
         this.bookingsMap = bookingsMap;
     }
 
-    // toDo pensare meglio al collegamento con calendarRestaurant
-    public void setWorkingDay (LocalDate date,WorkingDayEnum workingDayEnum) throws Exception {
-        //if(!checkDateInCalendar(date)) throw new DateOutOfCalendar; toDo check da inserire?
-        getDayByDate(date).setWorkingDay(workingDayEnum);
+    public void setWorkingDay (LocalDate date,WorkingDayEnum workingDayToSet) throws Exception {
+        Day targetDay = getDayByDate(date);
+        if(!checkDateInCalendar(date)) throw new DateOutOfCalendar();
+        if(workingDayToSet == WorkingDayEnum.WORKING) {
+            if(targetDay.getWorkingDay() == WorkingDayEnum.NOT_WORKING){ // verifico che il giorno non sia già settato a working
+                targetDay.setWorkingDay(WorkingDayEnum.WORKING);
+                calendarRestaurant.getNotWorkingDays().remove(targetDay);
+            }
+        }
+        else {
+            if (targetDay.getWorkingDay() == WorkingDayEnum.WORKING) { //verfico che il giorno non sia gia settato a notWorking
+                if (bookingsMap.get(targetDay).isEmpty()) {
+                    targetDay.setWorkingDay(WorkingDayEnum.NOT_WORKING);
+                    calendarRestaurant.getNotWorkingDays().add(targetDay);
+                } else
+                    throw new Exception("Attenzione: ci sono già delle prenotazioni per questo giorno!");
+            }
+        }
     }
+
 
     public List<Booking> getBookingsListByDate (LocalDate date) throws Exception {
         return bookingsMap.get(getDayByDate(date));
@@ -70,8 +76,6 @@ public class CalendarBookings {
          */
     }
 
-
-
     public void addBooking (Booking booking) throws Exception {
         if(checkDateInCalendar(booking.getDate())) {
             bookingsMap.get(booking.getDate()).add(booking);
@@ -79,7 +83,6 @@ public class CalendarBookings {
             throw new DateOutOfCalendar();
         }
     }
-
 
     public void book (Client client, LocalDate date, LocalTime time, int numberOfAdults, int numberOfChildren) throws Exception {
         //Mettere un controllo su numberOfAdults e numberChildren ???
@@ -97,35 +100,21 @@ public class CalendarBookings {
     }
 
 
-    public void createBookingsIntervalFromStartDateUsingCalendarRestourant (LocalDate startDate, int numberOfDays){
-        //mettere mercoledì not working.
-        for(int i=0; i<=numberOfDays; i++){
-            if(calendarRestaurant.getNotWorkingDays().contains(startDate.plusDays(i))){
-                bookingsMap.put(new Day(startDate.plusDays(i),WorkingDayEnum.NOT_WORKING), new ArrayList<>());
-            }else {
-                bookingsMap.put(new Day(startDate.plusDays(i),WorkingDayEnum.WORKING), new ArrayList<>());
-            }
-        }
-    }
-
 
     public void createBookingsIntervalFromStartDate (LocalDate startDate, int numberOfDays) {
-        //mettere mercoledì not working
         for (int i = 0; i <= numberOfDays; i++) {
-            if (calendarRestaurant.getNotWorkingDays().contains(startDate.plusDays(i))) {
-                bookingsMap.put(new Day(startDate.plusDays(i), WorkingDayEnum.NOT_WORKING), new ArrayList<>());
-            } else {
-                bookingsMap.put(new Day(startDate.plusDays(i), WorkingDayEnum.WORKING), new ArrayList<>());
+            LocalDate nextDate = startDate.plusDays(i);
+            Day nextDay;
+            if(calendarRestaurant.checkDateInNotWorkingDays(nextDate)){
+                nextDay = calendarRestaurant.getDayByDate(nextDate);
             }
-        }
-    }
-
-    public void setDefaultNotWorkingDayOfWeek (DayOfWeek dayOfWeek) {
-        for (Day day : bookingsMap.keySet()) {
-            if(day.getDate().getDayOfWeek() == dayOfWeek){
-                day.setWorkingDay(WorkingDayEnum.NOT_WORKING);
-                calendarRestaurant.getNotWorkingDays().add(day.getDate());
+            else if(calendarRestaurant.getDefaultNotWorkingDaysOfWeek().contains(startDate.getDayOfWeek())){
+               nextDay = new Day(nextDate,WorkingDayEnum.NOT_WORKING);
             }
+            else{
+                nextDay = new Day(nextDate,WorkingDayEnum.WORKING);
+            }
+            bookingsMap.put(nextDay,new ArrayList<>());
         }
     }
 
@@ -135,7 +124,7 @@ public class CalendarBookings {
         createBookingsIntervalFromStartDate(startDate,numberOfDays);
     }
 
-    public void createBookingIntervalFromNow(int numberOfDays){
+    public void createBookingsIntervalFromNow(int numberOfDays){
         createBookingsIntervalFromStartDate(LocalDate.now(),numberOfDays);
     }
 
@@ -168,6 +157,7 @@ public class CalendarBookings {
 
 
     public void printDetails () {
+        System.out.println("-------------CALENDAR BOOKINGS--------------");
         for(Day day : bookingsMap.keySet()){
             switch(day.getWorkingDay()){
                 case NOT_WORKING:
@@ -188,5 +178,6 @@ public class CalendarBookings {
                     break;
             }
         }
+        System.out.println("--------------------------------------------");
     }
 }

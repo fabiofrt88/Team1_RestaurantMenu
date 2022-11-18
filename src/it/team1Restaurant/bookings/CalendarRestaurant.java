@@ -1,59 +1,122 @@
 package it.team1Restaurant.bookings;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 public class CalendarRestaurant {
 
-       private List<Day> notWorkingDays;
+    private TreeSet<Day> notWorkingDays;
 
-       private static CalendarRestaurant calendarRestaurant = new CalendarRestaurant();
+    private Set<DayOfWeek> defaultNotWorkingDaysOfWeek;
 
-       private CalendarRestaurant () {
-           this.notWorkingDays = new ArrayList<>();
-       };
+    private static CalendarRestaurant calendarRestaurant = new CalendarRestaurant();
 
-       public static CalendarRestaurant getInstance() {
+    private CalendarRestaurant () {
+        this.notWorkingDays = new TreeSet<>(new CompareDaysByDate());
+        this.defaultNotWorkingDaysOfWeek = new HashSet<>();
+    };
+
+    public static CalendarRestaurant getInstance() {
            return calendarRestaurant;
        }
 
-    public List<Day> getNotWorkingDays() {
+    public TreeSet<Day> getNotWorkingDays() {
         return notWorkingDays;
     }
 
-    public void setNotWorkingDays(List<Day> notWorkingDays) {
+    public void setNotWorkingDays(TreeSet<Day> notWorkingDays) {
         this.notWorkingDays = notWorkingDays;
     }
 
+    public Set<DayOfWeek> getDefaultNotWorkingDaysOfWeek() {
+        return defaultNotWorkingDaysOfWeek;
+    }
 
-    public void removeNotWorkingDay (LocalDate date,CalendarBookings calendarBookings)  {
-           notWorkingDays.remove(date);
-           try {
-                calendarBookings.setWorkingDay(date,WorkingDayEnum.WORKING);
-            } catch (Exception e) {
-                e.getMessage();
+    public void setDefaultNotWorkingDaysOfWeek(Set<DayOfWeek> defaultNotWorkingDaysOfWeek) {
+        this.defaultNotWorkingDaysOfWeek = defaultNotWorkingDaysOfWeek;
+    }
+
+    public static CalendarRestaurant getCalendarRestaurant() {
+        return calendarRestaurant;
+    }
+
+    public static void setCalendarRestaurant(CalendarRestaurant calendarRestaurant) {
+        CalendarRestaurant.calendarRestaurant = calendarRestaurant;
+    }
+
+    public void removeNotWorkingDay (LocalDate date, CalendarBookings calendarBookings) {
+        Day targetDay = getDayByDate(date);
+        if(calendarBookings.checkDateInCalendar(date)) {
+            try {
+                calendarBookings.setWorkingDay(date, WorkingDayEnum.WORKING);
+            } catch (Exception e) {  //si puo presentare solo l'eccezione DayOutOfCalendar
+                System.out.println(e.getMessage());
             }
+        }
+        notWorkingDays.remove(targetDay);
     }
 
     public void addNotWorkingDay (LocalDate date,CalendarBookings calendarBookings) throws Exception {
-           if(calendarBookings.checkDateInCalendar(date)){
-               if(calendarBookings.getBookingsListByDate(date).isEmpty()){
-                   Day targetDay = calendarBookings.getDayByDate(date);
-                   targetDay.setWorkingDay(WorkingDayEnum.NOT_WORKING);
-                   notWorkingDays.add(targetDay);
-               }else{
-                   throw new Exception("Attenzione: ci sono già delle prenotazioni per questo giorno!");
-               }
-           }else{
-               notWorkingDays.add(new Day(date,WorkingDayEnum.NOT_WORKING));
-           }
-       }
-
-    public Day getDayByDate (LocalDate date) {
-           return
+        if(calendarBookings.checkDateInCalendar(date)){
+            Day targetDay = calendarBookings.getDayByDate(date);
+            targetDay.setWorkingDay(WorkingDayEnum.NOT_WORKING);
+            notWorkingDays.add(targetDay);
+        }else {
+            notWorkingDays.add(new Day(date, WorkingDayEnum.NOT_WORKING));
+        }
     }
 
+    public Day getDayByDate (LocalDate date) {
+        return notWorkingDays.stream()
+                                .filter(day -> day.getDate().equals(date))
+                                .findFirst()
+                                .get();
+    }
 
+    public boolean checkDateInNotWorkingDays (LocalDate date) {
+        return notWorkingDays.stream()
+                .map(day -> day.getDate())
+                .collect(Collectors.toSet())
+                .contains(date);
+    }
 
+    public void addDefaultNotWorkingDayOfWeek (DayOfWeek dayOfWeek,CalendarBookings calendarBookings) throws Exception {
+        defaultNotWorkingDaysOfWeek.add(dayOfWeek);
+        for(Day day : calendarBookings.getBookingsMap().keySet()){
+            if(day.getDate().getDayOfWeek() == dayOfWeek){
+                calendarBookings.setWorkingDay(day.getDate(),WorkingDayEnum.NOT_WORKING);
+            }
+        }
+    }
+
+    public void removeDefaultNotWorkingDayOfWeek (DayOfWeek dayOfWeek,CalendarBookings calendarBookings) throws Exception {
+        defaultNotWorkingDaysOfWeek.remove(dayOfWeek);
+        for(Day day : calendarBookings.getBookingsMap().keySet()){
+            if(day.getDate().getDayOfWeek() == dayOfWeek){
+                calendarBookings.setWorkingDay(day.getDate(),WorkingDayEnum.WORKING);
+            }
+        }
+    }
+
+    public String getDetails ( ){
+        String defaultNotWorkingDaysStr = "Default not working days: ";
+        for(DayOfWeek dayOfWeek : defaultNotWorkingDaysOfWeek){
+            defaultNotWorkingDaysStr += " - " + dayOfWeek.name().toLowerCase();
+        }
+        String notWorkingDaysStr = "Not working days: " ;
+        for(Day day : notWorkingDays){
+            notWorkingDaysStr += "\n " + day.getDetails();
+        }
+        return defaultNotWorkingDaysStr + "\n" + notWorkingDaysStr;
+    }
+
+    public void printDetails (){
+        System.out.println("---------------CALENDAR RESTAURANT----------------");
+        System.out.println(getDetails());
+        System.out.println("---------------------------------------------------");
+    }
 }

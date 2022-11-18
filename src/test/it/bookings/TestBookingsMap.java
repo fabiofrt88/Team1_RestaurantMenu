@@ -43,4 +43,6 @@ public class TestBookingsMap {
         Assert.assertTrue(nowNotWorkingIsInBookingsMap);*/
     }
 
+    //toDo test if filter creates a new object or not
+
 }
