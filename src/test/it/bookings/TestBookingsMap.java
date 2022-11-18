@@ -27,9 +27,11 @@ public class TestBookingsMap {
         Booking booking2 = new Booking (new Client(), "5555-11-11 23:00",LocalDate.now(), LocalTime.now(),3, 3);
         System.out.println("booking1:" + booking2);
         bookingsMap.put(nowWorking, new ArrayList<>(Arrays.asList(booking1)));
-        System.out.println("Map after first adding: " + bookingsMap.values());
+        System.out.println("Map keys after first adding: " + bookingsMap.keySet());
+        System.out.println("Map values after first adding: " + bookingsMap.values());
         bookingsMap.put(nowNotWorking,new ArrayList<>(Arrays.asList( booking2)));
-        System.out.println("Map after second adding: " + bookingsMap.values());
+        System.out.println("Map keys after second adding: " + bookingsMap.keySet());
+        System.out.println("Map values after second adding: " + bookingsMap.values());
 
         /*boolean nowWorkingIsInBookingsMap = bookingsMap.keySet().contains(nowWorking);
         boolean nowNotWorkingIsInBookingsMap = bookingsMap.keySet().contains(nowNotWorking);

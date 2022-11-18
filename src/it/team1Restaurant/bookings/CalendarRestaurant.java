@@ -6,7 +6,7 @@ import java.util.List;
 
 public class CalendarRestaurant {
 
-       private List<LocalDate> notWorkingDays;
+       private List<Day> notWorkingDays;
 
        private static CalendarRestaurant calendarRestaurant = new CalendarRestaurant();
 
@@ -18,17 +18,17 @@ public class CalendarRestaurant {
            return calendarRestaurant;
        }
 
-    public List<LocalDate> getNotWorkingDays() {
+    public List<Day> getNotWorkingDays() {
         return notWorkingDays;
     }
 
-    public void setNotWorkingDays(List<LocalDate> notWorkingDays) {
+    public void setNotWorkingDays(List<Day> notWorkingDays) {
         this.notWorkingDays = notWorkingDays;
     }
 
 
     public void removeNotWorkingDay (LocalDate date,CalendarBookings calendarBookings)  {
-           this.notWorkingDays.remove(date);
+           notWorkingDays.remove(date);
            try {
                 calendarBookings.setWorkingDay(date,WorkingDayEnum.WORKING);
             } catch (Exception e) {
@@ -36,20 +36,23 @@ public class CalendarRestaurant {
             }
     }
 
-       public void addNotWorkingDay (LocalDate date,CalendarBookings calendarBookings) throws Exception {
+    public void addNotWorkingDay (LocalDate date,CalendarBookings calendarBookings) throws Exception {
            if(calendarBookings.checkDateInCalendar(date)){
                if(calendarBookings.getBookingsListByDate(date).isEmpty()){
-                    notWorkingDays.add(date);
-                    calendarBookings.setWorkingDay(date,WorkingDayEnum.NOT_WORKING);
+                   Day targetDay = calendarBookings.getDayByDate(date);
+                   targetDay.setWorkingDay(WorkingDayEnum.NOT_WORKING);
+                   notWorkingDays.add(targetDay);
                }else{
                    throw new Exception("Attenzione: ci sono già delle prenotazioni per questo giorno!");
                }
            }else{
-               notWorkingDays.add(date);
+               notWorkingDays.add(new Day(date,WorkingDayEnum.NOT_WORKING));
            }
        }
 
-
+    public Day getDayByDate (LocalDate date) {
+           return
+    }
 
 
 
