@@ -23,15 +23,12 @@ public class TestMenuB {
 
         //create the drinks
 
-        foodStorage.addDrink("Acqua", new Ingredient("Acqua"), 2);
-        foodStorage.addDrink("Vino Rosso", new Ingredient("Uva"), 15);
-        foodStorage.addDrink("Vino Bianco", new Ingredient("Uva"), 16);
-        foodStorage.addDrink("Birra", new ArrayList<>(Arrays.asList(new Ingredient("Acqua"),
-                new Ingredient("Lievito"), new Ingredient("Luppolo"))), 6);
-        foodStorage.addDrink("Coca Cola", new ArrayList<>(Arrays.asList(new Ingredient("Acqua"),
-                new Ingredient("Zucchero"))), 3);
-        foodStorage.addDrink("Fanta", new ArrayList<>(Arrays.asList(new Ingredient("Acqua"),
-                new Ingredient("Arance"), new Ingredient("Zucchero"))), 3);
+        foodStorage.addDrink("Acqua", 2);
+        foodStorage.addDrink("Vino Rosso", 15);
+        foodStorage.addDrink("Vino Bianco", 16);
+        foodStorage.addDrink("Birra", 6);
+        foodStorage.addDrink("Coca Cola", 3);
+        foodStorage.addDrink("Fanta", 3);
 
         //create the firsts
 

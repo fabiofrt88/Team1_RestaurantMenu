@@ -1,5 +1,7 @@
 package it.team1Restaurant.foods;
 
+import it.team1Restaurant.menu.TypeDish;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +37,10 @@ public class FoodStorage {
         foodListsMap.put(TypeFood.DESSERT, new FoodList(TypeFood.DESSERT));
         foodListsMap.put(TypeFood.FRUIT, new FoodList(TypeFood.FRUIT));
         return foodListsMap;
+    }
+
+    public void addDrink(String name, double price){
+        foodListsMap.get(TypeFood.DRINK).add(new Drink(name, price));
     }
 
     public void addDrink(String name, Ingredient ingredient, double price){

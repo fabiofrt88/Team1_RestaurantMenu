@@ -5,7 +5,7 @@ import it.team1Restaurant.bookings.CalendarBookings;
 import it.team1Restaurant.bookings.Day;
 import it.team1Restaurant.bookings.WorkingDayEnum;
 import it.team1Restaurant.user.Client;
-import org.testng.annotations.Test;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
@@ -15,7 +15,7 @@ public class TestBookingsMap {
     private CalendarBookings calendarBookings = CalendarBookings.getInstance();
 
 
-    @Test
+
     public void addTwoDaysWithSameDateInBookingsMap () {
         Map <Day,List<Booking>> bookingsMap =(TreeMap) calendarBookings.getBookingsMap();
         Day nowWorking = new Day(LocalDate.now(), WorkingDayEnum.WORKING);

@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-public class Food {
+public abstract class Food {
     private TypeFood type;
     private TypeDish typeDish;
     private String name;
@@ -17,8 +17,6 @@ public class Food {
 
     public Food() {
     }
-
-    ;
 
     public Food(TypeFood typeFood, String name, double price) {
         this.type = typeFood;
@@ -88,13 +86,16 @@ public class Food {
         this.typeDish = typeDish;
     }
 
+
     public String getFoodDetails() {
         String ingredientsPrint = "";
-        for (Ingredient ingredient : ingredientList) {
-            ingredientsPrint += ingredient.getName().toLowerCase() + "  ";
-        }
-
-        return String.format("%-50s%-5s €\n\tIngredients: %-5s\n", name, String.format("%.2f", price), ingredientsPrint);
+        String ingredientTxt;
+        if (ingredientList != null) {
+            ingredientTxt = "Ingredient: ";
+            for (Ingredient ingredient : ingredientList) {
+                ingredientsPrint += ingredient.getName().toLowerCase() + "  ";}
+        }else {ingredientTxt = "";}
+        return String.format("%-50s%-5s €\n\t%s %-5s\n", name, String.format("%.2f", price), ingredientTxt, ingredientsPrint);
     }
 
     public static void dishFilter(Map<String, Food> dishMap, TypeDish typeDishRequired) {

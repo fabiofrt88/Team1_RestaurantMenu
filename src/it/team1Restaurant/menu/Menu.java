@@ -57,7 +57,12 @@ public class Menu {
         this.foodListsMap = foodListsMap;
     }
 
+
     //ADD DRINK METHODS:
+
+    public void addDrink (String name, double price){
+        foodListsMap.get(TypeFood.DRINK).add(new Drink(name, price));
+    }
 
     public void addDrink (String name, Ingredient ingredient, double price){
         foodListsMap.get(TypeFood.DRINK).add(new Drink(name, ingredient, price));
@@ -70,15 +75,15 @@ public class Menu {
 
     //ADD FOOD METHODS:
 
-    public void addFood (TypeFood typeFood, String name, Ingredient ingredient, double price){
+    public void addDish (TypeFood typeFood, String name, Ingredient ingredient, double price){
         foodListsMap.get(typeFood).add(new Dish(typeFood, name, ingredient,price));
     }
-    public void addFood (TypeFood typeFood, String name, List<Ingredient> ingredient, double price){
+    public void addDish (TypeFood typeFood, String name, List<Ingredient> ingredient, double price){
         foodListsMap.get(typeFood).add(new Dish(typeFood, name, ingredient, price));
     }
 
-    public void addFood (TypeFood typeFood, String name, List<Ingredient> ingredient, double price, TypeDish typeDish){
-        foodListsMap.get(typeFood).add(new Food(typeFood, name, ingredient, price, typeDish));
+    public void addDish (TypeFood typeFood, String name, List<Ingredient> ingredient, double price, TypeDish typeDish){
+        foodListsMap.get(typeFood).add(new Dish(typeFood, name, ingredient, price, typeDish));
     }
 
 
