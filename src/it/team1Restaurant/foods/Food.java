@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-public abstract class Food {
+public abstract class Food implements IFood {
     private TypeFood type;
     private TypeDish typeDish;
     private String name;
@@ -15,8 +15,7 @@ public abstract class Food {
     private List<Ingredient> ingredientList;
     private double price;
 
-    public Food() {
-    }
+    public Food() {}
 
     public Food(TypeFood typeFood, String name, double price) {
         this.type = typeFood;
@@ -70,6 +69,7 @@ public abstract class Food {
         this.ingredientList = ingredientList;
     }
 
+    @Override
     public double getPrice() {
         return price;
     }

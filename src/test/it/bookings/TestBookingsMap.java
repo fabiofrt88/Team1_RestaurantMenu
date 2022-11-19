@@ -1,10 +1,8 @@
 package test.it.bookings;
 
-import it.team1Restaurant.bookings.Booking;
-import it.team1Restaurant.bookings.CalendarBookings;
-import it.team1Restaurant.bookings.Day;
-import it.team1Restaurant.bookings.WorkingDayEnum;
+import it.team1Restaurant.bookings.*;
 import it.team1Restaurant.user.Client;
+import org.testng.annotations.Test;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -13,9 +11,15 @@ import java.util.*;
 public class TestBookingsMap {
 
     private CalendarBookings calendarBookings = CalendarBookings.getInstance();
+    private CalendarRestaurant calendarRestaurant = CalendarRestaurant.getInstance();
+    /*
+    @AfterEach
+    public void resetCalendars () {
+        calendarBookings.reset();
+        calendarRestaurant.reset();
+    }*/
 
-
-
+    @Test
     public void addTwoDaysWithSameDateInBookingsMap () {
         Map <Day,List<Booking>> bookingsMap =(TreeMap) calendarBookings.getBookingsMap();
         Day nowWorking = new Day(LocalDate.now(), WorkingDayEnum.WORKING);
@@ -44,5 +48,10 @@ public class TestBookingsMap {
     }
 
     //toDo test if filter creates a new object or not
+
+    @Test
+    public void testSetWorkingDays ( ) {
+
+    }
 
 }

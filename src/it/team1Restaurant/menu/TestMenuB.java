@@ -198,6 +198,9 @@ public class TestMenuB {
         Booking booking1 = new Booking(client, "2022-11-15 21:00:00", LocalDate.of(2022,11,11), LocalTime.of(12,30), 3,1,0,1,0);
         Booking.checkBookingInfoB(booking1, menuMap);
 
+        IFood foodTest = (IFood) meatMenu.getFoodListsMap().get(TypeFood.FIRST).get(0);
+        foodTest.getPrice();
+
     }
 
 }

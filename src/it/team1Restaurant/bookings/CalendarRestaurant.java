@@ -53,7 +53,7 @@ public class CalendarRestaurant {
         if(calendarBookings.checkDateInCalendar(date)) {
             try {
                 calendarBookings.setWorkingDay(date, WorkingDayEnum.WORKING);
-            } catch (Exception e) {  //si puo presentare solo l'eccezione DayOutOfCalendar
+            } catch (Exception e) {  //Non si presenterà mai
                 System.out.println(e.getMessage());
             }
         }
@@ -63,8 +63,7 @@ public class CalendarRestaurant {
     public void addNotWorkingDay (LocalDate date,CalendarBookings calendarBookings) throws Exception {
         if(calendarBookings.checkDateInCalendar(date)){
             Day targetDay = calendarBookings.getDayByDate(date);
-            targetDay.setWorkingDay(WorkingDayEnum.NOT_WORKING);
-            notWorkingDays.add(targetDay);
+            targetDay.setWorkingDay(WorkingDayEnum.NOT_WORKING); //si blocca se ci sono già prenotazioni
         }else {
             notWorkingDays.add(new Day(date, WorkingDayEnum.NOT_WORKING));
         }
@@ -100,6 +99,11 @@ public class CalendarRestaurant {
                 calendarBookings.setWorkingDay(day.getDate(),WorkingDayEnum.WORKING);
             }
         }
+    }
+
+    public void reset () {
+        notWorkingDays = new TreeSet<>(new CompareDaysByDate());
+        defaultNotWorkingDaysOfWeek = new HashSet<>();
     }
 
     public String getDetails ( ){

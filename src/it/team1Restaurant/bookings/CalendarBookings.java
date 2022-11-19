@@ -104,11 +104,15 @@ public class CalendarBookings {
         for (int i = 0; i <= numberOfDays; i++) {
             LocalDate nextDate = startDate.plusDays(i);
             Day nextDay;
-            if(calendarRestaurant.checkDateInNotWorkingDays(nextDate)){
+            if(checkDateInCalendar(nextDate)){ //non aggiungo i giorni già presenti in bookingsMap
+                continue;
+            }
+            else if(calendarRestaurant.checkDateInNotWorkingDays(nextDate)){ //passo la referenza del Day già presente in notWorkingDays
                 nextDay = calendarRestaurant.getDayByDate(nextDate);
             }
             else if(calendarRestaurant.getDefaultNotWorkingDaysOfWeek().contains(startDate.getDayOfWeek())){
                nextDay = new Day(nextDate,WorkingDayEnum.NOT_WORKING);
+               calendarRestaurant.getNotWorkingDays().add(nextDay);
             }
             else{
                 nextDay = new Day(nextDate,WorkingDayEnum.WORKING);

@@ -11,8 +11,4 @@ public class CompareDaysByDate implements Comparator<Day> {
             else return 1;
     }
 
-    @Override
-    public boolean equals(Object obj) {  //sistemare
-        return obj == this;
-    }
 }

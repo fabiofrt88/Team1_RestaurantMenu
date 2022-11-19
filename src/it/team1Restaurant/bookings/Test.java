@@ -1,7 +1,13 @@
 package it.team1Restaurant.bookings;
 
+import it.team1Restaurant.foods.Food;
+import it.team1Restaurant.foods.Ingredient;
+import it.team1Restaurant.foods.TypeFood;
+import it.team1Restaurant.menu.TypeDish;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Test {
     public static void main(String[] args) throws Exception {
@@ -16,6 +22,7 @@ public class Test {
         calendarBookings.printDetails();
         calendarBookings.getBookingsMap().keySet().stream().forEach(key -> System.out.println(key.getDetails()));
         System.out.println(calendarBookings.getBookingsMap().keySet().size());
+
     }
 
 }
