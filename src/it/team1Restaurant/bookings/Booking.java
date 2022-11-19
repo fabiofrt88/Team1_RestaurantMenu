@@ -1,17 +1,12 @@
 package it.team1Restaurant.bookings;
 
 import it.team1Restaurant.menu.Menu;
-import it.team1Restaurant.menu.MenuB;
 import it.team1Restaurant.menu.TypeMenu;
 import it.team1Restaurant.user.Client;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 import java.util.EnumMap;
-import java.util.List;
-import java.util.Locale;
 
 public class Booking {
 
@@ -182,7 +177,7 @@ public class Booking {
                 "\nNumber of Children: " + numberOfChildren + "\n");
     }
 
-    public static void checkBookingInfo(Booking booking, EnumMap<TypeMenu, MenuB> menuMap) {
+    /*public static void checkBookingInfo(Booking booking, EnumMap<TypeMenu, Menu> menuMap) {
         System.out.println(menuMap.get(TypeMenu.MEAT).getMenuDetails());
         System.out.println(menuMap.get(TypeMenu.FISH).getMenuDetails());
         if (booking.getNumberOfChildren() > 0) {
@@ -212,6 +207,23 @@ public class Booking {
                     System.out.println(menuMap.get(typeMenu).getMenuDetails());
                 }
             }
+        }
+    }*/
+
+    public static void checkBookingInfo(Booking booking, EnumMap<TypeMenu, Menu> menuMap) {
+        System.out.println(menuMap.get(TypeMenu.MEAT).getMenuDetails());
+        System.out.println(menuMap.get(TypeMenu.FISH).getMenuDetails());
+        if (booking.getNumberOfChildren() > 0) {
+            System.out.println(menuMap.get(TypeMenu.CHILD).getMenuDetails());
+        }
+        if (booking.getNumberOfVegetarian() > 0) {
+            System.out.println(menuMap.get(TypeMenu.VEGETARIAN).getMenuDetails());
+        }
+        if (booking.getNumberOfVegan() > 0) {
+            System.out.println(menuMap.get(TypeMenu.VEGAN).getMenuDetails());
+        }
+        if (booking.getNumberOfCeliac() > 0) {
+            System.out.println(menuMap.get(TypeMenu.VEGAN).getMenuDetails());
         }
     }
 }

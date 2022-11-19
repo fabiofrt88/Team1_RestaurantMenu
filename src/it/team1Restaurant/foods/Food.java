@@ -4,7 +4,7 @@ import it.team1Restaurant.menu.TypeDish;
 
 import java.util.*;
 
-public abstract class Food {
+public abstract class Food implements IFood {
     private TypeFood type;
     private EnumSet<TypeDish> typeSet;
     private String name;
@@ -17,21 +17,29 @@ public abstract class Food {
         this.price = price;
     }
 
-    public Food(TypeFood typeFood, String name, List<Ingredient> ingredient, double price) {
+    public Food(TypeFood typeFood, String name, double price, EnumSet<TypeDish> typeSet) {
         this.type = typeFood;
         this.name = name;
         this.price = price;
-        this.ingredientList = ingredient;
-    }
-
-    public Food(TypeFood typeFood, String name, List<Ingredient> ingredient, double price, EnumSet<TypeDish> typeSet) {
-        this.type = typeFood;
-        this.name = name;
-        this.price = price;
-        this.ingredientList = ingredient;
         this.typeSet = typeSet;
     }
 
+    public Food(TypeFood typeFood, String name, List<Ingredient> ingredients, double price) {
+        this.type = typeFood;
+        this.name = name;
+        this.price = price;
+        this.ingredientList = ingredients;
+    }
+
+    public Food(TypeFood typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeDish> typeSet) {
+        this.type = typeFood;
+        this.name = name;
+        this.price = price;
+        this.ingredientList = ingredients;
+        this.typeSet = typeSet;
+    }
+
+    @Override
     public TypeFood getType() {
         return type;
     }
@@ -40,6 +48,7 @@ public abstract class Food {
         this.type = type;
     }
 
+    @Override
     public String getName() {
         return name;
     }
@@ -48,6 +57,7 @@ public abstract class Food {
         this.name = name;
     }
 
+    @Override
     public List<Ingredient> getIngredientList() {
         return ingredientList;
     }
@@ -56,6 +66,7 @@ public abstract class Food {
         this.ingredientList = ingredientList;
     }
 
+    @Override
     public double getPrice() {
         return price;
     }
@@ -64,6 +75,7 @@ public abstract class Food {
         this.price = price;
     }
 
+    @Override
     public EnumSet<TypeDish> getTypeSet() {
         return typeSet;
     }
@@ -72,14 +84,17 @@ public abstract class Food {
         this.typeSet = typeSet;
     }
 
+    @Override
     public String getFoodDetails() {
         String ingredientsPrint = "";
         String ingredientTxt;
         if (ingredientList != null) {
-            ingredientTxt = "Ingredient: ";
+            ingredientTxt = "Ingredients: ";
             for (Ingredient ingredient : ingredientList) {
                 ingredientsPrint += ingredient.getName().toLowerCase() + "  ";}
-        }else {ingredientTxt = "";}
+        }else {
+            ingredientTxt = "";
+        }
         return String.format("%-50s%-5s €\n\t%s %-5s\n", name, String.format("%.2f", price), ingredientTxt, ingredientsPrint);
     }
 

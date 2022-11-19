@@ -5,7 +5,7 @@ import it.team1Restaurant.foods.TypeFood;
 import java.util.ArrayList;
 
 
-public class FoodList<T extends Food> extends ArrayList<Food> {
+public class FoodList<T extends IFood> extends ArrayList<T> {
 
     TypeFood typeFood;
 
@@ -26,8 +26,8 @@ public class FoodList<T extends Food> extends ArrayList<Food> {
         this.typeFood = typeFood;
     }
 
-    public Food getFoodByName (String name) {
-        for(Food food : this){
+    public T getFoodByName (String name) {
+        for(T food : this){
             if(food.getName().equals(name)) return food;
         }
         return null;
@@ -55,7 +55,7 @@ public class FoodList<T extends Food> extends ArrayList<Food> {
 
     public String getFoodListDetails () {
         String str = "";
-        for(Food food : this) {
+        for(T food : this) {
             str += "\n" + food.getFoodDetails();
         };
         return str;

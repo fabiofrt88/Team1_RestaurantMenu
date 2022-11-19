@@ -13,13 +13,16 @@ public class Dish extends Food {
         super(typeFood, name, price);
     }
 
-
-    public Dish(TypeFood typeFood, String name, List<Ingredient> ingredient, double price) {
-        super(typeFood, name, ingredient, price);
+    public Dish(TypeFood typeFood, String name, double price, EnumSet<TypeDish> typeSet) {
+        super(typeFood, name, price, typeSet);
     }
 
-    public Dish(TypeFood typeFood, String name, List<Ingredient> ingredient, double price, EnumSet<TypeDish> typeSet) {
-        super(typeFood, name, ingredient, price, typeSet);
+    public Dish(TypeFood typeFood, String name, List<Ingredient> ingredients, double price) {
+        super(typeFood, name, ingredients, price);
+    }
+
+    public Dish(TypeFood typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeDish> typeSet) {
+        super(typeFood, name, ingredients, price, typeSet);
     }
 
 }

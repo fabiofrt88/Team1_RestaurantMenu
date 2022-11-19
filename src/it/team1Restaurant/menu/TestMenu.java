@@ -12,26 +12,25 @@ import static it.team1Restaurant.bookings.Booking.checkBookingInfo;
 import static it.team1Restaurant.foods.Food.dishFilter;
 import static it.team1Restaurant.menu.TypeMenu.*;
 
-
 public class TestMenu {
 
-    /*public static void test(List<Menu> menuList){
+    /*public static void test(EnumMap<TypeMenu, Menu> menuMap){
         Scanner input = new Scanner(System.in);
         System.out.println("Quale menù vuoi consultare? <1> MENU DI CARNE | <2> MENU DI PESCE | <3> MENU VEGANO | <4> MENU BAMBINI");
         System.out.print("Risposta: ");
         String firstStep = input.nextLine();
         switch (firstStep) {
             case "1":
-                System.out.println(menuList.get(0).getMenuDetails());
+                System.out.println(menuMap.get(MEAT).getMenuDetails());
                 break;
             case "2":
-                System.out.println(menuList.get(1).getMenuDetails());
+                System.out.println(menuMap.get(FISH).getMenuDetails());
                 break;
             case "3":
-                System.out.println(menuList.get(2).getMenuDetails());
+                System.out.println(menuMap.get(VEGAN).getMenuDetails());
                 break;
             case "4":
-                System.out.println(menuList.get(3).getMenuDetails());
+                System.out.println(menuMap.get(CHILD).getMenuDetails());
                 break;
         }*/
 
@@ -45,8 +44,8 @@ public class TestMenu {
         foodStorage.addDrink("Vino Rosso", 15);
         foodStorage.addDrink("Vino Bianco", 16);
         foodStorage.addDrink("Birra", 6);
-        foodStorage.addDrink("Coca Cola", 3);
-        foodStorage.addDrink("Fanta", 3);
+        foodStorage.addDrink("Coca Cola", 3, EnumSet.of(TypeDish.CHILD));
+        foodStorage.addDrink("Fanta", 3, EnumSet.of(TypeDish.CHILD));
 
         //create the firsts
 
@@ -61,11 +60,11 @@ public class TestMenu {
         foodStorage.addDish(TypeFood.FIRST, "Insalata di riso e melone", new ArrayList<>(Arrays.asList(
                 new Ingredient("Riso"), new Ingredient("melone"))), 11);
         foodStorage.addDish(TypeFood.FIRST, "Spaghetti ai carciofi e limone", new ArrayList<>(Arrays.asList(
-                new Ingredient("Carciofi"), new Ingredient("Limone"))), 14);
+                new Ingredient("Carciofi"), new Ingredient("Limone"))), 14, EnumSet.of(TypeDish.VEGAN));
         foodStorage.addDish(TypeFood.FIRST, "Pasta al sugo", new ArrayList<>(Arrays.asList(
-                new Ingredient("Passato di pomodoro"))), 8);
+                new Ingredient("Passato di pomodoro"))), 8, EnumSet.of(TypeDish.CHILD, TypeDish.VEGAN));
         foodStorage.addDish(TypeFood.FIRST, "Pasta al pesto", new ArrayList<>(Arrays.asList(
-                new Ingredient("Basilico"), new Ingredient("Parmigiano"))), 10);
+                new Ingredient("Basilico"), new Ingredient("Parmigiano"))), 10, EnumSet.of(TypeDish.CHILD, TypeDish.VEGAN));
 
         //create the seconds
 
@@ -83,9 +82,9 @@ public class TestMenu {
         foodStorage.addDish(TypeFood.SECOND, "Zucchine ripiene con crema di fagioli bianchi",
                 new ArrayList<>(Arrays.asList(new Ingredient("Zucchine"), new Ingredient("Fagioli Bianchi"))), 14);
         foodStorage.addDish(TypeFood.SECOND, "Cotoletta e Patatine",
-                new ArrayList<>(Arrays.asList(new Ingredient("Pollo"), new Ingredient("Patate"))), 12);
+                new ArrayList<>(Arrays.asList(new Ingredient("Pollo"), new Ingredient("Patate"))), 12, EnumSet.of(TypeDish.CHILD));
         foodStorage.addDish(TypeFood.SECOND, "Hamburger e insalata",
-                new ArrayList<>(Arrays.asList(new Ingredient("Carne di manzo"), new Ingredient("Insalata"))),13);
+                new ArrayList<>(Arrays.asList(new Ingredient("Carne di manzo"), new Ingredient("Insalata"))),13, EnumSet.of(TypeDish.CHILD));
 
         //create the desserts
 
@@ -102,13 +101,13 @@ public class TestMenu {
                 new Ingredient("Farina 0"), new Ingredient("Lievito"),
                 new Ingredient("Cacao Amaro"), new Ingredient("Zucchero"))), 15);
         foodStorage.addDish(TypeFood.DESSERT, "Gelato alla fragola", new ArrayList<>(Arrays.asList(new Ingredient("Latte"),
-                new Ingredient("Fragole"))), 8);
+                new Ingredient("Fragole"))), 8, EnumSet.of(TypeDish.CHILD));
         foodStorage.addDish(TypeFood.DESSERT, "Gelato alla cioccolato", new ArrayList<>(Arrays.asList(new Ingredient("Latte"),
-                new Ingredient("Cioccolato"))), 8);
+                new Ingredient("Cioccolato"))), 8, EnumSet.of(TypeDish.CHILD));
 
         //create the meat menu
 
-        MenuB meatMenu = new MenuB("Carne", MEAT);
+        Menu meatMenu = new Menu("Carne", MEAT);
 
         //add drinks to meat menu
 
@@ -133,7 +132,7 @@ public class TestMenu {
 
         //create the fish menu
 
-        MenuB fishMenu = new MenuB("Pesce", TypeMenu.FISH);
+        Menu fishMenu = new Menu("Pesce", TypeMenu.FISH);
 
         //add drinks to fish menu
 
@@ -158,7 +157,7 @@ public class TestMenu {
 
         //create the vegan menu
 
-        MenuB veganMenu = new MenuB("Vegano", TypeMenu.VEGAN);
+        Menu veganMenu = new Menu("Vegano", TypeMenu.VEGAN);
 
         //add drinks to vegan menu
 
@@ -183,7 +182,7 @@ public class TestMenu {
 
         //create the child menu
 
-        MenuB childMenu = new MenuB("Bambino", TypeMenu.CHILD);
+        Menu childMenu = new Menu("Bambino", TypeMenu.CHILD);
 
         //add drinks to child menu
 
@@ -208,7 +207,7 @@ public class TestMenu {
 
         //--------------------------------------------------------------------------------------------------------------
 
-        EnumMap<TypeMenu, MenuB> menuMap = new EnumMap<>(TypeMenu.class);
+        EnumMap<TypeMenu, Menu> menuMap = new EnumMap<>(TypeMenu.class);
         menuMap.put(MEAT, meatMenu);
         menuMap.put(FISH, fishMenu);
         menuMap.put(VEGAN, veganMenu);
@@ -218,21 +217,19 @@ public class TestMenu {
         String exit = "S";
 
         while(!exit.equalsIgnoreCase("N")){
-            test(menuList);
+            test(menuMap);
             System.out.println("Vuoi consultare un altro menù? <S> <N>");
             System.out.print("Risposta: ");
             exit = scanner.nextLine();
         }*/
 
+        System.out.println("-----------------TEST CHECKBOOKINGINFO-------------------\n");
+
         Client client = new Client("Pippo","Franco","pippofranco@gmail.com", "389-5264589", false);
+        Booking booking = new Booking(client, "2022-11-15 21:00:00", LocalDate.of(2022,11,11), LocalTime.of(12,30), 3,1,0,1,0);
+        checkBookingInfo(booking, menuMap);
 
-        Client client2 = new Client("Mario","Rossi","mariorossio@gmail.com", "389-6578904", false);
-
-        Booking booking1 = new Booking(client, "2022-11-15 21:00:00", LocalDate.of(2022,11,11), LocalTime.of(12,30), 3,1,0,1,0);
-        checkBookingInfo(booking1, menuMap);
-
-
-        System.out.println("------------------------DISH FILTER------------------------");
+        System.out.println("----------------------DISH FILTER------------------------\n");
 
         Dish spaghettiAllaNerano = new Dish(TypeFood.FIRST, "Spaghetti alla nerano", new ArrayList<>(Arrays.asList(
                 new Ingredient("Zucchine"), new Ingredient("Provolone del Monaco"), new Ingredient("Parmigiano"))), 16, EnumSet.of(TypeDish.VEGETARIAN));
@@ -246,7 +243,6 @@ public class TestMenu {
         Dish risottoAlloZafferano = new Dish(TypeFood.FIRST, "Risotto allo zafferano", new ArrayList<>(Arrays.asList(
                 new Ingredient("Zafferano"), new Ingredient("Grana Padano"))), 16, EnumSet.of(TypeDish.VEGETARIAN));
 
-
         Map<String, Food> dishMap = new HashMap<>();
         dishMap.put(spaghettiAllaNerano.getName(), spaghettiAllaNerano);
         dishMap.put(pastaAlSugo.getName(), pastaAlSugo);
@@ -254,5 +250,14 @@ public class TestMenu {
         dishMap.put(risottoAlloZafferano.getName(), risottoAlloZafferano);
 
         dishFilter(dishMap, TypeDish.VEGETARIAN);
+
+        System.out.println("----------------------DISH FILTER------------------------\n");
+        foodStorage.dishFilter(TypeDish.CHILD);
+
+        System.out.println("----------------------DISH FILTER------------------------\n");
+        foodStorage.dishFilter(EnumSet.of(TypeDish.CHILD, TypeDish.VEGAN));
+
+
+
     }
 }

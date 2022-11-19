@@ -1,29 +1,19 @@
 package it.team1Restaurant.menu;
 import it.team1Restaurant.foods.*;
 
-import java.util.EnumSet;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Menu {
     private static String restaurantName = "Team-1 restaurant";
     private String type;
-    private Map<TypeFood, FoodList> foodListsMap;
-
+    private Map<TypeFood, FoodList<IFood>> foodListsMap;
     private TypeMenu typeMenu;
 
-    public Menu (String type, TypeMenu typeMenu){
+    public Menu(String type, TypeMenu typeMenu){
         this.typeMenu = typeMenu;
         this.type = type;
-        this.foodListsMap = new HashMap<>();
-        this.foodListsMap.put(TypeFood.STARTER,new FoodList(TypeFood.STARTER));
-        this.foodListsMap.put(TypeFood.DRINK,new FoodList(TypeFood.DRINK));
-        this.foodListsMap.put(TypeFood.FIRST,new FoodList(TypeFood.FIRST));
-        this.foodListsMap.put(TypeFood.SECOND,new FoodList(TypeFood.SECOND));
-        this.foodListsMap.put(TypeFood.SIDE_DISH,new FoodList(TypeFood.SIDE_DISH));
-        this.foodListsMap.put(TypeFood.DESSERT,new FoodList(TypeFood.DESSERT));
-        this.foodListsMap.put(TypeFood.FRUIT,new FoodList(TypeFood.FRUIT));
+        this.foodListsMap = initFoodListsMap();
     }
 
     public static String getRestaurantName() {
@@ -50,50 +40,44 @@ public class Menu {
         this.typeMenu = typeMenu;
     }
 
-    public Map<TypeFood, FoodList> getFoodListsMap() {
+    public Map<TypeFood, FoodList<IFood>> getFoodListsMap() {
         return foodListsMap;
     }
 
-    public void setFoodListsMap(Map<TypeFood, FoodList> foodListsMap) {
+    public void setFoodListsMap(Map<TypeFood, FoodList<IFood>> foodListsMap) {
         this.foodListsMap = foodListsMap;
     }
 
-
-    //ADD DRINK METHODS:
-
-    public void addDrink (String name, double price){
-        foodListsMap.get(TypeFood.DRINK).add(new Drink(name, price));
+    public Map<TypeFood, FoodList<IFood>> initFoodListsMap(){
+        Map<TypeFood, FoodList<IFood>> foodListsMap = new HashMap<>();
+        foodListsMap.put(TypeFood.STARTER, new FoodList(TypeFood.STARTER));
+        foodListsMap.put(TypeFood.DRINK, new FoodList(TypeFood.DRINK));
+        foodListsMap.put(TypeFood.FIRST, new FoodList(TypeFood.FIRST));
+        foodListsMap.put(TypeFood.SECOND, new FoodList(TypeFood.SECOND));
+        foodListsMap.put(TypeFood.SIDE_DISH, new FoodList(TypeFood.SIDE_DISH));
+        foodListsMap.put(TypeFood.DESSERT, new FoodList(TypeFood.DESSERT));
+        foodListsMap.put(TypeFood.FRUIT, new FoodList(TypeFood.FRUIT));
+        return foodListsMap;
     }
 
-
-    public void addDrink (String name, List<Ingredient> ingredient, double price){
-        foodListsMap.get(TypeFood.DRINK).add(new Drink(name, ingredient, price));
-
+    public void addDrink(IFood drink){
+        foodListsMap.get(TypeFood.DRINK).add(drink);
     }
 
-
-    //ADD FOOD METHODS:
-
-
-    public void addDish (TypeFood typeFood, String name, List<Ingredient> ingredient, double price){
-        foodListsMap.get(typeFood).add(new Dish(typeFood, name, ingredient, price));
-    }
-
-    public void addDish (TypeFood typeFood, String name, List<Ingredient> ingredient, double price, EnumSet<TypeDish> typeSet){
-        foodListsMap.get(typeFood).add(new Dish(typeFood, name, ingredient, price, typeSet));
-    }
-
-
-    /*public String getMenuDetails() {
-        String str = String.format("%34s\n\n", restaurantName)
-                + String.format("%24s %s", "MENU", type.toUpperCase());
-        for (FoodList foodList : foodListsMap.values()) {
-            str += "\n\n---------------------------------------------------------"
-                    + "\n\n" + foodList.getTypeFood().name() + ":\n" + foodList.getFoodListDetails()
-                    + "\n---------------------------------------------------------";
+    public void addDrink(TypeFood typeFood, IFood drink){
+        if(!typeFood.equals(TypeFood.DRINK)){
+            typeFood = TypeFood.DRINK;
         }
-        return str;
-    }*/
+        foodListsMap.get(typeFood).add(drink);
+    }
+
+    public void addDish(TypeFood typeFood, IFood dish){
+        foodListsMap.get(typeFood).add(dish);
+    }
+
+    public <T extends Food> void addFood(TypeFood typeFood, T food){
+        foodListsMap.get(typeFood).add(food);
+    }
 
     public String getMenuDetails() {
         String str = String.format("%34s\n\n", restaurantName)
