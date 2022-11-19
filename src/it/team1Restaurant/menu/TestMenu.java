@@ -1,5 +1,5 @@
 package it.team1Restaurant.menu;
-import it.team1Restaurant.bookings.Booking;
+import it.team1Restaurant.bookings.calendar.Booking;
 
 import it.team1Restaurant.foods.*;
 import it.team1Restaurant.user.Client;
@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 
-import static it.team1Restaurant.bookings.Booking.checkBookingInfo;
+import static it.team1Restaurant.bookings.calendar.Booking.checkBookingInfo;
 import static it.team1Restaurant.foods.Food.dishFilter;
 import static it.team1Restaurant.menu.TypeMenu.*;
 

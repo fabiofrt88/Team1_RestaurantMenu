@@ -1,4 +1,6 @@
-package it.team1Restaurant.bookings;
+package it.team1Restaurant.bookings.calendar;
+import it.team1Restaurant.bookings.exceptions.DateOutOfCalendar;
+import it.team1Restaurant.bookings.exceptions.NotEmptyBookingsList;
 import it.team1Restaurant.user.Client;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
@@ -49,7 +51,7 @@ public class CalendarBookings {
 
     // -------------------- METODO PER SETTARE GIORNO LAVORATIVO / NON LAVORATIVO -----------------------------
 
-    public void setWorkingDay (LocalDate date,WorkingDayEnum workingDayToSet) throws Exception {
+    public void setWorkingDay (LocalDate date, WorkingDayEnum workingDayToSet) throws Exception {
         Day targetDay = getDayByDate(date);
         if(!checkDateInCalendar(date)) throw new DateOutOfCalendar();
         if(workingDayToSet == WorkingDayEnum.WORKING) {
@@ -62,7 +64,7 @@ public class CalendarBookings {
                 if (bookingsMap.get(targetDay).isEmpty()) {
                     targetDay.setWorkingDay(WorkingDayEnum.NOT_WORKING);
                 } else
-                    throw new Exception("Attenzione: ci sono già delle prenotazioni per questo giorno!");
+                    throw new NotEmptyBookingsList(date);
             }
         }
     }
@@ -133,7 +135,7 @@ public class CalendarBookings {
             if(getBookingsListByDate(nextDate).isEmpty()) {
                 bookingsMap.remove(getDayByDate(nextDate));
             }else{
-                throw new Exception("La data da rimuovere contiene delle prenotazioni");
+                throw new NotEmptyBookingsList(nextDate);
             }
         }
     }
@@ -149,19 +151,19 @@ public class CalendarBookings {
 
     // ----------------- METODI PER SETTARE GIORNI NON LAVORATIVI DELLA SETTIMANA DI DEFAULT -----------------------
 
-    public void addDefaultNotWorkingDayOfWeek (DayOfWeek dayOfWeek,CalendarBookings calendarBookings) throws Exception {
+    public void addDefaultNotWorkingDayOfWeek (DayOfWeek dayOfWeek) throws Exception {
         Set<Day> targetDays = getDayByDayOfWeekFromBookingsMap(dayOfWeek);
-        boolean thereIsSomeBookingsInTargetDays = targetDays.stream().anyMatch(day -> !bookingsMap.get(day).isEmpty());
-        if(thereIsSomeBookingsInTargetDays) throw new Exception("Ci sono delle prenotazioni per uno dei giorni che si vuole settare!");
+        Set<Day> possibleNotEmptyDays = targetDays.stream().filter(day -> !bookingsMap.get(day).isEmpty()).collect(Collectors.toSet());
+        if(possibleNotEmptyDays.size() == 0) throw new NotEmptyBookingsList(possibleNotEmptyDays);
         targetDays.stream().forEach(day -> day.setWorkingDay(WorkingDayEnum.NOT_WORKING));
         defaultNotWorkingDaysOfWeek.add(dayOfWeek);
     }
 
-    public void removeDefaultNotWorkingDayOfWeek (DayOfWeek dayOfWeek,CalendarBookings calendarBookings) throws Exception {
+    public void removeDefaultNotWorkingDayOfWeek (DayOfWeek dayOfWeek) throws Exception {
         defaultNotWorkingDaysOfWeek.remove(dayOfWeek);
-        for(Day day : calendarBookings.getBookingsMap().keySet()){
+        for(Day day : bookingsMap.keySet()){
             if(day.getDate().getDayOfWeek() == dayOfWeek){
-                calendarBookings.setWorkingDay(day.getDate(),WorkingDayEnum.WORKING);
+                setWorkingDay(day.getDate(),WorkingDayEnum.WORKING);
             }
         }
     }

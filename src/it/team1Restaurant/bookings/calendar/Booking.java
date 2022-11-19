@@ -1,17 +1,12 @@
-package it.team1Restaurant.bookings;
+package it.team1Restaurant.bookings.calendar;
 
-import it.team1Restaurant.menu.Menu;
 import it.team1Restaurant.menu.MenuB;
 import it.team1Restaurant.menu.TypeMenu;
 import it.team1Restaurant.user.Client;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 import java.util.EnumMap;
-import java.util.List;
-import java.util.Locale;
 
 public class Booking {
 

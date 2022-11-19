@@ -1,5 +1,6 @@
-package it.team1Restaurant.bookings;
+package it.team1Restaurant.bookings.tests;
 
+import it.team1Restaurant.bookings.calendar.CalendarBookings;
 import it.team1Restaurant.user.Client;
 import java.time.LocalDate;
 import java.time.LocalTime;

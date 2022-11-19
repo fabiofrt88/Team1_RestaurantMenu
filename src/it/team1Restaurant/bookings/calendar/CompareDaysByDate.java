@@ -1,4 +1,4 @@
-package it.team1Restaurant.bookings;
+package it.team1Restaurant.bookings.calendar;
 
 import java.util.Comparator;
 

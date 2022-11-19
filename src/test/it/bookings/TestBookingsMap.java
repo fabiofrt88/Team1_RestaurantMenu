@@ -1,6 +1,9 @@
 package test.it.bookings;
 
-import it.team1Restaurant.bookings.*;
+import it.team1Restaurant.bookings.calendar.Booking;
+import it.team1Restaurant.bookings.calendar.CalendarBookings;
+import it.team1Restaurant.bookings.calendar.Day;
+import it.team1Restaurant.bookings.calendar.WorkingDayEnum;
 import it.team1Restaurant.user.Client;
 import org.testng.annotations.Test;
 
@@ -11,7 +14,7 @@ import java.util.*;
 public class TestBookingsMap {
 
     private CalendarBookings calendarBookings = CalendarBookings.getInstance();
-    private CalendarRestaurant calendarRestaurant = CalendarRestaurant.getInstance();
+
     /*
     @AfterEach
     public void resetCalendars () {

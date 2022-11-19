@@ -1,6 +1,6 @@
 package it.team1Restaurant.menu;
 
-import it.team1Restaurant.bookings.Booking;
+import it.team1Restaurant.bookings.calendar.Booking;
 import it.team1Restaurant.foods.*;
 import it.team1Restaurant.user.Client;
 
@@ -11,7 +11,6 @@ import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
 
-import static it.team1Restaurant.bookings.Booking.checkBookingInfo;
 import static it.team1Restaurant.menu.TypeMenu.*;
 import static it.team1Restaurant.menu.TypeMenu.CHILD;
 
