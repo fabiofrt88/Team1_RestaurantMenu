@@ -1,4 +1,4 @@
-package it.team1Restaurant.bookings;
+package it.team1Restaurant.bookings.tests;
 
 import java.time.LocalDate;
 import java.util.Map;

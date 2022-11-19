@@ -1,4 +1,4 @@
-package it.team1Restaurant.bookings;
+package it.team1Restaurant.bookings.calendar;
 
 import java.time.LocalDate;
 
@@ -30,7 +30,7 @@ public class Day {
     }
 
     public String getDetails () {
-        return "Date: " +date + " - " + workingDay.name().toLowerCase() + " day";
+        return "Date: " +date + ", " + date.getDayOfWeek().name().toLowerCase() + " - " + workingDay.name().toLowerCase() + " day" ;
     }
 
 }
