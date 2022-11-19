@@ -2,6 +2,7 @@ package it.team1Restaurant.foods;
 
 import it.team1Restaurant.menu.TypeDish;
 
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,29 +44,20 @@ public class FoodStorage {
         foodListsMap.get(TypeFood.DRINK).add(new Drink(name, price));
     }
 
-    public void addDrink(String name, Ingredient ingredient, double price){
-        foodListsMap.get(TypeFood.DRINK).add(new Drink(name, ingredient, price));
-    }
-
     public void addDrink(String name, List<Ingredient> ingredients, double price){
         foodListsMap.get(TypeFood.DRINK).add(new Drink(name, ingredients, price));
     }
 
-    public void addDish(TypeFood typeFood, String name, Ingredient ingredient, double price){
-        foodListsMap.get(typeFood).add(new Dish(typeFood, name, ingredient,price));
+    public void addDrink(String name, List<Ingredient> ingredients, double price, EnumSet<TypeDish> typeSet){
+        foodListsMap.get(TypeFood.DRINK).add(new Drink(name, ingredients, price, typeSet));
     }
 
     public void addDish(TypeFood typeFood, String name, List<Ingredient> ingredients, double price){
         foodListsMap.get(typeFood).add(new Dish(typeFood, name, ingredients, price));
     }
 
-    public void addFood(TypeFood typeFood, String name, Ingredient ingredient, double price){
-        if(typeFood.equals(TypeFood.DRINK)){
-            foodListsMap.get(TypeFood.DRINK).add(new Drink(name, ingredient, price));
-        }
-        else{
-            foodListsMap.get(typeFood).add(new Dish(typeFood, name, ingredient,price));
-        }
+    public void addDish(TypeFood typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeDish> typeSet){
+        foodListsMap.get(typeFood).add(new Dish(typeFood, name, ingredients, price, typeSet));
     }
 
     public void addFood(TypeFood typeFood, String name, List<Ingredient> ingredients, double price){
@@ -74,6 +66,15 @@ public class FoodStorage {
         }
         else{
             foodListsMap.get(typeFood).add(new Dish(typeFood, name, ingredients,price));
+        }
+    }
+
+    public void addFood(TypeFood typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeDish> typeSet){
+        if(typeFood.equals(TypeFood.DRINK)){
+            foodListsMap.get(TypeFood.DRINK).add(new Drink(name, ingredients, price, typeSet));
+        }
+        else{
+            foodListsMap.get(typeFood).add(new Dish(typeFood, name, ingredients,price, typeSet));
         }
     }
 
