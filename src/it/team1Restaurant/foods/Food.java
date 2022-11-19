@@ -4,12 +4,13 @@ import it.team1Restaurant.menu.TypeDish;
 
 import java.util.*;
 
-public abstract class Food {
+public abstract class Food  {
     private TypeFood type;
     private EnumSet<TypeDish> typeSet;
     private String name;
     private List<Ingredient> ingredientList;
     private double price;
+
 
     public Food(TypeFood typeFood, String name, double price) {
         this.type = typeFood;
@@ -55,6 +56,7 @@ public abstract class Food {
     public void setIngredientList(List<Ingredient> ingredientList) {
         this.ingredientList = ingredientList;
     }
+
 
     public double getPrice() {
         return price;

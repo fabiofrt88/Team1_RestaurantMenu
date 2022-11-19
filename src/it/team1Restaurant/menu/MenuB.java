@@ -7,7 +7,7 @@ import java.util.Map;
 public class MenuB {
     private static String restaurantName = "Team-1 restaurant";
     private String type;
-    private Map<TypeFood, FoodList> foodListsMap;
+    private Map<TypeFood, FoodList > foodListsMap;
 
     private TypeMenu typeMenu;
 

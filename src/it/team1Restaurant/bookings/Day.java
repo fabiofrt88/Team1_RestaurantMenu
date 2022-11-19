@@ -30,7 +30,7 @@ public class Day {
     }
 
     public String getDetails () {
-        return "Date: " +date + " - " + workingDay.name().toLowerCase() + " day";
+        return "Date: " +date + ", " + date.getDayOfWeek().name().toLowerCase() + " - " + workingDay.name().toLowerCase() + " day" ;
     }
 
 }

@@ -28,4 +28,8 @@ public class Drink extends Food {
     public void setAlcoholPercentage(double alcoholPercentage) {
         this.alcoholPercentage = alcoholPercentage;
     }
+
+
+
+
 }

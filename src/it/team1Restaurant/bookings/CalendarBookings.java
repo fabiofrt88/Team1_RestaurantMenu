@@ -9,25 +9,16 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 
-
 public class CalendarBookings {
 
     private Map<Day,List<Booking>> bookingsMap;
 
-    private CalendarRestaurant calendarRestaurant;
+    private Set<DayOfWeek> defaultNotWorkingDaysOfWeek;
     private static CalendarBookings calendarBookings = new CalendarBookings();
 
     private CalendarBookings(){
-        bookingsMap = new TreeMap<>(new Comparator<Day>() {
-            @Override
-            public int compare(Day day1, Day day2) {
-                if(day1.getDate().equals(day2.getDate())) return 0;
-                if(day1.getDate().isBefore(day2.getDate())) return -1;
-                else return 1;
-            }
-        });
-
-        calendarRestaurant = CalendarRestaurant.getInstance();
+        bookingsMap = new TreeMap<>(new CompareDaysByDate());
+        defaultNotWorkingDaysOfWeek = new HashSet<>();
     }
 
     public static CalendarBookings getInstance(){
@@ -42,11 +33,144 @@ public class CalendarBookings {
         this.bookingsMap = bookingsMap;
     }
 
-    // toDo pensare meglio al collegamento con calendarRestaurant
-    public void setWorkingDay (LocalDate date,WorkingDayEnum workingDayEnum) throws Exception {
-        //if(!checkDateInCalendar(date)) throw new DateOutOfCalendar; toDo check da inserire?
-        getDayByDate(date).setWorkingDay(workingDayEnum);
+
+
+
+    // ---------------- METODO PER CREARE LA DATA IN CUI VIENE EFFETTUATA LA PRENOTAZIONE -----------------
+
+    private String createBookedAtDate(){
+        String pattern = "yyyy-MM-dd HH:mm:ss";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("en", "EN"));
+        return simpleDateFormat.format(new Date());
     }
+
+
+
+
+    // -------------------- METODO PER SETTARE GIORNO LAVORATIVO / NON LAVORATIVO -----------------------------
+
+    public void setWorkingDay (LocalDate date,WorkingDayEnum workingDayToSet) throws Exception {
+        Day targetDay = getDayByDate(date);
+        if(!checkDateInCalendar(date)) throw new DateOutOfCalendar();
+        if(workingDayToSet == WorkingDayEnum.WORKING) {
+            if(targetDay.getWorkingDay() == WorkingDayEnum.NOT_WORKING){ // verifico che il giorno non sia già settato a working
+                targetDay.setWorkingDay(WorkingDayEnum.WORKING);
+            }
+        }
+        else {
+            if (targetDay.getWorkingDay() == WorkingDayEnum.WORKING) { //verfico che il giorno non sia gia settato a notWorking
+                if (bookingsMap.get(targetDay).isEmpty()) {
+                    targetDay.setWorkingDay(WorkingDayEnum.NOT_WORKING);
+                } else
+                    throw new Exception("Attenzione: ci sono già delle prenotazioni per questo giorno!");
+            }
+        }
+    }
+
+
+
+    //  ---------------------- METODI PER PRENOTARE ----------------------------
+
+    public void addBooking (Booking booking) throws Exception {
+        LocalDate targetDate = booking.getDate();
+        Day targetDay = getDayByDate(targetDate);
+        List<Booking> targetBookingsList = bookingsMap.get(targetDay);
+        if(checkDateInCalendar(targetDate)) {
+            if(targetDay.getWorkingDay() == WorkingDayEnum.WORKING) {
+                targetBookingsList.add(booking);
+            }else{
+                throw new Exception("Il giorno per cui si vuole prenotare non è lavorativo");
+            }
+        }else{
+            throw new DateOutOfCalendar();
+        }
+    }
+
+    public void book (Client client, LocalDate date, LocalTime time, int numberOfAdults, int numberOfChildren) throws Exception {
+        //Mettere un controllo su numberOfAdults e numberChildren ???
+        Booking book = new Booking(client,createBookedAtDate(), date, time, numberOfAdults, numberOfChildren);
+        //client.bookingList.add(book);
+        addBooking(book);
+        System.out.println("La prenotazione per " + client.getName() + " e' stata effettuata con successo: " +
+                            "\n" + book.getBookingDetails());
+    }
+
+
+
+
+    //  ------------- METODI PER ATTIVARE/DISATTIVARE INTERVALLI IN BOOKINGSMAP ----------------------------
+
+    public void createBookingsIntervalFromStartDate (LocalDate startDate, int numberOfDays) {
+        for (int i = 0; i <= numberOfDays; i++) {
+            LocalDate nextDate = startDate.plusDays(i);
+            Day nextDay;
+            if(checkDateInCalendar(nextDate)){ //non aggiungo i giorni già presenti in bookingsMap
+                continue;
+            }
+            else if(defaultNotWorkingDaysOfWeek.contains(startDate.getDayOfWeek())){
+               nextDay = new Day(nextDate,WorkingDayEnum.NOT_WORKING);
+            }
+            else{
+                nextDay = new Day(nextDate,WorkingDayEnum.WORKING);
+            }
+            bookingsMap.put(nextDay,new ArrayList<>());
+        }
+    }
+
+
+    public void createBookingsIntervalFromTwoDates (LocalDate startDate, LocalDate endDate){
+        int numberOfDays = (int)ChronoUnit.DAYS.between(startDate,endDate);
+        createBookingsIntervalFromStartDate(startDate,numberOfDays);
+    }
+
+    public void createBookingsIntervalFromNow(int numberOfDays){
+        createBookingsIntervalFromStartDate(LocalDate.now(),numberOfDays);
+    }
+
+    public void removeBookingsIntervalFromStartDate (LocalDate startDate,  int numberOfDays) throws Exception {
+        for (int i = 0; i <= numberOfDays; i++) {
+            LocalDate nextDate = startDate.plusDays(i);
+            if(getBookingsListByDate(nextDate).isEmpty()) {
+                bookingsMap.remove(getDayByDate(nextDate));
+            }else{
+                throw new Exception("La data da rimuovere contiene delle prenotazioni");
+            }
+        }
+    }
+
+    public void removeBookingsIntervalFromTwoDates (LocalDate startDate, LocalDate endDate) throws Exception {
+        int numberOfDays = (int)ChronoUnit.DAYS.between(startDate,endDate);
+        removeBookingsIntervalFromStartDate(startDate,numberOfDays);
+    }
+
+
+
+
+
+    // ----------------- METODI PER SETTARE GIORNI NON LAVORATIVI DELLA SETTIMANA DI DEFAULT -----------------------
+
+    public void addDefaultNotWorkingDayOfWeek (DayOfWeek dayOfWeek,CalendarBookings calendarBookings) throws Exception {
+        Set<Day> targetDays = getDayByDayOfWeekFromBookingsMap(dayOfWeek);
+        boolean thereIsSomeBookingsInTargetDays = targetDays.stream().anyMatch(day -> !bookingsMap.get(day).isEmpty());
+        if(thereIsSomeBookingsInTargetDays) throw new Exception("Ci sono delle prenotazioni per uno dei giorni che si vuole settare!");
+        targetDays.stream().forEach(day -> day.setWorkingDay(WorkingDayEnum.NOT_WORKING));
+        defaultNotWorkingDaysOfWeek.add(dayOfWeek);
+    }
+
+    public void removeDefaultNotWorkingDayOfWeek (DayOfWeek dayOfWeek,CalendarBookings calendarBookings) throws Exception {
+        defaultNotWorkingDaysOfWeek.remove(dayOfWeek);
+        for(Day day : calendarBookings.getBookingsMap().keySet()){
+            if(day.getDate().getDayOfWeek() == dayOfWeek){
+                calendarBookings.setWorkingDay(day.getDate(),WorkingDayEnum.WORKING);
+            }
+        }
+    }
+
+
+
+
+
+    // -------------- METODI PER FARE RICERCHE A PARTIRE DALLA DATA ----------------------
 
     public List<Booking> getBookingsListByDate (LocalDate date) throws Exception {
         return bookingsMap.get(getDayByDate(date));
@@ -62,76 +186,18 @@ public class CalendarBookings {
             }
         }
         return dayFound;
+        /*Con gli stream:
+        return bookingsMap.keySet().stream()
+                                    .filter(day -> day.getDate().equals(date))
+                                    .findFirst()
+                                    .get();
+         */
     }
 
-
-
-    public void addBooking (Booking booking) throws Exception {
-        if(checkDateInCalendar(booking.getDate())) {
-            bookingsMap.get(booking.getDate()).add(booking);
-        }else{
-            throw new DateOutOfCalendar();
-        }
-    }
-
-
-    public void book (Client client, LocalDate date, LocalTime time, int numberOfAdults, int numberOfChildren) throws Exception {
-        //Mettere un controllo su numberOfAdults e numberChildren ???
-        Booking book = new Booking(client,createBookedAtDate(), date, time, numberOfAdults, numberOfChildren);
-        //client.bookingList.add(book);
-        addBooking(book);
-        System.out.println("La prenotazione per " + client.getName() + " e' stata effettuata con successo: " +
-                            "\n" + book.getBookingDetails());
-    }
-
-    private String createBookedAtDate(){
-        String pattern = "yyyy-MM-dd HH:mm:ss";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("en", "EN"));
-        return simpleDateFormat.format(new Date());
-    }
-
-
-    public void createBookingsIntervalFromStartDateUsingCalendarRestourant (LocalDate startDate, int numberOfDays){
-        //mettere mercoledì not working.
-        for(int i=0; i<=numberOfDays; i++){
-            if(calendarRestaurant.getNotWorkingDays().contains(startDate.plusDays(i))){
-                bookingsMap.put(new Day(startDate.plusDays(i),WorkingDayEnum.NOT_WORKING), new ArrayList<>());
-            }else {
-                bookingsMap.put(new Day(startDate.plusDays(i),WorkingDayEnum.WORKING), new ArrayList<>());
-            }
-        }
-    }
-
-
-    public void createBookingsIntervalFromStartDate (LocalDate startDate, int numberOfDays) {
-        //mettere mercoledì not working
-        for (int i = 0; i <= numberOfDays; i++) {
-            if (calendarRestaurant.getNotWorkingDays().contains(startDate.plusDays(i))) {
-                bookingsMap.put(new Day(startDate.plusDays(i), WorkingDayEnum.NOT_WORKING), new ArrayList<>());
-            } else {
-                bookingsMap.put(new Day(startDate.plusDays(i), WorkingDayEnum.WORKING), new ArrayList<>());
-            }
-        }
-    }
-
-    public void setDefaultNotWorkingDayOfWeek (DayOfWeek dayOfWeek) {
-        for (Day day : bookingsMap.keySet()) {
-            if(day.getDate().getDayOfWeek() == dayOfWeek){
-                day.setWorkingDay(WorkingDayEnum.NOT_WORKING);
-                calendarRestaurant.notWorkingDays.add(day.getDate());
-
-            }
-        }
-    }
-
-
-    public void createBookingsIntervalFromTwoDates (LocalDate startDate, LocalDate endDate){
-        int numberOfDays = (int)ChronoUnit.DAYS.between(startDate,endDate);
-        createBookingsIntervalFromStartDate(startDate,numberOfDays);
-    }
-
-    public void createBookingIntervalFromNow(int numberOfDays){
-        createBookingsIntervalFromStartDate(LocalDate.now(),numberOfDays);
+    private Set<Day> getDayByDayOfWeekFromBookingsMap (DayOfWeek dayOfWeek) {
+        return bookingsMap.keySet().stream()
+                .filter(day->day.getDate().getDayOfWeek() == dayOfWeek)
+                .collect(Collectors.toSet());
     }
 
     public boolean checkDateInCalendar (LocalDate date) {
@@ -142,10 +208,21 @@ public class CalendarBookings {
     }
 
 
+
+    // ---------------- METODO PER RESETTARE IL CALENDAR ------------------------------------
+
+    public void reset () {
+        bookingsMap = new TreeMap<>(new CompareDaysByDate());
+    }
+
+
     /*DA IMPLEMENTARE
     public boolean checkBooking () {
 
     }*/
+
+
+    // ----------------- METODI DETAILS ------------------------------------
 
 
     public String getCalendarDetails() {
@@ -163,6 +240,7 @@ public class CalendarBookings {
 
 
     public void printDetails () {
+        System.out.println("-------------CALENDAR BOOKINGS--------------");
         for(Day day : bookingsMap.keySet()){
             switch(day.getWorkingDay()){
                 case NOT_WORKING:
@@ -183,5 +261,6 @@ public class CalendarBookings {
                     break;
             }
         }
+        System.out.println("--------------------------------------------");
     }
 }

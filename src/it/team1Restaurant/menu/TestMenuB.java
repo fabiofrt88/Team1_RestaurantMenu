@@ -188,6 +188,18 @@ public class TestMenuB {
         childMenu.addDish(TypeFood.DESSERT, (Dish) foodStorage.getFoodListsMap().get(TypeFood.DESSERT).get(4));
         childMenu.addDish(TypeFood.DESSERT, (Dish) foodStorage.getFoodListsMap().get(TypeFood.DESSERT).get(5));
 
+
+        EnumMap<TypeMenu, List<MenuB>> menuMap = new EnumMap<>(TypeMenu.class);
+        menuMap.put(MEAT, new ArrayList<>(Arrays.asList(meatMenu)));
+        menuMap.put(FISH, new ArrayList<>(Arrays.asList(fishMenu)));
+        menuMap.put(VEGAN, new ArrayList<>(Arrays.asList(veganMenu)));
+        menuMap.put(CHILD, new ArrayList<>(Arrays.asList(childMenu)));
+
+        Client client = new Client("Pippo","Franco","pippofranco@gmail.com", "389-5264589", false);
+        Booking booking1 = new Booking(client, "2022-11-15 21:00:00", LocalDate.of(2022,11,11), LocalTime.of(12,30), 3,1,0,1,0);
+
+
+
     }
 
 }
