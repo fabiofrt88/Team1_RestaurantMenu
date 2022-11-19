@@ -1,4 +1,5 @@
 package it.team1Restaurant.bookings.calendar;
+import it.team1Restaurant.bookings.Booking;
 import it.team1Restaurant.bookings.exceptions.DateOutOfCalendar;
 import it.team1Restaurant.bookings.exceptions.NotEmptyBookingsList;
 import it.team1Restaurant.user.Client;
