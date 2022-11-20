@@ -120,27 +120,25 @@ public class FoodStorage {
         System.out.println("Foods filtered by type: " + typeDishRequired + "\n");
         Map<TypeFood, FoodList> filteredFoodListsMap = initFoodListsMap();
         for (TypeFood typefood : TypeFood.values()) {
-            FoodList<IFood> foodList = foodListsMap.get(typefood);
+            FoodList<Food> foodList = foodListsMap.get(typefood);
             if(foodList.isEmpty()){
                 continue;
             }
-            for(IFood food : foodList){
+            for(Food food : foodList){
                 if(food.getTypeSet() != null){
-                    if(food.getTypeSet().contains(typeDishRequired)){
-                        if(!filteredFoodListsMap.get(typefood).contains(food)){
-                            filteredFoodListsMap.get(typefood).add(food);
-                        }
+                    if(food.getTypeSet().contains(typeDishRequired) && !filteredFoodListsMap.get(typefood).contains(food)){
+                        filteredFoodListsMap.get(typefood).add(food);
                     }
                 }
             }
         }
         for (TypeFood typefood : TypeFood.values()) {
-            FoodList<IFood> filteredFoodList = filteredFoodListsMap.get(typefood);
+            FoodList<Food> filteredFoodList = filteredFoodListsMap.get(typefood);
             if(filteredFoodList.isEmpty()){
                 continue;
             }
             System.out.println(typefood.name() + ":\n");
-            for(IFood filteredFood : filteredFoodList){
+            for(Food filteredFood : filteredFoodList){
                 System.out.println(filteredFood.getFoodDetails());
             }
         }
@@ -150,30 +148,27 @@ public class FoodStorage {
         System.out.println("Foods filtered by type: " + typeDishSetRequired.toString() + "\n");
         Map<TypeFood, FoodList> filteredFoodListsMap = initFoodListsMap();
         for (TypeFood typefood : TypeFood.values()) {
-            FoodList<IFood> foodList = foodListsMap.get(typefood);
+            FoodList<Food> foodList = foodListsMap.get(typefood);
             if(foodList.isEmpty()){
                 continue;
             }
-            for(IFood food : foodList){
+            for(Food food : foodList){
                 if(food.getTypeSet() != null){
-
                     for(TypeDish typeDishRequired : typeDishSetRequired) {
-                        if (food.getTypeSet().contains(typeDishRequired)) {
-                            if(!filteredFoodListsMap.get(typefood).contains(food)){
-                                filteredFoodListsMap.get(typefood).add(food);
-                            }
+                        if (food.getTypeSet().contains(typeDishRequired) && !filteredFoodListsMap.get(typefood).contains(food)) {
+                            filteredFoodListsMap.get(typefood).add(food);
                         }
                     }
                 }
             }
         }
         for (TypeFood typefood : TypeFood.values()) {
-            FoodList<IFood> filteredFoodList = filteredFoodListsMap.get(typefood);
+            FoodList<Food> filteredFoodList = filteredFoodListsMap.get(typefood);
             if(filteredFoodList.isEmpty()){
                 continue;
             }
             System.out.println(typefood.name() + ":\n");
-            for(IFood filteredFood : filteredFoodList){
+            for(Food filteredFood : filteredFoodList){
                 System.out.println(filteredFood.getFoodDetails());
             }
         }

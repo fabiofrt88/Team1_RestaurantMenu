@@ -79,6 +79,10 @@ public class Menu {
         foodListsMap.get(typeFood).add(food);
     }
 
+    public void addFood(TypeFood typeFood, IFood food){
+        foodListsMap.get(typeFood).add(food);
+    }
+
     public String getMenuDetails() {
         String str = String.format("%34s\n\n", restaurantName)
                 + String.format("%24s %s", "MENU", type.toUpperCase());
