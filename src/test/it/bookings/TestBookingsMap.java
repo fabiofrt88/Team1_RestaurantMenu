@@ -5,6 +5,7 @@ import it.team1Restaurant.bookings.calendar.CalendarBookings;
 import it.team1Restaurant.bookings.calendar.Day;
 import it.team1Restaurant.bookings.calendar.WorkingDayEnum;
 import it.team1Restaurant.user.Client;
+import org.junit.jupiter.api.AfterEach;
 import org.testng.annotations.Test;
 
 import java.time.LocalDate;
@@ -15,16 +16,17 @@ public class TestBookingsMap {
 
     private CalendarBookings calendarBookings = CalendarBookings.getInstance();
 
-    /*
+    private Map <Day,List<Booking>> bookingsMap = calendarBookings.getBookingsMap();
+
+
     @AfterEach
     public void resetCalendars () {
         calendarBookings.reset();
-        calendarRestaurant.reset();
-    }*/
+    }
+
 
     @Test
     public void addTwoDaysWithSameDateInBookingsMap () {
-        Map <Day,List<Booking>> bookingsMap =(TreeMap) calendarBookings.getBookingsMap();
         Day nowWorking = new Day(LocalDate.now(), WorkingDayEnum.WORKING);
         System.out.println("workingday" + nowWorking);
         Day nowNotWorking = new Day(LocalDate.now(), WorkingDayEnum.NOT_WORKING);

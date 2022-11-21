@@ -97,6 +97,10 @@ public class CalendarBookings {
                             "\n" + book.getBookingDetails());
     }
 
+      /*DA IMPLEMENTARE
+    public boolean checkBooking () {
+
+    }*/
 
 
 
@@ -170,8 +174,6 @@ public class CalendarBookings {
 
 
 
-
-
     // -------------- METODI PER FARE RICERCHE A PARTIRE DALLA DATA ----------------------
 
     public List<Booking> getBookingsListByDate (LocalDate date) throws Exception {
@@ -215,13 +217,11 @@ public class CalendarBookings {
 
     public void reset () {
         bookingsMap = new TreeMap<>(new CompareDaysByDate());
+        defaultNotWorkingDaysOfWeek = new HashSet<>();
     }
 
 
-    /*DA IMPLEMENTARE
-    public boolean checkBooking () {
 
-    }*/
 
 
     // ----------------- METODI DETAILS ------------------------------------
@@ -251,12 +251,12 @@ public class CalendarBookings {
                     break;
                 case WORKING:
                     List<Booking> dayBookingList = bookingsMap.get(day);
+                    System.out.println(day.getDetails());
                     if (dayBookingList.isEmpty()) {
-                        System.out.println(day.getDetails());
                         System.out.println("Non ci sono prenotazioni per questo giorno\n");
                     } else {
+                        System.out.println("");
                         for (Booking booking : dayBookingList) {
-                            System.out.println(day.getDetails());
                             booking.printDetails();
                         }
                     }

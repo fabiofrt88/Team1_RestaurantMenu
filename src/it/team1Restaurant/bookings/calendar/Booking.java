@@ -54,7 +54,6 @@ public class Booking {
         this.bookedAt = bookedAt;
         this.date = date;
         this.time = time;
-        this.tableNumber = tableNumber;
         this.numberOfAdult = numberOfAdult;
         this.numberOfChildren = numberOfChildren;
         this.numberOfVegetarian = numberOfVegetarian;
