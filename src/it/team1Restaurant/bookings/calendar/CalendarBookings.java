@@ -98,6 +98,10 @@ public class CalendarBookings {
                             "\n" + book.getBookingDetails());
     }
 
+      /*DA IMPLEMENTARE
+    public boolean checkBooking () {
+
+    }*/
 
 
 
@@ -155,7 +159,7 @@ public class CalendarBookings {
     public void addDefaultNotWorkingDayOfWeek (DayOfWeek dayOfWeek) throws Exception {
         Set<Day> targetDays = getDayByDayOfWeekFromBookingsMap(dayOfWeek);
         Set<Day> possibleNotEmptyDays = targetDays.stream().filter(day -> !bookingsMap.get(day).isEmpty()).collect(Collectors.toSet());
-        if(possibleNotEmptyDays.size() == 0) throw new NotEmptyBookingsList(possibleNotEmptyDays);
+        if(possibleNotEmptyDays.size() != 0) throw new NotEmptyBookingsList(possibleNotEmptyDays);
         targetDays.stream().forEach(day -> day.setWorkingDay(WorkingDayEnum.NOT_WORKING));
         defaultNotWorkingDaysOfWeek.add(dayOfWeek);
     }
@@ -168,8 +172,6 @@ public class CalendarBookings {
             }
         }
     }
-
-
 
 
 
@@ -216,13 +218,11 @@ public class CalendarBookings {
 
     public void reset () {
         bookingsMap = new TreeMap<>(new CompareDaysByDate());
+        defaultNotWorkingDaysOfWeek = new HashSet<>();
     }
 
 
-    /*DA IMPLEMENTARE
-    public boolean checkBooking () {
 
-    }*/
 
 
     // ----------------- METODI DETAILS ------------------------------------
@@ -252,12 +252,12 @@ public class CalendarBookings {
                     break;
                 case WORKING:
                     List<Booking> dayBookingList = bookingsMap.get(day);
+                    System.out.println(day.getDetails());
                     if (dayBookingList.isEmpty()) {
-                        System.out.println(day.getDetails());
                         System.out.println("Non ci sono prenotazioni per questo giorno\n");
                     } else {
+                        System.out.println("");
                         for (Booking booking : dayBookingList) {
-                            System.out.println(day.getDetails());
                             booking.printDetails();
                         }
                     }
