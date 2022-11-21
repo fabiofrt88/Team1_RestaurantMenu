@@ -5,8 +5,8 @@ import it.team1Restaurant.bookings.calendar.CalendarBookings;
 import it.team1Restaurant.bookings.calendar.Day;
 import it.team1Restaurant.bookings.calendar.WorkingDayEnum;
 import it.team1Restaurant.user.Client;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+/*import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;*/
 import org.testng.annotations.Test;
 
 import java.time.DayOfWeek;
@@ -27,7 +27,7 @@ public class TestBookingsMap {
     }
 
 
-    @AfterEach
+    /*@AfterEach
     public void resetCalendars () {
         calendarBookings.reset();
     }
@@ -35,7 +35,7 @@ public class TestBookingsMap {
     @BeforeEach
     public void activateOneMonthFromNow () {
         calendarBookings.createBookingsIntervalFromNow(30);
-    }
+    }*/
 
     @Test
     public void addTwoDaysWithSameDateInBookingsMap () {

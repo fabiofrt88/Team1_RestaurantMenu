@@ -251,11 +251,13 @@ public class TestMenu {
 
         dishFilter(dishMap, TypeDish.VEGETARIAN);
 
-        System.out.println("----------------------DISH FILTER------------------------\n");
-        foodStorage.dishFilter(TypeDish.CHILD);
+        System.out.println("\n----------------------DISH FILTER------------------------\n");
+        Map<TypeFood, FoodList> filteredFoodListsMap = foodStorage.dishFilter(TypeDish.CHILD);
+        System.out.println(filteredFoodListsMap.toString());
 
-        System.out.println("----------------------DISH FILTER------------------------\n");
-        foodStorage.dishFilter(EnumSet.of(TypeDish.CHILD, TypeDish.VEGAN));
+        System.out.println("\n----------------------DISH FILTER------------------------\n");
+        filteredFoodListsMap = foodStorage.dishFilter(EnumSet.of(TypeDish.CHILD, TypeDish.VEGAN));
+        System.out.println(filteredFoodListsMap.toString());
 
 
 

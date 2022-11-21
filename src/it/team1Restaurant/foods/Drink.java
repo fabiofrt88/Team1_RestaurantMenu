@@ -33,7 +33,8 @@ public class Drink extends Food {
         this.alcoholPercentage = alcoholPercentage;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "Drink" + super.toString();
+    }
 }

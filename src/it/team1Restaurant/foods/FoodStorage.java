@@ -116,35 +116,12 @@ public class FoodStorage {
         return str;
     }
 
-    public void dishFilter(TypeDish typeDishRequired) {
-        System.out.println("Foods filtered by type: " + typeDishRequired + "\n");
-        Map<TypeFood, FoodList> filteredFoodListsMap = initFoodListsMap();
-        for (TypeFood typefood : TypeFood.values()) {
-            FoodList<Food> foodList = foodListsMap.get(typefood);
-            if(foodList.isEmpty()){
-                continue;
-            }
-            for(Food food : foodList){
-                if(food.getTypeSet() != null){
-                    if(food.getTypeSet().contains(typeDishRequired) && !filteredFoodListsMap.get(typefood).contains(food)){
-                        filteredFoodListsMap.get(typefood).add(food);
-                    }
-                }
-            }
-        }
-        for (TypeFood typefood : TypeFood.values()) {
-            FoodList<Food> filteredFoodList = filteredFoodListsMap.get(typefood);
-            if(filteredFoodList.isEmpty()){
-                continue;
-            }
-            System.out.println(typefood.name() + ":\n");
-            for(Food filteredFood : filteredFoodList){
-                System.out.println(filteredFood.getFoodDetails());
-            }
-        }
+    public Map<TypeFood, FoodList> dishFilter(TypeDish typeDishRequired) {
+        EnumSet<TypeDish> typeDishSetRequired = EnumSet.of(typeDishRequired);
+        return this.dishFilter(typeDishSetRequired);
     }
 
-    public void dishFilter(EnumSet<TypeDish> typeDishSetRequired) {
+    public Map<TypeFood, FoodList> dishFilter(EnumSet<TypeDish> typeDishSetRequired) {
         System.out.println("Foods filtered by type: " + typeDishSetRequired.toString() + "\n");
         Map<TypeFood, FoodList> filteredFoodListsMap = initFoodListsMap();
         for (TypeFood typefood : TypeFood.values()) {
@@ -153,7 +130,7 @@ public class FoodStorage {
                 continue;
             }
             for(Food food : foodList){
-                if(food.getTypeSet() != null){
+                if(!food.getTypeSet().isEmpty()){
                     for(TypeDish typeDishRequired : typeDishSetRequired) {
                         if (food.getTypeSet().contains(typeDishRequired) && !filteredFoodListsMap.get(typefood).contains(food)) {
                             filteredFoodListsMap.get(typefood).add(food);
@@ -162,6 +139,11 @@ public class FoodStorage {
                 }
             }
         }
+        this.printFilteredFoodListsMapDetails(filteredFoodListsMap);
+        return filteredFoodListsMap;
+    }
+
+    public void printFilteredFoodListsMapDetails(Map<TypeFood, FoodList> filteredFoodListsMap){
         for (TypeFood typefood : TypeFood.values()) {
             FoodList<Food> filteredFoodList = filteredFoodListsMap.get(typefood);
             if(filteredFoodList.isEmpty()){

@@ -25,4 +25,9 @@ public class Dish extends Food {
         super(typeFood, name, ingredients, price, typeSet);
     }
 
+    @Override
+    public String toString() {
+        return "Dish" + super.toString();
+    }
+
 }

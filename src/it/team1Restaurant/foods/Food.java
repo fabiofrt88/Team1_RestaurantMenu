@@ -15,6 +15,7 @@ public abstract class Food implements IFood {
         this.type = typeFood;
         this.name = name;
         this.price = price;
+        this.typeSet = EnumSet.noneOf(TypeDish.class);
     }
 
     public Food(TypeFood typeFood, String name, double price, EnumSet<TypeDish> typeSet) {
@@ -29,6 +30,7 @@ public abstract class Food implements IFood {
         this.name = name;
         this.price = price;
         this.ingredientList = ingredients;
+        this.typeSet = EnumSet.noneOf(TypeDish.class);
     }
 
     public Food(TypeFood typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeDish> typeSet) {
@@ -104,6 +106,17 @@ public abstract class Food implements IFood {
                 System.out.println(food.getName());
             }
         }
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "type=" + type +
+                ", typeSet=" + typeSet +
+                ", name='" + name + '\'' +
+                ", ingredientList=" + ingredientList +
+                ", price=" + price +
+                '}';
     }
 }
 
