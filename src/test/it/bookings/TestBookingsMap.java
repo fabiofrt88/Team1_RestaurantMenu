@@ -6,8 +6,10 @@ import it.team1Restaurant.bookings.calendar.Day;
 import it.team1Restaurant.bookings.calendar.WorkingDayEnum;
 import it.team1Restaurant.user.Client;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.testng.annotations.Test;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
@@ -18,12 +20,22 @@ public class TestBookingsMap {
 
     private Map <Day,List<Booking>> bookingsMap = calendarBookings.getBookingsMap();
 
+    Client client1 = new Client("Mario","Rossi",false);
+
+    public static LocalDate getDateFromNow (int numberOfDaysToAdd){
+        return LocalDate.now().plusDays(numberOfDaysToAdd);
+    }
+
 
     @AfterEach
     public void resetCalendars () {
         calendarBookings.reset();
     }
 
+    @BeforeEach
+    public void activateOneMonthFromNow () {
+        calendarBookings.createBookingsIntervalFromNow(30);
+    }
 
     @Test
     public void addTwoDaysWithSameDateInBookingsMap () {
@@ -54,9 +66,63 @@ public class TestBookingsMap {
 
     //toDo test if filter creates a new object or not
 
-    @Test
-    public void testSetWorkingDays ( ) {
-
+    @Test // create an interval over just activated interval
+    public void testCreateBookingsInterval ( ) throws Exception {
+        calendarBookings.createBookingsIntervalFromNow(10);
+        calendarBookings.book(client1,getDateFromNow(7),LocalTime.of(12,00),4,3);
+        calendarBookings.createBookingsIntervalFromStartDate(getDateFromNow(5),10);
+        calendarBookings.printDetails();
     }
+
+    @Test  // change an empty working day in a not working day
+    public void testSetWorkingDays_01 ( ) throws Exception {
+        calendarBookings.createBookingsIntervalFromNow(30);
+        calendarBookings.setWorkingDay(getDateFromNow(3),WorkingDayEnum.NOT_WORKING);
+        calendarBookings.printDetails();
+    }
+
+    @Test // try to change a not empty working day in a not working day
+    public void testSetWorkingDays_02 ( ) throws Exception {
+        calendarBookings.createBookingsIntervalFromNow(30);
+        LocalDate date = getDateFromNow(3);
+        calendarBookings.book(client1,date,LocalTime.of(12,00),4,3);
+        try {
+            calendarBookings.setWorkingDay(date,WorkingDayEnum.NOT_WORKING);
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test // try to set a day not in calendar
+    public void testSetWorkingDays_03 ( ) throws Exception {
+        calendarBookings.createBookingsIntervalFromNow(2);
+        LocalDate date = getDateFromNow(3);
+        try {
+            calendarBookings.setWorkingDay(date,WorkingDayEnum.NOT_WORKING);
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    @Test //add default not working day of week on an empty calendar
+    public void testAddDefaultNotWorkingDayOfWeek_01 ( ) throws Exception {
+        calendarBookings.createBookingsIntervalFromNow(30);
+        calendarBookings.addDefaultNotWorkingDayOfWeek(DayOfWeek.SATURDAY);
+        calendarBookings.printDetails();
+    }
+
+
+    @Test // add default not working day of week on a non empty calendar
+    public void testAddDefaultNotWorkingDayOfWeek_02 ( ) throws Exception {
+        calendarBookings.createBookingsIntervalFromStartDate(LocalDate.of(2022,11,21),12);
+        calendarBookings.book(client1,LocalDate.of(2022,11,23),LocalTime.of(12,00),2,3);
+        try {
+            calendarBookings.addDefaultNotWorkingDayOfWeek(DayOfWeek.WEDNESDAY);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        calendarBookings.printDetails();
+    }
+
 
 }

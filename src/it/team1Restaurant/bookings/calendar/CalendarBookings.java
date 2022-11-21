@@ -158,7 +158,7 @@ public class CalendarBookings {
     public void addDefaultNotWorkingDayOfWeek (DayOfWeek dayOfWeek) throws Exception {
         Set<Day> targetDays = getDayByDayOfWeekFromBookingsMap(dayOfWeek);
         Set<Day> possibleNotEmptyDays = targetDays.stream().filter(day -> !bookingsMap.get(day).isEmpty()).collect(Collectors.toSet());
-        if(possibleNotEmptyDays.size() == 0) throw new NotEmptyBookingsList(possibleNotEmptyDays);
+        if(possibleNotEmptyDays.size() != 0) throw new NotEmptyBookingsList(possibleNotEmptyDays);
         targetDays.stream().forEach(day -> day.setWorkingDay(WorkingDayEnum.NOT_WORKING));
         defaultNotWorkingDaysOfWeek.add(dayOfWeek);
     }
