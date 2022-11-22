@@ -27,11 +27,15 @@ public class FoodList<T extends IFood> extends ArrayList<T> {
     }
 
     public T getFoodByName (String name) {
+        T foodFound = null;
         for(T food : this){
-            if(food.getName().equals(name)) return food;
+            if(food.getName().equals(name))
+                foodFound = food;
+            break;
         }
-        return null;
+        return foodFound;
     }
+
 
     /*
     public Set<Dish> getDishesWithAllergen (Allergen allergen ) {
