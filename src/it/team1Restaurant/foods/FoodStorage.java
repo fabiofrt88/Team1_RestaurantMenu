@@ -1,6 +1,6 @@
 package it.team1Restaurant.foods;
 
-import it.team1Restaurant.menu.TypeDish;
+import it.team1Restaurant.menu.TypeDishClient;
 
 import java.util.*;
 
@@ -41,7 +41,7 @@ public class FoodStorage {
         foodListsMap.get(TypeFood.DRINK).add(new Drink(name, price));
     }
 
-    public void addDrink(String name, double price, EnumSet<TypeDish> typeSet){
+    public void addDrink(String name, double price, EnumSet<TypeDishClient> typeSet){
         foodListsMap.get(TypeFood.DRINK).add(new Drink(name, price, typeSet));
     }
 
@@ -49,7 +49,7 @@ public class FoodStorage {
         foodListsMap.get(TypeFood.DRINK).add(new Drink(name, ingredients, price));
     }
 
-    public void addDrink(String name, List<Ingredient> ingredients, double price, EnumSet<TypeDish> typeSet){
+    public void addDrink(String name, List<Ingredient> ingredients, double price, EnumSet<TypeDishClient> typeSet){
         foodListsMap.get(TypeFood.DRINK).add(new Drink(name, ingredients, price, typeSet));
     }
 
@@ -57,7 +57,7 @@ public class FoodStorage {
         foodListsMap.get(typeFood).add(new Dish(typeFood, name, price));
     }
 
-    public void addDish(TypeFood typeFood, String name, double price, EnumSet<TypeDish> typeSet){
+    public void addDish(TypeFood typeFood, String name, double price, EnumSet<TypeDishClient> typeSet){
         foodListsMap.get(typeFood).add(new Dish(typeFood, name, price, typeSet));
     }
 
@@ -65,7 +65,7 @@ public class FoodStorage {
         foodListsMap.get(typeFood).add(new Dish(typeFood, name, ingredients, price));
     }
 
-    public void addDish(TypeFood typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeDish> typeSet){
+    public void addDish(TypeFood typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeDishClient> typeSet){
         foodListsMap.get(typeFood).add(new Dish(typeFood, name, ingredients, price, typeSet));
     }
 
@@ -78,7 +78,7 @@ public class FoodStorage {
         }
     }
 
-    public void addFood(TypeFood typeFood, String name, double price, EnumSet<TypeDish> typeSet){
+    public void addFood(TypeFood typeFood, String name, double price, EnumSet<TypeDishClient> typeSet){
         if(typeFood.equals(TypeFood.DRINK)){
             foodListsMap.get(TypeFood.DRINK).add(new Drink(name, price, typeSet));
         }
@@ -96,7 +96,7 @@ public class FoodStorage {
         }
     }
 
-    public void addFood(TypeFood typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeDish> typeSet){
+    public void addFood(TypeFood typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeDishClient> typeSet){
         if(typeFood.equals(TypeFood.DRINK)){
             foodListsMap.get(TypeFood.DRINK).add(new Drink(name, ingredients, price, typeSet));
         }
@@ -116,35 +116,12 @@ public class FoodStorage {
         return str;
     }
 
-    public void dishFilter(TypeDish typeDishRequired) {
-        System.out.println("Foods filtered by type: " + typeDishRequired + "\n");
-        Map<TypeFood, FoodList> filteredFoodListsMap = initFoodListsMap();
-        for (TypeFood typefood : TypeFood.values()) {
-            FoodList<Food> foodList = foodListsMap.get(typefood);
-            if(foodList.isEmpty()){
-                continue;
-            }
-            for(Food food : foodList){
-                if(food.getTypeSet() != null){
-                    if(food.getTypeSet().contains(typeDishRequired) && !filteredFoodListsMap.get(typefood).contains(food)){
-                        filteredFoodListsMap.get(typefood).add(food);
-                    }
-                }
-            }
-        }
-        for (TypeFood typefood : TypeFood.values()) {
-            FoodList<Food> filteredFoodList = filteredFoodListsMap.get(typefood);
-            if(filteredFoodList.isEmpty()){
-                continue;
-            }
-            System.out.println(typefood.name() + ":\n");
-            for(Food filteredFood : filteredFoodList){
-                System.out.println(filteredFood.getFoodDetails());
-            }
-        }
+    public Map<TypeFood, FoodList> dishFilter(TypeDishClient typeDishRequired) {
+        EnumSet<TypeDishClient> typeDishSetRequired = EnumSet.of(typeDishRequired);
+        return this.dishFilter(typeDishSetRequired);
     }
 
-    public void dishFilter(EnumSet<TypeDish> typeDishSetRequired) {
+    public Map<TypeFood, FoodList> dishFilter(EnumSet<TypeDishClient> typeDishSetRequired) {
         System.out.println("Foods filtered by type: " + typeDishSetRequired.toString() + "\n");
         Map<TypeFood, FoodList> filteredFoodListsMap = initFoodListsMap();
         for (TypeFood typefood : TypeFood.values()) {
@@ -153,8 +130,8 @@ public class FoodStorage {
                 continue;
             }
             for(Food food : foodList){
-                if(food.getTypeSet() != null){
-                    for(TypeDish typeDishRequired : typeDishSetRequired) {
+                if(!food.getTypeSet().isEmpty()){
+                    for(TypeDishClient typeDishRequired : typeDishSetRequired) {
                         if (food.getTypeSet().contains(typeDishRequired) && !filteredFoodListsMap.get(typefood).contains(food)) {
                             filteredFoodListsMap.get(typefood).add(food);
                         }
@@ -162,6 +139,11 @@ public class FoodStorage {
                 }
             }
         }
+        this.printFilteredFoodListsMapDetails(filteredFoodListsMap);
+        return filteredFoodListsMap;
+    }
+
+    public void printFilteredFoodListsMapDetails(Map<TypeFood, FoodList> filteredFoodListsMap){
         for (TypeFood typefood : TypeFood.values()) {
             FoodList<Food> filteredFoodList = filteredFoodListsMap.get(typefood);
             if(filteredFoodList.isEmpty()){

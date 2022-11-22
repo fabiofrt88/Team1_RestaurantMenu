@@ -1,6 +1,6 @@
 package it.team1Restaurant.foods;
 
-import it.team1Restaurant.menu.TypeDish;
+import it.team1Restaurant.menu.TypeDishClient;
 
 import java.util.EnumSet;
 import java.util.List;
@@ -13,7 +13,7 @@ public class Drink extends Food {
         super(TypeFood.DRINK, name, price);
     }
 
-    public Drink(String name, double price, EnumSet<TypeDish> typeSet) {
+    public Drink(String name, double price, EnumSet<TypeDishClient> typeSet) {
         super(TypeFood.DRINK, name, price, typeSet);
     }
 
@@ -21,7 +21,7 @@ public class Drink extends Food {
         super(TypeFood.DRINK, name, ingredients, price);
     }
 
-    public Drink (String name, List<Ingredient> ingredients, double price, EnumSet<TypeDish> typeSet) {
+    public Drink (String name, List<Ingredient> ingredients, double price, EnumSet<TypeDishClient> typeSet) {
         super(TypeFood.DRINK, name, ingredients, price, typeSet);
     }
 
@@ -33,7 +33,8 @@ public class Drink extends Food {
         this.alcoholPercentage = alcoholPercentage;
     }
 
-
-
-
+    @Override
+    public String toString() {
+        return "Drink" + super.toString();
+    }
 }

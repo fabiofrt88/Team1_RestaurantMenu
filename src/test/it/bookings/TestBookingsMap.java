@@ -18,7 +18,7 @@ public class TestBookingsMap {
 
     private Map <Day,List<Booking>> bookingsMap = calendarBookings.getBookingsMap();
 
-    Client client1 = new Client("Mario","Rossi",false);
+    /*Client client1 = new Client("Mario","Rossi",false);
 
     public static LocalDate getDateFromNow (int numberOfDaysToAdd){
         return LocalDate.now().plusDays(numberOfDaysToAdd);
@@ -49,7 +49,9 @@ public class TestBookingsMap {
         System.out.println(bookingsMap.keySet());
         System.out.println(bookingsMap.values());
         Assert.assertTrue(nowWorkingIsInBookingsMap);
-        Assert.assertTrue(nowNotWorkingIsInBookingsMap);*/
+
+       Assert.assertTrue(nowNotWorkingIsInBookingsMap);*/
+    /*
     }
 
     //toDo test if filter creates a new object or not
@@ -111,6 +113,6 @@ public class TestBookingsMap {
         }
         calendarBookings.printDetails();
     }
-
+    */
 
 }

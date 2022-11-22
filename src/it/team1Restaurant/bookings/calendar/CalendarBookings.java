@@ -89,9 +89,9 @@ public class CalendarBookings {
         }
     }
 
-    public void book (Client client, LocalDate date, LocalTime time, int numberOfAdults, int numberOfChildren) throws Exception {
+    public void book (Client client, List<Client> clientList, LocalDate date, LocalTime time) throws Exception {
         //Mettere un controllo su numberOfAdults e numberChildren ???
-        Booking book = new Booking(client,createBookedAtDate(), date, time, numberOfAdults, numberOfChildren);
+        Booking book = new Booking(client,clientList,createBookedAtDate(), date, time);
         //client.bookingList.add(book);
         addBooking(book);
         System.out.println("La prenotazione per " + client.getName() + " e' stata effettuata con successo: " +

@@ -1,6 +1,6 @@
 package it.team1Restaurant.foods;
 
-import it.team1Restaurant.menu.TypeDish;
+import it.team1Restaurant.menu.TypeDishClient;
 
 import java.util.EnumSet;
 import java.util.List;
@@ -11,7 +11,7 @@ public interface IFood {
     String getName();
     List<Ingredient> getIngredientList();
     double getPrice();
-    EnumSet<TypeDish> getTypeSet();
+    EnumSet<TypeDishClient> getTypeSet();
     String getFoodDetails();
 
 }
