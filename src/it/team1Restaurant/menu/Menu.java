@@ -1,6 +1,5 @@
 package it.team1Restaurant.menu;
 import it.team1Restaurant.foods.*;
-
 import java.util.HashMap;
 import java.util.Map;
 
