@@ -18,7 +18,9 @@ public class TestBookingsMap {
 
     private Map <Day,List<Booking>> bookingsMap = calendarBookings.getBookingsMap();
 
+
     /*Client client1 = new Client("Mario","Rossi",false);
+=
 
     public static LocalDate getDateFromNow (int numberOfDaysToAdd){
         return LocalDate.now().plusDays(numberOfDaysToAdd);
@@ -31,9 +33,9 @@ public class TestBookingsMap {
         System.out.println("workingday" + nowWorking);
         Day nowNotWorking = new Day(LocalDate.now(), WorkingDayEnum.NOT_WORKING);
         System.out.println("notworkingday" + nowNotWorking);
-        Booking booking1 = new Booking (new Client(), "2222-11-11 23:00",LocalDate.now(), LocalTime.now(),3, 3);
+        Booking booking1 = new Booking (new Client(), "2222-11-11 23:00",LocalDate.now(), LocalTime.now());
         System.out.println("booking1:" + booking1);
-        Booking booking2 = new Booking (new Client(), "5555-11-11 23:00",LocalDate.now(), LocalTime.now(),3, 3);
+        Booking booking2 = new Booking (new Client(), "5555-11-11 23:00",LocalDate.now(), LocalTime.now());
         System.out.println("booking1:" + booking2);
         bookingsMap.put(nowWorking, new ArrayList<>(Arrays.asList(booking1)));
         System.out.println("Map keys after first adding: " + bookingsMap.keySet());
@@ -53,13 +55,13 @@ public class TestBookingsMap {
        Assert.assertTrue(nowNotWorkingIsInBookingsMap);*/
     /*
     }
-
+/*
     //toDo test if filter creates a new object or not
 
     @Test // create an interval over just activated interval
     public void testCreateBookingsInterval ( ) throws Exception {
         calendarBookings.createBookingsIntervalFromNow(10);
-        calendarBookings.book(client1,getDateFromNow(7),LocalTime.of(12,00),4,3);
+        calendarBookings.book(client1, List.of(client1), getDateFromNow(7),LocalTime.of(12,00));
         calendarBookings.createBookingsIntervalFromStartDate(getDateFromNow(5),10);
         calendarBookings.printDetails();
     }
@@ -75,7 +77,7 @@ public class TestBookingsMap {
     public void testSetWorkingDays_02 ( ) throws Exception {
         calendarBookings.createBookingsIntervalFromNow(30);
         LocalDate date = getDateFromNow(3);
-        calendarBookings.book(client1,date,LocalTime.of(12,00),4,3);
+        calendarBookings.book(client1,List.of(client1), date,LocalTime.of(12,00));
         try {
             calendarBookings.setWorkingDay(date,WorkingDayEnum.NOT_WORKING);
         } catch (Exception e){
@@ -98,21 +100,25 @@ public class TestBookingsMap {
     public void testAddDefaultNotWorkingDayOfWeek_01 ( ) throws Exception {
         calendarBookings.createBookingsIntervalFromNow(30);
         calendarBookings.addDefaultNotWorkingDayOfWeek(DayOfWeek.SATURDAY);
-        calendarBookings.printDetails();
+        //calendarBookings.printDetails();
     }
 
 
     @Test // add default not working day of week on a non empty calendar
     public void testAddDefaultNotWorkingDayOfWeek_02 ( ) throws Exception {
         calendarBookings.createBookingsIntervalFromStartDate(LocalDate.of(2022,11,21),12);
-        calendarBookings.book(client1,LocalDate.of(2022,11,23),LocalTime.of(12,00),2,3);
+        calendarBookings.book(client1,List.of(client1), LocalDate.of(2022,11,23),LocalTime.of(12,00));
         try {
             calendarBookings.addDefaultNotWorkingDayOfWeek(DayOfWeek.WEDNESDAY);
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
+<<<<<<< HEAD
         calendarBookings.printDetails();
     }
     */
+
+        //calendarBookings.printDetails();
+
 
 }
