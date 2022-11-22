@@ -225,8 +225,8 @@ public class TestMenu {
 
         System.out.println("-----------------TEST CHECKBOOKINGINFO-------------------\n");
 
-        Client client = new Client("Pippo","Franco","pippofranco@gmail.com", "389-5264589", false);
-        Booking booking = new Booking(client, "2022-11-15 21:00:00", LocalDate.of(2022,11,11), LocalTime.of(12,30), 3,1,0,1,0);
+        Client client = new Client(EnumSet.of(TypeDishClient.GENERIC),"Pippo","Franco","pippofranco@gmail.com", "389-5264589");
+        Booking booking = new Booking(client,List.of(client), "2022-11-15 21:00:00", LocalDate.of(2022,11,11), LocalTime.of(12,30));
         checkBookingInfo(booking, menuMap);
 
         System.out.println("----------------------DISH FILTER------------------------\n");
