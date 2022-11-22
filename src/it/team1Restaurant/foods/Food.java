@@ -1,12 +1,12 @@
 package it.team1Restaurant.foods;
 
-import it.team1Restaurant.menu.TypeDish;
+import it.team1Restaurant.menu.TypeDishClient;
 
 import java.util.*;
 
 public abstract class Food implements IFood {
     private TypeFood type;
-    private EnumSet<TypeDish> typeSet;
+    private EnumSet<TypeDishClient> typeSet;
     private String name;
     private List<Ingredient> ingredientList;
     private double price;
@@ -15,13 +15,15 @@ public abstract class Food implements IFood {
         this.type = typeFood;
         this.name = name;
         this.price = price;
-        this.typeSet = EnumSet.noneOf(TypeDish.class);
+        this.ingredientList = new ArrayList<>();
+        this.typeSet = EnumSet.noneOf(TypeDishClient.class);
     }
 
-    public Food(TypeFood typeFood, String name, double price, EnumSet<TypeDish> typeSet) {
+    public Food(TypeFood typeFood, String name, double price, EnumSet<TypeDishClient> typeSet) {
         this.type = typeFood;
         this.name = name;
         this.price = price;
+        this.ingredientList = new ArrayList<>();
         this.typeSet = typeSet;
     }
 
@@ -30,10 +32,10 @@ public abstract class Food implements IFood {
         this.name = name;
         this.price = price;
         this.ingredientList = ingredients;
-        this.typeSet = EnumSet.noneOf(TypeDish.class);
+        this.typeSet = EnumSet.noneOf(TypeDishClient.class);
     }
 
-    public Food(TypeFood typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeDish> typeSet) {
+    public Food(TypeFood typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeDishClient> typeSet) {
         this.type = typeFood;
         this.name = name;
         this.price = price;
@@ -78,11 +80,11 @@ public abstract class Food implements IFood {
     }
 
     @Override
-    public EnumSet<TypeDish> getTypeSet() {
+    public EnumSet<TypeDishClient> getTypeSet() {
         return typeSet;
     }
 
-    public void setTypeSet(EnumSet<TypeDish> typeSet) {
+    public void setTypeSet(EnumSet<TypeDishClient> typeSet) {
         this.typeSet = typeSet;
     }
 
@@ -90,7 +92,7 @@ public abstract class Food implements IFood {
     public String getFoodDetails() {
         String ingredientsPrint = "";
         String ingredientTxt;
-        if (ingredientList != null) {
+        if (!ingredientList.isEmpty()) {
             ingredientTxt = "Ingredients: ";
             for (Ingredient ingredient : ingredientList) {
                 ingredientsPrint += ingredient.getName().toLowerCase() + "  ";}
@@ -100,7 +102,7 @@ public abstract class Food implements IFood {
         return String.format("%-50s%-5s €\n\t%s %-5s\n", name, String.format("%.2f", price), ingredientTxt, ingredientsPrint);
     }
 
-    public static void dishFilter(Map<String, Food> dishMap, TypeDish typeDishRequired) {
+    public static void dishFilter(Map<String, Food> dishMap, TypeDishClient typeDishRequired) {
         for (Food food : dishMap.values()) {
             if (food.typeSet.contains(typeDishRequired)) {
                 System.out.println(food.getName());

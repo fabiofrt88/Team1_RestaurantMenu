@@ -1,9 +1,10 @@
 package it.team1Restaurant.menu;
 
-public enum TypeDish {
+public enum TypeDishClient {
 
+    GENERIC,
+    CHILD,
     VEGETARIAN,
     VEGAN,
-    CHILD,
     CELIAC;
 }

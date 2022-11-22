@@ -1,53 +1,52 @@
 package it.team1Restaurant.bookings;
 
 import it.team1Restaurant.menu.Menu;
+import it.team1Restaurant.menu.TypeDishClient;
 import it.team1Restaurant.menu.TypeMenu;
 import it.team1Restaurant.user.Client;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Booking {
 
     private final int bookingNumber;
     private Client client;
+    private List<Client> clientList;
     private final String bookedAt;
     private LocalDate date;
     private LocalTime time;
-    private int tableNumber;
-    private int numberOfAdult;
-    private int numberOfChildren;
-
-    private int numberOfVegetarian;
-
-    private int numberOfVegan;
-
-    private int numberOfCeliac;
-
+    //private int tableNumber;
+    //private int numberOfAdult;
+    //private int numberOfChildren;
+    //private int numberOfVegetarian;
+    //private int numberOfVegan;
+    //private int numberOfCeliac;
     private static int bookingNumbers = 0;
 
-    public Booking(Client client, String bookedAt, LocalDate date, LocalTime time, int numberOfAdult, int numberOfChildren) {
+    public Booking(Client client, String bookedAt, LocalDate date, LocalTime time) {
         this.bookingNumber = incrementBookingNumbers();
         this.client = client;
+        this.clientList = new ArrayList<>();
         this.bookedAt = bookedAt;
         this.date = date;
         this.time = time;
-        this.numberOfAdult = numberOfAdult;
-        this.numberOfChildren = numberOfChildren;
     }
 
-    public Booking(Client client, String bookedAt, LocalDate date, LocalTime time, int tableNumber, int numberOfAdult, int numberOfChildren) {
+    public Booking(Client client, List<Client> clientList, String bookedAt, LocalDate date, LocalTime time) {
         this.bookingNumber = incrementBookingNumbers();
         this.client = client;
+        this.clientList = clientList;
         this.bookedAt = bookedAt;
         this.date = date;
         this.time = time;
-        this.tableNumber = tableNumber;
-        this.numberOfAdult = numberOfAdult;
-        this.numberOfChildren = numberOfChildren;
     }
 
+    /*
     public Booking(Client client, String bookedAt, LocalDate date, LocalTime time, int numberOfAdult, int numberOfChildren, int numberOfVegetarian, int numberOfVegan, int numberOfCeliac) {
         this.bookingNumber = incrementBookingNumbers();
         this.client = client;
@@ -59,7 +58,7 @@ public class Booking {
         this.numberOfVegetarian = numberOfVegetarian;
         this.numberOfVegan = numberOfVegan;
         this.numberOfCeliac = numberOfCeliac;
-    }
+    }*/
 
     public int getBookingNumber() {
         return bookingNumber;
@@ -94,54 +93,6 @@ public class Booking {
         this.time = time;
     }
 
-    public int getTableNumber() {
-        return tableNumber;
-    }
-
-    public void setTableNumber(int tableNumber) {
-        this.tableNumber = tableNumber;
-    }
-
-    public int getNumberOfAdult() {
-        return numberOfAdult;
-    }
-
-    public void setNumberOfAdult(int numberOfAdult) {
-        this.numberOfAdult = numberOfAdult;
-    }
-
-    public int getNumberOfChildren() {
-        return numberOfChildren;
-    }
-
-    public void setNumberOfChildren(int numberOfChildren) {
-        this.numberOfChildren = numberOfChildren;
-    }
-
-    public int getNumberOfVegetarian() {
-        return numberOfVegetarian;
-    }
-
-    public void setNumberOfVegetarian(int numberOfVegetarian) {
-        this.numberOfVegetarian = numberOfVegetarian;
-    }
-
-    public int getNumberOfVegan() {
-        return numberOfVegan;
-    }
-
-    public void setNumberOfVegan(int numberOfVegan) {
-        this.numberOfVegan = numberOfVegan;
-    }
-
-    public int getNumberOfCeliac() {
-        return numberOfCeliac;
-    }
-
-    public void setNumberOfCeliac(int numberOfCeliac) {
-        this.numberOfCeliac = numberOfCeliac;
-    }
-
     public static int getBookingNumbers() {
         return bookingNumbers;
     }
@@ -150,7 +101,13 @@ public class Booking {
         Booking.bookingNumbers = bookingNumbers;
     }
 
-    public static int incrementBookingNumbers(){ return ++bookingNumbers; }
+    public static int incrementBookingNumbers(){
+        return ++bookingNumbers;
+    }
+
+    public Integer getNumberOf(TypeDishClient typeDishClient){
+        return clientList.stream().filter(client -> client.getTypeDishClient().contains(typeDishClient)).collect(Collectors.toSet()).size();
+    }
 
     public String getBookingDetails() {
         return "Booking #" + bookingNumber +
@@ -159,9 +116,9 @@ public class Booking {
                 "\nDate: " + date +
                 "\nTime: " + time +
                 //"\ntableNumber: " + tableNumber +
-                "\nNumber of People: " + (numberOfAdult + numberOfChildren) +
-                "\nNumber of Adults: " + numberOfAdult +
-                "\nNumber of Children: " + numberOfChildren;
+                "\nNumber of People: " + (clientList.size()) +
+                "\nNumber of Adults: " + (clientList.size() - getNumberOf(TypeDishClient.CHILD)) +
+                "\nNumber of Children: " + getNumberOf(TypeDishClient.CHILD);
     }
 
     public void printDetails() {
@@ -171,9 +128,9 @@ public class Booking {
                 "\nDate: " + date +
                 "\nTime: " + time +
                 //"\nTable Number: " + tableNumber +
-                "\nNumber of People: " + (numberOfAdult + numberOfChildren) +
-                "\nNumber of Adults: " + numberOfAdult +
-                "\nNumber of Children: " + numberOfChildren + "\n");
+                "\nNumber of People: " + (clientList.size()) +
+                "\nNumber of Adults: " + (clientList.size() - getNumberOf(TypeDishClient.CHILD)) +
+                "\nNumber of Children: " + getNumberOf(TypeDishClient.CHILD) + "\n");
     }
 
     /*public static void checkBookingInfo(Booking booking, EnumMap<TypeMenu, Menu> menuMap) {
@@ -212,17 +169,17 @@ public class Booking {
     public static void checkBookingInfo(Booking booking, EnumMap<TypeMenu, Menu> menuMap) {
         System.out.println(menuMap.get(TypeMenu.MEAT).getMenuDetails());
         System.out.println(menuMap.get(TypeMenu.FISH).getMenuDetails());
-        if (booking.getNumberOfChildren() > 0) {
+        if (booking.getNumberOf(TypeDishClient.CHILD) > 0) {
             System.out.println(menuMap.get(TypeMenu.CHILD).getMenuDetails());
         }
-        if (booking.getNumberOfVegetarian() > 0) {
+        if (booking.getNumberOf(TypeDishClient.VEGETARIAN) > 0) {
             System.out.println(menuMap.get(TypeMenu.VEGETARIAN).getMenuDetails());
         }
-        if (booking.getNumberOfVegan() > 0) {
+        if (booking.getNumberOf(TypeDishClient.VEGAN) > 0) {
             System.out.println(menuMap.get(TypeMenu.VEGAN).getMenuDetails());
         }
-        if (booking.getNumberOfCeliac() > 0) {
-            System.out.println(menuMap.get(TypeMenu.VEGAN).getMenuDetails());
+        if (booking.getNumberOf(TypeDishClient.CELIAC) > 0) {
+            System.out.println(menuMap.get(TypeMenu.CELIAC).getMenuDetails());
         }
     }
 }

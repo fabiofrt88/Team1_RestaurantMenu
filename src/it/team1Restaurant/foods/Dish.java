@@ -1,9 +1,7 @@
 package it.team1Restaurant.foods;
 
-import it.team1Restaurant.menu.TypeDish;
+import it.team1Restaurant.menu.TypeDishClient;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
 
@@ -13,7 +11,7 @@ public class Dish extends Food {
         super(typeFood, name, price);
     }
 
-    public Dish(TypeFood typeFood, String name, double price, EnumSet<TypeDish> typeSet) {
+    public Dish(TypeFood typeFood, String name, double price, EnumSet<TypeDishClient> typeSet) {
         super(typeFood, name, price, typeSet);
     }
 
@@ -21,7 +19,7 @@ public class Dish extends Food {
         super(typeFood, name, ingredients, price);
     }
 
-    public Dish(TypeFood typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeDish> typeSet) {
+    public Dish(TypeFood typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeDishClient> typeSet) {
         super(typeFood, name, ingredients, price, typeSet);
     }
 
