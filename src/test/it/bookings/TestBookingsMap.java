@@ -19,8 +19,8 @@ public class TestBookingsMap {
     private Map <Day,List<Booking>> bookingsMap = calendarBookings.getBookingsMap();
 
 
-    /*Client client1 = new Client("Mario","Rossi",false);
-=
+    Client client1 = new Client("Mario","Rossi");
+
 
     public static LocalDate getDateFromNow (int numberOfDaysToAdd){
         return LocalDate.now().plusDays(numberOfDaysToAdd);
@@ -53,9 +53,9 @@ public class TestBookingsMap {
         Assert.assertTrue(nowWorkingIsInBookingsMap);
 
        Assert.assertTrue(nowNotWorkingIsInBookingsMap);*/
-    /*
+
     }
-/*
+
     //toDo test if filter creates a new object or not
 
     @Test // create an interval over just activated interval
@@ -100,7 +100,7 @@ public class TestBookingsMap {
     public void testAddDefaultNotWorkingDayOfWeek_01 ( ) throws Exception {
         calendarBookings.createBookingsIntervalFromNow(30);
         calendarBookings.addDefaultNotWorkingDayOfWeek(DayOfWeek.SATURDAY);
-        //calendarBookings.printDetails();
+        calendarBookings.printDetails();
     }
 
 
@@ -113,12 +113,11 @@ public class TestBookingsMap {
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
-<<<<<<< HEAD
         calendarBookings.printDetails();
     }
-    */
 
-        //calendarBookings.printDetails();
+
+
 
 
 }
