@@ -5,6 +5,7 @@ import it.team1Restaurant.menu.TypeDishClientEnum;
 import java.util.EnumSet;
 import java.util.List;
 
+//todo add javadoc
 public class Dish extends Food {
 
     public Dish(TypeFoodEnum typeFood, String name, double price) {

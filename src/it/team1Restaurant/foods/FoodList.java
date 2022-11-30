@@ -3,6 +3,7 @@ package it.team1Restaurant.foods;
 import java.util.ArrayList;
 
 
+//todo javadoc Giovanni
 public class FoodList<T extends Food> extends ArrayList<T> {
 
     TypeFoodEnum typeFood;

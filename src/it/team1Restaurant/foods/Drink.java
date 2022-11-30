@@ -5,6 +5,8 @@ import it.team1Restaurant.menu.TypeDishClientEnum;
 import java.util.EnumSet;
 import java.util.List;
 
+
+//todo javadoc
 public class Drink extends Food {
 
     private double alcoholPercentage;

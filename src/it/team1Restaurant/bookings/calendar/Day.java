@@ -2,6 +2,8 @@ package it.team1Restaurant.bookings.calendar;
 
 import java.time.LocalDate;
 
+
+// todo javadoc Pietro
 public class Day {
 
     private WorkingDayEnum workingDay;

@@ -1,5 +1,5 @@
 package it.team1Restaurant.bookings.calendar;
-import it.team1Restaurant.bookings.Booking;
+import it.team1Restaurant.bookings.calendar.Booking;
 import it.team1Restaurant.bookings.exceptions.DateOutOfCalendar;
 import it.team1Restaurant.bookings.exceptions.NotEmptyBookingsList;
 import it.team1Restaurant.user.Client;
@@ -12,6 +12,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 
+// todo javadoc Giovanni
 public class CalendarBookings {
 
     private Map<Day,List<Booking>> bookingsMap;

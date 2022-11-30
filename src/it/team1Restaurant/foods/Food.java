@@ -4,7 +4,11 @@ import it.team1Restaurant.menu.TypeDishClientEnum;
 
 import java.util.*;
 
+
+// toDo javaDoc
 public abstract class Food {
+
+    //todo commentare variabili
     private TypeFoodEnum type;
     private EnumSet<TypeDishClientEnum> typeSet;
     private String name;
@@ -102,6 +106,8 @@ public abstract class Food {
         return String.format("%-50s%-5s €\n\t%s %-5s\n", name, String.format("%.2f", price), ingredientTxt, ingredientsPrint);
     }
 
+
+    // todo javadoc Francesco
     public static void dishFilter(Map<String, Food> dishMap, TypeDishClientEnum typeDishRequired) {
         for (Food food : dishMap.values()) {
             if (food.typeSet.contains(typeDishRequired)) {

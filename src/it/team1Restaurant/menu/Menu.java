@@ -4,6 +4,8 @@ import it.team1Restaurant.foods.*;
 import java.util.HashMap;
 import java.util.Map;
 
+
+// todo javadoc Pietro
 public class Menu {
     private static String restaurantName = "Team-1 restaurant";
     private String type;

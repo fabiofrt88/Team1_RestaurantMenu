@@ -1,10 +1,9 @@
-package it.team1Restaurant.bookings;
+package it.team1Restaurant.bookings.calendar;
 
 import it.team1Restaurant.menu.Menu;
 import it.team1Restaurant.menu.TypeDishClientEnum;
 import it.team1Restaurant.menu.TypeMenuEnum;
 import it.team1Restaurant.user.Client;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -12,6 +11,8 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+// todo Javadoc Pietro
 public class Booking {
 
     private final int bookingNumber;

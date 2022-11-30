@@ -4,6 +4,8 @@ import it.team1Restaurant.menu.TypeDishClientEnum;
 
 import java.util.EnumSet;
 
+
+//todo javadoc Francesco
 public class Client {
 
     private EnumSet<TypeDishClientEnum> typeDishClient;
