@@ -81,6 +81,7 @@ public abstract class Food implements IFood {
 
     @Override
     public EnumSet<TypeDishClient> getTypeSet() {
+        //TODO
         return typeSet;
     }
 

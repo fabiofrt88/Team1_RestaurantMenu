@@ -121,7 +121,8 @@ public class FoodStorage {
         return this.dishFilter(typeDishSetRequired);
     }
 
-    public Map<TypeFood, FoodList> dishFilter(EnumSet<TypeDishClient> typeDishSetRequired) {
+    //TODO
+    public Map<TypeFood, FoodList> dishFilterVeg(TypeDishClient typeDishSetRequired) {
         System.out.println("Foods filtered by type: " + typeDishSetRequired.toString() + "\n");
         Map<TypeFood, FoodList> filteredFoodListsMap = initFoodListsMap();
         for (TypeFood typefood : TypeFood.values()) {
@@ -129,6 +130,9 @@ public class FoodStorage {
             if(foodList.isEmpty()){
                 continue;
             }
+
+
+            //TODO controllare
             for(Food food : foodList){
                 if(!food.getTypeSet().isEmpty()){
                     for(TypeDishClient typeDishRequired : typeDishSetRequired) {
@@ -146,6 +150,7 @@ public class FoodStorage {
     public void printFilteredFoodListsMapDetails(Map<TypeFood, FoodList> filteredFoodListsMap){
         for (TypeFood typefood : TypeFood.values()) {
             FoodList<Food> filteredFoodList = filteredFoodListsMap.get(typefood);
+            //TODO così non si programma mai
             if(filteredFoodList.isEmpty()){
                 continue;
             }
