@@ -21,7 +21,14 @@ public class CalendarBookings {
     private static CalendarBookings calendarBookings = new CalendarBookings();
 
     private CalendarBookings(){
-        bookingsMap = new TreeMap<>(new CompareDaysByDate());
+        bookingsMap = new TreeMap<>(new Comparator<Day>() {
+            @Override
+            public int compare(Day day1 , Day day2) {
+                if(day1.getDate().equals(day2.getDate())) return 0;
+                if(day1.getDate().isBefore(day2.getDate())) return -1;
+                else return 1;
+            }
+        });
         defaultNotWorkingDaysOfWeek = new HashSet<>();
     }
 
@@ -217,12 +224,6 @@ public class CalendarBookings {
 
 
 
-    // ---------------- METODO PER RESETTARE IL CALENDAR ------------------------------------
-
-    public void reset () {
-        bookingsMap = new TreeMap<>(new CompareDaysByDate());
-        defaultNotWorkingDaysOfWeek = new HashSet<>();
-    }
 
 
 
