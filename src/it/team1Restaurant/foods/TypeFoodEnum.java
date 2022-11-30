@@ -1,6 +1,6 @@
 package it.team1Restaurant.foods;
 
-public enum TypeFood {
+public enum TypeFoodEnum {
     DRINK,
     STARTER,
     FIRST,

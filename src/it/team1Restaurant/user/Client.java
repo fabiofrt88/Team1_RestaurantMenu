@@ -1,12 +1,12 @@
 package it.team1Restaurant.user;
 
-import it.team1Restaurant.menu.TypeDishClient;
+import it.team1Restaurant.menu.TypeDishClientEnum;
 
 import java.util.EnumSet;
 
 public class Client {
 
-    private EnumSet<TypeDishClient> typeDishClient;
+    private EnumSet<TypeDishClientEnum> typeDishClient;
     private String name;
     private String surname;
     private String email;
@@ -24,10 +24,10 @@ public class Client {
     public Client(String name, String surname) {
         this.name = name;
         this.surname = surname;
-        this.typeDishClient = EnumSet.of(TypeDishClient.GENERIC);
+        this.typeDishClient = EnumSet.of(TypeDishClientEnum.GENERIC);
     }
 
-    public Client(EnumSet<TypeDishClient> typeDishClient, String name, String surname, String email, String phoneNumber) {
+    public Client(EnumSet<TypeDishClientEnum> typeDishClient, String name, String surname, String email, String phoneNumber) {
         this.typeDishClient = typeDishClient;
         this.name = name;
         this.surname = surname;
@@ -75,11 +75,11 @@ public class Client {
         isChild = child;
     }
 
-    public EnumSet<TypeDishClient> getTypeDishClient() {
+    public EnumSet<TypeDishClientEnum> getTypeDishClient() {
         return typeDishClient;
     }
 
-    public void setTypeDishClient(EnumSet<TypeDishClient> typeDishClient) {
+    public void setTypeDishClient(EnumSet<TypeDishClientEnum> typeDishClient) {
         this.typeDishClient = typeDishClient;
     }
 

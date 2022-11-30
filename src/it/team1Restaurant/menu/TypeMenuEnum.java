@@ -1,6 +1,6 @@
 package it.team1Restaurant.menu;
 
-public enum TypeMenu {
+public enum TypeMenuEnum {
 
     MEAT,
     FISH,

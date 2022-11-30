@@ -1,25 +1,25 @@
 package it.team1Restaurant.foods;
 
-import it.team1Restaurant.menu.TypeDishClient;
+import it.team1Restaurant.menu.TypeDishClientEnum;
 
 import java.util.EnumSet;
 import java.util.List;
 
 public class Dish extends Food {
 
-    public Dish(TypeFood typeFood, String name, double price) {
+    public Dish(TypeFoodEnum typeFood, String name, double price) {
         super(typeFood, name, price);
     }
 
-    public Dish(TypeFood typeFood, String name, double price, EnumSet<TypeDishClient> typeSet) {
+    public Dish(TypeFoodEnum typeFood, String name, double price, EnumSet<TypeDishClientEnum> typeSet) {
         super(typeFood, name, price, typeSet);
     }
 
-    public Dish(TypeFood typeFood, String name, List<Ingredient> ingredients, double price) {
+    public Dish(TypeFoodEnum typeFood, String name, List<Ingredient> ingredients, double price) {
         super(typeFood, name, ingredients, price);
     }
 
-    public Dish(TypeFood typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeDishClient> typeSet) {
+    public Dish(TypeFoodEnum typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeDishClientEnum> typeSet) {
         super(typeFood, name, ingredients, price, typeSet);
     }
 

@@ -1,6 +1,6 @@
 package it.team1Restaurant.foods;
 
-import it.team1Restaurant.menu.TypeDishClient;
+import it.team1Restaurant.menu.TypeDishClientEnum;
 
 import java.util.EnumSet;
 import java.util.List;
@@ -10,19 +10,19 @@ public class Drink extends Food {
     private double alcoholPercentage;
 
     public Drink(String name, double price) {
-        super(TypeFood.DRINK, name, price);
+        super(TypeFoodEnum.DRINK, name, price);
     }
 
-    public Drink(String name, double price, EnumSet<TypeDishClient> typeSet) {
-        super(TypeFood.DRINK, name, price, typeSet);
+    public Drink(String name, double price, EnumSet<TypeDishClientEnum> typeSet) {
+        super(TypeFoodEnum.DRINK, name, price, typeSet);
     }
 
     public Drink (String name, List<Ingredient> ingredients, double price) {
-        super(TypeFood.DRINK, name, ingredients, price);
+        super(TypeFoodEnum.DRINK, name, ingredients, price);
     }
 
-    public Drink (String name, List<Ingredient> ingredients, double price, EnumSet<TypeDishClient> typeSet) {
-        super(TypeFood.DRINK, name, ingredients, price, typeSet);
+    public Drink (String name, List<Ingredient> ingredients, double price, EnumSet<TypeDishClientEnum> typeSet) {
+        super(TypeFoodEnum.DRINK, name, ingredients, price, typeSet);
     }
 
     public double getAlcoholPercentage() {

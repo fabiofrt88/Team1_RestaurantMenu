@@ -10,7 +10,7 @@ import java.util.*;
 
 import static it.team1Restaurant.bookings.Booking.checkBookingInfo;
 import static it.team1Restaurant.foods.Food.dishFilter;
-import static it.team1Restaurant.menu.TypeMenu.*;
+import static it.team1Restaurant.menu.TypeMenuEnum.*;
 
 public class TestMenu {
 
@@ -44,66 +44,66 @@ public class TestMenu {
         foodStorage.addDrink("Vino Rosso", 15);
         foodStorage.addDrink("Vino Bianco", 16);
         foodStorage.addDrink("Birra", 6);
-        foodStorage.addDrink("Coca Cola", 3, EnumSet.of(TypeDishClient.CHILD));
-        foodStorage.addDrink("Fanta", 3, EnumSet.of(TypeDishClient.CHILD));
+        foodStorage.addDrink("Coca Cola", 3, EnumSet.of(TypeDishClientEnum.CHILD));
+        foodStorage.addDrink("Fanta", 3, EnumSet.of(TypeDishClientEnum.CHILD));
 
         //create the firsts
 
-        foodStorage.addDish(TypeFood.FIRST, "Ziti alla genovese", new ArrayList<>(Arrays.asList(
+        foodStorage.addDish(TypeFoodEnum.FIRST, "Ziti alla genovese", new ArrayList<>(Arrays.asList(
                 new Ingredient("Cipolle"), new Ingredient("Girello di manzo"))), 16);
-        foodStorage.addDish(TypeFood.FIRST, "Tagliatelle alla bolognese", new ArrayList<>(Arrays.asList(
+        foodStorage.addDish(TypeFoodEnum.FIRST, "Tagliatelle alla bolognese", new ArrayList<>(Arrays.asList(
                 new Ingredient("Carne macinata"), new Ingredient("Concentrato di pomodoro"), new Ingredient("Pancetta"))), 15);
-        foodStorage.addDish(TypeFood.FIRST, "Linguine allo scoglio", new ArrayList<>(Arrays.asList(
+        foodStorage.addDish(TypeFoodEnum.FIRST, "Linguine allo scoglio", new ArrayList<>(Arrays.asList(
                 new Ingredient("Vongole"), new Ingredient("Cozze"), new Ingredient("Scampi"))), 17);
-        foodStorage.addDish(TypeFood.FIRST, "Spaghetti alla luciana", new ArrayList<>(Arrays.asList(new Ingredient("Moscardini"),
+        foodStorage.addDish(TypeFoodEnum.FIRST, "Spaghetti alla luciana", new ArrayList<>(Arrays.asList(new Ingredient("Moscardini"),
                 new Ingredient("Pomodoro"), new Ingredient("Olive Nere"), new Ingredient("Peperoncino"))), 16);
-        foodStorage.addDish(TypeFood.FIRST, "Insalata di riso e melone", new ArrayList<>(Arrays.asList(
+        foodStorage.addDish(TypeFoodEnum.FIRST, "Insalata di riso e melone", new ArrayList<>(Arrays.asList(
                 new Ingredient("Riso"), new Ingredient("melone"))), 11);
-        foodStorage.addDish(TypeFood.FIRST, "Spaghetti ai carciofi e limone", new ArrayList<>(Arrays.asList(
-                new Ingredient("Carciofi"), new Ingredient("Limone"))), 14, EnumSet.of(TypeDishClient.VEGAN));
-        foodStorage.addDish(TypeFood.FIRST, "Pasta al sugo", new ArrayList<>(Arrays.asList(
-                new Ingredient("Passato di pomodoro"))), 8, EnumSet.of(TypeDishClient.CHILD, TypeDishClient.VEGAN));
-        foodStorage.addDish(TypeFood.FIRST, "Pasta al pesto", new ArrayList<>(Arrays.asList(
-                new Ingredient("Basilico"), new Ingredient("Parmigiano"))), 10, EnumSet.of(TypeDishClient.CHILD, TypeDishClient.VEGAN));
+        foodStorage.addDish(TypeFoodEnum.FIRST, "Spaghetti ai carciofi e limone", new ArrayList<>(Arrays.asList(
+                new Ingredient("Carciofi"), new Ingredient("Limone"))), 14, EnumSet.of(TypeDishClientEnum.VEGAN));
+        foodStorage.addDish(TypeFoodEnum.FIRST, "Pasta al sugo", new ArrayList<>(Arrays.asList(
+                new Ingredient("Passato di pomodoro"))), 8, EnumSet.of(TypeDishClientEnum.CHILD, TypeDishClientEnum.VEGAN));
+        foodStorage.addDish(TypeFoodEnum.FIRST, "Pasta al pesto", new ArrayList<>(Arrays.asList(
+                new Ingredient("Basilico"), new Ingredient("Parmigiano"))), 10, EnumSet.of(TypeDishClientEnum.CHILD, TypeDishClientEnum.VEGAN));
 
         //create the seconds
 
-        foodStorage.addDish(TypeFood.SECOND, "Salsicce e Friarielli",
+        foodStorage.addDish(TypeFoodEnum.SECOND, "Salsicce e Friarielli",
                 new ArrayList<>(Arrays.asList(new Ingredient("Salsicce"), new Ingredient("Friarielli"))), 13);
-        foodStorage.addDish(TypeFood.SECOND, "Polpette al ragù con parmigiana di melanzane",
+        foodStorage.addDish(TypeFoodEnum.SECOND, "Polpette al ragù con parmigiana di melanzane",
                 new ArrayList<>(Arrays.asList(new Ingredient("Carne di manzo"), new Ingredient("Passato di pomodoro"),
                         new Ingredient("Melanzane"), new Ingredient("Fiordilatte"))), 14);
-        foodStorage.addDish(TypeFood.SECOND, "Insalata di polpo e patate",
+        foodStorage.addDish(TypeFoodEnum.SECOND, "Insalata di polpo e patate",
                 new ArrayList<>(Arrays.asList(new Ingredient("Polpo"), new Ingredient("Patate"), new Ingredient("Limone"))), 15);
-        foodStorage.addDish(TypeFood.SECOND, "Fritto misto",
+        foodStorage.addDish(TypeFoodEnum.SECOND, "Fritto misto",
                 new ArrayList<>(Arrays.asList(new Ingredient("Triglie"), new Ingredient("Merluzzetti"), new Ingredient("Gamberetti"), new Ingredient("Calamari"))), 15);
-        foodStorage.addDish(TypeFood.SECOND, "Polpettone di fagioli e tofu alle erbe",
+        foodStorage.addDish(TypeFoodEnum.SECOND, "Polpettone di fagioli e tofu alle erbe",
                 new ArrayList<>(Arrays.asList(new Ingredient("Tofu"), new Ingredient("Fagioli"), new Ingredient("Erbe"))), 13);
-        foodStorage.addDish(TypeFood.SECOND, "Zucchine ripiene con crema di fagioli bianchi",
+        foodStorage.addDish(TypeFoodEnum.SECOND, "Zucchine ripiene con crema di fagioli bianchi",
                 new ArrayList<>(Arrays.asList(new Ingredient("Zucchine"), new Ingredient("Fagioli Bianchi"))), 14);
-        foodStorage.addDish(TypeFood.SECOND, "Cotoletta e Patatine",
-                new ArrayList<>(Arrays.asList(new Ingredient("Pollo"), new Ingredient("Patate"))), 12, EnumSet.of(TypeDishClient.CHILD));
-        foodStorage.addDish(TypeFood.SECOND, "Hamburger e insalata",
-                new ArrayList<>(Arrays.asList(new Ingredient("Carne di manzo"), new Ingredient("Insalata"))),13, EnumSet.of(TypeDishClient.CHILD));
+        foodStorage.addDish(TypeFoodEnum.SECOND, "Cotoletta e Patatine",
+                new ArrayList<>(Arrays.asList(new Ingredient("Pollo"), new Ingredient("Patate"))), 12, EnumSet.of(TypeDishClientEnum.CHILD));
+        foodStorage.addDish(TypeFoodEnum.SECOND, "Hamburger e insalata",
+                new ArrayList<>(Arrays.asList(new Ingredient("Carne di manzo"), new Ingredient("Insalata"))),13, EnumSet.of(TypeDishClientEnum.CHILD));
 
         //create the desserts
 
-        foodStorage.addDish(TypeFood.DESSERT, "Tiramisu'", new ArrayList<>(Arrays.asList(new Ingredient("Biscotti"),
+        foodStorage.addDish(TypeFoodEnum.DESSERT, "Tiramisu'", new ArrayList<>(Arrays.asList(new Ingredient("Biscotti"),
                 new Ingredient("Caffè"), new Ingredient("Cacao"), new Ingredient("Yogurt"),
                 new Ingredient("Panna"))), 11);
-        foodStorage.addDish(TypeFood.DESSERT, "Babà", new ArrayList<>(Arrays.asList(new Ingredient("Farina"),
+        foodStorage.addDish(TypeFoodEnum.DESSERT, "Babà", new ArrayList<>(Arrays.asList(new Ingredient("Farina"),
                 new Ingredient("Uova"), new Ingredient("Zucchero"), new Ingredient("Lievito"),
                 new Ingredient("Burro"), new Ingredient("Rum"))), 9);
-        foodStorage.addDish(TypeFood.DESSERT, "Tiramisu' vegano", new ArrayList<>(Arrays.asList(new Ingredient("Biscotti Vegani"),
+        foodStorage.addDish(TypeFoodEnum.DESSERT, "Tiramisu' vegano", new ArrayList<>(Arrays.asList(new Ingredient("Biscotti Vegani"),
                 new Ingredient("Caffè"), new Ingredient("Cacao"), new Ingredient("Yogurt di soia"),
                 new Ingredient("Panna di soia"))), 12);
-        foodStorage.addDish(TypeFood.DESSERT, "Ciambellone vegano", new ArrayList<>(Arrays.asList(new Ingredient("Latte Vegetale"),
+        foodStorage.addDish(TypeFoodEnum.DESSERT, "Ciambellone vegano", new ArrayList<>(Arrays.asList(new Ingredient("Latte Vegetale"),
                 new Ingredient("Farina 0"), new Ingredient("Lievito"),
                 new Ingredient("Cacao Amaro"), new Ingredient("Zucchero"))), 15);
-        foodStorage.addDish(TypeFood.DESSERT, "Gelato alla fragola", new ArrayList<>(Arrays.asList(new Ingredient("Latte"),
-                new Ingredient("Fragole"))), 8, EnumSet.of(TypeDishClient.CHILD));
-        foodStorage.addDish(TypeFood.DESSERT, "Gelato alla cioccolato", new ArrayList<>(Arrays.asList(new Ingredient("Latte"),
-                new Ingredient("Cioccolato"))), 8, EnumSet.of(TypeDishClient.CHILD));
+        foodStorage.addDish(TypeFoodEnum.DESSERT, "Gelato alla fragola", new ArrayList<>(Arrays.asList(new Ingredient("Latte"),
+                new Ingredient("Fragole"))), 8, EnumSet.of(TypeDishClientEnum.CHILD));
+        foodStorage.addDish(TypeFoodEnum.DESSERT, "Gelato alla cioccolato", new ArrayList<>(Arrays.asList(new Ingredient("Latte"),
+                new Ingredient("Cioccolato"))), 8, EnumSet.of(TypeDishClientEnum.CHILD));
 
         //create the meat menu
 
@@ -111,103 +111,103 @@ public class TestMenu {
 
         //add drinks to meat menu
 
-        meatMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFood.DRINK).get(0));
-        meatMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFood.DRINK).get(1));
-        meatMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFood.DRINK).get(3));
+        meatMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFoodEnum.DRINK).get(0));
+        meatMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFoodEnum.DRINK).get(1));
+        meatMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFoodEnum.DRINK).get(3));
 
         //add firsts to meat menu
 
-        meatMenu.addDish(TypeFood.FIRST, (Dish) foodStorage.getFoodListsMap().get(TypeFood.FIRST).get(0));
-        meatMenu.addDish(TypeFood.FIRST, (Dish) foodStorage.getFoodListsMap().get(TypeFood.FIRST).get(1));
+        meatMenu.addDish(TypeFoodEnum.FIRST, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.FIRST).get(0));
+        meatMenu.addDish(TypeFoodEnum.FIRST, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.FIRST).get(1));
 
         //add seconds to meat menu
 
-        meatMenu.addDish(TypeFood.SECOND, (Dish) foodStorage.getFoodListsMap().get(TypeFood.SECOND).get(0));
-        meatMenu.addDish(TypeFood.SECOND, (Dish) foodStorage.getFoodListsMap().get(TypeFood.SECOND).get(1));
+        meatMenu.addDish(TypeFoodEnum.SECOND, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.SECOND).get(0));
+        meatMenu.addDish(TypeFoodEnum.SECOND, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.SECOND).get(1));
 
         //add desserts to meat menu
 
-        meatMenu.addDish(TypeFood.DESSERT, (Dish) foodStorage.getFoodListsMap().get(TypeFood.DESSERT).get(0));
-        meatMenu.addDish(TypeFood.DESSERT, (Dish) foodStorage.getFoodListsMap().get(TypeFood.DESSERT).get(1));
+        meatMenu.addDish(TypeFoodEnum.DESSERT, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.DESSERT).get(0));
+        meatMenu.addDish(TypeFoodEnum.DESSERT, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.DESSERT).get(1));
 
         //create the fish menu
 
-        Menu fishMenu = new Menu("Pesce", TypeMenu.FISH);
+        Menu fishMenu = new Menu("Pesce", TypeMenuEnum.FISH);
 
         //add drinks to fish menu
 
-        fishMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFood.DRINK).get(0));
-        fishMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFood.DRINK).get(2));
-        fishMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFood.DRINK).get(3));
+        fishMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFoodEnum.DRINK).get(0));
+        fishMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFoodEnum.DRINK).get(2));
+        fishMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFoodEnum.DRINK).get(3));
 
         //add firsts to fish menu
 
-        fishMenu.addDish(TypeFood.FIRST, (Dish) foodStorage.getFoodListsMap().get(TypeFood.FIRST).get(2));
-        fishMenu.addDish(TypeFood.FIRST, (Dish) foodStorage.getFoodListsMap().get(TypeFood.FIRST).get(3));
+        fishMenu.addDish(TypeFoodEnum.FIRST, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.FIRST).get(2));
+        fishMenu.addDish(TypeFoodEnum.FIRST, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.FIRST).get(3));
 
         //add seconds to fish menu
 
-        fishMenu.addDish(TypeFood.SECOND, (Dish) foodStorage.getFoodListsMap().get(TypeFood.SECOND).get(2));
-        fishMenu.addDish(TypeFood.SECOND, (Dish) foodStorage.getFoodListsMap().get(TypeFood.SECOND).get(3));
+        fishMenu.addDish(TypeFoodEnum.SECOND, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.SECOND).get(2));
+        fishMenu.addDish(TypeFoodEnum.SECOND, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.SECOND).get(3));
 
         //add desserts to fish menu
 
-        fishMenu.addDish(TypeFood.DESSERT, (Dish) foodStorage.getFoodListsMap().get(TypeFood.DESSERT).get(0));
-        fishMenu.addDish(TypeFood.DESSERT, (Dish) foodStorage.getFoodListsMap().get(TypeFood.DESSERT).get(1));
+        fishMenu.addDish(TypeFoodEnum.DESSERT, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.DESSERT).get(0));
+        fishMenu.addDish(TypeFoodEnum.DESSERT, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.DESSERT).get(1));
 
         //create the vegan menu
 
-        Menu veganMenu = new Menu("Vegano", TypeMenu.VEGAN);
+        Menu veganMenu = new Menu("Vegano", TypeMenuEnum.VEGAN);
 
         //add drinks to vegan menu
 
-        veganMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFood.DRINK).get(0));
-        veganMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFood.DRINK).get(1));
-        veganMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFood.DRINK).get(3));
+        veganMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFoodEnum.DRINK).get(0));
+        veganMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFoodEnum.DRINK).get(1));
+        veganMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFoodEnum.DRINK).get(3));
 
         //add firsts to vegan menu
 
-        veganMenu.addDish(TypeFood.FIRST, (Dish) foodStorage.getFoodListsMap().get(TypeFood.FIRST).get(4));
-        veganMenu.addDish(TypeFood.FIRST, (Dish) foodStorage.getFoodListsMap().get(TypeFood.FIRST).get(5));
+        veganMenu.addDish(TypeFoodEnum.FIRST, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.FIRST).get(4));
+        veganMenu.addDish(TypeFoodEnum.FIRST, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.FIRST).get(5));
 
         //add seconds to vegan menu
 
-        veganMenu.addDish(TypeFood.SECOND, (Dish) foodStorage.getFoodListsMap().get(TypeFood.SECOND).get(4));
-        veganMenu.addDish(TypeFood.SECOND, (Dish) foodStorage.getFoodListsMap().get(TypeFood.SECOND).get(5));
+        veganMenu.addDish(TypeFoodEnum.SECOND, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.SECOND).get(4));
+        veganMenu.addDish(TypeFoodEnum.SECOND, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.SECOND).get(5));
 
         //add desserts to vegan menu
 
-        veganMenu.addDish(TypeFood.DESSERT, (Dish) foodStorage.getFoodListsMap().get(TypeFood.DESSERT).get(2));
-        veganMenu.addDish(TypeFood.DESSERT, (Dish) foodStorage.getFoodListsMap().get(TypeFood.DESSERT).get(3));
+        veganMenu.addDish(TypeFoodEnum.DESSERT, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.DESSERT).get(2));
+        veganMenu.addDish(TypeFoodEnum.DESSERT, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.DESSERT).get(3));
 
         //create the child menu
 
-        Menu childMenu = new Menu("Bambino", TypeMenu.CHILD);
+        Menu childMenu = new Menu("Bambino", TypeMenuEnum.CHILD);
 
         //add drinks to child menu
 
-        childMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFood.DRINK).get(0));
-        childMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFood.DRINK).get(4));
-        childMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFood.DRINK).get(5));
+        childMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFoodEnum.DRINK).get(0));
+        childMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFoodEnum.DRINK).get(4));
+        childMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFoodEnum.DRINK).get(5));
 
         //add firsts to child menu
 
-        childMenu.addDish(TypeFood.FIRST, (Dish) foodStorage.getFoodListsMap().get(TypeFood.FIRST).get(6));
-        childMenu.addDish(TypeFood.FIRST, (Dish) foodStorage.getFoodListsMap().get(TypeFood.FIRST).get(7));
+        childMenu.addDish(TypeFoodEnum.FIRST, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.FIRST).get(6));
+        childMenu.addDish(TypeFoodEnum.FIRST, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.FIRST).get(7));
 
         //add seconds to child menu
 
-        childMenu.addDish(TypeFood.SECOND, (Dish) foodStorage.getFoodListsMap().get(TypeFood.SECOND).get(6));
-        childMenu.addDish(TypeFood.SECOND, (Dish) foodStorage.getFoodListsMap().get(TypeFood.SECOND).get(7));
+        childMenu.addDish(TypeFoodEnum.SECOND, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.SECOND).get(6));
+        childMenu.addDish(TypeFoodEnum.SECOND, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.SECOND).get(7));
 
         //add desserts to child menu
 
-        childMenu.addDish(TypeFood.DESSERT, (Dish) foodStorage.getFoodListsMap().get(TypeFood.DESSERT).get(4));
-        childMenu.addDish(TypeFood.DESSERT, (Dish) foodStorage.getFoodListsMap().get(TypeFood.DESSERT).get(5));
+        childMenu.addDish(TypeFoodEnum.DESSERT, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.DESSERT).get(4));
+        childMenu.addDish(TypeFoodEnum.DESSERT, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.DESSERT).get(5));
 
         //--------------------------------------------------------------------------------------------------------------
 
-        EnumMap<TypeMenu, Menu> menuMap = new EnumMap<>(TypeMenu.class);
+        EnumMap<TypeMenuEnum, Menu> menuMap = new EnumMap<>(TypeMenuEnum.class);
         menuMap.put(MEAT, meatMenu);
         menuMap.put(FISH, fishMenu);
         menuMap.put(VEGAN, veganMenu);
@@ -226,24 +226,24 @@ public class TestMenu {
         System.out.println("-----------------TEST CHECKBOOKINGINFO-------------------\n");
 
 
-        Client client = new Client(EnumSet.of(TypeDishClient.GENERIC),"Pippo","Franco","pippofranco@gmail.com", "389-5264589");
+        Client client = new Client(EnumSet.of(TypeDishClientEnum.GENERIC),"Pippo","Franco","pippofranco@gmail.com", "389-5264589");
 
         Booking booking = new Booking(client,List.of(client), "2022-11-15 21:00:00", LocalDate.of(2022,11,11), LocalTime.of(12,30));
         checkBookingInfo(booking, menuMap);
 
         System.out.println("----------------------DISH FILTER------------------------\n");
 
-        Dish spaghettiAllaNerano = new Dish(TypeFood.FIRST, "Spaghetti alla nerano", new ArrayList<>(Arrays.asList(
-                new Ingredient("Zucchine"), new Ingredient("Provolone del Monaco"), new Ingredient("Parmigiano"))), 16, EnumSet.of(TypeDishClient.VEGETARIAN));
+        Dish spaghettiAllaNerano = new Dish(TypeFoodEnum.FIRST, "Spaghetti alla nerano", new ArrayList<>(Arrays.asList(
+                new Ingredient("Zucchine"), new Ingredient("Provolone del Monaco"), new Ingredient("Parmigiano"))), 16, EnumSet.of(TypeDishClientEnum.VEGETARIAN));
 
-        Dish pastaAlSugo = new Dish(TypeFood.FIRST, "Pasta al sugo", new ArrayList<>(Arrays.asList(
-                new Ingredient("Passato di pomodoro"))), 8, EnumSet.of(TypeDishClient.CHILD));
+        Dish pastaAlSugo = new Dish(TypeFoodEnum.FIRST, "Pasta al sugo", new ArrayList<>(Arrays.asList(
+                new Ingredient("Passato di pomodoro"))), 8, EnumSet.of(TypeDishClientEnum.CHILD));
 
-        Dish ravioliDiVerdure = new Dish(TypeFood.FIRST, "Ravioli di verdure", new ArrayList<>(Arrays.asList(
-                new Ingredient("Verza"), new Ingredient("Carote"))), 11, EnumSet.of(TypeDishClient.VEGAN));
+        Dish ravioliDiVerdure = new Dish(TypeFoodEnum.FIRST, "Ravioli di verdure", new ArrayList<>(Arrays.asList(
+                new Ingredient("Verza"), new Ingredient("Carote"))), 11, EnumSet.of(TypeDishClientEnum.VEGAN));
 
-        Dish risottoAlloZafferano = new Dish(TypeFood.FIRST, "Risotto allo zafferano", new ArrayList<>(Arrays.asList(
-                new Ingredient("Zafferano"), new Ingredient("Grana Padano"))), 16, EnumSet.of(TypeDishClient.VEGETARIAN));
+        Dish risottoAlloZafferano = new Dish(TypeFoodEnum.FIRST, "Risotto allo zafferano", new ArrayList<>(Arrays.asList(
+                new Ingredient("Zafferano"), new Ingredient("Grana Padano"))), 16, EnumSet.of(TypeDishClientEnum.VEGETARIAN));
 
         Map<String, Food> dishMap = new HashMap<>();
         dishMap.put(spaghettiAllaNerano.getName(), spaghettiAllaNerano);
@@ -251,16 +251,15 @@ public class TestMenu {
         dishMap.put(ravioliDiVerdure.getName(), ravioliDiVerdure);
         dishMap.put(risottoAlloZafferano.getName(), risottoAlloZafferano);
 
-        dishFilter(dishMap, TypeDishClient.VEGETARIAN);
+        dishFilter(dishMap, TypeDishClientEnum.VEGETARIAN);
 
         System.out.println("\n----------------------DISH FILTER------------------------\n");
-        Map<TypeFood, FoodList> filteredFoodListsMap = foodStorage.dishFilter(TypeDishClient.CHILD);
+        Map<TypeFoodEnum, FoodList> filteredFoodListsMap = foodStorage.dishFilter(TypeDishClientEnum.CHILD);
         System.out.println(filteredFoodListsMap.toString());
 
         System.out.println("\n----------------------DISH FILTER------------------------\n");
-        filteredFoodListsMap = foodStorage.dishFilter(EnumSet.of(TypeDishClient.CHILD, TypeDishClient.VEGAN));
+        filteredFoodListsMap = foodStorage.dishFilter(EnumSet.of(TypeDishClientEnum.CHILD, TypeDishClientEnum.VEGAN));
         System.out.println(filteredFoodListsMap.toString());
-
 
 
     }

@@ -1,15 +1,16 @@
 package it.team1Restaurant.menu;
 import it.team1Restaurant.foods.*;
+
 import java.util.HashMap;
 import java.util.Map;
 
 public class Menu {
     private static String restaurantName = "Team-1 restaurant";
     private String type;
-    private Map<TypeFood, FoodList<IFood>> foodListsMap;
-    private TypeMenu typeMenu;
+    private Map<TypeFoodEnum, FoodList> foodListsMap;
+    private TypeMenuEnum typeMenu;
 
-    public Menu(String type, TypeMenu typeMenu){
+    public Menu(String type, TypeMenuEnum typeMenu){
         this.typeMenu = typeMenu;
         this.type = type;
         this.foodListsMap = initFoodListsMap();
@@ -31,62 +32,57 @@ public class Menu {
         this.type = type;
     }
 
-    public TypeMenu getTypeMenu() {
+    public TypeMenuEnum getTypeMenu() {
         return typeMenu;
     }
 
-    public void setTypeMenu(TypeMenu typeMenu) {
+    public void setTypeMenu(TypeMenuEnum typeMenu) {
         this.typeMenu = typeMenu;
     }
 
-    public Map<TypeFood, FoodList<IFood>> getFoodListsMap() {
+    public Map<TypeFoodEnum, FoodList> getFoodListsMap() {
         return foodListsMap;
     }
 
-    public void setFoodListsMap(Map<TypeFood, FoodList<IFood>> foodListsMap) {
+    public void setFoodListsMap(Map<TypeFoodEnum, FoodList> foodListsMap) {
         this.foodListsMap = foodListsMap;
     }
 
-    public Map<TypeFood, FoodList<IFood>> initFoodListsMap(){
-        Map<TypeFood, FoodList<IFood>> foodListsMap = new HashMap<>();
-        foodListsMap.put(TypeFood.STARTER, new FoodList(TypeFood.STARTER));
-        foodListsMap.put(TypeFood.DRINK, new FoodList(TypeFood.DRINK));
-        foodListsMap.put(TypeFood.FIRST, new FoodList(TypeFood.FIRST));
-        foodListsMap.put(TypeFood.SECOND, new FoodList(TypeFood.SECOND));
-        foodListsMap.put(TypeFood.SIDE_DISH, new FoodList(TypeFood.SIDE_DISH));
-        foodListsMap.put(TypeFood.DESSERT, new FoodList(TypeFood.DESSERT));
-        foodListsMap.put(TypeFood.FRUIT, new FoodList(TypeFood.FRUIT));
+    public Map<TypeFoodEnum, FoodList> initFoodListsMap(){
+        Map<TypeFoodEnum, FoodList> foodListsMap = new HashMap<>();
+        foodListsMap.put(TypeFoodEnum.STARTER, new FoodList(TypeFoodEnum.STARTER));
+        foodListsMap.put(TypeFoodEnum.DRINK, new FoodList(TypeFoodEnum.DRINK));
+        foodListsMap.put(TypeFoodEnum.FIRST, new FoodList(TypeFoodEnum.FIRST));
+        foodListsMap.put(TypeFoodEnum.SECOND, new FoodList(TypeFoodEnum.SECOND));
+        foodListsMap.put(TypeFoodEnum.SIDE_DISH, new FoodList(TypeFoodEnum.SIDE_DISH));
+        foodListsMap.put(TypeFoodEnum.DESSERT, new FoodList(TypeFoodEnum.DESSERT));
+        foodListsMap.put(TypeFoodEnum.FRUIT, new FoodList(TypeFoodEnum.FRUIT));
         return foodListsMap;
     }
 
-    public void addDrink(IFood drink){
-        foodListsMap.get(TypeFood.DRINK).add(drink);
+    public void addDrink(Drink drink){
+        foodListsMap.get(TypeFoodEnum.DRINK).add(drink);
     }
 
-    public void addDrink(TypeFood typeFood, IFood drink){
-        if(!typeFood.equals(TypeFood.DRINK)){
-            typeFood = TypeFood.DRINK;
-        }
-        foodListsMap.get(typeFood).add(drink);
-    }
-
-    public void addDish(TypeFood typeFood, IFood dish){
+    //toDo aggiungere eccezione?
+    public void addDish(TypeFoodEnum typeFood, Dish dish) {
+    //  if(typeFood == TypeFood.DRINK) throw new Exception("Un dish non può essere un Drink");
         foodListsMap.get(typeFood).add(dish);
     }
 
-    public <T extends Food> void addFood(TypeFood typeFood, T food){
+    //toDo mettere dei check per evitare di passare un Drink come Dish e viceversa?
+    public <T extends Food> void addFood (TypeFoodEnum typeFood, T food) throws Exception {
+        if(food instanceof Drink && typeFood != TypeFoodEnum.DRINK) typeFood = TypeFoodEnum.DRINK;
+        else if(!(food instanceof Drink) && typeFood == TypeFoodEnum.DRINK) throw new Exception("Un dish non è un drink!");
         foodListsMap.get(typeFood).add(food);
     }
 
-    public void addFood(TypeFood typeFood, IFood food){
-        foodListsMap.get(typeFood).add(food);
-    }
 
     public String getMenuDetails() {
         String str = String.format("%34s\n\n", restaurantName)
                 + String.format("%24s %s", "MENU", type.toUpperCase());
         str += "\n\n---------------------------------------------------------\n";
-        for (TypeFood typefood : TypeFood.values()) {
+        for (TypeFoodEnum typefood : TypeFoodEnum.values()) {
             FoodList foodList = foodListsMap.get(typefood);
             str += "\n" + typefood.name() + ":\n" + foodList.getFoodListDetails()
                     + "\n---------------------------------------------------------\n";

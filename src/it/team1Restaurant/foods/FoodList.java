@@ -1,28 +1,26 @@
 package it.team1Restaurant.foods;
-import it.team1Restaurant.foods.Food;
-import it.team1Restaurant.foods.TypeFood;
 
 import java.util.ArrayList;
 
 
-public class FoodList<T extends IFood> extends ArrayList<T> {
+public class FoodList<T extends Food> extends ArrayList<T> {
 
-    TypeFood typeFood;
+    TypeFoodEnum typeFood;
 
     public FoodList() {
         super();
     }
 
-    public FoodList(TypeFood typeFood) {
+    public FoodList(TypeFoodEnum typeFood) {
         super();
         this.typeFood = typeFood;
     }
 
-    public TypeFood getTypeFood() {
+    public TypeFoodEnum getTypeFood() {
         return typeFood;
     }
 
-    public void setTypeFood(TypeFood typeFood) {
+    public void setTypeFood(TypeFoodEnum typeFood) {
         this.typeFood = typeFood;
     }
 

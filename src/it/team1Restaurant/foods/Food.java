@@ -1,25 +1,25 @@
 package it.team1Restaurant.foods;
 
-import it.team1Restaurant.menu.TypeDishClient;
+import it.team1Restaurant.menu.TypeDishClientEnum;
 
 import java.util.*;
 
-public abstract class Food implements IFood {
-    private TypeFood type;
-    private EnumSet<TypeDishClient> typeSet;
+public abstract class Food {
+    private TypeFoodEnum type;
+    private EnumSet<TypeDishClientEnum> typeSet;
     private String name;
     private List<Ingredient> ingredientList;
     private double price;
 
-    public Food(TypeFood typeFood, String name, double price) {
+    public Food(TypeFoodEnum typeFood, String name, double price) {
         this.type = typeFood;
         this.name = name;
         this.price = price;
         this.ingredientList = new ArrayList<>();
-        this.typeSet = EnumSet.noneOf(TypeDishClient.class);
+        this.typeSet = EnumSet.noneOf(TypeDishClientEnum.class);
     }
 
-    public Food(TypeFood typeFood, String name, double price, EnumSet<TypeDishClient> typeSet) {
+    public Food(TypeFoodEnum typeFood, String name, double price, EnumSet<TypeDishClientEnum> typeSet) {
         this.type = typeFood;
         this.name = name;
         this.price = price;
@@ -27,15 +27,15 @@ public abstract class Food implements IFood {
         this.typeSet = typeSet;
     }
 
-    public Food(TypeFood typeFood, String name, List<Ingredient> ingredients, double price) {
+    public Food(TypeFoodEnum typeFood, String name, List<Ingredient> ingredients, double price) {
         this.type = typeFood;
         this.name = name;
         this.price = price;
         this.ingredientList = ingredients;
-        this.typeSet = EnumSet.noneOf(TypeDishClient.class);
+        this.typeSet = EnumSet.noneOf(TypeDishClientEnum.class);
     }
 
-    public Food(TypeFood typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeDishClient> typeSet) {
+    public Food(TypeFoodEnum typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeDishClientEnum> typeSet) {
         this.type = typeFood;
         this.name = name;
         this.price = price;
@@ -43,16 +43,16 @@ public abstract class Food implements IFood {
         this.typeSet = typeSet;
     }
 
-    @Override
-    public TypeFood getType() {
+
+    public TypeFoodEnum getType() {
         return type;
     }
 
-    public void setType(TypeFood type) {
+    public void setType(TypeFoodEnum type) {
         this.type = type;
     }
 
-    @Override
+
     public String getName() {
         return name;
     }
@@ -61,7 +61,7 @@ public abstract class Food implements IFood {
         this.name = name;
     }
 
-    @Override
+
     public List<Ingredient> getIngredientList() {
         return ingredientList;
     }
@@ -70,7 +70,7 @@ public abstract class Food implements IFood {
         this.ingredientList = ingredientList;
     }
 
-    @Override
+
     public double getPrice() {
         return price;
     }
@@ -79,17 +79,16 @@ public abstract class Food implements IFood {
         this.price = price;
     }
 
-    @Override
-    public EnumSet<TypeDishClient> getTypeSet() {
-        //TODO
+
+    public EnumSet<TypeDishClientEnum> getTypeSet() {
         return typeSet;
     }
 
-    public void setTypeSet(EnumSet<TypeDishClient> typeSet) {
+    public void setTypeSet(EnumSet<TypeDishClientEnum> typeSet) {
         this.typeSet = typeSet;
     }
 
-    @Override
+
     public String getFoodDetails() {
         String ingredientsPrint = "";
         String ingredientTxt;
@@ -103,7 +102,7 @@ public abstract class Food implements IFood {
         return String.format("%-50s%-5s €\n\t%s %-5s\n", name, String.format("%.2f", price), ingredientTxt, ingredientsPrint);
     }
 
-    public static void dishFilter(Map<String, Food> dishMap, TypeDishClient typeDishRequired) {
+    public static void dishFilter(Map<String, Food> dishMap, TypeDishClientEnum typeDishRequired) {
         for (Food food : dishMap.values()) {
             if (food.typeSet.contains(typeDishRequired)) {
                 System.out.println(food.getName());
