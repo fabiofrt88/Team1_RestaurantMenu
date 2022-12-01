@@ -12,21 +12,38 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 
-// todo javadoc Giovanni
+/**
+ * This class is used to activate an interval of days, among witch is possible make bookings. It is possible to set
+ * a specific not working day or to set some default not working days for each week. It may be only one calendar, so
+ * this class is instantiated as a singleton.
+ */
 public class CalendarBookings {
 
+    /**
+     * This map represents the current activated interval in which is possible make bookings.
+     * The keys are {@link it.team1Restaurant.bookings.calendar.Day} objects and, for each Day, the corresponding value
+     * is a List of {@link it.team1Restaurant.bookings.calendar.Booking} objects.
+     * In the constructor the Map is initialized as a TreeMap, with an assigned comparator that compares the Days only
+     * considering their date. In this way,  is excluded the possibility that could be multiple keys with the same date.
+     * Furthermore the Map results automatically ordered by dates.
+     */
     private Map<Day,List<Booking>> bookingsMap;
 
+    /**
+     * This is a Set that stores the @see<a href="https://docs.oracle.com/javase/8/docs/api/java/time/DayOfWeek.html">DayOfWeek</a>
+     * selected as default not working days.
+     */
     private Set<DayOfWeek> defaultNotWorkingDaysOfWeek;
+
     private static CalendarBookings calendarBookings = new CalendarBookings();
 
     private CalendarBookings(){
         bookingsMap = new TreeMap<>(new Comparator<Day>() {
             @Override
             public int compare(Day day1 , Day day2) {
-                if(day1.getDate().equals(day2.getDate())) return 0;
-                if(day1.getDate().isBefore(day2.getDate())) return -1;
-                else return 1;
+                if(day1.getDate().equals(day2.getDate())) return 0;  // day1 == day2
+                if(day1.getDate().isBefore(day2.getDate())) return -1; // day1 < day2
+                else return 1;        // day1 > day2
             }
         });
         defaultNotWorkingDaysOfWeek = new HashSet<>();
@@ -49,6 +66,11 @@ public class CalendarBookings {
 
     // ---------------- METODO PER CREARE LA DATA IN CUI VIENE EFFETTUATA LA PRENOTAZIONE -----------------
 
+
+    /**
+     *This method is used to create the date on which the booking is made.
+     * @return The date on which the booking is made.
+     */
     private String createBookedAtDate(){
         String pattern = "yyyy-MM-dd HH:mm:ss";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("en", "EN"));
@@ -60,6 +82,13 @@ public class CalendarBookings {
 
     // -------------------- METODO PER SETTARE GIORNO LAVORATIVO / NON LAVORATIVO -----------------------------
 
+
+    /**
+     *
+     * @param date
+     * @param workingDayToSet
+     * @throws Exception
+     */
     public void setWorkingDay (LocalDate date, WorkingDayEnum workingDayToSet) throws Exception {
         Day targetDay = getDayByDate(date);
         if(!checkDateInCalendar(date)) throw new DateOutOfCalendar();
