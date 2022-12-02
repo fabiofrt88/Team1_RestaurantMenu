@@ -6,9 +6,20 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+/**
+ * Questa classe astratta rappresenta food generico.
+ * @author Fabio Frattarelli, Pietro Gallina, Francesco Consiglio, Giovanni Tirone, Dino Petrucci, Christian Carollo
+ * @version 1.0
+ */
 
 public abstract class Food {
+    /**
+     * Il tipo di portata di un food
+     */
     private TypeFood type;
+    /**
+     * Il tipo di
+     */
     private TypeDish typeDish;
     private String name;
 
