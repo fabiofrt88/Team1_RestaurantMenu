@@ -56,6 +56,10 @@ public class FoodList<T extends Food> extends ArrayList<T> {
         }
     }*/
 
+
+    /**
+     * Questo metodo stampa i dettagli del food tramite un ciclo foreach.
+     */
     public String getFoodListDetails () {
         String str = "";
         for(T food : this) {

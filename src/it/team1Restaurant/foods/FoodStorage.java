@@ -42,7 +42,7 @@ public class FoodStorage {
     }
 
     public void addDrink(String name, double price, EnumSet<TypeDishClientEnum> typeSet){
-        foodListsMap.get(TypeFoodEnum.DRINK).add(new Drink(name, price, typeSet));
+        foodListsMap.get(TypeFoodEnum.DRINK).add(new Drink(name, price, typeSet))q;
     }
 
     public void addDrink(String name, List<Ingredient> ingredients, EnumSet<TypeDishClientEnum> typeSet , double price){

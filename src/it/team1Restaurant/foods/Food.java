@@ -13,8 +13,6 @@ import java.util.Map;
  * @version 1.0
  */
 
-
-
 // toDo javaDoc
 public abstract class Food {
 
@@ -33,6 +31,10 @@ public abstract class Food {
 
     private List<Ingredient> ingredientList;
     private double price;
+
+    /**
+     *
+     */
 
     public Food(TypeFoodEnum typeFood, String name, double price) {
         this.type = typeFood;
@@ -111,6 +113,11 @@ public abstract class Food {
         this.typeSet = typeSet;
     }
 
+    /**
+     * Questo metodo viene utilizzato per restituire una stringa contenente gli ingredienti del food.
+     * Nel caso in cui la lista non presenta ingredienti, ritorna una stringa vuota.
+     * Questo metodo verrà richiamato nel metodo {@link it.team1Restaurant.foods.FoodList#getFoodListDetails()}
+     */
 
     public String getFoodDetails() {
         String ingredientsPrint = "";
@@ -125,6 +132,9 @@ public abstract class Food {
         return String.format("%-50s%-5s €\n\t%s %-5s\n", name, String.format("%.2f", price), ingredientTxt, ingredientsPrint);
     }
 
+    /**
+     * Questo metodo filtra i piatti in base alla tipologia{@link it.team1Restaurant.foods.TypeFoodEnum}. >>>>>>>>>>>>>>da controllare link
+     */
 
     // todo javadoc Francesco
     public static void dishFilter(Map<String, Food> dishMap, TypeDishClientEnum typeDishRequired) {

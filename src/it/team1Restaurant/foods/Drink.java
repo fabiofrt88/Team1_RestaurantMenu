@@ -5,7 +5,11 @@ import it.team1Restaurant.menu.TypeDishClientEnum;
 import java.util.EnumSet;
 import java.util.List;
 
-
+/**
+ * Questa classe rappresenta un Drink, è una sottoclasse di food.
+ * @author Fabio Frattarelli, Pietro Gallina, Francesco Consiglio, Giovanni Tirone, Dino Petrucci, Christian Carollo
+ * @version 1.0
+ */
 //todo javadoc
 public class Drink extends Food {
 
