@@ -3,15 +3,34 @@ package it.team1Restaurant.foods;
 import it.team1Restaurant.menu.TypeDishClientEnum;
 
 import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+/**
+ * Questa classe astratta rappresenta food generico.
+ * @author Fabio Frattarelli, Pietro Gallina, Francesco Consiglio, Giovanni Tirone, Dino Petrucci, Christian Carollo
+ * @version 1.0
+ */
+
 
 
 // toDo javaDoc
 public abstract class Food {
 
-    //todo commentare variabili
+    /**
+     * Il tipo di portata di un food
+     */
     private TypeFoodEnum type;
-    private EnumSet<TypeDishClientEnum> typeSet;
+    /**
+     * Il tipo di
+     */
+    private TypeDishClientEnum typeDishClientEnum;
+
     private String name;
+
+    private EnumSet<TypeDishClientEnum> typeSet;
+
     private List<Ingredient> ingredientList;
     private double price;
 
