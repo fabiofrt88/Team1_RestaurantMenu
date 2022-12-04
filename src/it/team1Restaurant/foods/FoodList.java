@@ -1,10 +1,15 @@
 package it.team1Restaurant.foods;
 
+import it.team1Restaurant.menu.TypeDishClientEnum;
+
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
- * Questa classe rappresenta una lista di portate (foods). E' una sottoclasse di {@link java.util.ArrayList}. <br>
+ * Questa classe rappresenta una lista di portate (foods). È una sottoclasse di {@link java.util.ArrayList}. <br>
  * Mediante l'utilizzo dei generics, può contenere soltanto istanze delle sottoclassi della classe {@link it.team1Restaurant.foods.Food}
+ * @param <T> Un'estensione, sottoclasse di {@link it.team1Restaurant.foods.Food}
  * @author Fabio Frattarelli, Pietro Gallina, Francesco Consiglio, Giovanni Tirone, Dino Petrucci, Christian Carollo
  * @version 1.0
  */
@@ -64,6 +69,16 @@ public class FoodList<T extends Food> extends ArrayList<T> {
             break;
         }
         return foodFound;
+    }
+
+    /**
+     * Questo metodo filtra e resituisce un Set generico di foods filtrati per Set di tipologie alimentari
+     * {@link it.team1Restaurant.menu.TypeDishClientEnum} mediante l'utilizzo degli stream
+     * @param typeDishClientSet Il Set di tipologie alimentari {@link it.team1Restaurant.menu.TypeDishClientEnum} di filtraggio
+     * @return Set di foods filtrati per Set di tipologie alimentari {@link it.team1Restaurant.menu.TypeDishClientEnum}
+     */
+    public Set<T> getFoodsByTypeDishClient (Set<TypeDishClientEnum> typeDishClientSet) {
+        return this.stream().filter(food -> food.getTypeSet().containsAll(typeDishClientSet)).collect(Collectors.toSet());
     }
 
     /*
