@@ -113,6 +113,12 @@ public class FoodStorage {
         }
         this.printFilteredFoodListsMapDetails(filteredFoodListsMap);
         return filteredFoodListsMap;
+        /*
+        Le righe da 104 a 113 si possono sostituire con qualcosa del genere:
+         Set<Food> foodWithRequirements = foodList.getFoodsByTypeDishClient(typeDishSetRequired);
+         filteredFoodListsMap.get(typefood).addAll(foodWithRequirements);
+        */
+
     }
 
     public Map<TypeFoodEnum, FoodList> dishFilterVeg () {

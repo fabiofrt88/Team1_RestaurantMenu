@@ -1,9 +1,16 @@
 package it.team1Restaurant.foods;
 
+import it.team1Restaurant.menu.TypeDishClientEnum;
+
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 
-//todo javadoc Giovanni
+/**
+ *This class is an ArraysList that may contain any extension of {@link it.team1Restaurant.foods.Food}.
+ * @param <T> An extension of {@link it.team1Restaurant.foods.Food}.
+ */
 public class FoodList<T extends Food> extends ArrayList<T> {
 
     TypeFoodEnum typeFood;
@@ -35,6 +42,10 @@ public class FoodList<T extends Food> extends ArrayList<T> {
         return foodFound;
     }
 
+
+    public Set<T> getFoodsByTypeDishClient (Set<TypeDishClientEnum> typeDishClientSet) {
+        return this.stream().filter(food -> food.getTypeSet().containsAll(typeDishClientSet)).collect(Collectors.toSet());
+    }
 
     /*
     public Set<Dish> getDishesWithAllergen (Allergen allergen ) {
