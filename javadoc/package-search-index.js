@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"it.team1Restaurant.bookings.calendar"},{"l":"it.team1Restaurant.bookings.exceptions"},{"l":"it.team1Restaurant.bookings.tests"},{"l":"it.team1Restaurant.foods"},{"l":"it.team1Restaurant.menu"},{"l":"it.team1Restaurant.user"},{"l":"test.it.bookings"}];updateSearchResults();
