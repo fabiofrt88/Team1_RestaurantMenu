@@ -12,6 +12,14 @@ import static it.team1Restaurant.bookings.calendar.Booking.checkBookingInfo;
 import static it.team1Restaurant.foods.Food.dishFilter;
 import static it.team1Restaurant.menu.TypeMenuEnum.*;
 
+/**
+ * Questa classe viene utilizzata per testare la creazione della mappa di storage con le liste delle portate
+ * e la creazione dei relativi menu differenziati per tipologia mediante delle associazioni has-a di aggregazione
+ * tra le classi {@link it.team1Restaurant.foods.Food} e {@link it.team1Restaurant.menu.Menu},
+ * a partire dalla classe di storage {@link it.team1Restaurant.foods.FoodStorage}, test dei relativi metodi
+ * @author Fabio Frattarelli, Pietro Gallina, Francesco Consiglio, Giovanni Tirone, Dino Petrucci, Christian Carollo
+ * @version 1.0
+ */
 public class TestMenu {
 
     /*public static void test(EnumMap<TypeMenu, Menu> menuMap){
@@ -34,6 +42,11 @@ public class TestMenu {
                 break;
         }*/
 
+    /**
+     * Metodo main, rappresenta l'entrypoint di esecuzione della classe {@link it.team1Restaurant.menu.TestMenu}
+     * @param args Array di argomenti che possono essere digitati nel programma da terminale
+     * @throws Exception
+     */
     public static void main(String[] args) {
 
         FoodStorage foodStorage = FoodStorage.getInstance();
@@ -260,7 +273,6 @@ public class TestMenu {
         System.out.println("\n----------------------DISH FILTER------------------------\n");
         filteredFoodListsMap = foodStorage.dishFilter(EnumSet.of(TypeDishClientEnum.CHILD, TypeDishClientEnum.VEGAN));
         System.out.println(filteredFoodListsMap.toString());
-
 
     }
 }

@@ -12,20 +12,24 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 
+/**
+ * Questa classe di unit testing con JUnit viene utilizzata per testare il sistema di prenotazione del ristorante
+ * e la creazione di un relativo calendario delle prenotazioni dei clienti con gestione delle eccezioni,
+ * varie situazioni di errore, gestione e set dei giorni lavorativi e non lavorativi
+ * @author Giovanni Tirone
+ * @version 1.0
+ */
 public class TestBookingsMap {
 
     private CalendarBookings calendarBookings = CalendarBookings.getInstance();
 
     private Map <Day,List<Booking>> bookingsMap = calendarBookings.getBookingsMap();
 
-
     Client client1 = new Client("Mario","Rossi");
-
 
     public static LocalDate getDateFromNow (int numberOfDaysToAdd){
         return LocalDate.now().plusDays(numberOfDaysToAdd);
     }
-
 
     @Test
     public void addTwoDaysWithSameDateInBookingsMap () {
@@ -33,9 +37,9 @@ public class TestBookingsMap {
         System.out.println("workingday" + nowWorking);
         Day nowNotWorking = new Day(LocalDate.now(), WorkingDayEnum.NOT_WORKING);
         System.out.println("notworkingday" + nowNotWorking);
-        Booking booking1 = new Booking (new Client(), "2222-11-11 23:00",LocalDate.now(), LocalTime.now());
+        Booking booking1 = new Booking (new Client(), "2222-11-11 23:00", LocalDate.now(), LocalTime.now());
         System.out.println("booking1:" + booking1);
-        Booking booking2 = new Booking (new Client(), "5555-11-11 23:00",LocalDate.now(), LocalTime.now());
+        Booking booking2 = new Booking (new Client(), "5555-11-11 23:00", LocalDate.now(), LocalTime.now());
         System.out.println("booking1:" + booking2);
         bookingsMap.put(nowWorking, new ArrayList<>(Arrays.asList(booking1)));
         System.out.println("Map keys after first adding: " + bookingsMap.keySet());
@@ -56,7 +60,7 @@ public class TestBookingsMap {
 
     }
 
-    //toDo test if filter creates a new object or not
+    //TODO test if filter creates a new object or not
 
     @Test // create an interval over just activated interval
     public void testCreateBookingsInterval ( ) throws Exception {

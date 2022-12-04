@@ -11,12 +11,10 @@ import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.stream.Collectors;
 
-
-// todo javadoc Giovanni
+//TODO add javadoc Giovanni
 public class CalendarBookings {
 
     private Map<Day,List<Booking>> bookingsMap;
-
     private Set<DayOfWeek> defaultNotWorkingDaysOfWeek;
     private static CalendarBookings calendarBookings = new CalendarBookings();
 

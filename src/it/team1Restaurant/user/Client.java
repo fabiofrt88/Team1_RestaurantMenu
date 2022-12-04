@@ -4,31 +4,80 @@ import it.team1Restaurant.menu.TypeDishClientEnum;
 
 import java.util.EnumSet;
 
-
-//todo javadoc Francesco
+/**
+ * Questa classe rappresenta un cliente del ristorante.
+ * @author Fabio Frattarelli, Pietro Gallina, Francesco Consiglio, Giovanni Tirone, Dino Petrucci, Christian Carollo
+ * @version 1.0
+ */
 public class Client {
 
+    /**
+     * EnumSet delle tipologie alimentari del cliente. Vedi enum {@link it.team1Restaurant.menu.TypeDishClientEnum}
+     */
     private EnumSet<TypeDishClientEnum> typeDishClient;
+
+    /**
+     * Il nome del cliente.
+     */
     private String name;
+
+    /**
+     * Il cognome del cliente.
+     */
     private String surname;
+
+    /**
+     * L'indirizzo email del cliente.
+     */
     private String email;
+
+    /**
+     * Il numero di telefono del cliente.
+     */
     private String phoneNumber;
+
+    /**
+     * Flag booleana che indica se il cliente è un adulto oppure un bambino.
+     */
     private boolean isChild;
     //private List<Booking> bookingList = new ArrayList<>();
 
+    /**
+     * Metodo costruttore di default non parametrico della classe {@link it.team1Restaurant.user.Client}
+     */
     public Client () {} ;
 
+    /**
+     * Metodo costruttore della classe {@link it.team1Restaurant.user.Client},
+     * setta la variabile d'istanza booleana isChild con il relativo parametro passato nel costruttore
+     * @param isChild La flag booleana che indica se il cliente è un adulto oppure un bambino.
+     */
     public Client (boolean isChild){
         this.isChild = isChild;
     }
 
-    //da chiedere se settare email e phone number come stringhe vuote
+    /**
+     * Metodo costruttore della classe {@link it.team1Restaurant.user.Client},
+     * setta le variabili d'istanza con i relativi parametri passati nel costruttore,
+     * EnumSet delle tipologie alimentari inizializzato di default con la tipologia {@link it.team1Restaurant.menu.TypeDishClientEnum#GENERIC}
+     * @param name Il nome del cliente
+     * @param surname Il cognome del cliente
+     */
     public Client(String name, String surname) {
         this.name = name;
         this.surname = surname;
         this.typeDishClient = EnumSet.of(TypeDishClientEnum.GENERIC);
     }
 
+    /**
+     * Metodo costruttore della classe {@link it.team1Restaurant.user.Client},
+     * setta le variabili d'istanza con i relativi parametri passati nel costruttore,
+     * @param typeDishClient EnumSet delle tipologie alimentari del cliente
+     * @param name Il nome del cliente
+     * @param surname Il cognome del cliente
+     * @param email L'email del cliente
+     * @param phoneNumber Il numero di telefono del cliente
+     */
     public Client(EnumSet<TypeDishClientEnum> typeDishClient, String name, String surname, String email, String phoneNumber) {
         this.typeDishClient = typeDishClient;
         this.name = name;
@@ -37,50 +86,98 @@ public class Client {
         this.phoneNumber = phoneNumber;
     }
 
+    /**
+     * Metodo getter che restituisce il nome del cliente.
+     * @return Nome del cliente.
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Metodo setter che setta il nome del cliente.
+     * @param name Il nome del cliente.
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Metodo getter che restituisce il cognome del cliente.
+     * @return Cognome del cliente.
+     */
     public String getSurname() {
         return surname;
     }
 
+    /**
+     * Metodo setter che setta il cognome del cliente.
+     * @param surname Il cognome del cliente.
+     */
     public void setSurname(String surname) {
         this.surname = surname;
     }
 
+    /**
+     * Metodo getter che restituisce l'indirizzo email cliente.
+     * @return Indirizzo email del cliente.
+     */
     public String getEmail() {
         return email;
     }
 
+    /**
+     * Metodo setter che setta l'indirizzo email del cliente.
+     * @param email L'indirizzo email del cliente.
+     */
     public void setEmail(String email) {
         this.email = email;
     }
 
+    /**
+     * Metodo getter che restituisce il numero di telefono cliente.
+     * @return Numero di telefono del cliente.
+     */
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
+    /**
+     * Metodo setter che setta il numero di telefono del cliente.
+     * @param phoneNumber Il numero di telefono del cliente.
+     */
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 
+    /**
+     * Metodo getter che restituisce la flag booleana isChild.
+     * @return La flag booleana isChild.
+     */
     public boolean isChild() {
         return isChild;
     }
 
-    public void setChild(boolean child) {
-        isChild = child;
+    /**
+     * Metodo setter che setta la flag booleana isChild.
+     * @param isChild La flag booleana isChild.
+     */
+    public void setChild(boolean isChild) {
+        this.isChild = isChild;
     }
 
+    /**
+     * Metodo getter che restituisce l'EnumSet delle tipologie alimentari del cliente.
+     * @return EnumSet delle tipologie alimentari del cliente.
+     */
     public EnumSet<TypeDishClientEnum> getTypeDishClient() {
         return typeDishClient;
     }
 
+    /**
+     * Metodo setter che setta l'EnumSet delle tipologie alimentari del cliente.
+     * @param typeDishClient l'EnumSet delle tipologie alimentari del cliente.
+     */
     public void setTypeDishClient(EnumSet<TypeDishClientEnum> typeDishClient) {
         this.typeDishClient = typeDishClient;
     }
@@ -101,6 +198,9 @@ public class Client {
         }
     }*/
 
+    /**
+     * Questo metodo stampa i dati del cliente.
+     */
     public void printDetails(){
         System.out.println("User details" +
                 "\nType: " + typeDishClient.toString() +
@@ -110,6 +210,10 @@ public class Client {
                 "\nPhone Number: " + phoneNumber);
     }
 
+    /**
+     * Override del metodo {@link Object#toString()}, restituisce i dati del cliente.
+     * @return Stringa con i dati del cliente.
+     */
     @Override
     public String toString() {
         return "Client{" +
