@@ -69,6 +69,17 @@ public class CalendarBookingsClient {
     }
 
     public Booking getBookingByBookingNumber(Integer bookingNumber) throws Exception {
+        for(List<Booking> currentBookingList : bookingsMap.values()){
+            for(Booking currentBooking : currentBookingList){
+                if(currentBooking.getBookingNumber() == bookingNumber){
+                    return currentBooking;
+                }
+            }
+        }
+        throw new Exception("Booking not found for this booking number");
+    }
+
+    /*public Booking getBookingByBookingNumber(Integer bookingNumber) throws Exception {
         Booking bookingFound = null;
         mapLoop:
         for(List<Booking> currentBookingList : bookingsMap.values()){
@@ -85,8 +96,7 @@ public class CalendarBookingsClient {
         else{
             return bookingFound;
         }
-
-    }
+    }*/
 
     public void printCalendarBookingDetails() {
         for(Day day : bookingsMap.keySet()){
