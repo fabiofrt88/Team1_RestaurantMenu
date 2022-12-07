@@ -31,6 +31,7 @@ public class TestBooking {
 
         Client client = new Client(EnumSet.of(TypeDishClientEnum.GENERIC), "Pippo","Franco","pippofranco@gmail.com", "389-5264589");
         calendarBookings.book(client, List.of(client), getDateFromNow(4), LocalTime.of(12,30));
+        calendarBookings.book(client, List.of(client), getDateFromNow(4), LocalTime.of(15,30));
 
         Client client2 = new Client(EnumSet.of(TypeDishClientEnum.VEGAN), "Mario","Rossi","mariorossio@gmail.com", "389-6578904");
         calendarBookings.book(client2, List.of(client2) , getDateFromNow(6), LocalTime.of(13,00));
@@ -38,6 +39,15 @@ public class TestBooking {
         calendarBookings.book(client, List.of(client), getDateFromNow(6), LocalTime.of(14,44));
 
         calendarBookings.printDetails();
+
+        System.out.println("------------------------LIST BOOKINGS CLIENT----------------------------\n");
+        client.printBookingsDetails();
+
+        System.out.println("\n----------------------CALENDAR BOOKINGS CLIENT------------------------\n");
+        client.printCalendarBookingDetails();
+
+        System.out.println("\n----------------------GET BOOKING BY BOOKING NUMBER-------------------\n");
+        System.out.println(client.getCalendarBookingsClient().getBookingByBookingNumber(1).getBookingDetails());
 
     }
 

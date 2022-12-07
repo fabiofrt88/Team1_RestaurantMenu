@@ -16,15 +16,12 @@ import java.util.Map;
  */
 public abstract class Food {
 
+    private final Integer id;
+
     /**
      * La tipologia di portata del food. Vedi enum {@link it.team1Restaurant.foods.TypeFoodEnum}
      */
     private TypeFoodEnum type;
-
-    /**
-     * La categoria alimentare del food. Vedi enum {@link it.team1Restaurant.menu.TypeDishClientEnum}
-     */
-    private TypeDishClientEnum typeDishClientEnum;
 
     /**
      * Il nome del food.
@@ -32,7 +29,7 @@ public abstract class Food {
     private String name;
 
     /**
-     * EnumSet delle categorie del food.
+     * EnumSet delle categorie del food. Vedi enum {@link it.team1Restaurant.menu.TypeDishClientEnum}
      */
     private EnumSet<TypeDishClientEnum> typeSet;
 
@@ -46,6 +43,8 @@ public abstract class Food {
      */
     private double price;
 
+    private static Integer foodNumbers = 0;
+
     /**
      * Metodo costruttore della classe {@link it.team1Restaurant.foods.Food}, setta le variabili d'istanza della classe
      * con i parametri passati nel costruttore, vengono istanziate la lista degli ingredienti e l'EnumSet delle categorie,
@@ -55,6 +54,7 @@ public abstract class Food {
      * @param price Il prezzo del food
      */
     public Food(TypeFoodEnum typeFood, String name, double price) {
+        this.id = incrementFoodNumbers();
         this.type = typeFood;
         this.name = name;
         this.price = price;
@@ -71,6 +71,7 @@ public abstract class Food {
      * @param typeSet L'EnumSet delle categorie del food
      */
     public Food(TypeFoodEnum typeFood, String name, double price, EnumSet<TypeDishClientEnum> typeSet) {
+        this.id = incrementFoodNumbers();
         this.type = typeFood;
         this.name = name;
         this.price = price;
@@ -87,6 +88,7 @@ public abstract class Food {
      * @param price Il prezzo del food
      */
     public Food(TypeFoodEnum typeFood, String name, List<Ingredient> ingredients, double price) {
+        this.id = incrementFoodNumbers();
         this.type = typeFood;
         this.name = name;
         this.price = price;
@@ -104,11 +106,16 @@ public abstract class Food {
      * @param typeSet L'EnumSet delle categorie del food
      */
     public Food(TypeFoodEnum typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeDishClientEnum> typeSet) {
+        this.id = incrementFoodNumbers();
         this.type = typeFood;
         this.name = name;
         this.price = price;
         this.ingredientList = ingredients;
         this.typeSet = typeSet;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     /**
@@ -191,6 +198,18 @@ public abstract class Food {
         this.typeSet = typeSet;
     }
 
+    public static Integer getFoodNumbers() {
+        return foodNumbers;
+    }
+
+    public static void setFoodNumbers(Integer foodNumbers) {
+        Food.foodNumbers = foodNumbers;
+    }
+
+    public static int incrementFoodNumbers(){
+        return ++foodNumbers;
+    }
+
     /**
      * Questo metodo viene utilizzato per restituire una stringa formattata contenente i dati del food. <br>
      * Nel caso in cui la lista non presenta ingredienti, la stringa degli ingredienti sarà vuota. <br>
@@ -231,7 +250,8 @@ public abstract class Food {
     @Override
     public String toString() {
         return "{" +
-                "type=" + type +
+                "id=" + id +
+                ", type=" + type +
                 ", typeSet=" + typeSet +
                 ", name='" + name + '\'' +
                 ", ingredientList=" + ingredientList +

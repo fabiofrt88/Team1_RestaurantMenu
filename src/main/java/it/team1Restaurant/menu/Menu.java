@@ -17,6 +17,8 @@ import java.util.Map;
  */
 public class Menu {
 
+    private final Integer id;
+
     /**
      * Il nome del ristorante (inizializzato di default)
      */
@@ -39,15 +41,22 @@ public class Menu {
      */
     private TypeMenuEnum typeMenu;
 
+    private static Integer menuNumbers = 0;
+
     /**
      * Metodo costruttore della classe {@link Menu}, setta le variabili d'istanza
      * con i relativi parametri passati nel costruttore, viene istanziata la mappa di tutte le portate
      * e le relative liste di foods (inizialmente vuote) mediante il metodo {@link Menu#initFoodListsMap()}
      */
     public Menu(String type, TypeMenuEnum typeMenu){
+        this.id = incrementMenuNumbers();
         this.typeMenu = typeMenu;
         this.type = type;
         this.foodListsMap = initFoodListsMap();
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     /**
@@ -112,6 +121,18 @@ public class Menu {
      */
     public void setFoodListsMap(Map<TypeFoodEnum, FoodList> foodListsMap) {
         this.foodListsMap = foodListsMap;
+    }
+
+    public static Integer getMenuNumbers() {
+        return menuNumbers;
+    }
+
+    public static void setMenuNumbers(Integer menuNumbers) {
+        Menu.menuNumbers = menuNumbers;
+    }
+
+    public static int incrementMenuNumbers(){
+        return ++menuNumbers;
     }
 
     /**
@@ -191,4 +212,13 @@ public class Menu {
         return str;
     }
 
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                ", foodListsMap=" + foodListsMap +
+                ", typeMenu=" + typeMenu +
+                '}';
+    }
 }
