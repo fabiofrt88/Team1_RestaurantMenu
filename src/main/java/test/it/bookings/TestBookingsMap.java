@@ -108,7 +108,8 @@ public class TestBookingsMap {
     }
 
 
-    @Test // add default not working day of week on a non empty calendar
+     // add default not working day of week on a non empty calendar
+    @Test
     public void testAddDefaultNotWorkingDayOfWeek_02 ( ) throws Exception {
         calendarBookings.createBookingsIntervalFromStartDate(LocalDate.of(2022,11,21),12);
         calendarBookings.book(client1,List.of(client1), LocalDate.of(2022,11,23),LocalTime.of(12,00));

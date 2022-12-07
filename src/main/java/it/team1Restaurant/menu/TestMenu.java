@@ -59,6 +59,8 @@ public class TestMenu {
         foodStorage.addDrink("Birra", 6);
         foodStorage.addDrink("Coca Cola", 3, EnumSet.of(TypeDishClientEnum.CHILD));
         foodStorage.addDrink("Fanta", 3, EnumSet.of(TypeDishClientEnum.CHILD));
+        foodStorage.addDrink("Birra Lager senza glutine",7,EnumSet.of(TypeDishClientEnum.CELIAC));
+        foodStorage.addDrink("Cocco drink",6.5,EnumSet.of(TypeDishClientEnum.CELIAC));
 
         //create the firsts
 
@@ -82,6 +84,10 @@ public class TestMenu {
                 new Ingredient("Pecorino Romano"),new Ingredient("Pepe Nero in Grani"))), 13,EnumSet.of(TypeDishClientEnum.VEGETARIAN));
         foodStorage.addDish(TypeFoodEnum.FIRST,"Crema di Zucca", new ArrayList<>(Arrays.asList(
                 new Ingredient("Brodo Vegetale"),new Ingredient("Cannella in Polvere"))), 10,EnumSet.of(TypeDishClientEnum.VEGETARIAN));
+        foodStorage.addDish(TypeFoodEnum.FIRST,"Pasta funghi porcini e rucola senza glutine", new ArrayList<>(Arrays.asList(
+                new Ingredient("Pasta Senza Glutine"),new Ingredient("Funghi Porcini"))), 13.5,EnumSet.of(TypeDishClientEnum.CELIAC));
+        foodStorage.addDish(TypeFoodEnum.FIRST,"Lasagne ai carciofi senza glutine", new ArrayList<>(Arrays.asList(
+                new Ingredient("Pasta fresca per lasagne senza glutine"),new Ingredient("Besciamella senza glutine"))), 11.5,EnumSet.of(TypeDishClientEnum.CELIAC));
 
         //create the seconds
 
@@ -106,6 +112,10 @@ public class TestMenu {
                 new ArrayList<>(Arrays.asList(new Ingredient("Melanzane ovali nere"), new Ingredient("Parmigiano Reggiano DOP"))),15, EnumSet.of(TypeDishClientEnum.VEGETARIAN));
         foodStorage.addDish(TypeFoodEnum.SECOND, "Polpette di verdure",
                 new ArrayList<>(Arrays.asList(new Ingredient("Patate"), new Ingredient("Pisellini"))),15, EnumSet.of(TypeDishClientEnum.VEGETARIAN));
+        foodStorage.addDish(TypeFoodEnum.SECOND, "Agnello alla lucana senza glutine",
+                new ArrayList<>(Arrays.asList(new Ingredient("Patate"), new Ingredient("Pomodorini"))),18.5, EnumSet.of(TypeDishClientEnum.CELIAC));
+        foodStorage.addDish(TypeFoodEnum.SECOND, "Arista al limone",
+                new ArrayList<>(Arrays.asList(new Ingredient("Limoni"), new Ingredient("Vino bianco"))),20, EnumSet.of(TypeDishClientEnum.CELIAC));
 
         //create the desserts
 
@@ -129,6 +139,10 @@ public class TestMenu {
                 new Ingredient("Savoiardi "))), 10, EnumSet.of(TypeDishClientEnum.VEGETARIAN));
         foodStorage.addDish(TypeFoodEnum.DESSERT, "Torta Tenerina", new ArrayList<>(Arrays.asList(new Ingredient("Cioccolato fondente"),
                 new Ingredient("Farina 00  "))), 9, EnumSet.of(TypeDishClientEnum.VEGETARIAN));
+        foodStorage.addDish(TypeFoodEnum.DESSERT, "Torta caprese", new ArrayList<>(Arrays.asList(new Ingredient("Mandorle"),
+                new Ingredient("Farina di riso  "))), 9, EnumSet.of(TypeDishClientEnum.CELIAC));
+        foodStorage.addDish(TypeFoodEnum.DESSERT, "Migliaccio napoletano", new ArrayList<>(Arrays.asList(new Ingredient("Semolino"),
+                new Ingredient("Sfogliatelle "))), 9, EnumSet.of(TypeDishClientEnum.CELIAC));
 
 
         //create the meat menu
@@ -246,7 +260,7 @@ public class TestMenu {
         vegetarianMenu.addDish(TypeFoodEnum.FIRST, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.FIRST).get(8));
         vegetarianMenu.addDish(TypeFoodEnum.FIRST, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.FIRST).get(9));
 
-        //add desserts to vegetarian menu
+        //add seconds to vegetarian menu
 
         vegetarianMenu.addDish(TypeFoodEnum.SECOND, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.SECOND).get(8));
         vegetarianMenu.addDish(TypeFoodEnum.SECOND, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.SECOND).get(9));
@@ -258,11 +272,40 @@ public class TestMenu {
 
         //--------------------------------------------------------------------------------------------------------------
 
+        // create to menu celiac
+
+        Menu celiacMenu = new Menu("Celiaco", CELIAC);
+
+        // add to drinks to celiacMenu
+
+        celiacMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFoodEnum.DRINK).get(0));
+        celiacMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFoodEnum.DRINK).get(6));
+        celiacMenu.addDrink((Drink) foodStorage.getFoodListsMap().get(TypeFoodEnum.DRINK).get(7));
+
+        // add firts to celiacMenu
+
+        celiacMenu.addDish(TypeFoodEnum.FIRST, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.FIRST).get(10));
+        celiacMenu.addDish(TypeFoodEnum.FIRST, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.FIRST).get(11));
+
+        // add seconds to celiacMenu
+
+        celiacMenu.addDish(TypeFoodEnum.SECOND, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.SECOND).get(10));
+        celiacMenu.addDish(TypeFoodEnum.SECOND, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.SECOND).get(11));
+
+        // add desserts to celiacMenu
+
+        celiacMenu.addDish(TypeFoodEnum.DESSERT, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.DESSERT).get(8));
+        celiacMenu.addDish(TypeFoodEnum.DESSERT, (Dish) foodStorage.getFoodListsMap().get(TypeFoodEnum.DESSERT).get(9));
+
+
+
         EnumMap<TypeMenuEnum, Menu> menuMap = new EnumMap<>(TypeMenuEnum.class);
         menuMap.put(MEAT, meatMenu);
         menuMap.put(FISH, fishMenu);
         menuMap.put(VEGAN, veganMenu);
         menuMap.put(CHILD, childMenu);
+        menuMap.put(CELIAC, celiacMenu);
+        menuMap.put(VEGETARIAN, vegetarianMenu);
 
         /*Scanner scanner = new Scanner(System.in);
         String exit = "S";

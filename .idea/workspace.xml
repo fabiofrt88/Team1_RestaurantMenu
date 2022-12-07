@@ -4,8 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e26885f8-4eec-486d-a28c-cd9a679d6e83" name="Changes" comment="Aggiunzione nuovi Dish per Vegetariani e creazione VegetarianMenu">
+    <list default="true" id="e26885f8-4eec-486d-a28c-cd9a679d6e83" name="Changes" comment="Fix all Test class">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_beust_jcommander_1_82.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_3_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_3_8_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_36.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_testng_testng_7_6_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_webjars_jquery_3_6_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Team1_RestaurantMenu.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Team1_RestaurantMenu.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/menu/TestMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/menu/TestMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/it/bookings/TestBookingsMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/it/bookings/TestBookingsMap.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +61,7 @@
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "last_opened_file_path": "C:/Users/Fabio/Desktop/Develhope/Esercizi/Git/Team1_RestaurantMenu",
     "project.structure.last.edited": "Project",
