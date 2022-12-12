@@ -1,8 +1,12 @@
 package it.team1Restaurant.user;
 
+import it.team1Restaurant.bookings.calendar.Booking;
+import it.team1Restaurant.bookings.calendar.CalendarBookingsClient;
 import it.team1Restaurant.menu.TypeDishClientEnum;
 
+import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.List;
 
 /**
  * Questa classe rappresenta un cliente del ristorante.
@@ -10,6 +14,8 @@ import java.util.EnumSet;
  * @version 1.0
  */
 public class Client {
+
+    private final Integer id;
 
     /**
      * EnumSet delle tipologie alimentari del cliente. Vedi enum {@link it.team1Restaurant.menu.TypeDishClientEnum}
@@ -40,12 +46,19 @@ public class Client {
      * Flag booleana che indica se il cliente è un adulto oppure un bambino.
      */
     private boolean isChild;
-    //private List<Booking> bookingList = new ArrayList<>();
+
+    private List<Booking> bookingList = new ArrayList<>();
+
+    private CalendarBookingsClient calendarBookingsClient = new CalendarBookingsClient();
+
+    private static Integer clientNumbers = 0;
 
     /**
      * Metodo costruttore di default non parametrico della classe {@link it.team1Restaurant.user.Client}
      */
-    public Client () {} ;
+    public Client () {
+        this.id = incrementClientNumbers();
+    }
 
     /**
      * Metodo costruttore della classe {@link it.team1Restaurant.user.Client},
@@ -53,6 +66,7 @@ public class Client {
      * @param isChild La flag booleana che indica se il cliente è un adulto oppure un bambino.
      */
     public Client (boolean isChild){
+        this.id = incrementClientNumbers();
         this.isChild = isChild;
     }
 
@@ -64,6 +78,7 @@ public class Client {
      * @param surname Il cognome del cliente
      */
     public Client(String name, String surname) {
+        this.id = incrementClientNumbers();
         this.name = name;
         this.surname = surname;
         this.typeDishClient = EnumSet.of(TypeDishClientEnum.GENERIC);
@@ -79,11 +94,16 @@ public class Client {
      * @param phoneNumber Il numero di telefono del cliente
      */
     public Client(EnumSet<TypeDishClientEnum> typeDishClient, String name, String surname, String email, String phoneNumber) {
+        this.id = incrementClientNumbers();
         this.typeDishClient = typeDishClient;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.phoneNumber = phoneNumber;
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     /**
@@ -182,21 +202,54 @@ public class Client {
         this.typeDishClient = typeDishClient;
     }
 
-    /*public List<Booking> getBookingList() {
+    public List<Booking> getBookingList() {
         return bookingList;
     }
 
     public void setBookingList(List<Booking> bookingList) {
         this.bookingList = bookingList;
-    }*/
+    }
 
+    public CalendarBookingsClient getCalendarBookingsClient() {
+        return calendarBookingsClient;
+    }
 
-    /*public void printBookingsDetails(){
+    public void setCalendarBookingsClient(CalendarBookingsClient calendarBookingsClient) {
+        this.calendarBookingsClient = calendarBookingsClient;
+    }
+
+    public static Integer getClientNumbers() {
+        return clientNumbers;
+    }
+
+    public static void setClientNumbers(Integer clientNumbers) {
+        Client.clientNumbers = clientNumbers;
+    }
+
+    public static int incrementClientNumbers(){
+        return ++clientNumbers;
+    }
+
+    public void printBookingsDetails(){
         System.out.printf("Bookings of %s %s\n\n", this.name, this.surname);
-        for(Booking book : bookingList){
-            System.out.println(book.getBookingDetails() + "\n");
+        for(Booking booking : bookingList){
+            System.out.println(booking.getBookingDetails() + "\n");
         }
-    }*/
+    }
+
+    public void printCalendarBookingDetails(){
+        System.out.printf("Bookings of %s %s\n\n", this.name, this.surname);
+        calendarBookingsClient.printCalendarBookingDetails();
+    }
+
+    public void addBooking(Booking booking){
+        if(!this.bookingList.contains(booking)){
+            this.bookingList.add(booking);
+        }
+        else{
+            System.out.println("\nPrenotazione già inserita\n");
+        }
+    }
 
     /**
      * Questo metodo stampa i dati del cliente.
@@ -217,8 +270,9 @@ public class Client {
     @Override
     public String toString() {
         return "Client{" +
-                "Type: " + typeDishClient.toString() + '\'' +
-                "name: " + name + '\'' +
+                "id: " + id + '\'' +
+                ", type: " + typeDishClient.toString() + '\'' +
+                ", name: " + name + '\'' +
                 ", surname: " + surname + '\'' +
                 ", email: " + email + '\'' +
                 ", phoneNumber: " + phoneNumber + '\'' +

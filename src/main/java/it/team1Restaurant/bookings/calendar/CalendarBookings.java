@@ -136,12 +136,13 @@ public class CalendarBookings {
     public void book (Client client, List<Client> clientList, LocalDate date, LocalTime time) throws Exception {
         //Mettere un controllo su numberOfAdults e numberChildren ???
 
-        Booking book = new Booking(client,clientList,createBookedAtDate(), date, time);
+        Booking booking = new Booking(client,clientList,createBookedAtDate(), date, time);
 
-        //client.bookingList.add(book);
-        addBooking(book);
+        addBooking(booking);
+        client.addBooking(booking);
+        client.getCalendarBookingsClient().addBooking(booking);
         System.out.println("La prenotazione per " + client.getName() + " e' stata effettuata con successo: " +
-                            "\n" + book.getBookingDetails());
+                            "\n" + booking.getBookingDetails());
     }
 
       /*DA IMPLEMENTARE
@@ -338,7 +339,7 @@ public class CalendarBookings {
         String str = "";
         for(List<Booking> dayBookingList : bookingsMap.values()){
             String dayStr = "";
-            for(Booking booking:dayBookingList){
+            for(Booking booking : dayBookingList){
                 dayStr += booking.getBookingDetails();
             }
             str += dayStr;
@@ -368,7 +369,6 @@ public class CalendarBookings {
                     break;
             }
         }
-        System.out.println("--------------------------------------------");
     }
 
 }
