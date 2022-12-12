@@ -1,0 +1,78 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -6,7 +6,30 @@
+   <component name="ChangeListManager">
+     <list default="true" id="e26885f8-4eec-486d-a28c-cd9a679d6e83" name="Changes" comment="Fix all Test class">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/bookings/calendar/CalendarBookingsClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/bookings/calendar/CalendarBookingsClient.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/NewGroupProject/it/team1Restaurant/bookings/calendar/Booking.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/NewGroupProject/it/team1Restaurant/bookings/calendar/CalendarBookings$1.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/NewGroupProject/it/team1Restaurant/bookings/calendar/CalendarBookings$2.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/NewGroupProject/it/team1Restaurant/bookings/calendar/CalendarBookings.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/NewGroupProject/it/team1Restaurant/bookings/calendar/Day.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/NewGroupProject/it/team1Restaurant/bookings/calendar/WorkingDayEnum.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/NewGroupProject/it/team1Restaurant/bookings/exceptions/DateOutOfCalendar.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/NewGroupProject/it/team1Restaurant/bookings/exceptions/NotEmptyBookingsList.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/NewGroupProject/it/team1Restaurant/bookings/tests/TestBooking.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/NewGroupProject/it/team1Restaurant/bookings/tests/TestTreeMaps.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/NewGroupProject/it/team1Restaurant/foods/Dish.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/NewGroupProject/it/team1Restaurant/foods/Drink.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/NewGroupProject/it/team1Restaurant/foods/Food.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/NewGroupProject/it/team1Restaurant/foods/FoodList.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/NewGroupProject/it/team1Restaurant/foods/FoodStorage.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/NewGroupProject/it/team1Restaurant/foods/Ingredient.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/NewGroupProject/it/team1Restaurant/foods/TypeFoodEnum.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/NewGroupProject/it/team1Restaurant/menu/Menu.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/NewGroupProject/it/team1Restaurant/menu/TestMenu.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/NewGroupProject/it/team1Restaurant/menu/TypeDishClientEnum.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/NewGroupProject/it/team1Restaurant/menu/TypeMenuEnum.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/NewGroupProject/it/team1Restaurant/user/Client.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/out/production/NewGroupProject/test/it/bookings/TestBookingsMap.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/bookings/tests/TestBooking.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/bookings/tests/TestBooking.class" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -44,22 +67,22 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Fabio/Desktop/Develhope/Esercizi/Git/Team1_RestaurantMenu&quot;,
+-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "Downloaded.Files.Path.Enabled": "false",
++    "Repository.Attach.Annotations": "false",
++    "Repository.Attach.JavaDocs": "false",
++    "Repository.Attach.Sources": "false",
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
++    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
++    "last_opened_file_path": "C:/Users/Fabio/Desktop/Develhope/Esercizi/Java/SQL - Esercizi/SQL03-Select-Fabio_Frattarelli",
++    "project.structure.last.edited": "Project",
++    "project.structure.proportion": "0.0",
++    "project.structure.side.proportion": "0.0"
+   }
+-}</component>
++}]]></component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+     <task active="true" id="Default" summary="Default task">

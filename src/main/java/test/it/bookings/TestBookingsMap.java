@@ -60,8 +60,6 @@ public class TestBookingsMap {
 
     }
 
-    //TODO test if filter creates a new object or not
-
     @Test // create an interval over just activated interval
     public void testCreateBookingsInterval ( ) throws Exception {
         calendarBookings.createBookingsIntervalFromNow(10);

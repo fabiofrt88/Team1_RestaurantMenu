@@ -185,7 +185,7 @@ public class Menu {
      * @param <T> Tipo generico (sottoclassi di {@link it.team1Restaurant.foods.Food}
      * @throws Exception
      */
-    //TODO mettere dei check per evitare di passare un Drink come Dish e viceversa?
+
     public <T extends Food> void addFood (TypeFoodEnum typeFood, T food) throws Exception {
         if(food instanceof Drink && typeFood != TypeFoodEnum.DRINK){
             typeFood = TypeFoodEnum.DRINK;

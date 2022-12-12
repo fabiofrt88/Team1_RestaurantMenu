@@ -1,0 +1,113 @@
+Index: src/main/java/it/team1Restaurant/diningRoom/TestDiningRoom.java
+===================================================================
+diff --git a/src/main/java/it/team1Restaurant/diningRoom/TestDiningRoom.java b/src/main/java/it/team1Restaurant/diningRoom/TestDiningRoom.java
+new file mode 100644
+--- /dev/null	
++++ b/src/main/java/it/team1Restaurant/diningRoom/TestDiningRoom.java	
+@@ -0,0 +1,15 @@
++package it.team1Restaurant.diningRoom;
++
++import java.sql.Connection;
++import java.sql.DriverManager;
++
++public class TestDiningRoom {
++
++    public static void main(String[] args) {
++
++        DiningRoom diningRoom = new DiningRoom(40);
++
++        Table table1 = new Table(001, 4,true);
++
++    }
++}
+Index: src/main/java/it/team1Restaurant/diningRoom/Table.java
+===================================================================
+diff --git a/src/main/java/it/team1Restaurant/diningRoom/Table.java b/src/main/java/it/team1Restaurant/diningRoom/Table.java
+new file mode 100644
+--- /dev/null	
++++ b/src/main/java/it/team1Restaurant/diningRoom/Table.java	
+@@ -0,0 +1,39 @@
++package it.team1Restaurant.diningRoom;
++
++public class Table {
++
++    private int iDTable;
++    private int numberOfSeats;
++    private boolean free;
++
++
++    public Table(int iDTable, int numberOfSeats, boolean free) {
++        this.iDTable = iDTable;
++        this.numberOfSeats = numberOfSeats;
++        this.free = free;
++    }
++
++    public int getiDTable() {
++        return iDTable;
++    }
++
++    public void setiDTable(int iDTable) {
++        this.iDTable = iDTable;
++    }
++
++    public int getNumberOfSeats() {
++        return numberOfSeats;
++    }
++
++    public void setNumberOfSeats(int numberOfSeats) {
++        this.numberOfSeats = numberOfSeats;
++    }
++
++    public boolean isFree() {
++        return free;
++    }
++
++    public void setFree(boolean free) {
++        this.free = free;
++    }
++}
+Index: src/main/java/it/team1Restaurant/diningRoom/DiningRoom.java
+===================================================================
+diff --git a/src/main/java/it/team1Restaurant/diningRoom/DiningRoom.java b/src/main/java/it/team1Restaurant/diningRoom/DiningRoom.java
+new file mode 100644
+--- /dev/null	
++++ b/src/main/java/it/team1Restaurant/diningRoom/DiningRoom.java	
+@@ -0,0 +1,38 @@
++package it.team1Restaurant.diningRoom;
++
++import java.util.Arrays;
++import java.util.List;
++
++public class DiningRoom {  //singleton
++
++    private final int maxCapacity;
++    private int numberOfTable;
++    private List<Table> tableList;   //Mappa - private Map< , > tableList;
++
++
++    public DiningRoom(int maxCapacity) {
++        this.maxCapacity = maxCapacity;
++        this.numberOfTable = (maxCapacity/4);
++        this.tableList = Arrays.asList(new Table[maxCapacity]);
++    }
++
++    public int getMaxCapacity() {
++        return maxCapacity;
++    }
++
++    public int getNumberOfTable() {
++        return numberOfTable;
++    }
++
++    public void setNumberOfTable(int numberOfTable) {
++        this.numberOfTable = numberOfTable;
++    }
++
++    public List<Table> getTableList() {
++        return tableList;
++    }
++
++    public void setTableList(List<Table> tableList) {
++        this.tableList = tableList;
++    }
++}
