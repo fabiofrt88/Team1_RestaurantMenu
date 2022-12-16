@@ -30,7 +30,7 @@ public class FoodStorage {
      * viene istanziata la mappa di storage con tutte le portate e le relative liste di foods (inizialmente vuote)
      * mediante il metodo {@link FoodStorage#initFoodListsMap()}
      */
-    public FoodStorage(){
+    private FoodStorage(){
         this.foodListsMap = initFoodListsMap();
     }
 
