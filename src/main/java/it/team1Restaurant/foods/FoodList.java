@@ -1,6 +1,6 @@
 package it.team1Restaurant.foods;
 
-import it.team1Restaurant.menu.TypeDishClientEnum;
+import it.team1Restaurant.menu.TypeClientMenuEnum;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -16,9 +16,9 @@ import java.util.stream.Collectors;
 public class FoodList<T extends Food> extends ArrayList<T> {
 
     /**
-     * La tipologia di portata della lista dei foods. Vedi enum {@link it.team1Restaurant.foods.TypeFoodEnum}
+     * La tipologia di portata della lista dei foods. Vedi enum {@link TypeCourseEnum}
      */
-    private TypeFoodEnum typeFood;
+    private TypeCourseEnum typeFood;
 
     /**
      * Metodo costruttore della classe {@link it.team1Restaurant.foods.FoodList}, istanzia una lista di foods
@@ -34,7 +34,7 @@ public class FoodList<T extends Food> extends ArrayList<T> {
      * Viene settata la tipologia di portata della lista dei foods con il relativo parametro passato nel costruttore.
      * @param typeFood La tipologia di portata della lista dei foods
      */
-    public FoodList(TypeFoodEnum typeFood) {
+    public FoodList(TypeCourseEnum typeFood) {
         super();
         this.typeFood = typeFood;
     }
@@ -43,7 +43,7 @@ public class FoodList<T extends Food> extends ArrayList<T> {
      * Metodo getter che restituisce la tipologia di portata della lista dei foods.
      * @return Tipologia di portata della lista dei foods.
      */
-    public TypeFoodEnum getTypeFood() {
+    public TypeCourseEnum getTypeFood() {
         return typeFood;
     }
 
@@ -51,7 +51,7 @@ public class FoodList<T extends Food> extends ArrayList<T> {
      * Metodo setter che setta la tipologia di portata della lista dei foods.
      * @param typeFood La tipologia di portata della lista dei foods.
      */
-    public void setTypeFood(TypeFoodEnum typeFood) {
+    public void setTypeFood(TypeCourseEnum typeFood) {
         this.typeFood = typeFood;
     }
 
@@ -73,11 +73,11 @@ public class FoodList<T extends Food> extends ArrayList<T> {
 
     /**
      * Questo metodo filtra e resituisce un Set generico di foods filtrati per Set di tipologie alimentari
-     * {@link it.team1Restaurant.menu.TypeDishClientEnum} mediante l'utilizzo degli stream
-     * @param typeDishClientSet Il Set di tipologie alimentari {@link it.team1Restaurant.menu.TypeDishClientEnum} di filtraggio
-     * @return Set di foods filtrati per Set di tipologie alimentari {@link it.team1Restaurant.menu.TypeDishClientEnum}
+     * {@link TypeClientMenuEnum} mediante l'utilizzo degli stream
+     * @param typeDishClientSet Il Set di tipologie alimentari {@link TypeClientMenuEnum} di filtraggio
+     * @return Set di foods filtrati per Set di tipologie alimentari {@link TypeClientMenuEnum}
      */
-    public Set<T> getFoodsByTypeDishClient (Set<TypeDishClientEnum> typeDishClientSet) {
+    public Set<T> getFoodsByTypeDishClient (Set<TypeClientMenuEnum> typeDishClientSet) {
         return this.stream().filter(food -> food.getTypeSet().containsAll(typeDishClientSet)).collect(Collectors.toSet());
     }
 

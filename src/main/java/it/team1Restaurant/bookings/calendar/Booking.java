@@ -1,8 +1,7 @@
 package it.team1Restaurant.bookings.calendar;
 
 import it.team1Restaurant.menu.Menu;
-import it.team1Restaurant.menu.TypeDishClientEnum;
-import it.team1Restaurant.menu.TypeMenuEnum;
+import it.team1Restaurant.menu.TypeClientMenuEnum;
 import it.team1Restaurant.user.Client;
 
 import java.text.SimpleDateFormat;
@@ -220,7 +219,7 @@ public class Booking {
      * @param typeDishClient La lista dei clienti inseriti nella prenotazione
      * @return Il numero dei clienti per tipologia alimentare
      */
-    public Integer getNumberOf(TypeDishClientEnum typeDishClient){
+    public Integer getNumberOf(TypeClientMenuEnum typeDishClient){
         return clientList.stream().filter(client -> client.getTypeDishClient().contains(typeDishClient)).collect(Collectors.toSet()).size();
     }
 
@@ -236,8 +235,8 @@ public class Booking {
                 "\nTime: " + time +
                 //"\ntableNumber: " + tableNumber +
                 "\nNumber of People: " + (clientList.size()) +
-                "\nNumber of Adults: " + (clientList.size() - getNumberOf(TypeDishClientEnum.CHILD)) +
-                "\nNumber of Children: " + getNumberOf(TypeDishClientEnum.CHILD);
+                "\nNumber of Adults: " + (clientList.size() - getNumberOf(TypeClientMenuEnum.CHILD)) +
+                "\nNumber of Children: " + getNumberOf(TypeClientMenuEnum.CHILD);
     }
 
     /**
@@ -251,8 +250,8 @@ public class Booking {
                 "\nTime: " + time +
                 //"\nTable Number: " + tableNumber +
                 "\nNumber of People: " + (clientList.size()) +
-                "\nNumber of Adults: " + (clientList.size() - getNumberOf(TypeDishClientEnum.CHILD)) +
-                "\nNumber of Children: " + getNumberOf(TypeDishClientEnum.CHILD) + "\n");
+                "\nNumber of Adults: " + (clientList.size() - getNumberOf(TypeClientMenuEnum.CHILD)) +
+                "\nNumber of Children: " + getNumberOf(TypeClientMenuEnum.CHILD) + "\n");
     }
 
     /*public static void checkBookingInfo(Booking booking, EnumMap<TypeMenu, Menu> menuMap) {
@@ -290,29 +289,29 @@ public class Booking {
 
     /**
      * Questo metodo stampa a video nel dettaglio i dati dei menu. <br>
-     * Diversamente dai menu a base di carne {@link it.team1Restaurant.menu.TypeMenuEnum#MEAT}
-     * e di pesce {@link it.team1Restaurant.menu.TypeMenuEnum#FISH}, per quelli delle tipologie
-     * {@link it.team1Restaurant.menu.TypeMenuEnum#CHILD}, {@link it.team1Restaurant.menu.TypeMenuEnum#VEGETARIAN},
-     * {@link it.team1Restaurant.menu.TypeMenuEnum#VEGAN} e {@link it.team1Restaurant.menu.TypeMenuEnum#CELIAC},
+     * Diversamente dai menu a base di carne {@link it.team1Restaurant.menu.TypeClientMenuEnum#MEAT}
+     * e di pesce {@link it.team1Restaurant.menu.TypeClientMenuEnum#FISH}, per quelli delle tipologie
+     * {@link it.team1Restaurant.menu.TypeClientMenuEnum#CHILD}, {@link it.team1Restaurant.menu.TypeClientMenuEnum#VEGETARIAN},
+     * {@link it.team1Restaurant.menu.TypeClientMenuEnum#VEGAN} e {@link it.team1Restaurant.menu.TypeClientMenuEnum#CELIAC},
      * prima della stampa dei menu, si verifica dalla lista dei clienti della prenotazione se sono presenti
      * rispettivamente clienti bambini, vegetariani, vegani e celiaci
      * @param booking La prenotazione selezionata da controllare
      * @param menuMap La mappa dei menu differenziati per tipologia alimentare
      */
-    public static void checkBookingInfo(Booking booking, EnumMap<TypeMenuEnum, Menu> menuMap) {
-        System.out.println(menuMap.get(TypeMenuEnum.MEAT).getMenuDetails());
-        System.out.println(menuMap.get(TypeMenuEnum.FISH).getMenuDetails());
-        if (booking.getNumberOf(TypeDishClientEnum.CHILD) > 0) {
-            System.out.println(menuMap.get(TypeMenuEnum.CHILD).getMenuDetails());
+    public static void checkBookingInfo(Booking booking, EnumMap<TypeClientMenuEnum, Menu> menuMap) {
+        System.out.println(menuMap.get(TypeClientMenuEnum.MEAT).getMenuDetails());
+        System.out.println(menuMap.get(TypeClientMenuEnum.FISH).getMenuDetails());
+        if (booking.getNumberOf(TypeClientMenuEnum.CHILD) > 0) {
+            System.out.println(menuMap.get(TypeClientMenuEnum.CHILD).getMenuDetails());
         }
-        if (booking.getNumberOf(TypeDishClientEnum.VEGETARIAN) > 0) {
-            System.out.println(menuMap.get(TypeMenuEnum.VEGETARIAN).getMenuDetails());
+        if (booking.getNumberOf(TypeClientMenuEnum.VEGETARIAN) > 0) {
+            System.out.println(menuMap.get(TypeClientMenuEnum.VEGETARIAN).getMenuDetails());
         }
-        if (booking.getNumberOf(TypeDishClientEnum.VEGAN) > 0) {
-            System.out.println(menuMap.get(TypeMenuEnum.VEGAN).getMenuDetails());
+        if (booking.getNumberOf(TypeClientMenuEnum.VEGAN) > 0) {
+            System.out.println(menuMap.get(TypeClientMenuEnum.VEGAN).getMenuDetails());
         }
-        if (booking.getNumberOf(TypeDishClientEnum.CELIAC) > 0) {
-            System.out.println(menuMap.get(TypeMenuEnum.CELIAC).getMenuDetails());
+        if (booking.getNumberOf(TypeClientMenuEnum.CELIAC) > 0) {
+            System.out.println(menuMap.get(TypeClientMenuEnum.CELIAC).getMenuDetails());
         }
     }
 }

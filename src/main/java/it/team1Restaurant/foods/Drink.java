@@ -1,6 +1,6 @@
 package it.team1Restaurant.foods;
 
-import it.team1Restaurant.menu.TypeDishClientEnum;
+import it.team1Restaurant.menu.TypeClientMenuEnum;
 
 import java.util.EnumSet;
 import java.util.List;
@@ -20,53 +20,53 @@ public class Drink extends Food {
     /**
      * Metodo costruttore della classe {@link it.team1Restaurant.foods.Drink},
      * setta le variabili d'istanza ereditate dalla superclasse {@link it.team1Restaurant.foods.Food}
-     * mediante il relativo metodo costruttore {@link it.team1Restaurant.foods.Food#Food(TypeFoodEnum, String, double)}. <br>
-     * Tipologia di portata passata come {@link it.team1Restaurant.foods.TypeFoodEnum#DRINK} di default
+     * mediante il relativo metodo costruttore {@link it.team1Restaurant.foods.Food#Food(TypeCourseEnum, String, double)}. <br>
+     * Tipologia di portata passata come {@link TypeCourseEnum#DRINK} di default
      * @param name Il nome del drink
      * @param price Il prezzo del drink
      */
     public Drink(String name, double price) {
-        super(TypeFoodEnum.DRINK, name, price);
+        super(TypeCourseEnum.DRINK, name, price);
     }
 
     /**
      * Metodo costruttore della classe {@link it.team1Restaurant.foods.Drink},
      * setta le variabili d'istanza ereditate dalla superclasse {@link it.team1Restaurant.foods.Food}
-     * mediante il relativo metodo costruttore {@link it.team1Restaurant.foods.Food#Food(TypeFoodEnum, String, double, EnumSet)}. <br>
-     * Tipologia di portata passata come {@link it.team1Restaurant.foods.TypeFoodEnum#DRINK} di default
+     * mediante il relativo metodo costruttore {@link it.team1Restaurant.foods.Food#Food(TypeCourseEnum, String, double, EnumSet)}. <br>
+     * Tipologia di portata passata come {@link TypeCourseEnum#DRINK} di default
      * @param name Il nome del drink
      * @param price Il prezzo del drink
      * @param typeSet EnumSet delle categorie del drink
      */
-    public Drink(String name, double price, EnumSet<TypeDishClientEnum> typeSet) {
-        super(TypeFoodEnum.DRINK, name, price, typeSet);
+    public Drink(String name, double price, EnumSet<TypeClientMenuEnum> typeSet) {
+        super(TypeCourseEnum.DRINK, name, price, typeSet);
     }
 
     /**
      * Metodo costruttore della classe {@link it.team1Restaurant.foods.Drink},
      * setta le variabili d'istanza ereditate dalla superclasse {@link it.team1Restaurant.foods.Food}
-     * mediante il relativo metodo costruttore {@link it.team1Restaurant.foods.Food#Food(TypeFoodEnum, String, List, double)}. <br>
-     * Tipologia di portata passata come {@link it.team1Restaurant.foods.TypeFoodEnum#DRINK} di default
+     * mediante il relativo metodo costruttore {@link it.team1Restaurant.foods.Food#Food(TypeCourseEnum, String, List, double)}. <br>
+     * Tipologia di portata passata come {@link TypeCourseEnum#DRINK} di default
      * @param name Il nome del drink
      * @param ingredients Lista degli ingredienti del drink
      * @param price Il prezzo del drink
      */
     public Drink (String name, List<Ingredient> ingredients, double price) {
-        super(TypeFoodEnum.DRINK, name, ingredients, price);
+        super(TypeCourseEnum.DRINK, name, ingredients, price);
     }
 
     /**
      * Metodo costruttore della classe {@link it.team1Restaurant.foods.Drink},
      * setta le variabili d'istanza ereditate dalla superclasse {@link it.team1Restaurant.foods.Food}
-     * mediante il relativo metodo costruttore {@link it.team1Restaurant.foods.Food#Food(TypeFoodEnum, String, List, double, EnumSet)}. <br>
-     * Tipologia di portata passata come {@link it.team1Restaurant.foods.TypeFoodEnum#DRINK} di default
+     * mediante il relativo metodo costruttore {@link it.team1Restaurant.foods.Food#Food(TypeCourseEnum, String, List, double, EnumSet)}. <br>
+     * Tipologia di portata passata come {@link TypeCourseEnum#DRINK} di default
      * @param name Il nome del drink
      * @param ingredients Lista degli ingredienti del drink
      * @param price Il prezzo del drink
      * @param typeSet EnumSet delle categorie del drink
      */
-    public Drink (String name, List<Ingredient> ingredients, double price, EnumSet<TypeDishClientEnum> typeSet) {
-        super(TypeFoodEnum.DRINK, name, ingredients, price, typeSet);
+    public Drink (String name, List<Ingredient> ingredients, double price, EnumSet<TypeClientMenuEnum> typeSet) {
+        super(TypeCourseEnum.DRINK, name, ingredients, price, typeSet);
     }
 
     /**

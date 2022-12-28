@@ -1,10 +1,9 @@
 package it.team1Restaurant.foods;
 
-import it.team1Restaurant.menu.TypeDishClientEnum;
+import it.team1Restaurant.menu.TypeClientMenuEnum;
 
 import java.util.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -19,9 +18,9 @@ public abstract class Food {
     private final Integer id;
 
     /**
-     * La tipologia di portata del food. Vedi enum {@link it.team1Restaurant.foods.TypeFoodEnum}
+     * La tipologia di portata del food. Vedi enum {@link TypeCourseEnum}
      */
-    private TypeFoodEnum type;
+    private TypeCourseEnum type;
 
     /**
      * Il nome del food.
@@ -29,9 +28,9 @@ public abstract class Food {
     private String name;
 
     /**
-     * EnumSet delle categorie del food. Vedi enum {@link it.team1Restaurant.menu.TypeDishClientEnum}
+     * EnumSet delle categorie del food. Vedi enum {@link TypeClientMenuEnum}
      */
-    private EnumSet<TypeDishClientEnum> typeSet;
+    private EnumSet<TypeClientMenuEnum> typeSet;
 
     /**
      * Lista degli ingredienti del food.
@@ -45,6 +44,12 @@ public abstract class Food {
 
     private static Integer foodNumbers = 0;
 
+    public Food(String name, double price){
+        this.id = null;
+        this.name = name;
+        this.price = price;
+    }
+
     /**
      * Metodo costruttore della classe {@link it.team1Restaurant.foods.Food}, setta le variabili d'istanza della classe
      * con i parametri passati nel costruttore, vengono istanziate la lista degli ingredienti e l'EnumSet delle categorie,
@@ -53,13 +58,13 @@ public abstract class Food {
      * @param name Il nome del food
      * @param price Il prezzo del food
      */
-    public Food(TypeFoodEnum typeFood, String name, double price) {
+    public Food(TypeCourseEnum typeFood, String name, double price) {
         this.id = incrementFoodNumbers();
         this.type = typeFood;
         this.name = name;
         this.price = price;
         this.ingredientList = new ArrayList<>();
-        this.typeSet = EnumSet.noneOf(TypeDishClientEnum.class);
+        this.typeSet = EnumSet.noneOf(TypeClientMenuEnum.class);
     }
 
     /**
@@ -70,7 +75,7 @@ public abstract class Food {
      * @param price Il prezzo del food
      * @param typeSet L'EnumSet delle categorie del food
      */
-    public Food(TypeFoodEnum typeFood, String name, double price, EnumSet<TypeDishClientEnum> typeSet) {
+    public Food(TypeCourseEnum typeFood, String name, double price, EnumSet<TypeClientMenuEnum> typeSet) {
         this.id = incrementFoodNumbers();
         this.type = typeFood;
         this.name = name;
@@ -87,13 +92,13 @@ public abstract class Food {
      * @param ingredients La lista degli ingredienti del food
      * @param price Il prezzo del food
      */
-    public Food(TypeFoodEnum typeFood, String name, List<Ingredient> ingredients, double price) {
+    public Food(TypeCourseEnum typeFood, String name, List<Ingredient> ingredients, double price) {
         this.id = incrementFoodNumbers();
         this.type = typeFood;
         this.name = name;
         this.price = price;
         this.ingredientList = ingredients;
-        this.typeSet = EnumSet.noneOf(TypeDishClientEnum.class);
+        this.typeSet = EnumSet.noneOf(TypeClientMenuEnum.class);
     }
 
     /**
@@ -105,7 +110,7 @@ public abstract class Food {
      * @param price Il prezzo del food
      * @param typeSet L'EnumSet delle categorie del food
      */
-    public Food(TypeFoodEnum typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeDishClientEnum> typeSet) {
+    public Food(TypeCourseEnum typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeClientMenuEnum> typeSet) {
         this.id = incrementFoodNumbers();
         this.type = typeFood;
         this.name = name;
@@ -122,7 +127,7 @@ public abstract class Food {
      * Metodo getter che restituisce la tipologia di portata del food.
      * @return Tipo di portata del food.
      */
-    public TypeFoodEnum getType() {
+    public TypeCourseEnum getType() {
         return type;
     }
 
@@ -130,7 +135,7 @@ public abstract class Food {
      * Metodo setter che setta il tipo di portata del food.
      * @param type Il tipo di portata del food.
      */
-    public void setType(TypeFoodEnum type) {
+    public void setType(TypeCourseEnum type) {
         this.type = type;
     }
 
@@ -186,7 +191,7 @@ public abstract class Food {
      * Metodo getter che restituisce l'EnumSet delle categorie del food.
      * @return EnumSet delle categorie del food.
      */
-    public EnumSet<TypeDishClientEnum> getTypeSet() {
+    public EnumSet<TypeClientMenuEnum> getTypeSet() {
         return typeSet;
     }
 
@@ -194,7 +199,7 @@ public abstract class Food {
      * Metodo setter che setta l'EnumSet delle categorie del food.
      * @param typeSet EnumSet delle categorie del food.
      */
-    public void setTypeSet(EnumSet<TypeDishClientEnum> typeSet) {
+    public void setTypeSet(EnumSet<TypeClientMenuEnum> typeSet) {
         this.typeSet = typeSet;
     }
 
@@ -229,13 +234,13 @@ public abstract class Food {
     }
 
     /**
-     * Questo metodo filtra i piatti in base alla categoria del food {@link it.team1Restaurant.menu.TypeDishClientEnum}. <br>
+     * Questo metodo filtra i piatti in base alla categoria del food {@link TypeClientMenuEnum}. <br>
      * Ad ogni iterazione degli elementi della mappa, se un dato food presenta nel proprio EnumSet delle categorie,
      * la categoria passata come parametro nel metodo, stampa il nome dei piatti filtrati
      * @param dishMap La mappa delle portate
      * @param typeDishRequired La categoria del food con la quale avviene il filtraggio dei food
      */
-    public static void dishFilter(Map<String, Food> dishMap, TypeDishClientEnum typeDishRequired) {
+    public static void dishFilter(Map<String, Food> dishMap, TypeClientMenuEnum typeDishRequired) {
         for (Food food : dishMap.values()) {
             if (food.typeSet.contains(typeDishRequired)) {
                 System.out.println(food.getName());
