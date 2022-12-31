@@ -12,67 +12,73 @@ import java.util.List;
  */
 public class Dish extends Food {
 
+    /**
+     * La tipologia di portata del food. Vedi enum {@link TypeCourseEnum}
+     */
+    private TypeCourseEnum typeCourse;
+
+    /**
+     * Il codice identificativo della tipologia di portata del food (chiave esterna). Vedi enum {@link TypeCourseEnum}
+     */
     private Integer typeCourseId;
 
-    public Dish(String name, double price, Integer typeCourseId){
-        super(name, price);
-        this.typeCourseId = typeCourseId;
+    /**
+     * Metodo costruttore della classe {@link it.team1Restaurant.foods.Dish} destinato all'inserimento di un dish
+     * nel database, setta le variabili d'istanza ereditate dalla superclasse {@link it.team1Restaurant.foods.Food}
+     * mediante il relativo metodo costruttore {@link it.team1Restaurant.foods.Food#Food(Integer, String, double)}
+     * e quelle di classe, rispettivamente la tipologia di portata e il relativo codice identificativo.
+     * @param id Il codice identificativo del dish.
+     * @param name Il nome del dish
+     * @param price Il prezzo del dish
+     * @param typeCourse La tipologia di portata del dish
+     */
+    public Dish(Integer id, String name, double price, TypeCourseEnum typeCourse){
+        super(id, name, price);
+        this.typeCourse = typeCourse;
+        this.typeCourseId = typeCourse.getId();
     }
 
     /**
-     * Metodo costruttore della classe {@link it.team1Restaurant.foods.Dish},
+     * Metodo costruttore della classe {@link it.team1Restaurant.foods.Dish}, destinato alla lettura
+     * e all'acquisizione dei record dalla relative tabella nel database come istanze della classe Dish,
      * setta le variabili d'istanza ereditate dalla superclasse {@link it.team1Restaurant.foods.Food}
-     * mediante il relativo metodo costruttore {@link it.team1Restaurant.foods.Food#Food(TypeCourseEnum, String, double)}.
-     * @param typeFood La tipologia di portata del dish
+     * mediante il relativo metodo costruttore {@link it.team1Restaurant.foods.Food#Food(Integer, String, double, EnumSet, List)}
+     * e quelle di classe con i parametri passati nel costruttore.
+     * @param id Il codice identificativo del dish.
      * @param name Il nome del dish
      * @param price Il prezzo del dish
+     * @param typeCourse La tipologia di portata del dish
+     * @param ingredients La lista degli ingredienti del dish
+     * @param typeSet EnumSet delle tipologie alimentari del dish
      */
-    public Dish(TypeCourseEnum typeFood, String name, double price) {
-        super(typeFood, name, price);
+    public Dish(Integer id, String name, double price, TypeCourseEnum typeCourse, EnumSet<TypeClientMenuEnum> typeSet, List<Ingredient> ingredients) {
+        super(id, name, price, typeSet, ingredients);
+        this.typeCourse = typeCourse;
+        this.typeCourseId = typeCourse.getId();
     }
 
     /**
-     * Metodo costruttore della classe {@link it.team1Restaurant.foods.Dish},
-     * setta le variabili d'istanza ereditate dalla superclasse {@link it.team1Restaurant.foods.Food}
-     * mediante il relativo metodo costruttore {@link it.team1Restaurant.foods.Food#Food(TypeCourseEnum, String, double, EnumSet)}.
-     * @param typeFood La tipologia di portata del dish
-     * @param name Il nome del dish
-     * @param price Il prezzo del dish
-     * @param typeSet EnumSet delle categorie del dish
+     * Metodo getter che restituisce la tipologia di portata del food.
+     * @return Tipo di portata del food.
      */
-    public Dish(TypeCourseEnum typeFood, String name, double price, EnumSet<TypeClientMenuEnum> typeSet) {
-        super(typeFood, name, price, typeSet);
+    public TypeCourseEnum getTypeCourse() {
+        return typeCourse;
     }
 
     /**
-     * Metodo costruttore della classe {@link it.team1Restaurant.foods.Dish},
-     * setta le variabili d'istanza ereditate dalla superclasse {@link it.team1Restaurant.foods.Food}
-     * mediante il relativo metodo costruttore {@link it.team1Restaurant.foods.Food#Food(TypeCourseEnum, String, List, double)}.
-     * @param typeFood La tipologia di portata del dish
-     * @param name Il nome del dish
-     * @param ingredients Lista degli ingredienti del dish
-     * @param price Il prezzo del dish
+     * Metodo setter che setta il tipo di portata del food.
+     * @param typeCourse Il tipo di portata del food.
      */
-    public Dish(TypeCourseEnum typeFood, String name, List<Ingredient> ingredients, double price) {
-        super(typeFood, name, ingredients, price);
-    }
-
-    /**
-     * Metodo costruttore della classe {@link it.team1Restaurant.foods.Dish},
-     * setta le variabili d'istanza ereditate dalla superclasse {@link it.team1Restaurant.foods.Food}
-     * mediante il relativo metodo costruttore {@link it.team1Restaurant.foods.Food#Food(TypeCourseEnum, String, List, double, EnumSet)}.
-     * @param typeFood La tipologia di portata del dish
-     * @param name Il nome del dish
-     * @param ingredients Lista degli ingredienti del dish
-     * @param price Il prezzo del dish
-     * @param typeSet EnumSet delle categorie del dish
-     */
-    public Dish(TypeCourseEnum typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeClientMenuEnum> typeSet) {
-        super(typeFood, name, ingredients, price, typeSet);
+    public void setTypeCourse(TypeCourseEnum typeCourse) {
+        this.typeCourse = typeCourse;
     }
 
     public Integer getTypeCourseId() {
         return typeCourseId;
+    }
+
+    public void setTypeCourseId(Integer typeCourseId) {
+        this.typeCourseId = typeCourseId;
     }
 
     /**
@@ -81,7 +87,10 @@ public class Dish extends Food {
      */
     @Override
     public String toString() {
-        return "Dish" + super.toString();
+        return "Dish{" +
+                super.toString() +
+                "typeCourse = " + typeCourse +
+                ", typeCourseId = " + typeCourseId +
+                '}';
     }
-
 }

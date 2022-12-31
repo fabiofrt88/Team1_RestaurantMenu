@@ -12,12 +12,12 @@ public class TestDishDAO {
 
         dishDAO.createTable();
 
-        dishDAO.insertDish(new Dish("Pasta al sugo", 8, TypeCourseEnum.FIRST.getId()));
-        dishDAO.insertDish(new Dish("Pasta al pesto", 10, TypeCourseEnum.FIRST.getId()));
-        dishDAO.insertDish(new Dish("Salsicce e Friarielli", 13, TypeCourseEnum.SECOND.getId()));
-        dishDAO.insertDish(new Dish("Parmigiana di Melanzane", 15, TypeCourseEnum.SECOND.getId()));
-        dishDAO.insertDish(new Dish("Tiramisu", 11, TypeCourseEnum.DESSERT.getId()));
-        dishDAO.insertDish(new Dish("Gelato al cioccolato", 8, TypeCourseEnum.DESSERT.getId()));
+        dishDAO.insertDish(new Dish(null, "Pasta al sugo", 8, TypeCourseEnum.FIRST));
+        dishDAO.insertDish(new Dish(null, "Pasta al pesto", 10, TypeCourseEnum.FIRST));
+        dishDAO.insertDish(new Dish(null, "Salsicce e Friarielli", 13, TypeCourseEnum.SECOND));
+        dishDAO.insertDish(new Dish(null, "Parmigiana di Melanzane", 15, TypeCourseEnum.SECOND));
+        dishDAO.insertDish(new Dish(null, "Tiramisu", 11, TypeCourseEnum.DESSERT));
+        dishDAO.insertDish(new Dish(null, "Gelato al cioccolato", 8, TypeCourseEnum.DESSERT));
 
     }
 

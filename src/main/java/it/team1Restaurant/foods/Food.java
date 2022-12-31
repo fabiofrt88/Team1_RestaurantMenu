@@ -15,12 +15,10 @@ import java.util.Map;
  */
 public abstract class Food {
 
-    private final Integer id;
-
     /**
-     * La tipologia di portata del food. Vedi enum {@link TypeCourseEnum}
+     * Il codice identificativo del food (chiave primaria univoca autoincrementale non modificabile).
      */
-    private TypeCourseEnum type;
+    private final Integer id;
 
     /**
      * Il nome del food.
@@ -28,115 +26,58 @@ public abstract class Food {
     private String name;
 
     /**
-     * EnumSet delle categorie del food. Vedi enum {@link TypeClientMenuEnum}
+     * Il prezzo del food.
+     */
+    private double price;
+
+    /**
+     * EnumSet delle tipologie alimentari del food. Vedi enum {@link TypeClientMenuEnum}
      */
     private EnumSet<TypeClientMenuEnum> typeSet;
 
     /**
      * Lista degli ingredienti del food.
      */
-    private List<Ingredient> ingredientList;
+    private List<Ingredient> ingredients;
 
     /**
-     * Il prezzo del food.
-     */
-    private double price;
-
-    private static Integer foodNumbers = 0;
-
-    public Food(String name, double price){
-        this.id = null;
-        this.name = name;
-        this.price = price;
-    }
-
-    /**
-     * Metodo costruttore della classe {@link it.team1Restaurant.foods.Food}, setta le variabili d'istanza della classe
-     * con i parametri passati nel costruttore, vengono istanziate la lista degli ingredienti e l'EnumSet delle categorie,
-     * saranno inizialmente vuote.
-     * @param typeFood La tipologia della portata del food
+     * Metodo costruttore della classe {@link it.team1Restaurant.foods.Food}, destinato all'inserimento delle istanze
+     * delle sottoclassi di Food ({@link it.team1Restaurant.foods.Dish}, {@link it.team1Restaurant.foods.Drink})
+     * nel database, setta le variabili d'istanza della classe con i parametri passati nel costruttore,
+     * l'id sarà inizialmente null, assegnato, gestito e reso autoincrementale dal DBMS.
+     * @param id Il codice identificativo del food.
      * @param name Il nome del food
      * @param price Il prezzo del food
      */
-    public Food(TypeCourseEnum typeFood, String name, double price) {
-        this.id = incrementFoodNumbers();
-        this.type = typeFood;
+    public Food(Integer id, String name, double price){
+        this.id = id;
         this.name = name;
         this.price = price;
-        this.ingredientList = new ArrayList<>();
         this.typeSet = EnumSet.noneOf(TypeClientMenuEnum.class);
+        this.ingredients = new ArrayList<>();
     }
 
     /**
-     * Metodo costruttore della classe {@link it.team1Restaurant.foods.Food}, setta le variabili d'istanza della classe
-     * con i parametri passati nel costruttore, viene istanziata la lista degli ingredienti, sarà inizialmente vuota.
-     * @param typeFood La tipologia della portata del food
+     * Metodo costruttore della classe {@link it.team1Restaurant.foods.Food}, destinato alla lettura
+     * e all'acquisizione dei record dalle relative tabelle nel database come istanze delle sottoclassi di Food
+     * ({@link it.team1Restaurant.foods.Dish}, {@link it.team1Restaurant.foods.Drink})
+     * setta le variabili d'istanza della classe con i parametri passati nel costruttore.
+     * @param id Il codice identificativo del food.
      * @param name Il nome del food
      * @param price Il prezzo del food
-     * @param typeSet L'EnumSet delle categorie del food
-     */
-    public Food(TypeCourseEnum typeFood, String name, double price, EnumSet<TypeClientMenuEnum> typeSet) {
-        this.id = incrementFoodNumbers();
-        this.type = typeFood;
-        this.name = name;
-        this.price = price;
-        this.ingredientList = new ArrayList<>();
-        this.typeSet = typeSet;
-    }
-
-    /**
-     * Metodo costruttore della classe {@link it.team1Restaurant.foods.Food}, setta le variabili d'istanza della classe
-     * con i parametri passati nel costruttore, viene istanziato l'EnumSet delle categorie, sarà inizialmente vuoto.
-     * @param typeFood La tipologia della portata del food
-     * @param name Il nome del food
      * @param ingredients La lista degli ingredienti del food
-     * @param price Il prezzo del food
+     * @param typeSet EnumSet delle tipologie alimentari del food
      */
-    public Food(TypeCourseEnum typeFood, String name, List<Ingredient> ingredients, double price) {
-        this.id = incrementFoodNumbers();
-        this.type = typeFood;
+    public Food(Integer id, String name, double price, EnumSet<TypeClientMenuEnum> typeSet, List<Ingredient> ingredients){
+        this.id = id;
         this.name = name;
         this.price = price;
-        this.ingredientList = ingredients;
-        this.typeSet = EnumSet.noneOf(TypeClientMenuEnum.class);
-    }
-
-    /**
-     * Metodo costruttore della classe {@link it.team1Restaurant.foods.Food}, setta le variabili d'istanza della classe
-     * con i parametri passati nel costruttore, comprese la lista degli ingredienti e l'EnumSet delle categorie.
-     * @param typeFood La tipologia della portata del food
-     * @param name Il nome del food
-     * @param ingredients La lista degli ingredienti del food
-     * @param price Il prezzo del food
-     * @param typeSet L'EnumSet delle categorie del food
-     */
-    public Food(TypeCourseEnum typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeClientMenuEnum> typeSet) {
-        this.id = incrementFoodNumbers();
-        this.type = typeFood;
-        this.name = name;
-        this.price = price;
-        this.ingredientList = ingredients;
         this.typeSet = typeSet;
+        this.ingredients = new ArrayList<>(ingredients);
     }
 
     public Integer getId() {
         return id;
-    }
-
-    /**
-     * Metodo getter che restituisce la tipologia di portata del food.
-     * @return Tipo di portata del food.
-     */
-    public TypeCourseEnum getType() {
-        return type;
-    }
-
-    /**
-     * Metodo setter che setta il tipo di portata del food.
-     * @param type Il tipo di portata del food.
-     */
-    public void setType(TypeCourseEnum type) {
-        this.type = type;
     }
 
     /**
@@ -153,22 +94,6 @@ public abstract class Food {
      */
     public void setName(String name) {
         this.name = name;
-    }
-
-    /**
-     * Metodo getter che restituisce la lista degli ingredienti del food.
-     * @return Lista degli ingredienti del food.
-     */
-    public List<Ingredient> getIngredientList() {
-        return ingredientList;
-    }
-
-    /**
-     * Metodo setter che setta la lista degli ingredienti del food.
-     * @param ingredientList Lista degli ingredienti del food.
-     */
-    public void setIngredientList(List<Ingredient> ingredientList) {
-        this.ingredientList = ingredientList;
     }
 
     /**
@@ -203,16 +128,20 @@ public abstract class Food {
         this.typeSet = typeSet;
     }
 
-    public static Integer getFoodNumbers() {
-        return foodNumbers;
+    /**
+     * Metodo getter che restituisce la lista degli ingredienti del food.
+     * @return Lista degli ingredienti del food.
+     */
+    public List<Ingredient> getIngredients() {
+        return ingredients;
     }
 
-    public static void setFoodNumbers(Integer foodNumbers) {
-        Food.foodNumbers = foodNumbers;
-    }
-
-    public static int incrementFoodNumbers(){
-        return ++foodNumbers;
+    /**
+     * Metodo setter che setta la lista degli ingredienti del food.
+     * @param ingredients Lista degli ingredienti del food.
+     */
+    public void setIngredients(List<Ingredient> ingredients) {
+        this.ingredients = ingredients;
     }
 
     /**
@@ -223,9 +152,9 @@ public abstract class Food {
     public String getFoodDetails() {
         String ingredientsPrint = "";
         String ingredientTxt;
-        if (!ingredientList.isEmpty()) {
+        if (!ingredients.isEmpty()) {
             ingredientTxt = "Ingredients: ";
-            for (Ingredient ingredient : ingredientList) {
+            for (Ingredient ingredient : ingredients) {
                 ingredientsPrint += ingredient.getName().toLowerCase() + "  ";}
         }else {
             ingredientTxt = "";
@@ -254,13 +183,11 @@ public abstract class Food {
      */
     @Override
     public String toString() {
-        return "{" +
-                "id=" + id +
-                ", type=" + type +
-                ", typeSet=" + typeSet +
-                ", name='" + name + '\'' +
-                ", ingredientList=" + ingredientList +
-                ", price=" + price +
+        return "id = " + id +
+                ", name = '" + name + '\'' +
+                ", price = " + price +
+                ", typeSet = " + typeSet +
+                ", ingredients = " + ingredients +
                 '}';
     }
 }

@@ -29,11 +29,11 @@ public class TestBooking {
         CalendarBookings calendarBookings = CalendarBookings.getInstance();
         calendarBookings.createBookingsIntervalFromNow(30);
 
-        Client client = new Client(EnumSet.of(TypeClientMenuEnum.GENERIC), "Pippo","Franco","pippofranco@gmail.com", "389-5264589");
+        Client client = new Client(1, "Pippo","Franco","pippofranco@gmail.com", "389-5264589", EnumSet.of(TypeClientMenuEnum.GENERIC));
         calendarBookings.book(client, List.of(client), getDateFromNow(4), LocalTime.of(12,30));
         calendarBookings.book(client, List.of(client), getDateFromNow(4), LocalTime.of(15,30));
 
-        Client client2 = new Client(EnumSet.of(TypeClientMenuEnum.VEGAN), "Mario","Rossi","mariorossio@gmail.com", "389-6578904");
+        Client client2 = new Client(2, "Mario","Rossi","mariorossio@gmail.com", "389-6578904", EnumSet.of(TypeClientMenuEnum.VEGAN));
         calendarBookings.book(client2, List.of(client2) , getDateFromNow(6), LocalTime.of(13,00));
 
         calendarBookings.book(client, List.of(client), getDateFromNow(6), LocalTime.of(14,44));

@@ -20,9 +20,9 @@ public class DishDAO {
             String createQuery = """
                     CREATE TABLE IF NOT EXISTS dish
                     ( id INTEGER(10) NOT NULL AUTO_INCREMENT,
-                      name VARCHAR(30) UNIQUE,
+                      name VARCHAR(30) UNIQUE NOT NULL,
                       price FLOAT(10),
-                      type_course_id INTEGER(5),
+                      type_course_id INTEGER(5) NOT NULL,
                       CONSTRAINT dish_pk PRIMARY KEY (id),
                       CONSTRAINT type_course_FK_1 FOREIGN KEY (type_course_id) REFERENCES type_course(id)
                       ON UPDATE CASCADE ON DELETE CASCADE

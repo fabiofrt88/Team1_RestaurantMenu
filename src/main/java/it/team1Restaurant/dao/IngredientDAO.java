@@ -1,6 +1,5 @@
-package it.team1Restaurant.dao.testDAO;
+package it.team1Restaurant.dao;
 
-import it.team1Restaurant.foods.Dish;
 import it.team1Restaurant.foods.Ingredient;
 import it.team1Restaurant.jdbc.DriverJDBC;
 
@@ -27,7 +26,7 @@ public class IngredientDAO {
                     """;
 
             statement.executeUpdate(createQuery);
-            System.out.printf("Created table type_course in the database %s\n\n", conn.getCatalog());
+            System.out.printf("Created table ingredient in the database %s\n\n", conn.getCatalog());
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");

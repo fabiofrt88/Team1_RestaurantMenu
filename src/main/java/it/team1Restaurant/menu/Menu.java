@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * Questa classe rappresenta un menu del ristorante. <br>
  * Presenta una mappa con liste di foods per tipologia di portata, metodi per realizzare il CRUD dei foods. <br>
- * A partire dalla mappa di storage con le liste dei foods della classe {@link FoodStorage},
+ * A partire dalla mappa di storage con le liste dei foods della classe {@link FoodStorageOld},
  * si possono creare dei menu personalizzati per tipologia alimentare mediante delle associazioni ha-a di aggregazione
  * tra le classi {@link Menu} e {@link Food} da poter consultare e modificare in seguito.
  * @author Fabio Frattarelli, Pietro Gallina, Francesco Consiglio, Giovanni Tirone, Dino Petrucci, Christian Carollo
@@ -15,6 +15,9 @@ import java.util.Map;
  */
 public class Menu {
 
+    /**
+     * Il codice identificativo del menu (chiave primaria univoca autoincrementale non modificabile).
+     */
     private final Integer id;
 
     /**
@@ -28,6 +31,16 @@ public class Menu {
     private String type;
 
     /**
+     * La tipologia del menu. Vedi {@link TypeClientMenuEnum}
+     */
+    private TypeClientMenuEnum typeMenu;
+
+    /**
+     * Il codice identificativo della tipologia del drink (chiave esterna). Vedi enum {@link TypeClientMenuEnum}
+     */
+    private Integer typeClientMenuId;
+
+    /**
      * La mappa delle portate del menu,
      * con chiave {@link TypeCourseEnum}
      * e valori le liste dei foods {@link it.team1Restaurant.foods.FoodList}
@@ -35,21 +48,15 @@ public class Menu {
     private Map<TypeCourseEnum, FoodList> foodListsMap;
 
     /**
-     * La tipologia del menu. Vedi {@link TypeClientMenuEnum}
-     */
-    private TypeClientMenuEnum typeMenu;
-
-    private static Integer menuNumbers = 0;
-
-    /**
      * Metodo costruttore della classe {@link Menu}, setta le variabili d'istanza
      * con i relativi parametri passati nel costruttore, viene istanziata la mappa di tutte le portate
      * e le relative liste di foods (inizialmente vuote) mediante il metodo {@link Menu#initFoodListsMap()}
      */
-    public Menu(String type, TypeClientMenuEnum typeMenu){
-        this.id = incrementMenuNumbers();
-        this.typeMenu = typeMenu;
+    public Menu(Integer id, String type, TypeClientMenuEnum typeMenu){
+        this.id = id;
         this.type = type;
+        this.typeMenu = typeMenu;
+        this.typeClientMenuId = typeMenu.getId();
         this.foodListsMap = initFoodListsMap();
     }
 
@@ -105,6 +112,14 @@ public class Menu {
         this.typeMenu = typeMenu;
     }
 
+    public Integer getTypeClientMenuId() {
+        return typeClientMenuId;
+    }
+
+    public void setTypeClientMenuId(Integer typeClientMenuId) {
+        this.typeClientMenuId = typeClientMenuId;
+    }
+
     /**
      * Metodo getter che restituisce la mappa delle portate del menu
      * @return Mappa delle portate del menu
@@ -119,18 +134,6 @@ public class Menu {
      */
     public void setFoodListsMap(Map<TypeCourseEnum, FoodList> foodListsMap) {
         this.foodListsMap = foodListsMap;
-    }
-
-    public static Integer getMenuNumbers() {
-        return menuNumbers;
-    }
-
-    public static void setMenuNumbers(Integer menuNumbers) {
-        Menu.menuNumbers = menuNumbers;
-    }
-
-    public static int incrementMenuNumbers(){
-        return ++menuNumbers;
     }
 
     /**

@@ -13,76 +13,64 @@ import java.util.List;
 public class Drink extends Food {
 
     /**
-     * La percentuale alcolica del drink
+     * La tipologia del drink.
      */
-    private double alcoholPercentage;
+    private TypeDrinkEnum typeDrink;
 
     /**
-     * Metodo costruttore della classe {@link it.team1Restaurant.foods.Drink},
-     * setta le variabili d'istanza ereditate dalla superclasse {@link it.team1Restaurant.foods.Food}
-     * mediante il relativo metodo costruttore {@link it.team1Restaurant.foods.Food#Food(TypeCourseEnum, String, double)}. <br>
-     * Tipologia di portata passata come {@link TypeCourseEnum#DRINK} di default
+     * Il codice identificativo della tipologia del drink (chiave esterna). Vedi enum {@link TypeDrinkEnum}
+     */
+    private Integer typeDrinkId;
+
+    /**
+     * Metodo costruttore della classe {@link it.team1Restaurant.foods.Drink} destinato all'inserimento di un drink
+     * nel database, setta le variabili d'istanza ereditate dalla superclasse {@link it.team1Restaurant.foods.Food}
+     * mediante il relativo metodo costruttore {@link it.team1Restaurant.foods.Food#Food(Integer, String, double)}
+     * e quelle di classe, rispettivamente la tipologia del drink e il relativo codice identificativo.
+     * @param id Il codice identificativo del drink
      * @param name Il nome del drink
      * @param price Il prezzo del drink
+     * @param typeDrink La tipologia del drink
      */
-    public Drink(String name, double price) {
-        super(TypeCourseEnum.DRINK, name, price);
+    public Drink(Integer id, String name, double price, TypeDrinkEnum typeDrink){
+        super(id, name, price);
+        this.typeDrink = typeDrink;
+        this.typeDrinkId = typeDrink.getId();
     }
 
     /**
-     * Metodo costruttore della classe {@link it.team1Restaurant.foods.Drink},
+     * Metodo costruttore della classe {@link it.team1Restaurant.foods.Drink}, destinato alla lettura
+     * e all'acquisizione dei record dalla relative tabella nel database come istanze della classe Drink,
      * setta le variabili d'istanza ereditate dalla superclasse {@link it.team1Restaurant.foods.Food}
-     * mediante il relativo metodo costruttore {@link it.team1Restaurant.foods.Food#Food(TypeCourseEnum, String, double, EnumSet)}. <br>
-     * Tipologia di portata passata come {@link TypeCourseEnum#DRINK} di default
+     * mediante il relativo metodo costruttore {@link it.team1Restaurant.foods.Food#Food(Integer, String, double, EnumSet, List)}
+     * e quelle di classe con i parametri passati nel costruttore.
+     * @param id Il codice identificativo del drink.
      * @param name Il nome del drink
      * @param price Il prezzo del drink
-     * @param typeSet EnumSet delle categorie del drink
+     * @param typeDrink La tipologia del drink
+     * @param ingredients La lista degli ingredienti del drink
+     * @param typeSet EnumSet delle tipologie alimentari del drink
      */
-    public Drink(String name, double price, EnumSet<TypeClientMenuEnum> typeSet) {
-        super(TypeCourseEnum.DRINK, name, price, typeSet);
+    public Drink(Integer id, String name, double price, TypeDrinkEnum typeDrink, EnumSet<TypeClientMenuEnum> typeSet, List<Ingredient> ingredients) {
+        super(id, name, price, typeSet, ingredients);
+        this.typeDrink = typeDrink;
+        this.typeDrinkId = typeDrink.getId();
     }
 
-    /**
-     * Metodo costruttore della classe {@link it.team1Restaurant.foods.Drink},
-     * setta le variabili d'istanza ereditate dalla superclasse {@link it.team1Restaurant.foods.Food}
-     * mediante il relativo metodo costruttore {@link it.team1Restaurant.foods.Food#Food(TypeCourseEnum, String, List, double)}. <br>
-     * Tipologia di portata passata come {@link TypeCourseEnum#DRINK} di default
-     * @param name Il nome del drink
-     * @param ingredients Lista degli ingredienti del drink
-     * @param price Il prezzo del drink
-     */
-    public Drink (String name, List<Ingredient> ingredients, double price) {
-        super(TypeCourseEnum.DRINK, name, ingredients, price);
+    public TypeDrinkEnum getTypeDrink() {
+        return typeDrink;
     }
 
-    /**
-     * Metodo costruttore della classe {@link it.team1Restaurant.foods.Drink},
-     * setta le variabili d'istanza ereditate dalla superclasse {@link it.team1Restaurant.foods.Food}
-     * mediante il relativo metodo costruttore {@link it.team1Restaurant.foods.Food#Food(TypeCourseEnum, String, List, double, EnumSet)}. <br>
-     * Tipologia di portata passata come {@link TypeCourseEnum#DRINK} di default
-     * @param name Il nome del drink
-     * @param ingredients Lista degli ingredienti del drink
-     * @param price Il prezzo del drink
-     * @param typeSet EnumSet delle categorie del drink
-     */
-    public Drink (String name, List<Ingredient> ingredients, double price, EnumSet<TypeClientMenuEnum> typeSet) {
-        super(TypeCourseEnum.DRINK, name, ingredients, price, typeSet);
+    public void setTypeDrink(TypeDrinkEnum typeDrink) {
+        this.typeDrink = typeDrink;
     }
 
-    /**
-     * Metodo getter che restituisce la percentuale alcolica del drink.
-     * @return Percentuale alcolica del drink.
-     */
-    public double getAlcoholPercentage() {
-        return alcoholPercentage;
+    public Integer getTypeDrinkId() {
+        return typeDrinkId;
     }
 
-    /**
-     * Metodo setter che setta la percentuale alcolica del drink.
-     * @param alcoholPercentage La percentuale alcolica del drink.
-     */
-    public void setAlcoholPercentage(double alcoholPercentage) {
-        this.alcoholPercentage = alcoholPercentage;
+    public void setTypeDrinkId(Integer typeDrinkId) {
+        this.typeDrinkId = typeDrinkId;
     }
 
     /**
@@ -91,7 +79,11 @@ public class Drink extends Food {
      */
     @Override
     public String toString() {
-        return "Drink" + super.toString();
+        return "Drink{" +
+                super.toString() +
+                "typeDrink = " + typeDrink +
+                ", typeDrinkId = " + typeDrinkId +
+                '}';
     }
 
 }
