@@ -1,0 +1,9 @@
+<changelist name="Uncommitted_changes_before_Update_at_02_01_2023_09_33_[Changes]" date="1672648416067" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_09_33_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Update at 02/01/2023 09:33 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="target/classes/it/team1Restaurant/menu/TypeClientMenuEnum.class" />
+    <option name="AFTER_PATH" value="target/classes/it/team1Restaurant/menu/TypeClientMenuEnum.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_09_33_[Changes]/TypeClientMenuEnum.class" />
+  </binary>
+</changelist>

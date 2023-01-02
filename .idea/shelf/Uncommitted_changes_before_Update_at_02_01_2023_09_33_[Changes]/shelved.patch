@@ -1,0 +1,159 @@
+Index: db.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+># MySQL DB parameters\nDB_URL=jdbc:mysql://localhost:3306/restaurant_db\nUSER=developer\nPASSWORD=developer1?\n\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>ISO-8859-1
+===================================================================
+diff --git a/db.properties b/db.properties
+--- a/db.properties	(revision 041558b9bcafbf73a749779e817d3784bca2fa17)
++++ b/db.properties	(date 1672328764156)
+@@ -1,5 +1,5 @@
+ # MySQL DB parameters
+ DB_URL=jdbc:mysql://localhost:3306/restaurant_db
+ USER=developer
+-PASSWORD=developer1?
++PASSWORD=developer
+ 
+Index: src/main/java/it/team1Restaurant/dao/DrinkDAO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/it/team1Restaurant/dao/DrinkDAO.java b/src/main/java/it/team1Restaurant/dao/DrinkDAO.java
+new file mode 100644
+--- /dev/null	(date 1672329515991)
++++ b/src/main/java/it/team1Restaurant/dao/DrinkDAO.java	(date 1672329515991)
+@@ -0,0 +1,66 @@
++package it.team1Restaurant.dao;
++
++import it.team1Restaurant.foods.Dish;
++import it.team1Restaurant.foods.Drink;
++import it.team1Restaurant.jdbc.DriverJDBC;
++
++import java.sql.Connection;
++import java.sql.SQLException;
++import java.sql.Statement;
++
++public class DrinkDAO {
++
++    public void createTable(){
++
++        try (Connection conn = DriverJDBC.getConnection()) {
++
++            // print out a message
++            System.out.printf("Connected to database %s successfully.\n\n", conn.getCatalog());
++
++            Statement statement = conn.createStatement();
++
++            // this is a multiline string, definitely better for writing a SQL query
++            String createQuery = """
++                    CREATE TABLE IF NOT EXISTS drink
++                    ( id INTEGER(10) NOT NULL AUTO_INCREMENT,
++                      name VARCHAR(30) UNIQUE,
++                      price FLOAT(10),
++                      CONSTRAINT drink_pk PRIMARY KEY (id),
++                      CONSTRAINT type_course_FK_1 FOREIGN KEY (type_course_id) REFERENCES type_course(id)
++                      ON UPDATE CASCADE ON DELETE CASCADE
++                    );
++                    """;
++
++            statement.executeUpdate(createQuery);
++            System.out.printf("Created table drink in the database %s\n\n", conn.getCatalog());
++
++        } catch (SQLException ex) {
++            System.out.println(ex.getMessage() + "\n");
++        }
++
++    }
++
++    public void insertDrink(Drink drink){
++
++        try (Connection conn = DriverJDBC.getConnection()) {
++
++            // print out a message
++            System.out.printf("Connected to database %s successfully.\n\n", conn.getCatalog());
++
++            Statement statement = conn.createStatement();
++
++            String insertQuery =
++                    """ 
++                     INSERT INTO drink (name, price)
++                     VALUES ('""" + drink.getName() + "', '" + drink.getPrice() + "');";
++
++            statement.executeUpdate(insertQuery);
++
++            System.out.printf("Drink %s inserted\n\n", drink.getName());
++
++        } catch (SQLException ex) {
++            System.out.println(ex.getMessage() + "\n");
++        }
++
++    }
++}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"e26885f8-4eec-486d-a28c-cd9a679d6e83\" name=\"Changes\" comment=\"Fix all Test class\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/.gitignore\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/.gitignore\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_19_4.xml\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__com_mysql_mysql_connector_j_8_0_31.xml\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_13_2.xml\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml\" beforeDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Enum\" />\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"develop\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"MavenImportPreferences\">\n    <option name=\"generalSettings\">\n      <MavenGeneralSettings>\n        <option name=\"useMavenConfig\" value=\"true\" />\n      </MavenGeneralSettings>\n    </option>\n  </component>\n  <component name=\"ProjectId\" id=\"2HfeDEMsqAT8H2y2VmmXgvZXrhZ\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,\n    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,\n    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,\n    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\n    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,\n    &quot;last_opened_file_path&quot;: &quot;C:/Java/workspaces/intelliJ/git-projects/live-coding-20221223/SQL-My-Testing&quot;,\n    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,\n    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,\n    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;\n  }\n}</component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"C:\\Java\\workspaces\\intelliJ\\git-projects\\restourantMenu-develhope-admin-frattarelli\\restourantMenu-develhope\\Team1_RestaurantMenu\" />\n      <recent name=\"C:\\Java\\workspaces\\intelliJ\\git-projects\\restourantMenu-develhope-admin-frattarelli\\restourantMenu-develhope\\Team1_RestaurantMenu\\src\\main\\java\\it\\team1Restaurant\\jdbc\" />\n    </key>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"e26885f8-4eec-486d-a28c-cd9a679d6e83\" name=\"Changes\" comment=\"\" />\n      <created>1668680446323</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1668680446323</updated>\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Fix all Test class\">\n      <created>1669134955091</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1669134955091</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Aggiunzione nuovi Dish per Vegetariani e creazione VegetarianMenu\">\n      <created>1670338466780</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1670338466780</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"3\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"FILTERS\">\n                <map>\n                  <entry key=\"branch\">\n                    <value>\n                      <list>\n                        <option value=\"master\" />\n                      </list>\n                    </value>\n                  </entry>\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"Fix all Test class\" />\n    <MESSAGE value=\"Aggiunzione nuovi Dish per Vegetariani e creazione VegetarianMenu\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Aggiunzione nuovi Dish per Vegetariani e creazione VegetarianMenu\" />\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 041558b9bcafbf73a749779e817d3784bca2fa17)
++++ b/.idea/workspace.xml	(date 1672329069244)
+@@ -5,12 +5,10 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="e26885f8-4eec-486d-a28c-cd9a679d6e83" name="Changes" comment="Fix all Test class">
+-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_19_4.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_mysql_mysql_connector_j_8_0_31.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_13_2.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/DrinkDAO.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestDrinkDao.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/db.properties" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+Index: src/main/java/it/team1Restaurant/dao/testDAO/TestDrinkDao.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/it/team1Restaurant/dao/testDAO/TestDrinkDao.java b/src/main/java/it/team1Restaurant/dao/testDAO/TestDrinkDao.java
+new file mode 100644
+--- /dev/null	(date 1672328764171)
++++ b/src/main/java/it/team1Restaurant/dao/testDAO/TestDrinkDao.java	(date 1672328764171)
+@@ -0,0 +1,30 @@
++package it.team1Restaurant.dao.testDAO;
++
++import it.team1Restaurant.dao.DishDAO;
++import it.team1Restaurant.dao.DrinkDAO;
++import it.team1Restaurant.foods.Dish;
++import it.team1Restaurant.foods.Drink;
++import it.team1Restaurant.foods.TypeCourseEnum;
++import it.team1Restaurant.menu.TypeClientMenuEnum;
++
++import java.util.EnumSet;
++
++public class TestDrinkDao {
++    public static void main(String[] args) {
++
++
++        DrinkDAO drinkDAO = new DrinkDAO();
++
++        drinkDAO.createTable();
++
++        drinkDAO.insertDrink(new Drink("Acqua", 2));
++        drinkDAO.insertDrink(new Drink("Birra", 6));
++        drinkDAO.insertDrink(new Drink("Vino Rosso", 15));
++        drinkDAO.insertDrink(new Drink("Vino Bianco", 16));
++        drinkDAO.insertDrink(new Drink("Coca Cola", 3));
++        drinkDAO.insertDrink(new Drink("Fanta", 3));
++        drinkDAO.insertDrink(new Drink("Birra Lager senza glutine",7));
++        drinkDAO.insertDrink(new Drink("Cocco drink",6.5));
++
++    }
++}
