@@ -1,6 +1,7 @@
 package it.team1Restaurant.dao.testDAO;
 
 import it.team1Restaurant.dao.DishDAO;
+import it.team1Restaurant.dao.DrinkDAO;
 import it.team1Restaurant.foods.Dish;
 import it.team1Restaurant.foods.TypeCourseEnum;
 
@@ -20,5 +21,4 @@ public class TestDishDAO {
         dishDAO.insertDish(new Dish(null, "Gelato al cioccolato", 8, TypeCourseEnum.DESSERT));
 
     }
-
 }
