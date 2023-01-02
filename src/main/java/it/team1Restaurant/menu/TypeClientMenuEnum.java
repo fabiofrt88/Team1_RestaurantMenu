@@ -14,16 +14,16 @@ public enum TypeClientMenuEnum {
 
     @SerializedName("Generic")
     GENERIC(1, "Generic"),
-    @SerializedName("Meat")
-    MEAT(2, "Meat"),
-    @SerializedName("Fish")
-    FISH(3, "Fish"),
     @SerializedName("Child")
-    CHILD(4, "Child"),
-    @SerializedName("Vegetarian")
-    VEGETARIAN(5, "Vegetarian"),
+    CHILD(2, "Child"),
+    @SerializedName("Meat")
+    MEAT(3, "Meat"),
+    @SerializedName("Fish")
+    FISH(4, "Fish"),
     @SerializedName("Vegan")
-    VEGAN(6, "Vegan"),
+    VEGAN(5, "Vegan"),
+    @SerializedName("Vegetarian")
+    VEGETARIAN(6, "Vegetarian"),
     @SerializedName("Celiac")
     CELIAC(7, "Celiac");
 

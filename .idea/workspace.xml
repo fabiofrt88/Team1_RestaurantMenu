@@ -5,19 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e26885f8-4eec-486d-a28c-cd9a679d6e83" name="Changes" comment="Fix all Test class">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_09_33__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_09_33__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.properties" beforeDir="false" afterPath="$PROJECT_DIR$/db.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/DrinkDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/DrinkDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/TypeDrinkDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/TypeDrinkDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestDishDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestDishDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestDrinkDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestDrinkDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestTypeDrinkDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestTypeDrinkDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/DrinkDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/DrinkDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestDishDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestDishDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestDrinkDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestDrinkDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/TypeCourseEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/TypeCourseEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/TypeDrinkEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/TypeDrinkEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/menu/TypeClientMenuEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/menu/TypeClientMenuEnum.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/menu/TypeClientMenuEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/menu/TypeClientMenuEnum.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +66,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Java\workspaces\intelliJ\git-projects\restourantMenu-develhope-admin-frattarelli\restourantMenu-develhope\Team1_RestaurantMenu" />
       <recent name="C:\Java\workspaces\intelliJ\git-projects\restourantMenu-develhope-admin-frattarelli\restourantMenu-develhope\Team1_RestaurantMenu\src\main\java\it\team1Restaurant\jdbc" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Java\workspaces\intelliJ\git-projects\restourantMenu-develhope-admin-frattarelli\restourantMenu-develhope\Team1_RestaurantMenu" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />

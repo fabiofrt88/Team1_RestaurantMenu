@@ -3,9 +3,7 @@ package it.team1Restaurant.dao;
 import it.team1Restaurant.foods.TypeDrinkEnum;
 import it.team1Restaurant.jdbc.DriverJDBC;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class TypeDrinkDAO {
 
