@@ -1,5 +1,10 @@
 package it.team1Restaurant.menu;
 
+import com.google.gson.annotations.SerializedName;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Questa classe è un enum che definisce le categorie alimentari dei clienti e delle portate.
  * @author Fabio Frattarelli, Pietro Gallina, Francesco Consiglio, Giovanni Tirone, Dino Petrucci, Christian Carollo
@@ -7,16 +12,31 @@ package it.team1Restaurant.menu;
  */
 public enum TypeClientMenuEnum {
 
+    @SerializedName("Generic")
     GENERIC(1, "Generic"),
+    @SerializedName("Meat")
     MEAT(2, "Meat"),
+    @SerializedName("Fish")
     FISH(3, "Fish"),
+    @SerializedName("Child")
     CHILD(4, "Child"),
+    @SerializedName("Vegetarian")
     VEGETARIAN(5, "Vegetarian"),
+    @SerializedName("Vegan")
     VEGAN(6, "Vegan"),
+    @SerializedName("Celiac")
     CELIAC(7, "Celiac");
 
     private final Integer id;
     private final String typeClientMenu;
+
+    private static final Map<Integer, TypeClientMenuEnum> typeClientMenuMap = new HashMap<>();
+
+    static{
+        for(TypeClientMenuEnum typeClientMenuEnum : TypeClientMenuEnum.values()){
+            typeClientMenuMap.put(typeClientMenuEnum.id, typeClientMenuEnum);
+        }
+    }
 
     TypeClientMenuEnum(Integer id, String typeClientMenu){
         this.id = id;
@@ -27,7 +47,22 @@ public enum TypeClientMenuEnum {
         return id;
     }
 
-    public String getTypeClientMenu() {
+    public String getTypeClientMenuName() {
         return typeClientMenu;
     }
+
+    public static TypeClientMenuEnum getTypeClientMenuById(Integer id){
+        return typeClientMenuMap.get(id);
+    }
+
+    public static TypeClientMenuEnum getTypeClientMenuByName(String typeClientMenu){
+        TypeClientMenuEnum typeClientMenuEnum = null;
+        try {
+            typeClientMenuEnum = TypeClientMenuEnum.valueOf(typeClientMenu.toUpperCase());
+        } catch (IllegalArgumentException | NullPointerException e) {
+            System.out.println(e.getMessage());
+        }
+        return typeClientMenuEnum;
+    }
+
 }

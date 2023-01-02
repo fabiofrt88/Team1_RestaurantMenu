@@ -37,9 +37,9 @@ public class TestBookingsMap {
         System.out.println("workingday" + nowWorking);
         Day nowNotWorking = new Day(LocalDate.now(), WorkingDayEnum.NOT_WORKING);
         System.out.println("notworkingday" + nowNotWorking);
-        Booking booking1 = new Booking (new Client(), "2222-11-11 23:00", LocalDate.now(), LocalTime.now());
+        Booking booking1 = new Booking (new Client("Mario", "Rossi"), "2222-11-11 23:00", LocalDate.now(), LocalTime.now());
         System.out.println("booking1:" + booking1);
-        Booking booking2 = new Booking (new Client(), "5555-11-11 23:00", LocalDate.now(), LocalTime.now());
+        Booking booking2 = new Booking (new Client("Giuseppe", "Verdi"), "5555-11-11 23:00", LocalDate.now(), LocalTime.now());
         System.out.println("booking1:" + booking2);
         bookingsMap.put(nowWorking, new ArrayList<>(Arrays.asList(booking1)));
         System.out.println("Map keys after first adding: " + bookingsMap.keySet());

@@ -1,283 +1,253 @@
 package it.team1Restaurant.foods;
 
-import it.team1Restaurant.menu.TypeClientMenuEnum;
-
 import java.util.*;
 
-/**
- * Questa classe singleton viene utilizzata per realizzare lo storage di tutte le portate del ristorante. <br>
- * Presenta una mappa con liste di foods per tipologia di portata, metodi per realizzare il CRUD dei foods. <br>
- * A partire dalla mappa con le liste dei foods, si possono creare dei menu personalizzati per tipologia alimentare
- * @author Fabio Frattarelli, Pietro Gallina, Francesco Consiglio, Giovanni Tirone, Dino Petrucci, Christian Carollo
- * @version 1.0
- */
-public class FoodStorage {
+public abstract class FoodStorage {
 
-    /**
-     * È l'unico oggetto istanziato (con visibilità private) della classe singleton {@link it.team1Restaurant.foods.FoodStorage}
-     */
-    private static FoodStorage foodStorage = new FoodStorage();
+    private static final List<Dish> dishList;
+    private static final List<Drink> drinkList;
+    private static final List<Ingredient> ingredientList;
 
-    /**
-     * La mappa di storage con tutte le portate del ristorante,
-     * con chiave {@link TypeCourseEnum}
-     * e valori le liste dei foods {@link it.team1Restaurant.foods.FoodList}
-     */
-    private Map<TypeCourseEnum, FoodList> foodListsMap;
-
-    /**
-     * Metodo costruttore della classe {@link it.team1Restaurant.foods.FoodStorage},
-     * viene istanziata la mappa di storage con tutte le portate e le relative liste di foods (inizialmente vuote)
-     * mediante il metodo {@link FoodStorage#initFoodListsMap()}
-     */
-    private FoodStorage(){
-        this.foodListsMap = initFoodListsMap();
+    static{
+        dishList = initDishList();
+        drinkList = initDrinkList();
+        ingredientList = initIngredientList();
     }
 
-    /**
-     * Metodo getter che restituisce l'oggetto della classe singleton {@link it.team1Restaurant.foods.FoodStorage}
-     * precedentemente istanziato
-     * @return Oggetto classe singleton {@link it.team1Restaurant.foods.FoodStorage}
-     */
-    public static FoodStorage getInstance(){
-        return foodStorage;
+    public static List<Dish> getDishList() {
+        return dishList;
     }
 
-    /**
-     * Metodo getter che restituisce la mappa di storage con tutte le portate del ristorante
-     * @return Mappa di storage con tutte le portate del ristorante
-     */
-    public Map<TypeCourseEnum, FoodList> getFoodListsMap() {
-        return foodListsMap;
+    public static List<Drink> getDrinkList() {
+        return drinkList;
     }
 
-    /**
-     * Metodo setter che setta la mappa di storage con tutte le portate del ristorante
-     * @param foodListsMap La mappa di storage con tutte le portate del ristorante
-     */
-    public void setFoodListsMap(Map<TypeCourseEnum, FoodList> foodListsMap) {
-        this.foodListsMap = foodListsMap;
+    public static List<Ingredient> getIngredientList() {
+        return ingredientList;
     }
 
-    /**
-     * Questo metodo istanzia ed inizializza la mappa di storage con tutte le portate del ristorante
-     * con chiavi {@link TypeCourseEnum}
-     * e le relative liste dei foods istanziate {@link it.team1Restaurant.foods.FoodList} (inizialmente vuote)
-     * @return Mappa di storage con tutte le portate del ristorante (con liste dei foods inizialmente vuote)
-     */
-    public Map<TypeCourseEnum, FoodList> initFoodListsMap(){
-        Map<TypeCourseEnum, FoodList> foodListsMap = new HashMap<>();
-        foodListsMap.put(TypeCourseEnum.STARTER, new FoodList(TypeCourseEnum.STARTER));
-        foodListsMap.put(TypeCourseEnum.DRINK, new FoodList(TypeCourseEnum.DRINK));
-        foodListsMap.put(TypeCourseEnum.FIRST, new FoodList(TypeCourseEnum.FIRST));
-        foodListsMap.put(TypeCourseEnum.SECOND, new FoodList(TypeCourseEnum.SECOND));
-        foodListsMap.put(TypeCourseEnum.SIDE_DISH, new FoodList(TypeCourseEnum.SIDE_DISH));
-        foodListsMap.put(TypeCourseEnum.DESSERT, new FoodList(TypeCourseEnum.DESSERT));
-        foodListsMap.put(TypeCourseEnum.FRUIT, new FoodList(TypeCourseEnum.FRUIT));
-        return foodListsMap;
+    private static List<Dish> initDishList(){
+        List<Dish> dishList = new ArrayList<>();
+
+        dishList.add(new Dish(null, "Spaghetti alla carbonara", 12, TypeCourseEnum.FIRST));
+        dishList.add(new Dish(null, "Spaghetti all'amatriciana", 12, TypeCourseEnum.FIRST));
+        dishList.add(new Dish(null, "Lasagne alla bolognese", 15, TypeCourseEnum.FIRST));
+        dishList.add(new Dish(null, "Ziti alla genovese", 16, TypeCourseEnum.FIRST));
+        dishList.add(new Dish(null, "Tagliatelle alla bolognese", 15, TypeCourseEnum.FIRST));
+        dishList.add(new Dish(null, "Linguine allo scoglio", 17, TypeCourseEnum.FIRST));
+        dishList.add(new Dish(null, "Spaghetti alla luciana", 16, TypeCourseEnum.FIRST));
+        dishList.add(new Dish(null, "Insalata di riso e melone", 11, TypeCourseEnum.FIRST));
+        dishList.add(new Dish(null, "Spaghetti ai carciofi e limone", 14, TypeCourseEnum.FIRST));
+        dishList.add(new Dish(null, "Pasta al sugo", 8, TypeCourseEnum.FIRST));
+        dishList.add(new Dish(null, "Pasta al pesto", 10, TypeCourseEnum.FIRST));
+        dishList.add(new Dish(null, "Spaghetti Cacio e Pepe", 13, TypeCourseEnum.FIRST));
+        dishList.add(new Dish(null, "Crema di Zucca", 10, TypeCourseEnum.FIRST));
+        dishList.add(new Dish(null, "Pasta funghi porcini e rucola senza glutine", 13.5, TypeCourseEnum.FIRST));
+        dishList.add(new Dish(null, "Lasagne ai carciofi senza glutine", 11.5, TypeCourseEnum.FIRST));
+
+        dishList.add(new Dish(null, "Salsicce e Friarielli", 13, TypeCourseEnum.SECOND));
+        dishList.add(new Dish(null, "Polpette al ragù con parmigiana di melanzane", 14, TypeCourseEnum.SECOND));
+        dishList.add(new Dish(null, "Insalata di polpo e patate", 15, TypeCourseEnum.SECOND));
+        dishList.add(new Dish(null, "Fritto misto", 15, TypeCourseEnum.SECOND));
+        dishList.add(new Dish(null, "Polpettone di fagioli e tofu alle erbe", 13, TypeCourseEnum.SECOND));
+        dishList.add(new Dish(null, "Zucchine ripiene con crema di fagioli bianchi", 14, TypeCourseEnum.SECOND));
+        dishList.add(new Dish(null, "Cotoletta e Patatine", 12, TypeCourseEnum.SECOND));
+        dishList.add(new Dish(null, "Hamburger e insalata", 13, TypeCourseEnum.SECOND));
+        dishList.add(new Dish(null, "Parmigiana di Melanzane", 15, TypeCourseEnum.SECOND));
+        dishList.add(new Dish(null, "Polpette di verdure", 15, TypeCourseEnum.SECOND));
+        dishList.add(new Dish(null, "Agnello alla lucana senza glutine", 18.5, TypeCourseEnum.SECOND));
+        dishList.add(new Dish(null, "Arista al limone", 20, TypeCourseEnum.SECOND));
+        dishList.add(new Dish(null, "Gulasch ungherese", 13, TypeCourseEnum.SECOND));
+        dishList.add(new Dish(null, "Filetto di salmone con crema al mascarpone", 15, TypeCourseEnum.SECOND));
+
+        dishList.add(new Dish(null, "Tiramisù", 11, TypeCourseEnum.DESSERT));
+        dishList.add(new Dish(null, "Babà", 9, TypeCourseEnum.DESSERT));
+        dishList.add(new Dish(null, "Tiramisù vegano", 12, TypeCourseEnum.DESSERT));
+        dishList.add(new Dish(null, "Ciambellone vegano", 15, TypeCourseEnum.DESSERT));
+        dishList.add(new Dish(null, "Gelato alla fragola", 8, TypeCourseEnum.DESSERT));
+        dishList.add(new Dish(null, "Gelato al cioccolato", 8, TypeCourseEnum.DESSERT));
+        dishList.add(new Dish(null, "Tiramisù vegetariano", 10, TypeCourseEnum.DESSERT));
+        dishList.add(new Dish(null, "Torta Tenerina", 9, TypeCourseEnum.DESSERT));
+        dishList.add(new Dish(null, "Torta caprese", 9, TypeCourseEnum.DESSERT));
+        dishList.add(new Dish(null, "Migliaccio napoletano", 9, TypeCourseEnum.DESSERT));
+        dishList.add(new Dish(null, "Cassata siciliana", 15, TypeCourseEnum.DESSERT));
+        dishList.add(new Dish(null, "Cannolo siciliano", 10, TypeCourseEnum.DESSERT));
+        dishList.add(new Dish(null, "New York Cheesecake", 14, TypeCourseEnum.DESSERT));
+        dishList.add(new Dish(null, "Cheesecake di zucca gialla", 14, TypeCourseEnum.DESSERT));
+        dishList.add(new Dish(null, "Semifreddo al caffè", 9, TypeCourseEnum.DESSERT));
+        dishList.add(new Dish(null, "Parfait alle mandorle", 15, TypeCourseEnum.DESSERT));
+
+        Collections.sort(dishList, (ds1, ds2) -> ds1.getName().compareToIgnoreCase(ds2.getName()));
+
+        return dishList;
     }
 
-    /**
-     * Questo metodo aggiunge un drink nella lista dei foods con chiave {@link TypeCourseEnum#DRINK} <br>
-     * L'oggetto drink con i relativi parametri passati nel costruttore viene istanziato all'interno della relativa lista
-     * della mappa di storage con tutte le portate
-     * @param name Il nome del drink
-     * @param price Il prezzo del drink
-     */
-    public void addDrink(String name, double price){
-        foodListsMap.get(TypeCourseEnum.DRINK).add(new Drink(name, price));
+    private static List<Drink> initDrinkList(){
+        List<Drink> drinkList = new ArrayList<>();
+
+        drinkList.add(new Drink(null, "Acqua", 2, TypeDrinkEnum.SOFT_DRINK));
+        drinkList.add(new Drink(null, "Vino Rosso", 15, TypeDrinkEnum.WINE));
+        drinkList.add(new Drink(null, "Vino Bianco", 16, TypeDrinkEnum.WINE));
+        drinkList.add(new Drink(null, "Spumante", 16, TypeDrinkEnum.WINE));
+        drinkList.add(new Drink(null, "Champagne", 16, TypeDrinkEnum.WINE));
+        drinkList.add(new Drink(null, "Lambrusco", 18, TypeDrinkEnum.WINE));
+        drinkList.add(new Drink(null, "Prosecco", 16, TypeDrinkEnum.WINE));
+        drinkList.add(new Drink(null, "Birra", 6, TypeDrinkEnum.BEER));
+        drinkList.add(new Drink(null, "Birra senza glutine",7, TypeDrinkEnum.BEER));
+        drinkList.add(new Drink(null, "Coca Cola", 3,TypeDrinkEnum.SOFT_DRINK));
+        drinkList.add(new Drink(null, "Aranciata", 3, TypeDrinkEnum.SOFT_DRINK));
+        drinkList.add(new Drink(null, "Succo alla pera", 2, TypeDrinkEnum.FRUIT_JUICE));
+        drinkList.add(new Drink(null, "Succo all'ananas", 2,TypeDrinkEnum.FRUIT_JUICE));
+        drinkList.add(new Drink(null, "Cocco drink",6.5, TypeDrinkEnum.COCKTAIL));
+        drinkList.add(new Drink(null, "Gin Tonic",12, TypeDrinkEnum.COCKTAIL));
+        drinkList.add(new Drink(null, "Martini",12, TypeDrinkEnum.COCKTAIL));
+        drinkList.add(new Drink(null, "Margarita",12, TypeDrinkEnum.COCKTAIL));
+        drinkList.add(new Drink(null, "Mojito",12, TypeDrinkEnum.COCKTAIL));
+        drinkList.add(new Drink(null, "Negroni",12, TypeDrinkEnum.COCKTAIL));
+        drinkList.add(new Drink(null, "Spritz",12, TypeDrinkEnum.COCKTAIL));
+
+        Collections.sort(drinkList, (dr1, dr2) -> dr1.getName().compareToIgnoreCase(dr2.getName()));
+
+        return drinkList;
     }
 
-    /**
-     * Questo metodo aggiunge un drink nella lista dei foods con chiave {@link TypeCourseEnum#DRINK} <br>
-     * L'oggetto drink con i relativi parametri passati nel costruttore viene istanziato all'interno della relativa lista
-     * della mappa di storage con tutte le portate
-     * @param name Il nome del drink
-     * @param price Il prezzo del drink
-     * @param typeSet EnumSet delle tipologie alimentari del drink
-     */
-    public void addDrink(String name, double price, EnumSet<TypeClientMenuEnum> typeSet){
-        foodListsMap.get(TypeCourseEnum.DRINK).add(new Drink(name, price, typeSet));
-    }
+    private static List<Ingredient> initIngredientList(){
+        List<Ingredient> ingredientList = new ArrayList<>();
 
-    /**
-     * Questo metodo aggiunge un drink nella lista dei foods con chiave {@link TypeCourseEnum#DRINK} <br>
-     * L'oggetto drink con i relativi parametri passati nel costruttore viene istanziato all'interno della relativa lista
-     * della mappa di storage con tutte le portate
-     * @param name Il nome del drink
-     * @param ingredients La lista degli ingredienti del drink
-     * @param typeSet EnumSet delle tipologie alimentari del drink
-     * @param price Il prezzo del drink
-     */
-    public void addDrink(String name, List<Ingredient> ingredients, EnumSet<TypeClientMenuEnum> typeSet , double price){
-        foodListsMap.get(TypeCourseEnum.DRINK).add(new Drink(name, ingredients, price, typeSet));
-    }
+        ingredientList.add(new Ingredient("Acqua"));
+        ingredientList.add(new Ingredient("Concentrato di pomodoro"));
+        ingredientList.add(new Ingredient("Pomodoro"));
+        ingredientList.add(new Ingredient("Cipolle"));
+        ingredientList.add(new Ingredient("Girello di manzo"));
+        ingredientList.add(new Ingredient("Carne macinata"));
+        ingredientList.add(new Ingredient("Pancetta"));
+        ingredientList.add(new Ingredient("Prosciutto cotto"));
+        ingredientList.add(new Ingredient("Prosciutto crudo"));
+        ingredientList.add(new Ingredient("Salame"));
+        ingredientList.add(new Ingredient("Mortadella"));
+        ingredientList.add(new Ingredient("Mozzarella"));
+        ingredientList.add(new Ingredient("Mozzarella di bufala"));
+        ingredientList.add(new Ingredient("Vongole"));
+        ingredientList.add(new Ingredient("Cozze"));
+        ingredientList.add(new Ingredient("Scampi"));
+        ingredientList.add(new Ingredient("Moscardini"));
+        ingredientList.add(new Ingredient("Olive nere"));
+        ingredientList.add(new Ingredient("Peperoncino"));
+        ingredientList.add(new Ingredient("Riso"));
+        ingredientList.add(new Ingredient("Melone"));
+        ingredientList.add(new Ingredient("Carciofi"));
+        ingredientList.add(new Ingredient("Limone"));
+        ingredientList.add(new Ingredient("Passata di pomodoro"));
+        ingredientList.add(new Ingredient("Basilico"));
+        ingredientList.add(new Ingredient("Parmigiano Reggiano DOP"));
+        ingredientList.add(new Ingredient("Grana padano"));
+        ingredientList.add(new Ingredient("Pecorino romano"));
+        ingredientList.add(new Ingredient("Pepe nero in grani"));
+        ingredientList.add(new Ingredient("Brodo vegetale"));
+        ingredientList.add(new Ingredient("Cannella in polvere"));
+        ingredientList.add(new Ingredient("Pasta"));
+        ingredientList.add(new Ingredient("Pasta fresca"));
+        ingredientList.add(new Ingredient("Gnocchetti di patate"));
+        ingredientList.add(new Ingredient("Pasta senza glutine"));
+        ingredientList.add(new Ingredient("Funghi porcini"));
+        ingredientList.add(new Ingredient("Pasta fresca per lasagne senza glutine"));
+        ingredientList.add(new Ingredient("Besciamella senza glutine"));
+        ingredientList.add(new Ingredient("Panna al salmone"));
+        ingredientList.add(new Ingredient("Salsicce"));
+        ingredientList.add(new Ingredient("Friarelli"));
+        ingredientList.add(new Ingredient("Carne di manzo"));
+        ingredientList.add(new Ingredient("Melanzane"));
+        ingredientList.add(new Ingredient("Peperoni"));
+        ingredientList.add(new Ingredient("Fiordilatte"));
+        ingredientList.add(new Ingredient("Polpo"));
+        ingredientList.add(new Ingredient("Triglie"));
+        ingredientList.add(new Ingredient("Merluzzetti"));
+        ingredientList.add(new Ingredient("Gamberetti"));
+        ingredientList.add(new Ingredient("Calamari"));
+        ingredientList.add(new Ingredient("Salmone affumicato"));
+        ingredientList.add(new Ingredient("Tofu"));
+        ingredientList.add(new Ingredient("Fagioli"));
+        ingredientList.add(new Ingredient("Erbe"));
+        ingredientList.add(new Ingredient("Zucchine"));
+        ingredientList.add(new Ingredient("Fagioli Bianchi"));
+        ingredientList.add(new Ingredient("Pollo"));
+        ingredientList.add(new Ingredient("Insalata"));
+        ingredientList.add(new Ingredient("Lattuga"));
+        ingredientList.add(new Ingredient("Melanzane ovali nere"));
+        ingredientList.add(new Ingredient("Pisellini"));
+        ingredientList.add(new Ingredient("Pomodorini"));
+        ingredientList.add(new Ingredient("Vino Bianco"));
+        ingredientList.add(new Ingredient("Vino Rosso"));
+        ingredientList.add(new Ingredient("Aceto di mele"));
+        ingredientList.add(new Ingredient("Brandy"));
+        ingredientList.add(new Ingredient("Cognac"));
+        ingredientList.add(new Ingredient("Rum"));
+        ingredientList.add(new Ingredient("Caffè"));
+        ingredientList.add(new Ingredient("Cacao"));
+        ingredientList.add(new Ingredient("Yogurt"));
+        ingredientList.add(new Ingredient("Yogurt di soia"));
+        ingredientList.add(new Ingredient("Panna"));
+        ingredientList.add(new Ingredient("Panna di soia"));
+        ingredientList.add(new Ingredient("Farina 0"));
+        ingredientList.add(new Ingredient("Farina 00"));
+        ingredientList.add(new Ingredient("Farina tipo 1"));
+        ingredientList.add(new Ingredient("Farina integrale"));
+        ingredientList.add(new Ingredient("Farina senza glutine"));
+        ingredientList.add(new Ingredient("Farina di riso"));
+        ingredientList.add(new Ingredient("Farina di ceci"));
+        ingredientList.add(new Ingredient("Lenticchie"));
+        ingredientList.add(new Ingredient("Uova"));
+        ingredientList.add(new Ingredient("Zucchero"));
+        ingredientList.add(new Ingredient("Zucchero di canna"));
+        ingredientList.add(new Ingredient("Burro"));
+        ingredientList.add(new Ingredient("Biscotti vegani"));
+        ingredientList.add(new Ingredient("Latte"));
+        ingredientList.add(new Ingredient("Latte vegetale"));
+        ingredientList.add(new Ingredient("Fragole"));
+        ingredientList.add(new Ingredient("Cioccolato"));
+        ingredientList.add(new Ingredient("Cioccolato fondente"));
+        ingredientList.add(new Ingredient("Cioccolato bianco"));
+        ingredientList.add(new Ingredient("Mascarpone"));
+        ingredientList.add(new Ingredient("Savoiardi"));
+        ingredientList.add(new Ingredient("Mandorle"));
+        ingredientList.add(new Ingredient("Nocciole"));
+        ingredientList.add(new Ingredient("Semolino"));
+        ingredientList.add(new Ingredient("Sfogliatelle"));
+        ingredientList.add(new Ingredient("Crema pasticcera"));
+        ingredientList.add(new Ingredient("Crema allo zabaione"));
+        ingredientList.add(new Ingredient("Tartufo"));
+        ingredientList.add(new Ingredient("Origano"));
+        ingredientList.add(new Ingredient("Spezie"));
+        ingredientList.add(new Ingredient("Olio extravergine di oliva"));
+        ingredientList.add(new Ingredient("Aceto balsamico"));
+        ingredientList.add(new Ingredient("Ketchup"));
+        ingredientList.add(new Ingredient("Salsa rosa"));
+        ingredientList.add(new Ingredient("Arancia"));
+        ingredientList.add(new Ingredient("Mele"));
+        ingredientList.add(new Ingredient("Pere"));
+        ingredientList.add(new Ingredient("Ananas"));
+        ingredientList.add(new Ingredient("Anguria"));
+        ingredientList.add(new Ingredient("Pesca"));
+        ingredientList.add(new Ingredient("Avocado"));
+        ingredientList.add(new Ingredient("Asparagi"));
+        ingredientList.add(new Ingredient("Broccoletti"));
+        ingredientList.add(new Ingredient("Spinaci"));
+        ingredientList.add(new Ingredient("Pinoli"));
+        ingredientList.add(new Ingredient("Vaniglia"));
+        ingredientList.add(new Ingredient("Fecola di patate"));
+        ingredientList.add(new Ingredient("Fontina"));
+        ingredientList.add(new Ingredient("Gorgonzola"));
+        ingredientList.add(new Ingredient("Ghiaccio"));
+        ingredientList.add(new Ingredient("Soda"));
+        ingredientList.add(new Ingredient("Ricotta"));
+        ingredientList.add(new Ingredient("Canditi"));
+        ingredientList.add(new Ingredient("Pan di spagna"));
+        ingredientList.add(new Ingredient("Patate"));
+        ingredientList.add(new Ingredient("Patatine fritte"));
 
-    /**
-     * Questo metodo aggiunge un dish nella lista dei foods con chiave {@link TypeCourseEnum} <br>
-     * L'oggetto dish con i relativi parametri passati nel costruttore viene istanziato all'interno della relativa lista
-     * della mappa di storage con tutte le portate
-     * @param typeFood La tipologia di portata del dish (chiave)
-     * @param name Il nome del dish
-     * @param price Il prezzo del dish
-     */
-    public void addDish(TypeCourseEnum typeFood, String name, double price){
-        foodListsMap.get(typeFood).add(new Dish(typeFood, name, price));
-    }
+        Collections.sort(ingredientList, (ing1, ing2) -> ing1.getName().compareToIgnoreCase(ing2.getName()));
 
-    /**
-     * Questo metodo aggiunge un dish nella lista dei foods con chiave {@link TypeCourseEnum} <br>
-     * L'oggetto dish con i relativi parametri passati nel costruttore viene istanziato all'interno della relativa lista
-     * della mappa di storage con tutte le portate
-     * @param typeFood La tipologia di portata del dish (chiave)
-     * @param name Il nome del dish
-     * @param typeSet EnumSet delle tipologie alimentari del dish
-     * @param price Il prezzo del dish
-     */
-    public void addDish(TypeCourseEnum typeFood, String name, EnumSet<TypeClientMenuEnum> typeSet, double price){
-        foodListsMap.get(typeFood).add(new Dish(typeFood, name, price, typeSet));
-    }
-
-    /**
-     * Questo metodo aggiunge un dish nella lista dei foods con chiave {@link TypeCourseEnum} <br>
-     * L'oggetto dish con i relativi parametri passati nel costruttore viene istanziato all'interno della relativa lista
-     * della mappa di storage con tutte le portate
-     * @param typeFood La tipologia di portata del dish (chiave)
-     * @param name Il nome del dish
-     * @param ingredients La lista degli ingredienti del dish
-     * @param price Il prezzo del dish
-     */
-    public void addDish(TypeCourseEnum typeFood, String name, List<Ingredient> ingredients, double price){
-        foodListsMap.get(typeFood).add(new Dish(typeFood, name, ingredients, price));
-    }
-
-    /**
-     * Questo metodo aggiunge un dish nella lista dei foods con chiave {@link TypeCourseEnum} <br>
-     * L'oggetto dish con i relativi parametri passati nel costruttore viene istanziato all'interno della relativa lista
-     * della mappa di storage con tutte le portate
-     * @param typeFood La tipologia di portata del dish (chiave)
-     * @param name Il nome del dish
-     * @param ingredients La lista degli ingredienti del dish
-     * @param price Il prezzo del dish
-     * @param typeSet EnumSet delle tipologie alimentari del dish
-     */
-    public void addDish(TypeCourseEnum typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeClientMenuEnum> typeSet){
-        foodListsMap.get(typeFood).add(new Dish(typeFood, name, ingredients, price, typeSet));
-    }
-
-    /**
-     * Questo metodo aggiunge un food (dish / drink) nella lista dei foods con chiave {@link TypeCourseEnum} <br>
-     * L'oggetto (dish / drink) con i relativi parametri passati nel costruttore viene istanziato all'interno della relativa lista
-     * della mappa di tutte le portate. In base alla tipologia di portata {@link TypeCourseEnum}, verrà invocato
-     * opportunamente il costruttore di Drink {@link it.team1Restaurant.foods.Drink#Drink(String, List, double, EnumSet)}
-     * piuttosto che quello di Dish {@link it.team1Restaurant.foods.Dish#Dish(TypeCourseEnum, String, List, double, EnumSet)}
-     * @param typeFood La tipologia di portata del food (chiave)
-     * @param name Il nome del food
-     * @param ingredients La lista degli ingredienti del dish
-     * @param price Il prezzo del dish
-     * @param typeSet EnumSet delle tipologie alimentari del dish
-     */
-    public void addFood(TypeCourseEnum typeFood, String name, List<Ingredient> ingredients, double price, EnumSet<TypeClientMenuEnum> typeSet){
-        if(typeFood.equals(TypeCourseEnum.DRINK)){
-            foodListsMap.get(TypeCourseEnum.DRINK).add(new Drink(name, ingredients, price, typeSet));
-        }
-        else{
-            foodListsMap.get(typeFood).add(new Dish(typeFood, name, ingredients,price, typeSet));
-        }
-    }
-
-    /**
-     * Questo metodo restituisce nel dettaglio i dati dei foods presenti nelle liste della mappa di storage
-     * @return Stringa concatenata contenente i dati dei foods presenti nelle liste della mappa di storage
-     */
-    public String getFoodStorageDetails() {
-        String str = String.format("%34s\n\n", "Storage portate ristorante");
-        str += "\n\n---------------------------------------------------------\n";
-        for (TypeCourseEnum typefood : TypeCourseEnum.values()) {
-            FoodList foodList = foodListsMap.get(typefood);
-            str += "\n" + typefood.name() + ":\n" + foodList.getFoodListDetails()
-                    + "\n---------------------------------------------------------\n";
-        }
-        return str;
-    }
-
-    /**
-     * Questo metodo filtra e restituisce una mappa con le relative liste di foods filtrata
-     * per tipologia alimentare {@link TypeClientMenuEnum}
-     * a partire dalla mappa di storage dei foods {@link FoodStorage#foodListsMap}
-     * mediante il metodo {@link FoodStorage#dishFilter(EnumSet)} invocato al suo interno (riusabilità del codice)
-     * @param typeDishRequired La tipologia alimentare con la quale filtrare la mappa dei foods
-     * @return Mappa con le relative liste di foods filtrata per enum di {@link TypeClientMenuEnum}
-     */
-    public Map<TypeCourseEnum, FoodList> dishFilter(TypeClientMenuEnum typeDishRequired) {
-        EnumSet<TypeClientMenuEnum> typeDishSetRequired = EnumSet.of(typeDishRequired);
-        return this.dishFilter(typeDishSetRequired);
-    }
-
-
-    /**
-     * Questo metodo filtra e restituisce una mappa con le relative liste di foods filtrata
-     * per EnumSet di {@link TypeClientMenuEnum}
-     * a partire dalla mappa di storage dei foods {@link FoodStorage#foodListsMap}
-     * @param typeDishSetRequired EnumSet delle tipologie alimentari per filtrare la mappa dei foods
-     * @return Mappa con le relative liste di foods filtrata per EnumSet di {@link TypeClientMenuEnum}
-     */
-    public Map<TypeCourseEnum, FoodList> dishFilter(EnumSet<TypeClientMenuEnum> typeDishSetRequired) {
-        System.out.println("Foods filtered by type: " + typeDishSetRequired.toString() + "\n"); //stampa EnumSet delle tipologie alimentari
-        Map<TypeCourseEnum, FoodList> filteredFoodListsMap = initFoodListsMap(); //istanzia ed inizializzazione mappa e delle relative liste
-        for (TypeCourseEnum typefood : TypeCourseEnum.values()) { //foreach delle tipologie di portata (iterazione della mappa di storage)
-            FoodList<Food> foodList = foodListsMap.get(typefood); //si ottiene una foodList per tipologia di portata
-            if(foodList.isEmpty()){ //se la foodlist è vuota si passa alla successiva iterazione
-                continue;
-            }
-            for(Food food : foodList){ //foreach dei foods della foodList
-                if(!food.getTypeSet().isEmpty()){ //se l'EnumSet delle tipologie alimentari del food non è vuoto
-                    for(TypeClientMenuEnum typeDishRequired : typeDishSetRequired) { //foreach EnumSet delle tipologie alimentari
-                        //se il food presenta la tipologia alimentare di filtraggio e la mappa filtrata non contiene il food (onde evitare duplicati)
-                        if (food.getTypeSet().contains(typeDishRequired) && !filteredFoodListsMap.get(typefood).contains(food)) {
-                            filteredFoodListsMap.get(typefood).add(food); //aggiunge il food alla lista per portata della mappa filtrata dei foods
-                        }
-                    }
-                }
-            }
-        }
-        this.printFilteredFoodListsMapDetails(filteredFoodListsMap); //stampa della mappa filtrata dei foods
-        return filteredFoodListsMap; //return della mappa filtrata
-        /*
-        Le righe da 104 a 113 si possono sostituire con qualcosa del genere:
-         Set<Food> foodWithRequirements = foodList.getFoodsByTypeDishClient(typeDishSetRequired);
-         filteredFoodListsMap.get(typefood).addAll(foodWithRequirements);
-        */
-    }
-
-    /**
-     * Questo metodo filtra e restituisce una mappa con le relative liste di foods filtrata per EnumSet
-     * di {@link TypeClientMenuEnum#VEGAN} e {@link TypeClientMenuEnum#VEGETARIAN}
-     * mediante il metodo di filtraggio {@link FoodStorage#dishFilter(EnumSet)} invocato al suo interno (riusabilità del codice)
-     * @return Mappa con le relative liste di foods filtrata per EnumSet
-     * di {@link TypeClientMenuEnum#VEGAN} e {@link TypeClientMenuEnum#VEGETARIAN}
-     */
-    public Map<TypeCourseEnum, FoodList> dishFilterVeg () {
-        return dishFilter(EnumSet.of(TypeClientMenuEnum.VEGAN, TypeClientMenuEnum.VEGETARIAN));
-    }
-
-    /**
-     * Questo metodo stampa nel dettaglio i dati della mappa con le relative liste di foods
-     * filtrate con i metodi di filtraggio {@link FoodStorage#dishFilter(TypeClientMenuEnum)}
-     * e {@link FoodStorage#dishFilter(EnumSet)} per {@link TypeClientMenuEnum}
-     * @param filteredFoodListsMap La mappa dei foods precedentemente filtrata
-     */
-    public void printFilteredFoodListsMapDetails(Map<TypeCourseEnum, FoodList> filteredFoodListsMap){
-        for (TypeCourseEnum typefood : TypeCourseEnum.values()) {
-            FoodList<Food> filteredFoodList = filteredFoodListsMap.get(typefood);
-            System.out.println(typefood.name() + ":\n");
-            if(filteredFoodList.isEmpty()) {
-                System.out.println("Nessun piatto presente con le caratteristiche richieste");
-            }
-            for(Food filteredFood : filteredFoodList){
-                System.out.println(filteredFood.getFoodDetails());
-            }
-        }
+        return ingredientList;
     }
 
 }

@@ -1,36 +1,32 @@
 package it.team1Restaurant.dao;
 
-import it.team1Restaurant.foods.Dish;
+import it.team1Restaurant.foods.Ingredient;
 import it.team1Restaurant.jdbc.DriverJDBC;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-public class DishDAO {
+public class IngredientDAO {
 
     public void createTable(){
 
         try (Connection conn = DriverJDBC.getConnection()) {
 
-            // print out a message
             System.out.printf("Connected to database %s successfully.\n\n", conn.getCatalog());
 
             Statement statement = conn.createStatement();
 
-            // this is a multiline string, definitely better for writing a SQL query
             String createQuery = """
-                    CREATE TABLE IF NOT EXISTS dish
-                    ( id INTEGER(10) NOT NULL AUTO_INCREMENT,
+                    CREATE TABLE IF NOT EXISTS ingredient
+                    ( id NOT NULL AUTO INCREMENT,
                       name VARCHAR(30) UNIQUE NOT NULL,
-                      price FLOAT(10),
-                      type_course_id INTEGER(5) NOT NULL,
-                      CONSTRAINT dish_pk PRIMARY KEY (id),
-                      CONSTRAINT type_course_FK_1 FOREIGN KEY (type_course_id) REFERENCES type_course(id)
-                      ON UPDATE CASCADE ON DELETE CASCADE
+                      CONSTRAINT ingredient_pk PRIMARY KEY (id)
                     );
                     """;
 
             statement.executeUpdate(createQuery);
-            System.out.printf("Created table dish in the database %s\n\n", conn.getCatalog());
+            System.out.printf("Created table ingredient in the database %s\n\n", conn.getCatalog());
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
@@ -38,23 +34,22 @@ public class DishDAO {
 
     }
 
-    public void insertDish(Dish dish){
+    public void insertIngredient(Ingredient ingredient){
 
         try (Connection conn = DriverJDBC.getConnection()) {
 
-            // print out a message
             System.out.printf("Connected to database %s successfully.\n\n", conn.getCatalog());
 
             Statement statement = conn.createStatement();
 
             String insertQuery =
                     """ 
-                     INSERT INTO dish (name, price, type_course_id)
-                     VALUES ('""" + dish.getName() + "', '" + dish.getPrice() + "', '" + dish.getTypeCourseId() + "');";
+                     INSERT INTO ingredient (name)
+                     VALUES ('""" + ingredient.getName() + "');";
 
             statement.executeUpdate(insertQuery);
 
-            System.out.printf("Dish %s inserted\n\n", dish.getName());
+            System.out.printf("Ingredient %s inserted\n\n", ingredient.getName());
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");

@@ -5,12 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e26885f8-4eec-486d-a28c-cd9a679d6e83" name="Changes" comment="Fix all Test class">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_19_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_mysql_mysql_connector_j_8_0_31.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_13_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_19_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_mysql_mysql_connector_j_8_0_31.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_13_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Team1_RestaurantMenu.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Team1_RestaurantMenu.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/it/team1Restaurant/foods/FoodStorage.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/it/team1Restaurant/foods/FoodStorage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/it/team1Restaurant/foods/class-use/FoodStorage.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/it/team1Restaurant/foods/class-use/FoodStorage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/bookings/tests/TestBooking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/bookings/tests/TestBooking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/DishDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/DishDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/IngredientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/IngredientDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestDishDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestDishDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/Dish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/Dish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/Drink.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/Drink.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/Food.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/FoodStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/FoodStorageOld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/Ingredient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/TypeCourseEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/TypeCourseEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/TypeDrinkEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/TypeDrinkEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/menu/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/menu/TestMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/menu/TestMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/menu/TypeClientMenuEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/menu/TypeClientMenuEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/user/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/user/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/it/bookings/TestBookingsMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/it/bookings/TestBookingsMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/bookings/tests/TestBooking.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/bookings/tests/TestBooking.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/DishDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/DishDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestDishDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestDishDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/Dish.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/Dish.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/Drink.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/Drink.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/Food.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/Food.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/FoodStorage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/FoodStorage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/Ingredient.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/Ingredient.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/menu/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/menu/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/menu/TestMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/menu/TestMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/user/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/user/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/test/it/bookings/TestBookingsMap.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/test/it/bookings/TestBookingsMap.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +59,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="feature1" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -48,22 +79,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Java/workspaces/intelliJ/git-projects/live-coding-20221223/SQL-My-Testing&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "last_opened_file_path": "C:/Java/workspaces/intelliJ/git-projects/restourantMenu-develhope-admin-frattarelli/restourantMenu-develhope-backup-v1/Team1_RestaurantMenu",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.34252873"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Java\workspaces\intelliJ\git-projects\restourantMenu-develhope-admin-frattarelli\restourantMenu-develhope\Team1_RestaurantMenu" />
@@ -93,7 +124,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670338466780</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="database connection (utente Dino)">
+      <created>1672329904927</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1672329904927</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -122,6 +160,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Fix all Test class" />
     <MESSAGE value="Aggiunzione nuovi Dish per Vegetariani e creazione VegetarianMenu" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aggiunzione nuovi Dish per Vegetariani e creazione VegetarianMenu" />
+    <MESSAGE value="database connection (utente Dino)" />
+    <option name="LAST_COMMIT_MESSAGE" value="database connection (utente Dino)" />
   </component>
 </project>

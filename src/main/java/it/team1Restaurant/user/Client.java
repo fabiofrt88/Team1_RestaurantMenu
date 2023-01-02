@@ -15,6 +15,9 @@ import java.util.List;
  */
 public class Client {
 
+    /**
+     * Il codice identificativo del client (chiave primaria univoca autoincrementale non modificabile).
+     */
     private final Integer id;
 
     /**
@@ -51,25 +54,6 @@ public class Client {
 
     private CalendarBookingsClient calendarBookingsClient = new CalendarBookingsClient();
 
-    private static Integer clientNumbers = 0;
-
-    /**
-     * Metodo costruttore di default non parametrico della classe {@link it.team1Restaurant.user.Client}
-     */
-    public Client () {
-        this.id = incrementClientNumbers();
-    }
-
-    /**
-     * Metodo costruttore della classe {@link it.team1Restaurant.user.Client},
-     * setta la variabile d'istanza booleana isChild con il relativo parametro passato nel costruttore
-     * @param isChild La flag booleana che indica se il cliente è un adulto oppure un bambino.
-     */
-    public Client (boolean isChild){
-        this.id = incrementClientNumbers();
-        this.isChild = isChild;
-    }
-
     /**
      * Metodo costruttore della classe {@link it.team1Restaurant.user.Client},
      * setta le variabili d'istanza con i relativi parametri passati nel costruttore,
@@ -78,7 +62,7 @@ public class Client {
      * @param surname Il cognome del cliente
      */
     public Client(String name, String surname) {
-        this.id = incrementClientNumbers();
+        this.id = null;
         this.name = name;
         this.surname = surname;
         this.typeDishClient = EnumSet.of(TypeClientMenuEnum.GENERIC);
@@ -93,8 +77,8 @@ public class Client {
      * @param email L'email del cliente
      * @param phoneNumber Il numero di telefono del cliente
      */
-    public Client(EnumSet<TypeClientMenuEnum> typeDishClient, String name, String surname, String email, String phoneNumber) {
-        this.id = incrementClientNumbers();
+    public Client(Integer id, String name, String surname, String email, String phoneNumber, EnumSet<TypeClientMenuEnum> typeDishClient) {
+        this.id = id;
         this.typeDishClient = typeDishClient;
         this.name = name;
         this.surname = surname;
@@ -216,18 +200,6 @@ public class Client {
 
     public void setCalendarBookingsClient(CalendarBookingsClient calendarBookingsClient) {
         this.calendarBookingsClient = calendarBookingsClient;
-    }
-
-    public static Integer getClientNumbers() {
-        return clientNumbers;
-    }
-
-    public static void setClientNumbers(Integer clientNumbers) {
-        Client.clientNumbers = clientNumbers;
-    }
-
-    public static int incrementClientNumbers(){
-        return ++clientNumbers;
     }
 
     public void printBookingsDetails(){

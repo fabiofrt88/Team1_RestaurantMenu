@@ -16,7 +16,7 @@ import static it.team1Restaurant.menu.TypeClientMenuEnum.*;
  * Questa classe viene utilizzata per testare la creazione della mappa di storage con le liste delle portate
  * e la creazione dei relativi menu differenziati per tipologia mediante delle associazioni has-a di aggregazione
  * tra le classi {@link it.team1Restaurant.foods.Food} e {@link it.team1Restaurant.menu.Menu},
- * a partire dalla classe di storage {@link it.team1Restaurant.foods.FoodStorage}, test dei relativi metodi
+ * a partire dalla classe di storage {@link FoodStorageOld}, test dei relativi metodi
  * @author Fabio Frattarelli, Pietro Gallina, Francesco Consiglio, Giovanni Tirone, Dino Petrucci, Christian Carollo
  * @version 1.0
  */
@@ -49,18 +49,18 @@ public class TestMenu {
      */
     public static void main(String[] args) {
 
-        FoodStorage foodStorage = FoodStorage.getInstance();
+        FoodStorageOld foodStorage = FoodStorageOld.getInstance();
 
         //create the drinks
 
-        foodStorage.addDrink("Acqua", 2,EnumSet.of(TypeClientMenuEnum.GENERIC, TypeClientMenuEnum.VEGAN, TypeClientMenuEnum.VEGETARIAN, TypeClientMenuEnum.CELIAC, TypeClientMenuEnum.CHILD));
-        foodStorage.addDrink("Vino Rosso", 15,EnumSet.of(TypeClientMenuEnum.GENERIC, TypeClientMenuEnum.VEGAN, TypeClientMenuEnum.VEGETARIAN));
-        foodStorage.addDrink("Vino Bianco", 16,EnumSet.of(TypeClientMenuEnum.GENERIC, TypeClientMenuEnum.VEGAN, TypeClientMenuEnum.VEGETARIAN));
-        foodStorage.addDrink("Birra", 6,EnumSet.of(TypeClientMenuEnum.GENERIC, TypeClientMenuEnum.VEGAN, TypeClientMenuEnum.VEGETARIAN));
-        foodStorage.addDrink("Coca Cola", 3,EnumSet.of(TypeClientMenuEnum.GENERIC, TypeClientMenuEnum.CHILD, TypeClientMenuEnum.VEGAN, TypeClientMenuEnum.VEGETARIAN));
-        foodStorage.addDrink("Fanta", 3, EnumSet.of(TypeClientMenuEnum.GENERIC, TypeClientMenuEnum.CHILD, TypeClientMenuEnum.VEGAN, TypeClientMenuEnum.VEGETARIAN));
-        foodStorage.addDrink("Birra Lager senza glutine",7,EnumSet.of(TypeClientMenuEnum.CELIAC));
-        foodStorage.addDrink("Cocco drink",6.5,EnumSet.of(TypeClientMenuEnum.CELIAC));
+        foodStorage.addDrink("Acqua", 2, TypeDrinkEnum.SOFT_DRINK, EnumSet.of(TypeClientMenuEnum.GENERIC, TypeClientMenuEnum.VEGAN, TypeClientMenuEnum.VEGETARIAN, TypeClientMenuEnum.CELIAC, TypeClientMenuEnum.CHILD));
+        foodStorage.addDrink("Vino Rosso", 15, TypeDrinkEnum.WINE,EnumSet.of(TypeClientMenuEnum.GENERIC, TypeClientMenuEnum.VEGAN, TypeClientMenuEnum.VEGETARIAN));
+        foodStorage.addDrink("Vino Bianco", 16, TypeDrinkEnum.WINE, EnumSet.of(TypeClientMenuEnum.GENERIC, TypeClientMenuEnum.VEGAN, TypeClientMenuEnum.VEGETARIAN));
+        foodStorage.addDrink("Birra", 6, TypeDrinkEnum.BEER, EnumSet.of(TypeClientMenuEnum.GENERIC, TypeClientMenuEnum.VEGAN, TypeClientMenuEnum.VEGETARIAN));
+        foodStorage.addDrink("Coca Cola", 3, TypeDrinkEnum.SOFT_DRINK, EnumSet.of(TypeClientMenuEnum.GENERIC, TypeClientMenuEnum.CHILD, TypeClientMenuEnum.VEGAN, TypeClientMenuEnum.VEGETARIAN));
+        foodStorage.addDrink("Aranciata", 3, TypeDrinkEnum.FRUIT_JUICE, EnumSet.of(TypeClientMenuEnum.GENERIC, TypeClientMenuEnum.CHILD, TypeClientMenuEnum.VEGAN, TypeClientMenuEnum.VEGETARIAN));
+        foodStorage.addDrink("Birra senza glutine",7, TypeDrinkEnum.BEER, EnumSet.of(TypeClientMenuEnum.CELIAC));
+        foodStorage.addDrink("Cocco drink",6.5, TypeDrinkEnum.COCKTAIL, EnumSet.of(TypeClientMenuEnum.CELIAC));
 
         //create the firsts
 
@@ -147,7 +147,7 @@ public class TestMenu {
 
         //create the meat menu
 
-        Menu meatMenu = new Menu("Carne", MEAT);
+        Menu meatMenu = new Menu(1,"Carne", MEAT);
 
         //add drinks to meat menu
 
@@ -172,7 +172,7 @@ public class TestMenu {
 
         //create the fish menu
 
-        Menu fishMenu = new Menu("Pesce", FISH);
+        Menu fishMenu = new Menu(2, "Pesce", FISH);
 
         //add drinks to fish menu
 
@@ -197,7 +197,7 @@ public class TestMenu {
 
         //create the vegan menu
 
-        Menu veganMenu = new Menu("Vegano", VEGAN);
+        Menu veganMenu = new Menu(3, "Vegano", VEGAN);
 
         //add drinks to vegan menu
 
@@ -222,7 +222,7 @@ public class TestMenu {
 
         //create the child menu
 
-        Menu childMenu = new Menu("Bambino", CHILD);
+        Menu childMenu = new Menu(4, "Bambino", CHILD);
 
         //add drinks to child menu
 
@@ -247,7 +247,7 @@ public class TestMenu {
 
         //create the vegetarian menu
 
-        Menu vegetarianMenu = new Menu("Vegetariano", VEGETARIAN);
+        Menu vegetarianMenu = new Menu(5, "Vegetariano", VEGETARIAN);
 
         //add drinks to vegetarian menu
 
@@ -274,7 +274,7 @@ public class TestMenu {
 
         // create to menu celiac
 
-        Menu celiacMenu = new Menu("Celiaco", CELIAC);
+        Menu celiacMenu = new Menu(6, "Celiaco", CELIAC);
 
         // add to drinks to celiacMenu
 
@@ -320,24 +320,24 @@ public class TestMenu {
         System.out.println("-----------------TEST CHECKBOOKINGINFO-------------------\n");
 
 
-        Client client = new Client(EnumSet.of(TypeClientMenuEnum.GENERIC),"Pippo","Franco","pippofranco@gmail.com", "389-5264589");
+        Client client = new Client(1,"Pippo","Franco","pippofranco@gmail.com", "389-5264589", EnumSet.of(TypeClientMenuEnum.GENERIC));
 
         Booking booking = new Booking(client,List.of(client), "2022-11-15 21:00:00", LocalDate.of(2022,11,11), LocalTime.of(12,30));
         checkBookingInfo(booking, menuMap);
 
         System.out.println("----------------------DISH FILTER------------------------\n");
 
-        Dish spaghettiAllaNerano = new Dish(TypeCourseEnum.FIRST, "Spaghetti alla nerano", new ArrayList<>(Arrays.asList(
-                new Ingredient("Zucchine"), new Ingredient("Provolone del Monaco"), new Ingredient("Parmigiano"))), 16, EnumSet.of(TypeClientMenuEnum.VEGETARIAN));
+        Dish spaghettiAllaNerano = new Dish(1, "Spaghetti alla nerano", 10.0, TypeCourseEnum.FIRST, EnumSet.of(TypeClientMenuEnum.VEGETARIAN),
+                new ArrayList<>(Arrays.asList(new Ingredient("Zucchine"), new Ingredient("Provolone del Monaco"), new Ingredient("Parmigiano"))));
 
-        Dish pastaAlSugo = new Dish(TypeCourseEnum.FIRST, "Pasta al sugo", new ArrayList<>(Arrays.asList(
-                new Ingredient("Passato di pomodoro"))), 8, EnumSet.of(TypeClientMenuEnum.CHILD));
+        Dish pastaAlSugo = new Dish(2, "Pasta al sugo", 5.0, TypeCourseEnum.FIRST, EnumSet.of(TypeClientMenuEnum.CHILD),
+                new ArrayList<>(Arrays.asList(new Ingredient("Passato di pomodoro"))));
 
-        Dish ravioliDiVerdure = new Dish(TypeCourseEnum.FIRST, "Ravioli di verdure", new ArrayList<>(Arrays.asList(
-                new Ingredient("Verza"), new Ingredient("Carote"))), 11, EnumSet.of(TypeClientMenuEnum.VEGAN));
+        Dish ravioliDiVerdure = new Dish(3, "Ravioli di verdure", 8.0, TypeCourseEnum.FIRST, EnumSet.of(TypeClientMenuEnum.VEGAN),
+                new ArrayList<>(Arrays.asList(new Ingredient("Verza"), new Ingredient("Carote"))));
 
-        Dish risottoAlloZafferano = new Dish(TypeCourseEnum.FIRST, "Risotto allo zafferano", new ArrayList<>(Arrays.asList(
-                new Ingredient("Zafferano"), new Ingredient("Grana Padano"))), 16, EnumSet.of(TypeClientMenuEnum.VEGETARIAN));
+        Dish risottoAlloZafferano = new Dish(4, "Risotto allo zafferano", 8.0, TypeCourseEnum.FIRST, EnumSet.of(TypeClientMenuEnum.VEGETARIAN),
+                new ArrayList<>(Arrays.asList(new Ingredient("Zafferano"), new Ingredient("Grana Padano"))));
 
         Map<String, Food> dishMap = new HashMap<>();
         dishMap.put(spaghettiAllaNerano.getName(), spaghettiAllaNerano);
@@ -354,6 +354,13 @@ public class TestMenu {
         System.out.println("\n----------------------DISH FILTER------------------------\n");
         filteredFoodListsMap = foodStorage.dishFilter(EnumSet.of(TypeClientMenuEnum.CHILD, TypeClientMenuEnum.VEGAN));
         System.out.println(filteredFoodListsMap.toString());
+
+        System.out.printf("\nPRINT ALL DISHES (%s)\n\n", FoodStorage.getDishList().size());
+        FoodStorage.getDishList().forEach(dish -> System.out.println(dish.getName()));
+        System.out.printf("\nPRINT ALL DRINKS (%s)\n\n", FoodStorage.getDrinkList().size());
+        FoodStorage.getDrinkList().forEach(drink -> System.out.println(drink.getName()));
+        System.out.printf("\nPRINT ALL INGREDIENTS (%s)\n\n", FoodStorage.getIngredientList().size());
+        FoodStorage.getIngredientList().forEach(ingredient -> System.out.println(ingredient.getName()));
 
     }
 }
