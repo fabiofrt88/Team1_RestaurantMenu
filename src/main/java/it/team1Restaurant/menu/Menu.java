@@ -26,19 +26,19 @@ public class Menu {
     private static String restaurantName = "Team-1 restaurant";
 
     /**
-     * Il tipo del menu (label)
+     * Etichetta denominazione (label) del menu
      */
-    private String type;
+    private String label;
 
     /**
-     * La tipologia del menu. Vedi {@link TypeClientMenuEnum}
+     * La tipologia del menu. Vedi {@link TypeFoodEnum}
      */
-    private TypeClientMenuEnum typeMenu;
+    private TypeFoodEnum typeMenu;
 
     /**
-     * Il codice identificativo della tipologia del drink (chiave esterna). Vedi enum {@link TypeClientMenuEnum}
+     * Il codice identificativo della tipologia del drink (chiave esterna). Vedi enum {@link TypeFoodEnum}
      */
-    private Integer typeClientMenuId;
+    private Integer typeMenuId;
 
     /**
      * La mappa delle portate del menu,
@@ -52,11 +52,11 @@ public class Menu {
      * con i relativi parametri passati nel costruttore, viene istanziata la mappa di tutte le portate
      * e le relative liste di foods (inizialmente vuote) mediante il metodo {@link Menu#initFoodListsMap()}
      */
-    public Menu(Integer id, String type, TypeClientMenuEnum typeMenu){
+    public Menu(Integer id, String label, TypeFoodEnum typeMenu){
         this.id = id;
-        this.type = type;
+        this.label = label;
         this.typeMenu = typeMenu;
-        this.typeClientMenuId = typeMenu.getId();
+        this.typeMenuId = typeMenu.getId();
         this.foodListsMap = initFoodListsMap();
     }
 
@@ -81,26 +81,26 @@ public class Menu {
     }
 
     /**
-     * Metodo getter che restituisce il tipo (label) del menu
+     * Metodo getter che restituisce il label del menu
      * @return Il tipo (label) del menu
      */
-    public String getType() {
-        return type;
+    public String getLabel() {
+        return label;
     }
 
     /**
-     * Metodo setter che setta il tipo (label) del menu
-     * @param type Il tipo (label) del menu
+     * Metodo setter che setta il label del menu
+     * @param label label del menu
      */
-    public void setType(String type) {
-        this.type = type;
+    public void setLabel(String label) {
+        this.label = label;
     }
 
     /**
      * Metodo getter che restituisce la tipologia del menu
      * @return La tipologia del menu (enum)
      */
-    public TypeClientMenuEnum getTypeMenu() {
+    public TypeFoodEnum getTypeMenu() {
         return typeMenu;
     }
 
@@ -108,16 +108,16 @@ public class Menu {
      * Metodo setter che setta la tipologia del menu
      * @param typeMenu La tipologia del menu (enum)
      */
-    public void setTypeMenu(TypeClientMenuEnum typeMenu) {
+    public void setTypeMenu(TypeFoodEnum typeMenu) {
         this.typeMenu = typeMenu;
     }
 
-    public Integer getTypeClientMenuId() {
-        return typeClientMenuId;
+    public Integer getTypeMenuId() {
+        return typeMenuId;
     }
 
-    public void setTypeClientMenuId(Integer typeClientMenuId) {
-        this.typeClientMenuId = typeClientMenuId;
+    public void setTypeMenuId(Integer typeMenuId) {
+        this.typeMenuId = typeMenuId;
     }
 
     /**
@@ -166,12 +166,12 @@ public class Menu {
     /**
      * Questo metodo aggiunge per aggregazione un dish nella lista dei foods
      * con chiave {@link TypeCourseEnum} della mappa delle portate del menu
-     * @param typeFood La tipologia di portata del dish (chiave)
+     * @param typeCourse La tipologia di portata del dish (chiave)
      * @param dish Istanza della classe {@link it.team1Restaurant.foods.Dish}
      */
-    public void addDish(TypeCourseEnum typeFood, Dish dish) {
+    public void addDish(TypeCourseEnum typeCourse, Dish dish) {
     //  if(typeFood == TypeFood.DRINK) throw new Exception("Un dish non può essere un Drink");
-        foodListsMap.get(typeFood).add(dish);
+        foodListsMap.get(typeCourse).add(dish);
     }
 
     /**
@@ -181,20 +181,20 @@ public class Menu {
      * {@link TypeCourseEnum#DRINK} alla tipologia, quindi si aggiungerà il food alla lista.
      * Se il food generico dovesse essere un {@link it.team1Restaurant.foods.Dish}, ma la sua tipologia alimentare
      * è {@link TypeCourseEnum#DRINK}, lancia relativa eccezione
-     * @param typeFood La tipologia di portata del food (chiave)
+     * @param typeCourse La tipologia di portata del food (chiave)
      * @param food Il food generico (dish / drink)
      * @param <T> Tipo generico (sottoclassi di {@link it.team1Restaurant.foods.Food}
      * @throws Exception
      */
 
-    public <T extends Food> void addFood (TypeCourseEnum typeFood, T food) throws Exception {
-        if(food instanceof Drink && typeFood != TypeCourseEnum.DRINK){
-            typeFood = TypeCourseEnum.DRINK;
+    public <T extends Food> void addFood (TypeCourseEnum typeCourse, T food) throws Exception {
+        if(food instanceof Drink && typeCourse != TypeCourseEnum.DRINK){
+            typeCourse = TypeCourseEnum.DRINK;
         }
-        else if(!(food instanceof Drink) && typeFood == TypeCourseEnum.DRINK){
+        else if(!(food instanceof Drink) && typeCourse == TypeCourseEnum.DRINK){
             throw new Exception("Un dish non è un drink!");
         }
-        foodListsMap.get(typeFood).add(food);
+        foodListsMap.get(typeCourse).add(food);
     }
 
     /**
@@ -203,11 +203,11 @@ public class Menu {
      */
     public String getMenuDetails() {
         String str = String.format("%34s\n\n", restaurantName)
-                + String.format("%24s %s", "MENU", type.toUpperCase());
+                + String.format("%24s %s", "MENU", label.toUpperCase());
         str += "\n\n---------------------------------------------------------\n";
-        for (TypeCourseEnum typefood : TypeCourseEnum.values()) {
-            FoodList foodList = foodListsMap.get(typefood);
-            str += "\n" + typefood.name() + ":\n" + foodList.getFoodListDetails()
+        for (TypeCourseEnum typeCourse : TypeCourseEnum.values()) {
+            FoodList foodList = foodListsMap.get(typeCourse);
+            str += "\n" + typeCourse.name() + ":\n" + foodList.getFoodListDetails()
                     + "\n---------------------------------------------------------\n";
         }
         return str;
@@ -217,7 +217,7 @@ public class Menu {
     public String toString() {
         return "Menu{" +
                 "id=" + id +
-                ", type='" + type + '\'' +
+                ", label='" + label + '\'' +
                 ", foodListsMap=" + foodListsMap +
                 ", typeMenu=" + typeMenu +
                 '}';

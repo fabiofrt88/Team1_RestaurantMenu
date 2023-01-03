@@ -1,6 +1,6 @@
 package it.team1Restaurant.foods;
 
-import it.team1Restaurant.menu.TypeClientMenuEnum;
+import it.team1Restaurant.menu.TypeFoodEnum;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -18,7 +18,7 @@ public class FoodList<T extends Food> extends ArrayList<T> {
     /**
      * La tipologia di portata della lista dei foods. Vedi enum {@link TypeCourseEnum}
      */
-    private TypeCourseEnum typeFood;
+    private TypeCourseEnum typeCourse;
 
     /**
      * Metodo costruttore della classe {@link it.team1Restaurant.foods.FoodList}, istanzia una lista di foods
@@ -32,27 +32,27 @@ public class FoodList<T extends Food> extends ArrayList<T> {
      * Metodo costruttore della classe {@link it.team1Restaurant.foods.FoodList}, istanzia una lista di foods
      * mediante il metodo costruttore {@link ArrayList#ArrayList()} della relativa superclasse {@link java.util.ArrayList}.
      * Viene settata la tipologia di portata della lista dei foods con il relativo parametro passato nel costruttore.
-     * @param typeFood La tipologia di portata della lista dei foods
+     * @param typeCourse La tipologia di portata della lista dei foods
      */
-    public FoodList(TypeCourseEnum typeFood) {
+    public FoodList(TypeCourseEnum typeCourse) {
         super();
-        this.typeFood = typeFood;
+        this.typeCourse = typeCourse;
     }
 
     /**
      * Metodo getter che restituisce la tipologia di portata della lista dei foods.
      * @return Tipologia di portata della lista dei foods.
      */
-    public TypeCourseEnum getTypeFood() {
-        return typeFood;
+    public TypeCourseEnum getTypeCourse() {
+        return typeCourse;
     }
 
     /**
      * Metodo setter che setta la tipologia di portata della lista dei foods.
-     * @param typeFood La tipologia di portata della lista dei foods.
+     * @param typeCourse La tipologia di portata della lista dei foods.
      */
-    public void setTypeFood(TypeCourseEnum typeFood) {
-        this.typeFood = typeFood;
+    public void setTypeCourse(TypeCourseEnum typeCourse) {
+        this.typeCourse = this.typeCourse;
     }
 
 
@@ -73,12 +73,12 @@ public class FoodList<T extends Food> extends ArrayList<T> {
 
     /**
      * Questo metodo filtra e resituisce un Set generico di foods filtrati per Set di tipologie alimentari
-     * {@link TypeClientMenuEnum} mediante l'utilizzo degli stream
-     * @param typeDishClientSet Il Set di tipologie alimentari {@link TypeClientMenuEnum} di filtraggio
-     * @return Set di foods filtrati per Set di tipologie alimentari {@link TypeClientMenuEnum}
+     * {@link TypeFoodEnum} mediante l'utilizzo degli stream
+     * @param typeFoodSet Il Set di tipologie alimentari {@link TypeFoodEnum} di filtraggio
+     * @return Set di foods filtrati per Set di tipologie alimentari {@link TypeFoodEnum}
      */
-    public Set<T> getFoodsByTypeDishClient (Set<TypeClientMenuEnum> typeDishClientSet) {
-        return this.stream().filter(food -> food.getTypeSet().containsAll(typeDishClientSet)).collect(Collectors.toSet());
+    public Set<T> getFoodsByTypeFoodSet (Set<TypeFoodEnum> typeFoodSet) {
+        return this.stream().filter(food -> food.getTypeSet().containsAll(typeFoodSet)).collect(Collectors.toSet());
     }
 
     /*

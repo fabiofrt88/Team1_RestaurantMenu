@@ -1,6 +1,6 @@
 package test.it.bookings;
 
-import it.team1Restaurant.bookings.calendar.Booking;
+import it.team1Restaurant.bookings.Booking;
 import it.team1Restaurant.bookings.calendar.CalendarBookings;
 import it.team1Restaurant.bookings.calendar.Day;
 import it.team1Restaurant.bookings.calendar.WorkingDayEnum;

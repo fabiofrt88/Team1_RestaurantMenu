@@ -1,6 +1,6 @@
 package it.team1Restaurant.foods;
 
-import it.team1Restaurant.menu.TypeClientMenuEnum;
+import it.team1Restaurant.menu.TypeFoodEnum;
 
 import java.util.EnumSet;
 import java.util.List;
@@ -51,7 +51,7 @@ public class Drink extends Food {
      * @param ingredients La lista degli ingredienti del drink
      * @param typeSet EnumSet delle tipologie alimentari del drink
      */
-    public Drink(Integer id, String name, double price, TypeDrinkEnum typeDrink, EnumSet<TypeClientMenuEnum> typeSet, List<Ingredient> ingredients) {
+    public Drink(Integer id, String name, double price, TypeDrinkEnum typeDrink, EnumSet<TypeFoodEnum> typeSet, List<Ingredient> ingredients) {
         super(id, name, price, typeSet, ingredients);
         this.typeDrink = typeDrink;
         this.typeDrinkId = typeDrink.getId();

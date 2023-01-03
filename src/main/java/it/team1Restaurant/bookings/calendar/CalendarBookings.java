@@ -1,5 +1,6 @@
 package it.team1Restaurant.bookings.calendar;
-import it.team1Restaurant.bookings.calendar.Booking;
+
+import it.team1Restaurant.bookings.Booking;
 import it.team1Restaurant.bookings.exceptions.DateOutOfCalendar;
 import it.team1Restaurant.bookings.exceptions.NotEmptyBookingsList;
 import it.team1Restaurant.user.Client;
@@ -21,7 +22,7 @@ public class CalendarBookings {
     /**
      * This map represents the current activated interval in which is possible make bookings.
      * The keys are {@link it.team1Restaurant.bookings.calendar.Day} objects and, for each Day, the corresponding value
-     * is a List of {@link it.team1Restaurant.bookings.calendar.Booking} objects.
+     * is a List of {@link Booking} objects.
      * In the constructor the Map is initialized as a TreeMap, with an assigned comparator that compares the Days only
      * considering their date. In this way,  is excluded the possibility that could be multiple keys with the same date.
      * Furthermore the Map results automatically ordered by dates.
@@ -124,7 +125,7 @@ public class CalendarBookings {
     }
 
     /**
-     * This method is used to create a new {@link it.team1Restaurant.bookings.calendar.Booking} and add it to the
+     * This method is used to create a new {@link Booking} and add it to the
      * {@link it.team1Restaurant.bookings.calendar.CalendarBookings#bookingsMap} using the method
      * {@link it.team1Restaurant.bookings.calendar.CalendarBookings#addBooking}.
      * @param client The client who is making the booking.

@@ -1,5 +1,6 @@
 package it.team1Restaurant.bookings.calendar;
 
+import it.team1Restaurant.bookings.Booking;
 import it.team1Restaurant.bookings.exceptions.DateOutOfCalendar;
 
 import java.time.LocalDate;

@@ -1,6 +1,6 @@
 package it.team1Restaurant.foods;
 
-import it.team1Restaurant.menu.TypeClientMenuEnum;
+import it.team1Restaurant.menu.TypeFoodEnum;
 
 import java.util.*;
 import java.util.ArrayList;
@@ -31,9 +31,9 @@ public abstract class Food {
     private double price;
 
     /**
-     * EnumSet delle tipologie alimentari del food. Vedi enum {@link TypeClientMenuEnum}
+     * EnumSet delle tipologie alimentari del food. Vedi enum {@link TypeFoodEnum}
      */
-    private EnumSet<TypeClientMenuEnum> typeSet;
+    private EnumSet<TypeFoodEnum> typeSet;
 
     /**
      * Lista degli ingredienti del food.
@@ -53,7 +53,7 @@ public abstract class Food {
         this.id = id;
         this.name = name;
         this.price = price;
-        this.typeSet = EnumSet.noneOf(TypeClientMenuEnum.class);
+        this.typeSet = EnumSet.noneOf(TypeFoodEnum.class);
         this.ingredients = new ArrayList<>();
     }
 
@@ -68,7 +68,7 @@ public abstract class Food {
      * @param ingredients La lista degli ingredienti del food
      * @param typeSet EnumSet delle tipologie alimentari del food
      */
-    public Food(Integer id, String name, double price, EnumSet<TypeClientMenuEnum> typeSet, List<Ingredient> ingredients){
+    public Food(Integer id, String name, double price, EnumSet<TypeFoodEnum> typeSet, List<Ingredient> ingredients){
         this.id = id;
         this.name = name;
         this.price = price;
@@ -116,7 +116,7 @@ public abstract class Food {
      * Metodo getter che restituisce l'EnumSet delle categorie del food.
      * @return EnumSet delle categorie del food.
      */
-    public EnumSet<TypeClientMenuEnum> getTypeSet() {
+    public EnumSet<TypeFoodEnum> getTypeSet() {
         return typeSet;
     }
 
@@ -124,7 +124,7 @@ public abstract class Food {
      * Metodo setter che setta l'EnumSet delle categorie del food.
      * @param typeSet EnumSet delle categorie del food.
      */
-    public void setTypeSet(EnumSet<TypeClientMenuEnum> typeSet) {
+    public void setTypeSet(EnumSet<TypeFoodEnum> typeSet) {
         this.typeSet = typeSet;
     }
 
@@ -163,13 +163,13 @@ public abstract class Food {
     }
 
     /**
-     * Questo metodo filtra i piatti in base alla categoria del food {@link TypeClientMenuEnum}. <br>
+     * Questo metodo filtra i piatti in base alla categoria del food {@link TypeFoodEnum}. <br>
      * Ad ogni iterazione degli elementi della mappa, se un dato food presenta nel proprio EnumSet delle categorie,
      * la categoria passata come parametro nel metodo, stampa il nome dei piatti filtrati
      * @param dishMap La mappa delle portate
      * @param typeDishRequired La categoria del food con la quale avviene il filtraggio dei food
      */
-    public static void dishFilter(Map<String, Food> dishMap, TypeClientMenuEnum typeDishRequired) {
+    public static void dishFilter(Map<String, Food> dishMap, TypeFoodEnum typeDishRequired) {
         for (Food food : dishMap.values()) {
             if (food.typeSet.contains(typeDishRequired)) {
                 System.out.println(food.getName());

@@ -1,8 +1,8 @@
 package it.team1Restaurant.user;
 
-import it.team1Restaurant.bookings.calendar.Booking;
+import it.team1Restaurant.bookings.Booking;
 import it.team1Restaurant.bookings.calendar.CalendarBookingsClient;
-import it.team1Restaurant.menu.TypeClientMenuEnum;
+import it.team1Restaurant.menu.TypeFoodEnum;
 
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -21,9 +21,9 @@ public class Client {
     private final Integer id;
 
     /**
-     * EnumSet delle tipologie alimentari del cliente. Vedi enum {@link TypeClientMenuEnum}
+     * EnumSet delle tipologie alimentari del cliente. Vedi enum {@link TypeFoodEnum}
      */
-    private EnumSet<TypeClientMenuEnum> typeDishClient;
+    private EnumSet<TypeFoodEnum> typeDishClient;
 
     /**
      * Il nome del cliente.
@@ -57,7 +57,7 @@ public class Client {
     /**
      * Metodo costruttore della classe {@link it.team1Restaurant.user.Client},
      * setta le variabili d'istanza con i relativi parametri passati nel costruttore,
-     * EnumSet delle tipologie alimentari inizializzato di default con la tipologia {@link TypeClientMenuEnum#GENERIC}
+     * EnumSet delle tipologie alimentari inizializzato di default con la tipologia {@link TypeFoodEnum#GENERIC}
      * @param name Il nome del cliente
      * @param surname Il cognome del cliente
      */
@@ -65,7 +65,7 @@ public class Client {
         this.id = null;
         this.name = name;
         this.surname = surname;
-        this.typeDishClient = EnumSet.of(TypeClientMenuEnum.GENERIC);
+        this.typeDishClient = EnumSet.of(TypeFoodEnum.GENERIC);
     }
 
     /**
@@ -77,7 +77,7 @@ public class Client {
      * @param email L'email del cliente
      * @param phoneNumber Il numero di telefono del cliente
      */
-    public Client(Integer id, String name, String surname, String email, String phoneNumber, EnumSet<TypeClientMenuEnum> typeDishClient) {
+    public Client(Integer id, String name, String surname, String email, String phoneNumber, EnumSet<TypeFoodEnum> typeDishClient) {
         this.id = id;
         this.typeDishClient = typeDishClient;
         this.name = name;
@@ -174,7 +174,7 @@ public class Client {
      * Metodo getter che restituisce l'EnumSet delle tipologie alimentari del cliente.
      * @return EnumSet delle tipologie alimentari del cliente.
      */
-    public EnumSet<TypeClientMenuEnum> getTypeDishClient() {
+    public EnumSet<TypeFoodEnum> getTypeDishClient() {
         return typeDishClient;
     }
 
@@ -182,7 +182,7 @@ public class Client {
      * Metodo setter che setta l'EnumSet delle tipologie alimentari del cliente.
      * @param typeDishClient l'EnumSet delle tipologie alimentari del cliente.
      */
-    public void setTypeDishClient(EnumSet<TypeClientMenuEnum> typeDishClient) {
+    public void setTypeDishClient(EnumSet<TypeFoodEnum> typeDishClient) {
         this.typeDishClient = typeDishClient;
     }
 

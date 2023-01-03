@@ -20,10 +20,10 @@ public class MenuDAO {
             String createQuery = """
                     CREATE TABLE IF NOT EXISTS menu
                     ( id INTEGER(10) NOT NULL AUTO_INCREMENT,
-                      type VARCHAR(30) UNIQUE NOT NULL,
+                      label VARCHAR(30) UNIQUE NOT NULL,
                       type_menu_id INTEGER(5) NOT NULL,
                       CONSTRAINT menu_pk PRIMARY KEY (id),
-                      CONSTRAINT type_menu_FK_1 FOREIGN KEY (type_menu_id) REFERENCES type_client_menu(id)
+                      CONSTRAINT type_menu_FK_1 FOREIGN KEY (type_menu_id) REFERENCES type_food(id)
                       ON UPDATE CASCADE ON DELETE CASCADE
                     );
                     """;
@@ -48,12 +48,12 @@ public class MenuDAO {
 
             String insertQuery =
                     """ 
-                     INSERT INTO menu (type, type_menu_id)
-                     VALUES ('""" + menu.getType() + "', '" + menu.getTypeClientMenuId() + "');";
+                     INSERT INTO menu (label, type_menu_id)
+                     VALUES ('""" + menu.getLabel() + "', '" + menu.getTypeMenuId() + "');";
 
             statement.executeUpdate(insertQuery);
 
-            System.out.printf("Menu %s inserted\n\n", menu.getType());
+            System.out.printf("Menu %s inserted\n\n", menu.getLabel());
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");

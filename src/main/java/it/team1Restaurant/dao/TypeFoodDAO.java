@@ -1,12 +1,11 @@
-package it.team1Restaurant.dao.manytomany;
+package it.team1Restaurant.dao;
 
 import it.team1Restaurant.jdbc.DriverJDBC;
+import it.team1Restaurant.menu.TypeFoodEnum;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
-public class IngredientDrinkDAO {
+public class TypeFoodDAO {
 
     public void createTable(){
 
@@ -19,19 +18,15 @@ public class IngredientDrinkDAO {
 
             // this is a multiline string, definitely better for writing a SQL query
             String createQuery = """
-                    CREATE TABLE IF NOT EXISTS ingredient_drink
-                    ( ingredient_id INTEGER(10) NOT NULL,
-                      drink_id INTEGER(10) NOT NULL,
-                      CONSTRAINT ingredient_FK_1 FOREIGN KEY (ingredient_id) REFERENCES ingredient(id)
-                      ON UPDATE CASCADE ON DELETE CASCADE,
-                      CONSTRAINT drink_FK_1 FOREIGN KEY (drink_id) REFERENCES drink(id)
-                      ON UPDATE CASCADE ON DELETE CASCADE,
-                      UNIQUE (ingredient_id, drink_id)
+                    CREATE TABLE IF NOT EXISTS type_food
+                    ( id INTEGER(10) NOT NULL,
+                      name VARCHAR(30) UNIQUE NOT NULL,
+                      CONSTRAINT type_food_pk PRIMARY KEY (id)
                     );
                     """;
 
             statement.executeUpdate(createQuery);
-            System.out.printf("Created table ingredient_drink in the database %s\n\n", conn.getCatalog());
+            System.out.printf("Created table type_food in the database %s\n\n", conn.getCatalog());
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
@@ -39,7 +34,7 @@ public class IngredientDrinkDAO {
 
     }
 
-    public void insertIngredientDrinkKeys(Integer ingredientId, Integer drinkId){
+    public void insertTypeFood(TypeFoodEnum typeFood){
 
         try (Connection conn = DriverJDBC.getConnection()) {
 
@@ -50,12 +45,12 @@ public class IngredientDrinkDAO {
 
             String insertQuery =
                     """ 
-                     INSERT INTO ingredient_drink (ingredient_id, drink_id)
-                     VALUES ('""" + ingredientId + "', '" + drinkId + "');";
+                     INSERT INTO type_food (id, name)
+                     VALUES ('""" + typeFood.getId() + "', '" + typeFood.getTypeFoodName() + "');";
 
             statement.executeUpdate(insertQuery);
 
-            System.out.printf("Foreign keys for ingredient_drink table inserted\n\n");
+            System.out.printf("Type Food %s inserted\n\n", typeFood.getTypeFoodName());
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");

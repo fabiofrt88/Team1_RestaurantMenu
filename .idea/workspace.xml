@@ -5,10 +5,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e26885f8-4eec-486d-a28c-cd9a679d6e83" name="Changes" comment="Fix all Test class">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_09_33__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_09_33__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestTypeFoodDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/TypeDrinkDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/TypeDrinkDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/menu/TypeClientMenuEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/menu/TypeClientMenuEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-1.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-11.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-11.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-2.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-3.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-4.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/index-files/index-7.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/index-files/index-7.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/it/team1Restaurant/bookings/calendar/Booking.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/it/team1Restaurant/bookings/calendar/Booking.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/it/team1Restaurant/bookings/calendar/class-use/Booking.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/it/team1Restaurant/bookings/calendar/class-use/Booking.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/it/team1Restaurant/foods/class-use/Food.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/it/team1Restaurant/foods/class-use/Food.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/it/team1Restaurant/foods/class-use/FoodList.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/it/team1Restaurant/foods/class-use/FoodList.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/it/team1Restaurant/foods/class-use/TypeFoodEnum.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/it/team1Restaurant/foods/class-use/TypeFoodEnum.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/it/team1Restaurant/menu/TypeDishClientEnum.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/it/team1Restaurant/menu/TypeDishClientEnum.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/it/team1Restaurant/menu/class-use/Menu.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/it/team1Restaurant/menu/class-use/Menu.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/it/team1Restaurant/menu/class-use/TypeDishClientEnum.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/it/team1Restaurant/menu/class-use/TypeDishClientEnum.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/it/team1Restaurant/menu/class-use/TypeMenuEnum.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/it/team1Restaurant/menu/class-use/TypeMenuEnum.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/javadoc/it/team1Restaurant/user/class-use/Client.html" beforeDir="false" afterPath="$PROJECT_DIR$/javadoc/it/team1Restaurant/user/class-use/Client.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/bookings/calendar/Booking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/bookings/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/bookings/calendar/CalendarBookings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/bookings/calendar/CalendarBookings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/bookings/calendar/CalendarBookingsClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/bookings/calendar/CalendarBookingsClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/bookings/tests/TestBooking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/bookings/tests/TestBooking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/IngredientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/IngredientDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/MenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/MenuDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/TypeClientMenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/TypeFoodDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/manytomany/IngredientDishDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/mtm/IngredientDishDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/manytomany/IngredientDrinkDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/mtm/IngredientDrinkDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/manytomany/MenuDishDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/mtm/MenuDishDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/manytomany/MenuDrinkDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/mtm/MenuDrinkDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestTypeClientMenuDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/Dish.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/Dish.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/Drink.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/Drink.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/Food.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/Food.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/FoodList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/FoodList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/FoodStorageOld.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/foods/FoodStorageOld.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/menu/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/menu/TestMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/menu/TestMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/menu/TypeClientMenuEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/menu/TypeFoodEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/user/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/user/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/it/bookings/TestBookingsMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/it/bookings/TestBookingsMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/bookings/calendar/Booking.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/bookings/tests/TestBooking.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/bookings/tests/TestBooking.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/IngredientDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/IngredientDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/TypeDrinkDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/TypeDrinkDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/Dish.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/Dish.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/Drink.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/Drink.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/Food.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/Food.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/FoodList.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/FoodList.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/FoodStorageOld.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/foods/FoodStorageOld.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/menu/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/menu/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/menu/TestMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/menu/TestMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/menu/TypeClientMenuEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/user/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/user/Client.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,22 +95,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Java/workspaces/intelliJ/git-projects/restourantMenu-develhope-admin-frattarelli/restourantMenu-develhope-backup-v1/Team1_RestaurantMenu&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.34252873&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "last_opened_file_path": "C:/Java/workspaces/intelliJ/git-projects/restourantMenu-develhope-admin-frattarelli/restourantMenu-develhope/Team1_RestaurantMenu",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.34252873"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Java\workspaces\intelliJ\git-projects\restourantMenu-develhope-admin-frattarelli\restourantMenu-develhope\Team1_RestaurantMenu" />
