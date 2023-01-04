@@ -187,8 +187,7 @@ public abstract class Food {
                 ", name = '" + name + '\'' +
                 ", price = " + price +
                 ", typeSet = " + typeSet +
-                ", ingredients = " + ingredients +
-                '}';
+                ", ingredients = " + ingredients;
     }
 }
 

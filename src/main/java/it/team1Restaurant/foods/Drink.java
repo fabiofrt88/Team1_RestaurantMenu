@@ -81,7 +81,7 @@ public class Drink extends Food {
     public String toString() {
         return "Drink{" +
                 super.toString() +
-                "typeDrink = " + typeDrink +
+                ", typeDrink = " + typeDrink +
                 ", typeDrinkId = " + typeDrinkId +
                 '}';
     }

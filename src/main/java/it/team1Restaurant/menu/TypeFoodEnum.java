@@ -51,18 +51,23 @@ public enum TypeFoodEnum {
         return typeFood;
     }
 
-    public static TypeFoodEnum getTypeTypeFoodById(Integer id){
+    public static TypeFoodEnum getTypeFoodById(Integer id){
         return typeFoodMap.get(id);
     }
 
     public static TypeFoodEnum getTypeFoodByName(String typeFood){
+
         TypeFoodEnum typeFoodEnum = null;
+        typeFood = typeFood.replaceAll("\\s+", "_").toUpperCase();
+
         try {
-            typeFoodEnum = TypeFoodEnum.valueOf(typeFood.toUpperCase());
+            typeFoodEnum = TypeFoodEnum.valueOf(typeFood);
         } catch (IllegalArgumentException | NullPointerException e) {
             System.out.println(e.getMessage());
         }
+
         return typeFoodEnum;
+
     }
 
 }

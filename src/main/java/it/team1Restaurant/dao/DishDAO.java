@@ -1,9 +1,12 @@
 package it.team1Restaurant.dao;
 
 import it.team1Restaurant.foods.Dish;
+import it.team1Restaurant.foods.TypeCourseEnum;
 import it.team1Restaurant.jdbc.DriverJDBC;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DishDAO {
 
@@ -59,6 +62,76 @@ public class DishDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
         }
+
+    }
+
+    public List<Dish> selectAllDishes(){
+
+        List<Dish> dishList = new ArrayList<>();
+
+        try (Connection conn = DriverJDBC.getConnection()) {
+
+            // print out a message
+            System.out.printf("Connected to database %s successfully.\n\n", conn.getCatalog());
+
+            Statement statement = conn.createStatement();
+
+            String selectQuery =
+                    """
+                    SELECT dish.id, dish.name, dish.price, type_course.name FROM dish
+                    INNER JOIN type_course ON dish.type_course_id = type_course.id;""";
+
+            ResultSet resultSet = statement.executeQuery(selectQuery);
+
+            while(resultSet.next()){
+                Integer dishId = resultSet.getInt("dish.id");
+                String dishName = resultSet.getString("dish.name");
+                Double dishPrice = resultSet.getDouble("dish.price");
+                String typeCourseName = resultSet.getString("type_course.name");
+                Dish dish = new Dish(dishId, dishName, dishPrice, TypeCourseEnum.getTypeCourseByName(typeCourseName));
+                dishList.add(dish);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage() + "\n");
+        }
+
+        return dishList;
+
+    }
+
+    public Dish selectDishById(Integer id){
+
+        Dish dish = null;
+
+        try (Connection conn = DriverJDBC.getConnection()) {
+
+            // print out a message
+            System.out.printf("Connected to database %s successfully.\n\n", conn.getCatalog());
+
+            Statement statement = conn.createStatement();
+
+            String selectQuery =
+                    """
+                    SELECT dish.id, dish.name, dish.price, type_course.name FROM dish
+                    INNER JOIN type_course ON dish.type_course_id = type_course.id
+                    WHERE dish.id =\040""" + id + ";";
+
+            ResultSet resultSet = statement.executeQuery(selectQuery);
+
+            while(resultSet.next()){
+                Integer dishId = resultSet.getInt("dish.id");
+                String dishName = resultSet.getString("dish.name");
+                Double dishPrice = resultSet.getDouble("dish.price");
+                String typeCourseName = resultSet.getString("type_course.name");
+                dish = new Dish(dishId, dishName, dishPrice, TypeCourseEnum.getTypeCourseByName(typeCourseName));
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage() + "\n");
+        }
+
+        return dish;
 
     }
 

@@ -49,13 +49,18 @@ public enum TypeDrinkEnum {
     }
 
     public static TypeDrinkEnum getTypeDrinkByName(String typeDrink){
+
         TypeDrinkEnum typeDrinkEnum = null;
+        typeDrink = typeDrink.replaceAll("\\s+", "_").toUpperCase();
+
         try {
-            typeDrinkEnum = TypeDrinkEnum.valueOf(typeDrink.toUpperCase());
+            typeDrinkEnum = TypeDrinkEnum.valueOf(typeDrink);
         } catch (IllegalArgumentException | NullPointerException e) {
             System.out.println(e.getMessage());
         }
+
         return typeDrinkEnum;
+
     }
 
 }

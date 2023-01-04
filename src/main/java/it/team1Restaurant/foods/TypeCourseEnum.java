@@ -2,8 +2,7 @@ package it.team1Restaurant.foods;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Questa classe è un enum che definisce le tipologie di portata dei food.
@@ -56,13 +55,18 @@ public enum TypeCourseEnum {
     }
 
     public static TypeCourseEnum getTypeCourseByName(String typeCourse){
+
         TypeCourseEnum typeCourseEnum = null;
+        typeCourse = typeCourse.replaceAll("\\s+", "_").toUpperCase();
+
         try {
-            typeCourseEnum = TypeCourseEnum.valueOf(typeCourse.toUpperCase());
+            typeCourseEnum = TypeCourseEnum.valueOf(typeCourse);
         } catch (IllegalArgumentException | NullPointerException e) {
             System.out.println(e.getMessage());
         }
+
         return typeCourseEnum;
+
     }
 
 }

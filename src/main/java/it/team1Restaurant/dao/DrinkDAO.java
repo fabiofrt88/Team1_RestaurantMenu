@@ -1,9 +1,14 @@
 package it.team1Restaurant.dao;
 
+import it.team1Restaurant.foods.Dish;
 import it.team1Restaurant.foods.Drink;
+import it.team1Restaurant.foods.TypeCourseEnum;
+import it.team1Restaurant.foods.TypeDrinkEnum;
 import it.team1Restaurant.jdbc.DriverJDBC;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DrinkDAO {
 
@@ -60,6 +65,76 @@ public class DrinkDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
         }
+
+    }
+
+    public List<Drink> selectAllDrinks(){
+
+        List<Drink> drinkList = new ArrayList<>();
+
+        try (Connection conn = DriverJDBC.getConnection()) {
+
+            // print out a message
+            System.out.printf("Connected to database %s successfully.\n\n", conn.getCatalog());
+
+            Statement statement = conn.createStatement();
+
+            String selectQuery =
+                    """
+                    SELECT drink.id, drink.name, drink.price, type_drink.name FROM drink
+                    INNER JOIN type_drink ON drink.type_drink_id = type_drink.id;""";
+
+            ResultSet resultSet = statement.executeQuery(selectQuery);
+
+            while(resultSet.next()){
+                Integer drinkId = resultSet.getInt("drink.id");
+                String drinkName = resultSet.getString("drink.name");
+                Double drinkPrice = resultSet.getDouble("drink.price");
+                String typeDrinkName = resultSet.getString("type_drink.name");
+                Drink drink = new Drink(drinkId, drinkName, drinkPrice, TypeDrinkEnum.getTypeDrinkByName(typeDrinkName));
+                drinkList.add(drink);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage() + "\n");
+        }
+
+        return drinkList;
+
+    }
+
+    public Drink selectDrinkById(Integer id){
+
+        Drink drink = null;
+
+        try (Connection conn = DriverJDBC.getConnection()) {
+
+            // print out a message
+            System.out.printf("Connected to database %s successfully.\n\n", conn.getCatalog());
+
+            Statement statement = conn.createStatement();
+
+            String selectQuery =
+                    """
+                    SELECT drink.id, drink.name, drink.price, type_drink.name FROM drink
+                    INNER JOIN type_drink ON drink.type_drink_id = type_drink.id
+                    WHERE drink.id =\040""" + id + ";";
+
+            ResultSet resultSet = statement.executeQuery(selectQuery);
+
+            while(resultSet.next()){
+                Integer drinkId = resultSet.getInt("drink.id");
+                String drinkName = resultSet.getString("drink.name");
+                Double drinkPrice = resultSet.getDouble("drink.price");
+                String typeDrinkName = resultSet.getString("type_drink.name");
+                drink = new Drink(drinkId, drinkName, drinkPrice, TypeDrinkEnum.getTypeDrinkByName(typeDrinkName));
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage() + "\n");
+        }
+
+        return drink;
 
     }
 

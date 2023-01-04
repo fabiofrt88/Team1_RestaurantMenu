@@ -89,7 +89,7 @@ public class Dish extends Food {
     public String toString() {
         return "Dish{" +
                 super.toString() +
-                "typeCourse = " + typeCourse +
+                ", typeCourse = " + typeCourse +
                 ", typeCourseId = " + typeCourseId +
                 '}';
     }
