@@ -2,8 +2,11 @@ package it.team1Restaurant.dao;
 
 import it.team1Restaurant.jdbc.DriverJDBC;
 import it.team1Restaurant.menu.Menu;
+import it.team1Restaurant.menu.TypeFoodEnum;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MenuDAO {
 
@@ -58,6 +61,74 @@ public class MenuDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
         }
+
+    }
+
+    public List<Menu> selectAllMenu(){
+
+        List<Menu> menuList = new ArrayList<>();
+
+        try (Connection conn = DriverJDBC.getConnection()) {
+
+            // print out a message
+            System.out.printf("Connected to database %s successfully.\n\n", conn.getCatalog());
+
+            Statement statement = conn.createStatement();
+
+            String selectQuery =
+                    """
+                    SELECT menu.id, menu.label, type_food.name FROM menu
+                    INNER JOIN type_food ON menu.type_menu_id = type_food.id;""";
+
+            ResultSet resultSet = statement.executeQuery(selectQuery);
+
+            while(resultSet.next()){
+                Integer menuId = resultSet.getInt("menu.id");
+                String menuLabel = resultSet.getString("menu.label");
+                String typeFoodName = resultSet.getString("type_food.name");
+                Menu menu = new Menu(menuId, menuLabel, TypeFoodEnum.getTypeFoodByName(typeFoodName));
+                menuList.add(menu);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage() + "\n");
+        }
+
+        return menuList;
+
+    }
+
+    public Menu selectMenuById(Integer id){
+
+        Menu menu = null;
+
+        try (Connection conn = DriverJDBC.getConnection()) {
+
+            // print out a message
+            System.out.printf("Connected to database %s successfully.\n\n", conn.getCatalog());
+
+            Statement statement = conn.createStatement();
+
+            String selectQuery =
+                    """
+                    SELECT menu.id, menu.label, drink.price, type_food.name FROM menu
+                    INNER JOIN type_food ON menu.type_menu_id = type_food.id
+                    WHERE menu.id =\040""" + id + ";";
+
+            ResultSet resultSet = statement.executeQuery(selectQuery);
+
+            while(resultSet.next()){
+                Integer menuId = resultSet.getInt("menu.id");
+                String menuLabel = resultSet.getString("menu.label");
+                String typeFoodName = resultSet.getString("type_food.name");
+                menu = new Menu(menuId, menuLabel, TypeFoodEnum.getTypeFoodByName(typeFoodName));
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage() + "\n");
+        }
+
+        return menu;
 
     }
 

@@ -4,8 +4,11 @@ import it.team1Restaurant.foods.Ingredient;
 import it.team1Restaurant.jdbc.DriverJDBC;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class IngredientDAO {
 
@@ -54,6 +57,71 @@ public class IngredientDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
         }
+
+    }
+
+    public List<Ingredient> selectAllIngredients(){
+
+        List<Ingredient> ingredientList = new ArrayList<>();
+
+        try (Connection conn = DriverJDBC.getConnection()) {
+
+            // print out a message
+            System.out.printf("Connected to database %s successfully.\n\n", conn.getCatalog());
+
+            Statement statement = conn.createStatement();
+
+            String selectQuery =
+                    """
+                    SELECT * FROM ingredient;""";
+
+            ResultSet resultSet = statement.executeQuery(selectQuery);
+
+            while(resultSet.next()){
+                Integer ingredientId = resultSet.getInt("ingredient.id");
+                String ingredientName = resultSet.getString("ingredient.name");
+
+                Ingredient ingredient = new Ingredient(ingredientId,ingredientName);
+                ingredientList.add(ingredient);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage() + "\n");
+        }
+
+        return ingredientList;
+
+    }
+
+    public Ingredient selectIngredientById(Integer id){
+
+        Ingredient ingredient = null;
+
+        try (Connection conn = DriverJDBC.getConnection()) {
+
+            // print out a message
+            System.out.printf("Connected to database %s successfully.\n\n", conn.getCatalog());
+
+            Statement statement = conn.createStatement();
+
+            String selectQuery =
+                    """
+                    SELECT * FROM ingredient        
+                    WHERE ingredient.id =\040""" + id + ";";
+
+            ResultSet resultSet = statement.executeQuery(selectQuery);
+
+            while(resultSet.next()){
+                Integer ingredientId = resultSet.getInt("ingredient.Id");
+                String ingredientName = resultSet.getString("ingredient.name");
+                ingredient = new Ingredient(ingredientId,ingredientName);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage() + "\n");
+        }
+
+        return ingredient;
 
     }
 
