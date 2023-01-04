@@ -65,6 +65,67 @@ public class DishDAO {
 
     }
 
+    public void createViewByTypeCourse(TypeCourseEnum typeCourseEnum){
+
+        String nameView = typeCourseEnum.getTypeCourse().replaceAll("\\s+", "_").toLowerCase();
+
+        try (Connection conn = DriverJDBC.getConnection()) {
+
+            // print out a message
+            System.out.printf("Connected to database %s successfully.\n\n", conn.getCatalog());
+
+            Statement statement = conn.createStatement();
+
+            String createQuery =
+                    """
+                    CREATE VIEW\040""" + nameView + """ 
+                    _dishes AS SELECT dish.id, dish.name, dish.price, type_course.name AS type_course_name FROM dish
+                    INNER JOIN type_course ON dish.type_course_id = type_course.id 
+                    WHERE type_course.name =\040'""" + typeCourseEnum.getTypeCourse() + "';";
+
+            statement.executeUpdate(createQuery);
+
+            System.out.printf("Created view %s_dishes in the database %s\n\n", nameView, conn.getCatalog());
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage() + "\n");
+        }
+
+    }
+
+    public List<Dish> selectAllDishesByView(TypeCourseEnum typeCourseEnum){
+
+        String nameView = typeCourseEnum.getTypeCourse().replaceAll("\\s+", "_").toLowerCase();
+        List<Dish> dishList = new ArrayList<>();
+
+        try (Connection conn = DriverJDBC.getConnection()) {
+
+            // print out a message
+            System.out.printf("Connected to database %s successfully.\n\n", conn.getCatalog());
+
+            Statement statement = conn.createStatement();
+
+            String selectQuery = "SELECT * FROM " + nameView + "_dishes";
+
+            ResultSet resultSet = statement.executeQuery(selectQuery);
+
+            while(resultSet.next()){
+                Integer dishId = resultSet.getInt(nameView + "_dishes.id");
+                String dishName = resultSet.getString(nameView + "_dishes.name");
+                Double dishPrice = resultSet.getDouble(nameView + "_dishes.price");
+                String typeCourseName = resultSet.getString(nameView + "_dishes.type_course_name");
+                Dish dish = new Dish(dishId, dishName, dishPrice, TypeCourseEnum.getTypeCourseByName(typeCourseName));
+                dishList.add(dish);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage() + "\n");
+        }
+
+        return dishList;
+
+    }
+
     public List<Dish> selectAllDishes(){
 
         List<Dish> dishList = new ArrayList<>();
@@ -78,7 +139,7 @@ public class DishDAO {
 
             String selectQuery =
                     """
-                    SELECT dish.id, dish.name, dish.price, type_course.name FROM dish
+                    SELECT dish.id, dish.name, dish.price, type_course.name AS type_course_name FROM dish
                     INNER JOIN type_course ON dish.type_course_id = type_course.id;""";
 
             ResultSet resultSet = statement.executeQuery(selectQuery);
@@ -87,7 +148,7 @@ public class DishDAO {
                 Integer dishId = resultSet.getInt("dish.id");
                 String dishName = resultSet.getString("dish.name");
                 Double dishPrice = resultSet.getDouble("dish.price");
-                String typeCourseName = resultSet.getString("type_course.name");
+                String typeCourseName = resultSet.getString("type_course_name");
                 Dish dish = new Dish(dishId, dishName, dishPrice, TypeCourseEnum.getTypeCourseByName(typeCourseName));
                 dishList.add(dish);
             }
@@ -113,7 +174,7 @@ public class DishDAO {
 
             String selectQuery =
                     """
-                    SELECT dish.id, dish.name, dish.price, type_course.name FROM dish
+                    SELECT dish.id, dish.name, dish.price, type_course.name AS type_course_name FROM dish
                     INNER JOIN type_course ON dish.type_course_id = type_course.id
                     WHERE dish.id =\040""" + id + ";";
 
@@ -123,7 +184,7 @@ public class DishDAO {
                 Integer dishId = resultSet.getInt("dish.id");
                 String dishName = resultSet.getString("dish.name");
                 Double dishPrice = resultSet.getDouble("dish.price");
-                String typeCourseName = resultSet.getString("type_course.name");
+                String typeCourseName = resultSet.getString("type_course_name");
                 dish = new Dish(dishId, dishName, dishPrice, TypeCourseEnum.getTypeCourseByName(typeCourseName));
             }
 
