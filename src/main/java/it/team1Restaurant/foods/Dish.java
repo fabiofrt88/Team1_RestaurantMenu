@@ -35,7 +35,7 @@ public class Dish extends Food {
     public Dish(Integer id, String name, double price, TypeCourseEnum typeCourse){
         super(id, name, price);
         this.typeCourse = typeCourse;
-        this.typeCourseId = typeCourse.getId();
+        this.typeCourseId = initTypeCourseId(typeCourse);
     }
 
     /**
@@ -54,7 +54,7 @@ public class Dish extends Food {
     public Dish(Integer id, String name, double price, TypeCourseEnum typeCourse, EnumSet<TypeFoodEnum> typeSet, List<Ingredient> ingredients) {
         super(id, name, price, typeSet, ingredients);
         this.typeCourse = typeCourse;
-        this.typeCourseId = typeCourse.getId();
+        this.typeCourseId = initTypeCourseId(typeCourse);
     }
 
     /**
@@ -79,6 +79,10 @@ public class Dish extends Food {
 
     public void setTypeCourseId(Integer typeCourseId) {
         this.typeCourseId = typeCourseId;
+    }
+
+    public Integer initTypeCourseId(TypeCourseEnum typeCourse){
+        return (typeCourse != null) ? typeCourse.getId() : null;
     }
 
     /**

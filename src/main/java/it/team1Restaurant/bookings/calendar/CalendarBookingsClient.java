@@ -72,7 +72,7 @@ public class CalendarBookingsClient {
     public Booking getBookingByBookingNumber(Integer bookingNumber) throws Exception {
         for(List<Booking> currentBookingList : bookingsMap.values()){
             for(Booking currentBooking : currentBookingList){
-                if(currentBooking.getBookingNumber() == bookingNumber){
+                if(currentBooking.getId() == bookingNumber){
                     return currentBooking;
                 }
             }

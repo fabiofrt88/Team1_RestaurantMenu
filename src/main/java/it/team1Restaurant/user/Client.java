@@ -4,6 +4,8 @@ import it.team1Restaurant.bookings.Booking;
 import it.team1Restaurant.bookings.calendar.CalendarBookingsClient;
 import it.team1Restaurant.menu.TypeFoodEnum;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
@@ -200,6 +202,10 @@ public class Client {
 
     public void setCalendarBookingsClient(CalendarBookingsClient calendarBookingsClient) {
         this.calendarBookingsClient = calendarBookingsClient;
+    }
+
+    public Booking book(List<Client> clientList, LocalDate date, LocalTime time) throws NullPointerException {
+        return new Booking(null, this, clientList, Booking.getBookedAtDate(), date, time);
     }
 
     public void printBookingsDetails(){

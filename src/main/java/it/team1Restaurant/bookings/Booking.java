@@ -20,7 +20,7 @@ public class Booking {
     /**
      * Il numero identificativo della prenotazione (codice numerico univoco autoincrementale non modificabile)
      */
-    private final int bookingNumber;
+    private final Integer id;
 
     /**
      * Il cliente che ha effettuato la prenotazione
@@ -46,31 +46,21 @@ public class Booking {
      * L'orario inserito nella prenotazione
      */
     private LocalTime time;
-    //private int tableNumber;
-    //private int numberOfAdult;
-    //private int numberOfChildren;
-    //private int numberOfVegetarian;
-    //private int numberOfVegan;
-    //private int numberOfCeliac;
-
-    /**
-     * Contatore delle prenotazioni (inizializzato con il valore 0)
-     */
-    private static int bookingNumbers = 0;
 
     /**
      * Metodo costruttore della classe {@link Booking},
      * setta le variabili d'istanza della classe con i relativi parametri passati nel costruttore,
      * viene istanziata una lista di clienti inizialmente vuota
+     * @param id Il codice identificativo della prenotazione
      * @param client Il cliente che effettua la prenotazione
      * @param bookedAt Il timestamp della prenotazione effettuata
      * @param date La data della prenotazione
      * @param time L'orario inserito nella prenotazione
      */
-    public Booking(Client client, String bookedAt, LocalDate date, LocalTime time) {
-        this.bookingNumber = incrementBookingNumbers();
+    public Booking(Integer id, Client client, String bookedAt, LocalDate date, LocalTime time) {
+        this.id = id;
         this.client = client;
-        this.clientList = new ArrayList<>();
+        this.clientList = new ArrayList<>(Arrays.asList(client));
         this.bookedAt = bookedAt;
         this.date = date;
         this.time = time;
@@ -79,41 +69,28 @@ public class Booking {
     /**
      * Metodo costruttore della classe {@link Booking},
      * setta le variabili d'istanza della classe con i relativi parametri passati nel costruttore,
+     * @param id Il codice identificativo della prenotazione
      * @param client Il cliente che effettua la prenotazione
      * @param clientList La lista dei clienti inseriti nella prenotazione
      * @param bookedAt Il timestamp della prenotazione effettuata
      * @param date La data della prenotazione
      * @param time L'orario inserito nella prenotazione
      */
-    public Booking(Client client, List<Client> clientList, String bookedAt, LocalDate date, LocalTime time) {
-        this.bookingNumber = incrementBookingNumbers();
+    public Booking(Integer id, Client client, List<Client> clientList, String bookedAt, LocalDate date, LocalTime time) {
+        this.id = id;
         this.client = client;
-        this.clientList = clientList;
+        this.clientList = initClientList(clientList);
         this.bookedAt = bookedAt;
         this.date = date;
         this.time = time;
     }
 
-    /*
-    public Booking(Client client, String bookedAt, LocalDate date, LocalTime time, int numberOfAdult, int numberOfChildren, int numberOfVegetarian, int numberOfVegan, int numberOfCeliac) {
-        this.bookingNumber = incrementBookingNumbers();
-        this.client = client;
-        this.bookedAt = bookedAt;
-        this.date = date;
-        this.time = time;
-        this.numberOfAdult = numberOfAdult;
-        this.numberOfChildren = numberOfChildren;
-        this.numberOfVegetarian = numberOfVegetarian;
-        this.numberOfVegan = numberOfVegan;
-        this.numberOfCeliac = numberOfCeliac;
-    }*/
-
     /**
      * Metodo getter che restituisce il numero identificativo della prenotazione.
      * @return Numero identificativo della prenotazione.
      */
-    public int getBookingNumber() {
-        return bookingNumber;
+    public Integer getId() {
+        return id;
     }
 
     /**
@@ -172,35 +149,8 @@ public class Booking {
         this.time = time;
     }
 
-    /**
-     * Metodo getter che restituisce il numero corrente delle prenotazioni effettuate
-     * @return Numero corrente delle prenotazioni effettuate
-     */
-    public static int getBookingNumbers() {
-        return bookingNumbers;
-    }
-
-    /**
-     * Metodo setter che setta il numero delle prenotazioni precedentemente inizializzato a 0 <br>
-     * La modifica del numero delle prenotazioni avrà luogo soltanto se il nuovo numero è maggiore di quello corrente,
-     * onde evitare che le nuove prenotazioni possano avere in seguito lo stesso numero di prenotazione di quelle precedenti
-     * @param bookingNumbers Numero delle prenotazioni (contatore)
-     */
-    public static void setBookingNumbers(int bookingNumbers) {
-        if(bookingNumbers > Booking.bookingNumbers){
-            Booking.bookingNumbers = bookingNumbers;
-        }
-    }
-
-    /**
-     * Questo metodo incrementa di uno il numero delle prenotazioni alla creazione di una prenotazione <br>
-     * Il suo valore verrà assegnato alla variabile {@link Booking#bookingNumber} come numero identificativo
-     * della prenotazione alla creazione della prenotazione nel suo costruttore, pertanto ogni prenotazione presenterà
-     * un codice numerico autoincrementale che le identificherà univocamente dalle altre prenotazioni
-     * @return Numero delle prenotazioni incrementato di uno
-     */
-    public static int incrementBookingNumbers(){
-        return ++bookingNumbers;
+    public List<Client> initClientList(List<Client> clientList){
+        return (clientList != null && !clientList.isEmpty()) ? new ArrayList<>(clientList) : new ArrayList<>(Arrays.asList(client));
     }
 
     /**
@@ -208,7 +158,7 @@ public class Booking {
      * si tratta di una stringa formattata opportunamente secondo pattern a partire da un'istanza di {@link java.util.Date}
      * @return Timestamp della prenotazione effettuata (non modificabile)
      */
-    public String getBookedAtDate(){
+    public static String getBookedAtDate(){
         String pattern = "yyyy-MM-dd HH:mm:ss";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("en", "EN"));
         return simpleDateFormat.format(new Date());
@@ -228,7 +178,7 @@ public class Booking {
      * @return Stringa contenente i dati della prenotazione
      */
     public String getBookingDetails() {
-        return "Booking #" + bookingNumber +
+        return "Booking #" + id +
                 "\n\nBooked by: " + client +
                 "\nBooked at: " + bookedAt +
                 "\nDate: " + date +
@@ -243,7 +193,7 @@ public class Booking {
      * Questo metodo stampa a video nel dettaglio i dati della prenotazione
      */
     public void printDetails() {
-        System.out.println("Booking #" + bookingNumber +
+        System.out.println("Booking #" + id +
                 "\n\nBooked by: " + client +
                 "\nBooked at: " + bookedAt +
                 "\nDate: " + date +
@@ -253,39 +203,6 @@ public class Booking {
                 "\nNumber of Adults: " + (clientList.size() - getNumberOf(TypeFoodEnum.CHILD)) +
                 "\nNumber of Children: " + getNumberOf(TypeFoodEnum.CHILD) + "\n");
     }
-
-    /*public static void checkBookingInfo(Booking booking, EnumMap<TypeMenu, Menu> menuMap) {
-        System.out.println(menuMap.get(TypeMenu.MEAT).getMenuDetails());
-        System.out.println(menuMap.get(TypeMenu.FISH).getMenuDetails());
-        if (booking.getNumberOfChildren() > 0) {
-            for (TypeMenu typeMenu : menuMap.keySet()) {
-                if (typeMenu.equals(TypeMenu.CHILD)) {
-                    System.out.println(menuMap.get(typeMenu).getMenuDetails());
-                }
-            }
-        }
-        if (booking.getNumberOfVegetarian() > 0) {
-            for (TypeMenu typeMenu : menuMap.keySet()) {
-                if (typeMenu.equals(TypeMenu.VEGETARIAN)) {
-                    System.out.println(menuMap.get(typeMenu).getMenuDetails());
-                }
-            }
-        }
-        if (booking.getNumberOfVegan() > 0) {
-            for (TypeMenu typeMenu : menuMap.keySet()) {
-                if (typeMenu.equals(TypeMenu.VEGAN)) {
-                    System.out.println(menuMap.get(typeMenu).getMenuDetails());
-                }
-            }
-        }
-        if (booking.getNumberOfCeliac() > 0) {
-            for (TypeMenu typeMenu : menuMap.keySet()) {
-                if (typeMenu.equals(TypeMenu.CELIAC)) {
-                    System.out.println(menuMap.get(typeMenu).getMenuDetails());
-                }
-            }
-        }
-    }*/
 
     /**
      * Questo metodo stampa a video nel dettaglio i dati dei menu. <br>
@@ -298,7 +215,7 @@ public class Booking {
      * @param booking La prenotazione selezionata da controllare
      * @param menuMap La mappa dei menu differenziati per tipologia alimentare
      */
-    public static void checkBookingInfo(Booking booking, EnumMap<TypeFoodEnum, Menu> menuMap) {
+    public static void checkBookingMenu(Booking booking, EnumMap<TypeFoodEnum, Menu> menuMap) {
         System.out.println(menuMap.get(TypeFoodEnum.MEAT).getMenuDetails());
         System.out.println(menuMap.get(TypeFoodEnum.FISH).getMenuDetails());
         if (booking.getNumberOf(TypeFoodEnum.CHILD) > 0) {

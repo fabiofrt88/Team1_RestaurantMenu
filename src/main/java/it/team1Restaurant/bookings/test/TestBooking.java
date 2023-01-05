@@ -1,5 +1,4 @@
-package it.team1Restaurant.bookings.tests;
-
+package it.team1Restaurant.bookings.test;
 
 import it.team1Restaurant.bookings.calendar.CalendarBookings;
 import it.team1Restaurant.menu.TypeFoodEnum;
@@ -20,7 +19,7 @@ import java.util.EnumSet;
 public class TestBooking {
 
     /**
-     * Metodo main, rappresenta l'entrypoint di esecuzione della classe {@link it.team1Restaurant.bookings.tests.TestBooking}
+     * Metodo main, rappresenta l'entrypoint di esecuzione della classe {@link it.team1Restaurant.bookings.test.TestBooking}
      * @param args Array di argomenti che possono essere digitati nel programma da terminale
      * @throws Exception
      */
@@ -30,13 +29,13 @@ public class TestBooking {
         calendarBookings.createBookingsIntervalFromNow(30);
 
         Client client = new Client(1, "Pippo","Franco","pippofranco@gmail.com", "389-5264589", EnumSet.of(TypeFoodEnum.GENERIC));
-        calendarBookings.book(client, List.of(client), getDateFromNow(4), LocalTime.of(12,30));
-        calendarBookings.book(client, List.of(client), getDateFromNow(4), LocalTime.of(15,30));
+        calendarBookings.book(1, client, List.of(client), getDateFromNow(4), LocalTime.of(12,30));
+        calendarBookings.book(2, client, List.of(client), getDateFromNow(4), LocalTime.of(15,30));
 
         Client client2 = new Client(2, "Mario","Rossi","mariorossio@gmail.com", "389-6578904", EnumSet.of(TypeFoodEnum.VEGAN));
-        calendarBookings.book(client2, List.of(client2) , getDateFromNow(6), LocalTime.of(13,00));
+        calendarBookings.book(3, client2, List.of(client2) , getDateFromNow(6), LocalTime.of(13,00));
 
-        calendarBookings.book(client, List.of(client), getDateFromNow(6), LocalTime.of(14,44));
+        calendarBookings.book(4, client, List.of(client), getDateFromNow(6), LocalTime.of(14,44));
 
         calendarBookings.printDetails();
 
@@ -48,6 +47,8 @@ public class TestBooking {
 
         System.out.println("\n----------------------GET BOOKING BY BOOKING NUMBER-------------------\n");
         System.out.println(client.getCalendarBookingsClient().getBookingByBookingNumber(1).getBookingDetails());
+
+        System.out.println("-------------------------------------------------------");
 
     }
 

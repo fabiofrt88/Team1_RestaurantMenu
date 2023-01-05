@@ -134,16 +134,15 @@ public class CalendarBookings {
      * @param time The target time of the booking.
      * @throws Exception The exceptions are inherited from the method {@link it.team1Restaurant.bookings.calendar.CalendarBookings#addBooking}
      */
-    public void book (Client client, List<Client> clientList, LocalDate date, LocalTime time) throws Exception {
+    public void book (Integer id, Client client, List<Client> clientList, LocalDate date, LocalTime time) throws Exception {
         //Mettere un controllo su numberOfAdults e numberChildren ???
 
-        Booking booking = new Booking(client,clientList,createBookedAtDate(), date, time);
+        Booking booking = new Booking(id, client, clientList, createBookedAtDate(), date, time);
 
         addBooking(booking);
         client.addBooking(booking);
         client.getCalendarBookingsClient().addBooking(booking);
-        System.out.println("La prenotazione per " + client.getName() + " e' stata effettuata con successo: " +
-                            "\n" + booking.getBookingDetails());
+        System.out.println("La prenotazione per " + client.getName() + " e' stata effettuata con successo:\n\n" + booking.getBookingDetails());
     }
 
       /*DA IMPLEMENTARE

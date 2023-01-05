@@ -28,7 +28,7 @@ public abstract class Food {
     /**
      * Il prezzo del food.
      */
-    private double price;
+    private Double price;
 
     /**
      * EnumSet delle tipologie alimentari del food. Vedi enum {@link TypeFoodEnum}
@@ -72,8 +72,8 @@ public abstract class Food {
         this.id = id;
         this.name = name;
         this.price = price;
-        this.typeSet = typeSet;
-        this.ingredients = new ArrayList<>(ingredients);
+        this.typeSet = initTypeSet(typeSet);
+        this.ingredients = initIngredientList(ingredients);
     }
 
     public Integer getId() {
@@ -100,7 +100,7 @@ public abstract class Food {
      * Metodo getter che restituisce il prezzo del food.
      * @return Prezzo del food.
      */
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
@@ -108,7 +108,7 @@ public abstract class Food {
      * Metodo setter che setta il prezzo del food.
      * @param price Il prezzo del food.
      */
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
@@ -142,6 +142,14 @@ public abstract class Food {
      */
     public void setIngredients(List<Ingredient> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public List<Ingredient> initIngredientList(List<Ingredient> ingredients){
+        return (ingredients != null) ? new ArrayList<>(ingredients) : new ArrayList<>();
+    }
+
+    public EnumSet<TypeFoodEnum> initTypeSet(EnumSet<TypeFoodEnum> typeSet){
+        return (typeSet != null) ? typeSet : EnumSet.noneOf(TypeFoodEnum.class);
     }
 
     /**

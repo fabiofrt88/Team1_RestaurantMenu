@@ -27,6 +27,7 @@ public abstract class FoodStorage {
     }
 
     private static List<Dish> initDishList(){
+
         List<Dish> dishList = new ArrayList<>();
 
         dishList.add(new Dish(null, "Spaghetti alla carbonara", 12, TypeCourseEnum.FIRST));
@@ -83,6 +84,7 @@ public abstract class FoodStorage {
     }
 
     private static List<Drink> initDrinkList(){
+
         List<Drink> drinkList = new ArrayList<>();
 
         drinkList.add(new Drink(null, "Acqua", 2, TypeDrinkEnum.SOFT_DRINK));
@@ -112,6 +114,7 @@ public abstract class FoodStorage {
     }
 
     private static List<Ingredient> initIngredientList(){
+
         List<Ingredient> ingredientList = new ArrayList<>();
 
         ingredientList.add(new Ingredient("Acqua"));

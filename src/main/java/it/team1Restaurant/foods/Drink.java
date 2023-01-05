@@ -35,7 +35,7 @@ public class Drink extends Food {
     public Drink(Integer id, String name, double price, TypeDrinkEnum typeDrink){
         super(id, name, price);
         this.typeDrink = typeDrink;
-        this.typeDrinkId = typeDrink.getId();
+        this.typeDrinkId = initTypeDrinkId(typeDrink);
     }
 
     /**
@@ -54,7 +54,7 @@ public class Drink extends Food {
     public Drink(Integer id, String name, double price, TypeDrinkEnum typeDrink, EnumSet<TypeFoodEnum> typeSet, List<Ingredient> ingredients) {
         super(id, name, price, typeSet, ingredients);
         this.typeDrink = typeDrink;
-        this.typeDrinkId = typeDrink.getId();
+        this.typeDrinkId = initTypeDrinkId(typeDrink);
     }
 
     public TypeDrinkEnum getTypeDrink() {
@@ -71,6 +71,10 @@ public class Drink extends Food {
 
     public void setTypeDrinkId(Integer typeDrinkId) {
         this.typeDrinkId = typeDrinkId;
+    }
+
+    public Integer initTypeDrinkId(TypeDrinkEnum typeDrink){
+        return (typeDrink != null) ? typeDrink.getId() : null;
     }
 
     /**

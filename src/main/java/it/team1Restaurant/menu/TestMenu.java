@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
 
-import static it.team1Restaurant.bookings.Booking.checkBookingInfo;
+import static it.team1Restaurant.bookings.Booking.checkBookingMenu;
 import static it.team1Restaurant.foods.Food.dishFilter;
 import static it.team1Restaurant.menu.TypeFoodEnum.*;
 
@@ -21,26 +21,6 @@ import static it.team1Restaurant.menu.TypeFoodEnum.*;
  * @version 1.0
  */
 public class TestMenu {
-
-    /*public static void test(EnumMap<TypeMenu, Menu> menuMap){
-        Scanner input = new Scanner(System.in);
-        System.out.println("Quale menù vuoi consultare? <1> MENU DI CARNE | <2> MENU DI PESCE | <3> MENU VEGANO | <4> MENU BAMBINI");
-        System.out.print("Risposta: ");
-        String firstStep = input.nextLine();
-        switch (firstStep) {
-            case "1":
-                System.out.println(menuMap.get(MEAT).getMenuDetails());
-                break;
-            case "2":
-                System.out.println(menuMap.get(FISH).getMenuDetails());
-                break;
-            case "3":
-                System.out.println(menuMap.get(VEGAN).getMenuDetails());
-                break;
-            case "4":
-                System.out.println(menuMap.get(CHILD).getMenuDetails());
-                break;
-        }*/
 
     /**
      * Metodo main, rappresenta l'entrypoint di esecuzione della classe {@link it.team1Restaurant.menu.TestMenu}
@@ -297,7 +277,7 @@ public class TestMenu {
         celiacMenu.addDish(TypeCourseEnum.DESSERT, (Dish) foodStorage.getFoodListsMap().get(TypeCourseEnum.DESSERT).get(8));
         celiacMenu.addDish(TypeCourseEnum.DESSERT, (Dish) foodStorage.getFoodListsMap().get(TypeCourseEnum.DESSERT).get(9));
 
-
+        System.out.println("-----------------TEST CHECKBOOKINGINFO-------------------\n");
 
         EnumMap<TypeFoodEnum, Menu> menuMap = new EnumMap<>(TypeFoodEnum.class);
         menuMap.put(MEAT, meatMenu);
@@ -307,23 +287,9 @@ public class TestMenu {
         menuMap.put(CELIAC, celiacMenu);
         menuMap.put(VEGETARIAN, vegetarianMenu);
 
-        /*Scanner scanner = new Scanner(System.in);
-        String exit = "S";
-
-        while(!exit.equalsIgnoreCase("N")){
-            test(menuMap);
-            System.out.println("Vuoi consultare un altro menù? <S> <N>");
-            System.out.print("Risposta: ");
-            exit = scanner.nextLine();
-        }*/
-
-        System.out.println("-----------------TEST CHECKBOOKINGINFO-------------------\n");
-
-
         Client client = new Client(1,"Pippo","Franco","pippofranco@gmail.com", "389-5264589", EnumSet.of(TypeFoodEnum.GENERIC));
-
-        Booking booking = new Booking(client, List.of(client), "2022-11-15 21:00:00", LocalDate.of(2022,11,11), LocalTime.of(12,30));
-        checkBookingInfo(booking, menuMap);
+        Booking booking = new Booking(1, client, List.of(client), "2022-11-15 21:00:00", LocalDate.of(2022,11,11), LocalTime.of(12,30));
+        checkBookingMenu(booking, menuMap);
 
         System.out.println("----------------------DISH FILTER------------------------\n");
 
