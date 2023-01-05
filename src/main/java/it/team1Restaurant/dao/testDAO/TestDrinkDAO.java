@@ -1,14 +1,10 @@
 package it.team1Restaurant.dao.testDAO;
-import com.google.gson.GsonBuilder;
-import it.team1Restaurant.dao.DishDAO;
+
 import it.team1Restaurant.dao.DrinkDAO;
-import it.team1Restaurant.foods.Dish;
 import it.team1Restaurant.foods.Drink;
-import it.team1Restaurant.foods.TypeCourseEnum;
 import it.team1Restaurant.foods.TypeDrinkEnum;
 
 import java.util.List;
-
 
 public class TestDrinkDAO {
     public static void main(String[] args) throws NoSuchMethodException {

@@ -3,9 +3,9 @@ package it.team1Restaurant.dao;
 import it.team1Restaurant.jdbc.DriverJDBC;
 import it.team1Restaurant.user.Client;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClientDAO {
 
@@ -60,6 +60,74 @@ public class ClientDAO {
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
         }
+
+    }
+
+    public List<Client> selectAllClients(){
+
+        List<Client> clientList = new ArrayList<>();
+
+        try (Connection conn = DriverJDBC.getConnection()) {
+
+            // print out a message
+            System.out.printf("Connected to database %s successfully.\n\n", conn.getCatalog());
+
+            Statement statement = conn.createStatement();
+
+            String selectQuery = "SELECT * FROM client;";
+
+            ResultSet resultSet = statement.executeQuery(selectQuery);
+
+            while(resultSet.next()){
+                Integer clientId = resultSet.getInt("client.id");
+                String clientName = resultSet.getString("client.name");
+                String clientSurname = resultSet.getString("client.surname");
+                String clientEmail = resultSet.getString("client.email");
+                String clientPhoneNumber = resultSet.getString("client.phone_number");
+                Client client = new Client(clientId, clientName, clientSurname, clientEmail, clientPhoneNumber, null);
+                clientList.add(client);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage() + "\n");
+        }
+
+        return clientList;
+
+    }
+
+    public Client selectClientById(Integer id){
+
+        Client client = null;
+
+        try (Connection conn = DriverJDBC.getConnection()) {
+
+            // print out a message
+            System.out.printf("Connected to database %s successfully.\n\n", conn.getCatalog());
+
+            Statement statement = conn.createStatement();
+
+            String selectQuery =
+                    """
+                    SELECT * FROM client 
+                    WHERE client.id =\040""" + id + ";";
+
+            ResultSet resultSet = statement.executeQuery(selectQuery);
+
+            while(resultSet.next()){
+                Integer clientId = resultSet.getInt("client.id");
+                String clientName = resultSet.getString("client.name");
+                String clientSurname = resultSet.getString("client.surname");
+                String clientEmail = resultSet.getString("client.email");
+                String clientPhoneNumber = resultSet.getString("client.phone_number");
+                client = new Client(clientId, clientName, clientSurname, clientEmail, clientPhoneNumber, null);
+            }
+
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage() + "\n");
+        }
+
+        return client;
 
     }
 

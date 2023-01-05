@@ -25,7 +25,7 @@ public class Client {
     /**
      * EnumSet delle tipologie alimentari del cliente. Vedi enum {@link TypeFoodEnum}
      */
-    private EnumSet<TypeFoodEnum> typeDishClient;
+    private EnumSet<TypeFoodEnum> typeSet;
 
     /**
      * Il nome del cliente.
@@ -67,21 +67,21 @@ public class Client {
         this.id = null;
         this.name = name;
         this.surname = surname;
-        this.typeDishClient = EnumSet.of(TypeFoodEnum.GENERIC);
+        this.typeSet = EnumSet.of(TypeFoodEnum.GENERIC);
     }
 
     /**
      * Metodo costruttore della classe {@link it.team1Restaurant.user.Client},
      * setta le variabili d'istanza con i relativi parametri passati nel costruttore,
-     * @param typeDishClient EnumSet delle tipologie alimentari del cliente
+     * @param typeSet EnumSet delle tipologie alimentari del cliente
      * @param name Il nome del cliente
      * @param surname Il cognome del cliente
      * @param email L'email del cliente
      * @param phoneNumber Il numero di telefono del cliente
      */
-    public Client(Integer id, String name, String surname, String email, String phoneNumber, EnumSet<TypeFoodEnum> typeDishClient) {
+    public Client(Integer id, String name, String surname, String email, String phoneNumber, EnumSet<TypeFoodEnum> typeSet) {
         this.id = id;
-        this.typeDishClient = typeDishClient;
+        this.typeSet = initTypeSet(typeSet);
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -176,16 +176,16 @@ public class Client {
      * Metodo getter che restituisce l'EnumSet delle tipologie alimentari del cliente.
      * @return EnumSet delle tipologie alimentari del cliente.
      */
-    public EnumSet<TypeFoodEnum> getTypeDishClient() {
-        return typeDishClient;
+    public EnumSet<TypeFoodEnum> getTypeSet() {
+        return typeSet;
     }
 
     /**
      * Metodo setter che setta l'EnumSet delle tipologie alimentari del cliente.
-     * @param typeDishClient l'EnumSet delle tipologie alimentari del cliente.
+     * @param typeSet l'EnumSet delle tipologie alimentari del cliente.
      */
-    public void setTypeDishClient(EnumSet<TypeFoodEnum> typeDishClient) {
-        this.typeDishClient = typeDishClient;
+    public void setTypeSet(EnumSet<TypeFoodEnum> typeSet) {
+        this.typeSet = typeSet;
     }
 
     public List<Booking> getBookingList() {
@@ -204,14 +204,18 @@ public class Client {
         this.calendarBookingsClient = calendarBookingsClient;
     }
 
-    public Booking book(List<Client> clientList, LocalDate date, LocalTime time) throws NullPointerException {
-        return new Booking(null, this, clientList, Booking.getBookedAtDate(), date, time);
+    public EnumSet<TypeFoodEnum> initTypeSet(EnumSet<TypeFoodEnum> typeSet){
+        return (typeSet != null) ? typeSet : EnumSet.noneOf(TypeFoodEnum.class);
+    }
+
+    public static Booking book(Client client, List<Client> clientList, LocalDate date, LocalTime time) throws NullPointerException {
+        return new Booking(null, client, clientList, Booking.getBookedAtDate(), date, time);
     }
 
     public void printBookingsDetails(){
         System.out.printf("Bookings of %s %s\n\n", this.name, this.surname);
         for(Booking booking : bookingList){
-            System.out.println(booking.getBookingDetails() + "\n");
+            System.out.println(booking.getBookingDetails());
         }
     }
 
@@ -234,7 +238,8 @@ public class Client {
      */
     public void printDetails(){
         System.out.println("User details" +
-                "\nType: " + typeDishClient.toString() +
+                "\nId: " + id +
+                "\nType: " + typeSet +
                 "\nName: " + name +
                 "\nSurname: " + surname +
                 "\nEmail: " + email +
@@ -248,13 +253,13 @@ public class Client {
     @Override
     public String toString() {
         return "Client{" +
-                "id: " + id + '\'' +
-                ", type: " + typeDishClient.toString() + '\'' +
-                ", name: " + name + '\'' +
-                ", surname: " + surname + '\'' +
-                ", email: " + email + '\'' +
-                ", phoneNumber: " + phoneNumber + '\'' +
-                ", isChild: " + isChild +
+                "id: " + id +
+                ", type: " + typeSet +
+                ", name: " + name +
+                ", surname: " + surname +
+                ", email: " + email +
+                ", phoneNumber: " + phoneNumber +
+                //", isChild: " + isChild +
                 '}';
     }
 }

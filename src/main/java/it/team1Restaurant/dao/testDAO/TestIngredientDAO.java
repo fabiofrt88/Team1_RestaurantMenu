@@ -17,6 +17,14 @@ public class TestIngredientDAO {
         List<Ingredient> ingredients = FoodStorage.getIngredientList();
         ingredients.forEach(ingredientDAO::insertIngredient);
 
+        System.out.println("selectAllIngredients\n");
+        List<Ingredient> ingredientList = ingredientDAO.selectAllIngredients();
+        ingredientList.forEach(System.out::println);
+
+        System.out.println("\nselectIngredientById\n");
+        Ingredient ingredient = ingredientDAO.selectIngredientById(1);
+        System.out.println(ingredient);
+
     }
 
 }

@@ -32,7 +32,7 @@ public class TestBooking {
         calendarBookings.book(1, client, List.of(client), getDateFromNow(4), LocalTime.of(12,30));
         calendarBookings.book(2, client, List.of(client), getDateFromNow(4), LocalTime.of(15,30));
 
-        Client client2 = new Client(2, "Mario","Rossi","mariorossio@gmail.com", "389-6578904", EnumSet.of(TypeFoodEnum.VEGAN));
+        Client client2 = new Client(2, "Mario","Rossi","mariorossi@gmail.com", "389-6578904", EnumSet.of(TypeFoodEnum.VEGAN));
         calendarBookings.book(3, client2, List.of(client2) , getDateFromNow(6), LocalTime.of(13,00));
 
         calendarBookings.book(4, client, List.of(client), getDateFromNow(6), LocalTime.of(14,44));

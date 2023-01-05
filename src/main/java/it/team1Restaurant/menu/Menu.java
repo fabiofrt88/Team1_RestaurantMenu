@@ -56,7 +56,7 @@ public class Menu {
         this.id = id;
         this.label = label;
         this.typeMenu = typeMenu;
-        this.typeMenuId = typeMenu.getId();
+        this.typeMenuId = initTypeMenuId(typeMenu);
         this.foodListsMap = initFoodListsMap();
     }
 
@@ -152,6 +152,10 @@ public class Menu {
         foodListsMap.put(TypeCourseEnum.DESSERT, new FoodList(TypeCourseEnum.DESSERT));
         foodListsMap.put(TypeCourseEnum.FRUIT, new FoodList(TypeCourseEnum.FRUIT));
         return foodListsMap;
+    }
+
+    public Integer initTypeMenuId(TypeFoodEnum typeMenu){
+        return (typeMenu != null) ? typeMenu.getId() : null;
     }
 
     /**

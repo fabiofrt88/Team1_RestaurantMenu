@@ -166,27 +166,11 @@ public class Booking {
 
     /**
      * Questo metodo restituisce il numero dei clienti per tipologia alimentare mediante utilizzo degli stream
-     * @param typeDishClient La lista dei clienti inseriti nella prenotazione
+     * @param typeFood La lista delle tipologie alimentari dei clienti inseriti nella prenotazione
      * @return Il numero dei clienti per tipologia alimentare
      */
-    public Integer getNumberOf(TypeFoodEnum typeDishClient){
-        return clientList.stream().filter(client -> client.getTypeDishClient().contains(typeDishClient)).collect(Collectors.toSet()).size();
-    }
-
-    /**
-     * Questo metodo restituisce nel dettaglio i dati della prenotazione
-     * @return Stringa contenente i dati della prenotazione
-     */
-    public String getBookingDetails() {
-        return "Booking #" + id +
-                "\n\nBooked by: " + client +
-                "\nBooked at: " + bookedAt +
-                "\nDate: " + date +
-                "\nTime: " + time +
-                //"\ntableNumber: " + tableNumber +
-                "\nNumber of People: " + (clientList.size()) +
-                "\nNumber of Adults: " + (clientList.size() - getNumberOf(TypeFoodEnum.CHILD)) +
-                "\nNumber of Children: " + getNumberOf(TypeFoodEnum.CHILD);
+    public Integer getNumberOf(TypeFoodEnum typeFood){
+        return clientList.stream().filter(client -> client.getTypeSet().contains(typeFood)).collect(Collectors.toSet()).size();
     }
 
     /**
@@ -202,6 +186,34 @@ public class Booking {
                 "\nNumber of People: " + (clientList.size()) +
                 "\nNumber of Adults: " + (clientList.size() - getNumberOf(TypeFoodEnum.CHILD)) +
                 "\nNumber of Children: " + getNumberOf(TypeFoodEnum.CHILD) + "\n");
+    }
+
+    /**
+     * Questo metodo restituisce nel dettaglio i dati della prenotazione
+     * @return Stringa contenente i dati della prenotazione
+     */
+    public String getBookingDetails() {
+        return "Booking #" + id +
+                "\n\nBooked by: " + client +
+                "\nBooked at: " + bookedAt +
+                "\nDate: " + date +
+                "\nTime: " + time +
+                //"\ntableNumber: " + tableNumber +
+                "\nNumber of People: " + (clientList.size()) +
+                "\nNumber of Adults: " + (clientList.size() - getNumberOf(TypeFoodEnum.CHILD)) +
+                "\nNumber of Children: " + getNumberOf(TypeFoodEnum.CHILD) + "\n";
+    }
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "id = " + id +
+                ", client = " + client +
+                ", clientList = " + clientList +
+                ", bookedAt = '" + bookedAt + '\'' +
+                ", date = " + date +
+                ", time = " + time +
+                '}';
     }
 
     /**

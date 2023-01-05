@@ -1,8 +1,6 @@
 package it.team1Restaurant.dao;
 
-import it.team1Restaurant.foods.Dish;
 import it.team1Restaurant.foods.Drink;
-import it.team1Restaurant.foods.TypeCourseEnum;
 import it.team1Restaurant.foods.TypeDrinkEnum;
 import it.team1Restaurant.jdbc.DriverJDBC;
 
