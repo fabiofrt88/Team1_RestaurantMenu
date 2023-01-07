@@ -103,7 +103,7 @@ public class FoodList<T extends Food> extends ArrayList<T> {
         String str = "";
         for(T food : this) {
             str += "\n" + food.getFoodDetails();
-        };
+        }
         return str;
     }
 

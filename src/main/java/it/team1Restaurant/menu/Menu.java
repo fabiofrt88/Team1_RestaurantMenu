@@ -1,7 +1,9 @@
 package it.team1Restaurant.menu;
 import it.team1Restaurant.foods.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -19,11 +21,6 @@ public class Menu {
      * Il codice identificativo del menu (chiave primaria univoca autoincrementale non modificabile).
      */
     private final Integer id;
-
-    /**
-     * Il nome del ristorante (inizializzato di default)
-     */
-    private static String restaurantName = "Team-1 restaurant";
 
     /**
      * Etichetta denominazione (label) del menu
@@ -45,7 +42,7 @@ public class Menu {
      * con chiave {@link TypeCourseEnum}
      * e valori le liste dei foods {@link it.team1Restaurant.foods.FoodList}
      */
-    private Map<TypeCourseEnum, FoodList> foodListsMap;
+    private Map<String, List<Food>> foodListsMap;
 
     /**
      * Metodo costruttore della classe {@link Menu}, setta le variabili d'istanza
@@ -60,24 +57,12 @@ public class Menu {
         this.foodListsMap = initFoodListsMap();
     }
 
+    /**
+     * Metodo getter che restituisce l'id del menu
+     * @return L'id del menu
+     */
     public Integer getId() {
         return id;
-    }
-
-    /**
-     * Metodo getter che restituisce il nome del ristorante
-     * @return Nome del ristorante
-     */
-    public static String getRestaurantName() {
-        return restaurantName;
-    }
-
-    /**
-     * Metodo setter che setta il nome del ristorante
-     * @param restaurantName Il nome del ristorante
-     */
-    public static void setRestaurantName(String restaurantName) {
-        Menu.restaurantName = restaurantName;
     }
 
     /**
@@ -124,7 +109,7 @@ public class Menu {
      * Metodo getter che restituisce la mappa delle portate del menu
      * @return Mappa delle portate del menu
      */
-    public Map<TypeCourseEnum, FoodList> getFoodListsMap() {
+    public Map<String, List<Food>> getFoodListsMap() {
         return foodListsMap;
     }
 
@@ -132,7 +117,7 @@ public class Menu {
      * Metodo setter che setta la mappa delle portate del menu
      * @param foodListsMap La mappa delle portate del menu
      */
-    public void setFoodListsMap(Map<TypeCourseEnum, FoodList> foodListsMap) {
+    public void setFoodListsMap(Map<String, List<Food>> foodListsMap) {
         this.foodListsMap = foodListsMap;
     }
 
@@ -142,15 +127,26 @@ public class Menu {
      * e le relative liste dei foods istanziate {@link it.team1Restaurant.foods.FoodList} (inizialmente vuote)
      * @return Mappa delle portate del menu (con liste dei foods inizialmente vuote)
      */
-    public Map<TypeCourseEnum, FoodList> initFoodListsMap(){
-        Map<TypeCourseEnum, FoodList> foodListsMap = new HashMap<>();
-        foodListsMap.put(TypeCourseEnum.STARTER, new FoodList(TypeCourseEnum.STARTER));
+    public Map<String, List<Food>> initFoodListsMap(){
+        //Map<TypeCourseEnum, FoodList> foodListsMap = new HashMap<>();
+        Map<String, List<Food>> foodListsMap = new HashMap<>();
+
+        /*foodListsMap.put(TypeCourseEnum.STARTER, new FoodList(TypeCourseEnum.STARTER));
         foodListsMap.put(TypeCourseEnum.DRINK, new FoodList(TypeCourseEnum.DRINK));
         foodListsMap.put(TypeCourseEnum.FIRST, new FoodList(TypeCourseEnum.FIRST));
         foodListsMap.put(TypeCourseEnum.SECOND, new FoodList(TypeCourseEnum.SECOND));
         foodListsMap.put(TypeCourseEnum.SIDE_DISH, new FoodList(TypeCourseEnum.SIDE_DISH));
         foodListsMap.put(TypeCourseEnum.DESSERT, new FoodList(TypeCourseEnum.DESSERT));
-        foodListsMap.put(TypeCourseEnum.FRUIT, new FoodList(TypeCourseEnum.FRUIT));
+        foodListsMap.put(TypeCourseEnum.FRUIT, new FoodList(TypeCourseEnum.FRUIT));*/
+
+        foodListsMap.put(TypeCourseEnum.STARTER.name().toLowerCase(), new ArrayList<>());
+        foodListsMap.put(TypeCourseEnum.DRINK.name().toLowerCase(), new ArrayList<>());
+        foodListsMap.put(TypeCourseEnum.FIRST.name().toLowerCase(), new ArrayList<>());
+        foodListsMap.put(TypeCourseEnum.SECOND.name().toLowerCase(), new ArrayList<>());
+        foodListsMap.put(TypeCourseEnum.SIDE_DISH.name().toLowerCase(), new ArrayList<>());
+        foodListsMap.put(TypeCourseEnum.DESSERT.name().toLowerCase(), new ArrayList<>());
+        foodListsMap.put(TypeCourseEnum.FRUIT.name().toLowerCase(), new ArrayList<>());
+
         return foodListsMap;
     }
 
@@ -164,7 +160,7 @@ public class Menu {
      * @param drink Istanza di classe {@link it.team1Restaurant.foods.Drink}
      */
     public void addDrink(Drink drink){
-        foodListsMap.get(TypeCourseEnum.DRINK).add(drink);
+        foodListsMap.get(TypeCourseEnum.DRINK.name().toLowerCase()).add(drink);
     }
 
     /**
@@ -175,7 +171,7 @@ public class Menu {
      */
     public void addDish(TypeCourseEnum typeCourse, Dish dish) {
     //  if(typeFood == TypeFood.DRINK) throw new Exception("Un dish non può essere un Drink");
-        foodListsMap.get(typeCourse).add(dish);
+        foodListsMap.get(typeCourse.name().toLowerCase()).add(dish);
     }
 
     /**
@@ -198,7 +194,7 @@ public class Menu {
         else if(!(food instanceof Drink) && typeCourse == TypeCourseEnum.DRINK){
             throw new Exception("Un dish non è un drink!");
         }
-        foodListsMap.get(typeCourse).add(food);
+        foodListsMap.get(typeCourse.name().toLowerCase()).add(food);
     }
 
     /**
@@ -206,13 +202,19 @@ public class Menu {
      * @return Stringa concatenata con i dati del menu e dei foods presenti nelle relative liste della mappa
      */
     public String getMenuDetails() {
-        String str = String.format("%34s\n\n", restaurantName)
+        String str = String.format("%34s\n\n", "Team-1 restaurant")
                 + String.format("%24s %s", "MENU", label.toUpperCase());
         str += "\n\n---------------------------------------------------------\n";
         for (TypeCourseEnum typeCourse : TypeCourseEnum.values()) {
-            FoodList foodList = foodListsMap.get(typeCourse);
-            str += "\n" + typeCourse.name() + ":\n" + foodList.getFoodListDetails()
-                    + "\n---------------------------------------------------------\n";
+            //FoodList foodList = foodListsMap.get(typeCourse);
+            /*str += "\n" + typeCourse.name() + ":\n" + foodList.getFoodListDetails()
+                    + "\n---------------------------------------------------------\n";*/
+            List<Food> foodList = foodListsMap.get(typeCourse.name().toLowerCase());
+            str += "\n" + typeCourse.getTypeCourseName().toUpperCase() + ":\n";
+            for(Food food : foodList) {
+                str += "\n" + food.getFoodDetails();
+            }
+            str += "\n---------------------------------------------------------\n";
         }
         return str;
     }

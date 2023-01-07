@@ -213,7 +213,7 @@ public class Booking {
                 ", bookedAt = '" + bookedAt + '\'' +
                 ", date = " + date +
                 ", time = " + time +
-                '}';
+                "}";
     }
 
     /**

@@ -53,6 +53,10 @@ public class TestBookingDAO {
         bookingList = bookingDAO.selectBookingsByDate(LocalDate.of(2023,1,12));
         bookingList.forEach(Booking::printDetails);
 
+        System.out.println("selectBookingsByInterval\n");
+        bookingList = bookingDAO.selectBookingsByInterval(LocalDate.of(2023,1,1), LocalDate.of(2023, 1, 31));
+        bookingList.forEach(Booking::printDetails);
+
     }
 
 }

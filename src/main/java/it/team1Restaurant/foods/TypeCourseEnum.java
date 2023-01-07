@@ -12,7 +12,7 @@ import java.util.*;
 public enum TypeCourseEnum {
 
     @SerializedName("Drink")
-    DRINK(null, "Drink"),
+    DRINK(0, "Drink"),
     @SerializedName("Starter")
     STARTER(1, "Starter"),
     @SerializedName("First")
@@ -46,7 +46,7 @@ public enum TypeCourseEnum {
         return id;
     }
 
-    public String getTypeCourse() {
+    public String getTypeCourseName() {
         return typeCourse;
     }
 

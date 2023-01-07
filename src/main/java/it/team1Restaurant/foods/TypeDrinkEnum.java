@@ -40,7 +40,7 @@ public enum TypeDrinkEnum {
         return id;
     }
 
-    public String getTypeDrink() {
+    public String getTypeDrinkName() {
         return typeDrink;
     }
 

@@ -22,9 +22,9 @@ public class TypeFoodClientDAO {
                     CREATE TABLE IF NOT EXISTS type_food_client
                     ( type_food_id INTEGER(10) NOT NULL,
                       client_id INTEGER(10) NOT NULL,
-                      CONSTRAINT type_food_FK_1 FOREIGN KEY (type_food_id) REFERENCES type_food(id)
+                      CONSTRAINT type_food_client_FK_1 FOREIGN KEY (type_food_id) REFERENCES type_food(id)
                       ON UPDATE CASCADE ON DELETE CASCADE,
-                      CONSTRAINT client_FK_1 FOREIGN KEY (client_id) REFERENCES client(id)
+                      CONSTRAINT client_type_food_FK_1 FOREIGN KEY (client_id) REFERENCES client(id)
                       ON UPDATE CASCADE ON DELETE CASCADE,
                       UNIQUE (type_food_id, client_id)
                     );

@@ -22,9 +22,9 @@ public class IngredientDishDAO {
                     CREATE TABLE IF NOT EXISTS ingredient_dish
                     ( ingredient_id INTEGER(10) NOT NULL,
                       dish_id INTEGER(10) NOT NULL,
-                      CONSTRAINT ingredient_FK_1 FOREIGN KEY (ingredient_id) REFERENCES ingredient(id)
+                      CONSTRAINT ingredient_dish_FK_1 FOREIGN KEY (ingredient_id) REFERENCES ingredient(id)
                       ON UPDATE CASCADE ON DELETE CASCADE,
-                      CONSTRAINT dish_FK_1 FOREIGN KEY (dish_id) REFERENCES dish(id)
+                      CONSTRAINT dish_ingredient_FK_1 FOREIGN KEY (dish_id) REFERENCES dish(id)
                       ON UPDATE CASCADE ON DELETE CASCADE,
                       UNIQUE (ingredient_id, dish_id)
                     );

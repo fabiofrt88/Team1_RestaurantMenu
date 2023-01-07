@@ -23,7 +23,7 @@ public class DrinkDAO {
             String createQuery = """
                     CREATE TABLE IF NOT EXISTS drink
                     ( id INTEGER(10) NOT NULL AUTO_INCREMENT,
-                      name VARCHAR(30) UNIQUE NOT NULL,
+                      name VARCHAR(50) UNIQUE NOT NULL,
                       price FLOAT(10),
                       type_drink_id INTEGER(5) NOT NULL,
                       CONSTRAINT drink_pk PRIMARY KEY (id),
@@ -68,7 +68,7 @@ public class DrinkDAO {
 
     public void createViewByTypeDrink(TypeDrinkEnum typeDrinkEnum){
 
-        String nameView = typeDrinkEnum.getTypeDrink().replaceAll("\\s+", "_").toLowerCase();
+        String nameView = typeDrinkEnum.getTypeDrinkName().replaceAll("\\s+", "_").toLowerCase();
 
         try (Connection conn = DriverJDBC.getConnection()) {
 
@@ -82,7 +82,7 @@ public class DrinkDAO {
                     CREATE VIEW\040""" + nameView + """ 
                     _drinks AS SELECT drink.id, drink.name, drink.price, type_drink.name AS type_drink_name FROM drink
                     INNER JOIN type_drink ON drink.type_drink_id = type_drink.id 
-                    WHERE type_drink.name =\040'""" + typeDrinkEnum.getTypeDrink() + "';";
+                    WHERE type_drink.name =\040'""" + typeDrinkEnum.getTypeDrinkName() + "';";
 
             statement.executeUpdate(createQuery);
 
@@ -96,7 +96,7 @@ public class DrinkDAO {
 
     public List<Drink> selectAllDrinksByView(TypeDrinkEnum typeDrinkEnum){
 
-        String nameView = typeDrinkEnum.getTypeDrink().replaceAll("\\s+", "_").toLowerCase();
+        String nameView = typeDrinkEnum.getTypeDrinkName().replaceAll("\\s+", "_").toLowerCase();
         List<Drink> drinkList = new ArrayList<>();
 
         try (Connection conn = DriverJDBC.getConnection()) {

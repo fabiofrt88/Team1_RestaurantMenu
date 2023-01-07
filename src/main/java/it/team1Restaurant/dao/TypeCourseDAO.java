@@ -46,11 +46,11 @@ public class TypeCourseDAO {
             String insertQuery =
                     """ 
                      INSERT INTO type_course (id, name)
-                     VALUES ('""" + typeCourse.getId() + "', '" + typeCourse.getTypeCourse() + "');";
+                     VALUES ('""" + typeCourse.getId() + "', '" + typeCourse.getTypeCourseName() + "');";
 
             statement.executeUpdate(insertQuery);
 
-            System.out.printf("Type Course %s inserted\n\n", typeCourse.getTypeCourse());
+            System.out.printf("Type Course %s inserted\n\n", typeCourse.getTypeCourseName());
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");

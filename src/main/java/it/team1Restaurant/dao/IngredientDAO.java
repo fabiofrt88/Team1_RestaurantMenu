@@ -20,7 +20,7 @@ public class IngredientDAO {
             String createQuery = """
                     CREATE TABLE IF NOT EXISTS ingredient
                     ( id INTEGER(10) NOT NULL AUTO_INCREMENT,
-                      name VARCHAR(30) UNIQUE NOT NULL,
+                      name VARCHAR(50) UNIQUE NOT NULL,
                       CONSTRAINT ingredient_pk PRIMARY KEY (id)
                     );
                     """;

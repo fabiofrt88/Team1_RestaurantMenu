@@ -2,7 +2,7 @@ package it.team1Restaurant.foods;
 
 import java.util.*;
 
-public abstract class FoodStorage {
+public abstract class FoodStorageSql {
 
     private static final List<Dish> dishList;
     private static final List<Drink> drinkList;
@@ -31,7 +31,7 @@ public abstract class FoodStorage {
         List<Dish> dishList = new ArrayList<>();
 
         dishList.add(new Dish(null, "Spaghetti alla carbonara", 12, TypeCourseEnum.FIRST));
-        dishList.add(new Dish(null, "Spaghetti all'amatriciana", 12, TypeCourseEnum.FIRST));
+        dishList.add(new Dish(null, "Spaghetti all''amatriciana", 12, TypeCourseEnum.FIRST));
         dishList.add(new Dish(null, "Lasagne alla bolognese", 15, TypeCourseEnum.FIRST));
         dishList.add(new Dish(null, "Ziti alla genovese", 16, TypeCourseEnum.FIRST));
         dishList.add(new Dish(null, "Tagliatelle alla bolognese", 15, TypeCourseEnum.FIRST));
@@ -99,7 +99,7 @@ public abstract class FoodStorage {
         drinkList.add(new Drink(null, "Coca Cola", 3,TypeDrinkEnum.SOFT_DRINK));
         drinkList.add(new Drink(null, "Aranciata", 3, TypeDrinkEnum.SOFT_DRINK));
         drinkList.add(new Drink(null, "Succo alla pera", 2, TypeDrinkEnum.FRUIT_JUICE));
-        drinkList.add(new Drink(null, "Succo all'ananas", 2,TypeDrinkEnum.FRUIT_JUICE));
+        drinkList.add(new Drink(null, "Succo all''ananas", 2,TypeDrinkEnum.FRUIT_JUICE));
         drinkList.add(new Drink(null, "Cocco drink",6.5, TypeDrinkEnum.COCKTAIL));
         drinkList.add(new Drink(null, "Gin Tonic",12, TypeDrinkEnum.COCKTAIL));
         drinkList.add(new Drink(null, "Martini",12, TypeDrinkEnum.COCKTAIL));
@@ -135,6 +135,7 @@ public abstract class FoodStorage {
         ingredientList.add(new Ingredient("Scampi"));
         ingredientList.add(new Ingredient("Moscardini"));
         ingredientList.add(new Ingredient("Olive nere"));
+        ingredientList.add(new Ingredient("Olive bianche"));
         ingredientList.add(new Ingredient("Peperoncino"));
         ingredientList.add(new Ingredient("Riso"));
         ingredientList.add(new Ingredient("Melone"));
@@ -145,6 +146,7 @@ public abstract class FoodStorage {
         ingredientList.add(new Ingredient("Parmigiano Reggiano DOP"));
         ingredientList.add(new Ingredient("Grana padano"));
         ingredientList.add(new Ingredient("Pecorino romano"));
+        ingredientList.add(new Ingredient("Guanciale"));
         ingredientList.add(new Ingredient("Pepe nero in grani"));
         ingredientList.add(new Ingredient("Brodo vegetale"));
         ingredientList.add(new Ingredient("Cannella in polvere"));

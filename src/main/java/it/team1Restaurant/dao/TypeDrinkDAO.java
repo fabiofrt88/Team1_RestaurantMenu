@@ -46,11 +46,11 @@ public class TypeDrinkDAO {
             String insertQuery =
                     """ 
                      INSERT INTO type_drink (id, name)
-                     VALUES ('""" + typeDrink.getId() + "', '" + typeDrink.getTypeDrink() + "');";
+                     VALUES ('""" + typeDrink.getId() + "', '" + typeDrink.getTypeDrinkName() + "');";
 
             statement.executeUpdate(insertQuery);
 
-            System.out.printf("Type Drink %s inserted\n\n", typeDrink.getTypeDrink());
+            System.out.printf("Type Drink %s inserted\n\n", typeDrink.getTypeDrinkName());
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");

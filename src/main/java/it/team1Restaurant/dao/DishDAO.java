@@ -23,7 +23,7 @@ public class DishDAO {
             String createQuery = """
                     CREATE TABLE IF NOT EXISTS dish
                     ( id INTEGER(10) NOT NULL AUTO_INCREMENT,
-                      name VARCHAR(30) UNIQUE NOT NULL,
+                      name VARCHAR(50) UNIQUE NOT NULL,
                       price FLOAT(10),
                       type_course_id INTEGER(5) NOT NULL,
                       CONSTRAINT dish_pk PRIMARY KEY (id),
@@ -67,7 +67,7 @@ public class DishDAO {
 
     public void createViewByTypeCourse(TypeCourseEnum typeCourseEnum){
 
-        String nameView = typeCourseEnum.getTypeCourse().replaceAll("\\s+", "_").toLowerCase();
+        String nameView = typeCourseEnum.getTypeCourseName().replaceAll("\\s+", "_").toLowerCase();
 
         try (Connection conn = DriverJDBC.getConnection()) {
 
@@ -81,7 +81,7 @@ public class DishDAO {
                     CREATE VIEW\040""" + nameView + """ 
                     _dishes AS SELECT dish.id, dish.name, dish.price, type_course.name AS type_course_name FROM dish
                     INNER JOIN type_course ON dish.type_course_id = type_course.id 
-                    WHERE type_course.name =\040'""" + typeCourseEnum.getTypeCourse() + "';";
+                    WHERE type_course.name =\040'""" + typeCourseEnum.getTypeCourseName() + "';";
 
             statement.executeUpdate(createQuery);
 
@@ -95,7 +95,7 @@ public class DishDAO {
 
     public List<Dish> selectAllDishesByView(TypeCourseEnum typeCourseEnum){
 
-        String nameView = typeCourseEnum.getTypeCourse().replaceAll("\\s+", "_").toLowerCase();
+        String nameView = typeCourseEnum.getTypeCourseName().replaceAll("\\s+", "_").toLowerCase();
         List<Dish> dishList = new ArrayList<>();
 
         try (Connection conn = DriverJDBC.getConnection()) {

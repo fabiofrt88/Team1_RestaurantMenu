@@ -250,9 +250,9 @@ public class FoodStorageOld {
     public void printFilteredFoodListsMapDetails(Map<TypeCourseEnum, FoodList> filteredFoodListsMap){
         for (TypeCourseEnum typeCourse : TypeCourseEnum.values()) {
             FoodList<Food> filteredFoodList = filteredFoodListsMap.get(typeCourse);
-            System.out.println(typeCourse.name() + ":\n");
+            System.out.println(typeCourse.getTypeCourseName().toUpperCase() + ":\n");
             if(filteredFoodList.isEmpty()) {
-                System.out.println("Nessun piatto presente con le caratteristiche richieste");
+                System.out.println("Nessun piatto presente con le caratteristiche richieste\n");
             }
             for(Food filteredFood : filteredFoodList){
                 System.out.println(filteredFood.getFoodDetails());

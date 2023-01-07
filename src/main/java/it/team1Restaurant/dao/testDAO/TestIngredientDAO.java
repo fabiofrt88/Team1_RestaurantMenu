@@ -1,7 +1,7 @@
 package it.team1Restaurant.dao.testDAO;
 
 import it.team1Restaurant.dao.IngredientDAO;
-import it.team1Restaurant.foods.FoodStorage;
+import it.team1Restaurant.foods.FoodStorageSql;
 import it.team1Restaurant.foods.Ingredient;
 
 import java.util.*;
@@ -14,7 +14,7 @@ public class TestIngredientDAO {
 
         ingredientDAO.createTable();
 
-        List<Ingredient> ingredients = FoodStorage.getIngredientList();
+        List<Ingredient> ingredients = FoodStorageSql.getIngredientList();
         ingredients.forEach(ingredientDAO::insertIngredient);
 
         System.out.println("selectAllIngredients\n");

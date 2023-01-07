@@ -321,12 +321,12 @@ public class TestMenu {
         filteredFoodListsMap = foodStorage.dishFilter(EnumSet.of(TypeFoodEnum.CHILD, TypeFoodEnum.VEGAN));
         System.out.println(filteredFoodListsMap.toString());
 
-        System.out.printf("\nPRINT ALL DISHES (%s)\n\n", FoodStorage.getDishList().size());
-        FoodStorage.getDishList().forEach(dish -> System.out.println(dish.getName()));
-        System.out.printf("\nPRINT ALL DRINKS (%s)\n\n", FoodStorage.getDrinkList().size());
-        FoodStorage.getDrinkList().forEach(drink -> System.out.println(drink.getName()));
-        System.out.printf("\nPRINT ALL INGREDIENTS (%s)\n\n", FoodStorage.getIngredientList().size());
-        FoodStorage.getIngredientList().forEach(ingredient -> System.out.println(ingredient.getName()));
+        System.out.printf("\nPRINT ALL DISHES (%s)\n\n", FoodStorageSql.getDishList().size());
+        FoodStorageSql.getDishList().forEach(dish -> System.out.println(dish.getName()));
+        System.out.printf("\nPRINT ALL DRINKS (%s)\n\n", FoodStorageSql.getDrinkList().size());
+        FoodStorageSql.getDrinkList().forEach(drink -> System.out.println(drink.getName()));
+        System.out.printf("\nPRINT ALL INGREDIENTS (%s)\n\n", FoodStorageSql.getIngredientList().size());
+        FoodStorageSql.getIngredientList().forEach(ingredient -> System.out.println(ingredient.getName()));
 
     }
 }
