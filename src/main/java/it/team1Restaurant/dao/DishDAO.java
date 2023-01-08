@@ -1,5 +1,6 @@
 package it.team1Restaurant.dao;
 
+import it.team1Restaurant.dao.interfaces.IDishDAO;
 import it.team1Restaurant.foods.Dish;
 import it.team1Restaurant.foods.TypeCourseEnum;
 import it.team1Restaurant.jdbc.DriverJDBC;
@@ -8,8 +9,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DishDAO {
+public class DishDAO implements IDishDAO {
 
+    protected DishDAO(){ }
+
+    @Override
     public void createTable(){
 
         try (Connection conn = DriverJDBC.getConnection()) {
@@ -41,6 +45,7 @@ public class DishDAO {
 
     }
 
+    @Override
     public void insertDish(Dish dish){
 
         try (Connection conn = DriverJDBC.getConnection()) {
@@ -65,6 +70,7 @@ public class DishDAO {
 
     }
 
+    @Override
     public void createViewByTypeCourse(TypeCourseEnum typeCourseEnum){
 
         String nameView = typeCourseEnum.getTypeCourseName().replaceAll("\\s+", "_").toLowerCase();
@@ -93,6 +99,7 @@ public class DishDAO {
 
     }
 
+    @Override
     public List<Dish> selectAllDishesByView(TypeCourseEnum typeCourseEnum){
 
         String nameView = typeCourseEnum.getTypeCourseName().replaceAll("\\s+", "_").toLowerCase();
@@ -126,6 +133,7 @@ public class DishDAO {
 
     }
 
+    @Override
     public List<Dish> selectAllDishes(){
 
         List<Dish> dishList = new ArrayList<>();
@@ -161,6 +169,7 @@ public class DishDAO {
 
     }
 
+    @Override
     public Dish selectDishById(Integer id){
 
         Dish dish = null;

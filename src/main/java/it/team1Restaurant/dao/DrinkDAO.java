@@ -1,5 +1,6 @@
 package it.team1Restaurant.dao;
 
+import it.team1Restaurant.dao.interfaces.IDrinkDAO;
 import it.team1Restaurant.foods.Drink;
 import it.team1Restaurant.foods.TypeDrinkEnum;
 import it.team1Restaurant.jdbc.DriverJDBC;
@@ -8,8 +9,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DrinkDAO {
+public class DrinkDAO implements IDrinkDAO {
 
+    protected DrinkDAO(){ }
+
+    @Override
     public void createTable(){
 
         try (Connection conn = DriverJDBC.getConnection()) {
@@ -42,6 +46,7 @@ public class DrinkDAO {
 
     }
 
+    @Override
     public void insertDrink(Drink drink){
 
         try (Connection conn = DriverJDBC.getConnection()) {
@@ -66,6 +71,7 @@ public class DrinkDAO {
 
     }
 
+    @Override
     public void createViewByTypeDrink(TypeDrinkEnum typeDrinkEnum){
 
         String nameView = typeDrinkEnum.getTypeDrinkName().replaceAll("\\s+", "_").toLowerCase();
@@ -94,6 +100,7 @@ public class DrinkDAO {
 
     }
 
+    @Override
     public List<Drink> selectAllDrinksByView(TypeDrinkEnum typeDrinkEnum){
 
         String nameView = typeDrinkEnum.getTypeDrinkName().replaceAll("\\s+", "_").toLowerCase();
@@ -127,6 +134,7 @@ public class DrinkDAO {
 
     }
 
+    @Override
     public List<Drink> selectAllDrinks(){
 
         List<Drink> drinkList = new ArrayList<>();
@@ -162,6 +170,7 @@ public class DrinkDAO {
 
     }
 
+    @Override
     public Drink selectDrinkById(Integer id){
 
         Drink drink = null;
