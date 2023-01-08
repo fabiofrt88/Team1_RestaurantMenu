@@ -202,8 +202,8 @@ public class Menu {
      * @return Stringa concatenata con i dati del menu e dei foods presenti nelle relative liste della mappa
      */
     public String getMenuDetails() {
-        String str = String.format("%34s\n\n", "Team-1 restaurant")
-                + String.format("%24s %s", "MENU", label.toUpperCase());
+        String str = String.format("%35s\n\n", "Team-1 restaurant")
+                + String.format("%23s %s", "MENU", label.toUpperCase());
         str += "\n\n---------------------------------------------------------\n";
         for (TypeCourseEnum typeCourse : TypeCourseEnum.values()) {
             //FoodList foodList = foodListsMap.get(typeCourse);

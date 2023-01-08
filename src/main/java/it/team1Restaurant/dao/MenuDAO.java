@@ -259,16 +259,17 @@ public class MenuDAO {
 
             String selectQuery =
                     """
-                    SELECT drink.id, drink.name, drink.price, type_drink.name AS type_name FROM drink
-                    INNER JOIN type_drink ON drink.type_drink_id = type_drink.id
-                    INNER JOIN menu_drink ON drink.id = menu_drink.drink_id
-                    INNER JOIN menu ON menu.id = menu_drink.menu_id
-                    UNION
-                    SELECT dish.id, dish.name, dish.price, type_course.name AS type_name FROM dish
-                    INNER JOIN type_course ON dish.type_course_id = type_course.id
-                    INNER JOIN menu_dish ON dish.id = menu_dish.dish_id
-                    INNER JOIN menu ON menu.id = menu_dish.menu_id
-                    WHERE menu.id =\040""" + menu.getId() + ";";
+                            SELECT drink.id, drink.name, drink.price, type_drink.name AS type_name FROM drink
+                            INNER JOIN type_drink ON drink.type_drink_id = type_drink.id
+                            INNER JOIN menu_drink ON drink.id = menu_drink.drink_id
+                            INNER JOIN menu ON menu.id = menu_drink.menu_id
+                            WHERE menu.id =\040""" + menu.getId() + """
+                            \040UNION
+                            SELECT dish.id, dish.name, dish.price, type_course.name AS type_name FROM dish
+                            INNER JOIN type_course ON dish.type_course_id = type_course.id
+                            INNER JOIN menu_dish ON dish.id = menu_dish.dish_id
+                            INNER JOIN menu ON menu.id = menu_dish.menu_id
+                            WHERE menu.id =\040""" + menu.getId() + ";";
 
             ResultSet resultSet = statement.executeQuery(selectQuery);
 
