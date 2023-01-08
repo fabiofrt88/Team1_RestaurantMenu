@@ -2,9 +2,7 @@ package it.team1Restaurant.controller;
 
 import com.google.gson.GsonBuilder;
 import it.team1Restaurant.dao.ServiceDAOFactory;
-import it.team1Restaurant.foods.Dish;
 import it.team1Restaurant.foods.Drink;
-import it.team1Restaurant.foods.TypeCourseEnum;
 import it.team1Restaurant.foods.TypeDrinkEnum;
 import it.team1Restaurant.service.DrinkService;
 import spark.Request;
@@ -28,7 +26,7 @@ public class DrinkController {
         return new GsonBuilder().setPrettyPrinting().create().toJson(drinkList);
     }
 
-    public static String getDrinkById(Request request, Response response){
+    public static String getDrinkById(Request request, Response response) throws NumberFormatException {
         Integer id = Integer.parseInt(request.params(":id"));
         Drink drink = drinkService.selectDrinkById(id);
         return new GsonBuilder().setPrettyPrinting().create().toJson(drink);

@@ -1,5 +1,6 @@
 package it.team1Restaurant.dao;
 
+import it.team1Restaurant.dao.interfaces.IIngredientDAO;
 import it.team1Restaurant.foods.Ingredient;
 import it.team1Restaurant.jdbc.DriverJDBC;
 
@@ -7,8 +8,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class IngredientDAO {
+public class IngredientDAO implements IIngredientDAO {
 
+    protected IngredientDAO(){ }
+
+    @Override
     public void createTable(){
 
         try (Connection conn = DriverJDBC.getConnection()) {
@@ -34,6 +38,7 @@ public class IngredientDAO {
 
     }
 
+    @Override
     public void insertIngredient(Ingredient ingredient){
 
         try (Connection conn = DriverJDBC.getConnection()) {
@@ -57,6 +62,7 @@ public class IngredientDAO {
 
     }
 
+    @Override
     public List<Ingredient> selectAllIngredients(){
 
         List<Ingredient> ingredientList = new ArrayList<>();
@@ -90,6 +96,7 @@ public class IngredientDAO {
 
     }
 
+    @Override
     public Ingredient selectIngredientById(Integer id){
 
         Ingredient ingredient = null;

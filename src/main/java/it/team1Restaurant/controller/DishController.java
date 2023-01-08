@@ -26,7 +26,7 @@ public class DishController {
         return new GsonBuilder().setPrettyPrinting().create().toJson(dishList);
     }
 
-    public static String getDishById(Request request, Response response){
+    public static String getDishById(Request request, Response response) throws NumberFormatException {
         Integer id = Integer.parseInt(request.params(":id"));
         Dish dish = dishService.selectDishById(id);
         return new GsonBuilder().setPrettyPrinting().create().toJson(dish);

@@ -1,8 +1,9 @@
 package it.team1Restaurant.dao.testDAO;
 
-import it.team1Restaurant.dao.IngredientDAO;
+import it.team1Restaurant.dao.ServiceDAOFactory;
 import it.team1Restaurant.foods.FoodStorageSql;
 import it.team1Restaurant.foods.Ingredient;
+import it.team1Restaurant.service.IngredientService;
 
 import java.util.*;
 
@@ -10,19 +11,19 @@ public class TestIngredientDAO {
 
     public static void main(String[] args) {
 
-        IngredientDAO ingredientDAO = new IngredientDAO();
+        IngredientService ingredientService = ServiceDAOFactory.getIngredientService();
 
-        ingredientDAO.createTable();
+        ingredientService.createTable();
 
         List<Ingredient> ingredients = FoodStorageSql.getIngredientList();
-        ingredients.forEach(ingredientDAO::insertIngredient);
+        ingredients.forEach(ingredientService::insertIngredient);
 
         System.out.println("selectAllIngredients\n");
-        List<Ingredient> ingredientList = ingredientDAO.selectAllIngredients();
+        List<Ingredient> ingredientList = ingredientService.selectAllIngredients();
         ingredientList.forEach(System.out::println);
 
         System.out.println("\nselectIngredientById\n");
-        Ingredient ingredient = ingredientDAO.selectIngredientById(1);
+        Ingredient ingredient = ingredientService.selectIngredientById(1);
         System.out.println(ingredient);
 
     }
