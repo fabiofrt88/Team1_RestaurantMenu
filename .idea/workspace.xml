@@ -7,16 +7,18 @@
     <list default="true" id="e26885f8-4eec-486d-a28c-cd9a679d6e83" name="Changes" comment="Fix all Test class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/application/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/controller/DishController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/controller/DishController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/controller/DrinkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/controller/DrinkController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/IngredientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/IngredientDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/MenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/MenuDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/ServiceDAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/ServiceDAOFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestIngredientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestIngredientDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/interfaces/IMenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/interfaces/IMenuDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestMenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestMenuDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/service/MenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/service/MenuService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/application/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/application/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/controller/DishController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/controller/DishController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/controller/DrinkController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/controller/DrinkController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/ServiceDAOFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/ServiceDAOFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/interfaces/IMenuDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/interfaces/IMenuDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestMenuDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestMenuDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/service/MenuService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/service/MenuService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

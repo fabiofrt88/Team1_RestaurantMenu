@@ -1,5 +1,6 @@
 package it.team1Restaurant.dao;
 
+import it.team1Restaurant.dao.interfaces.IMenuDAO;
 import it.team1Restaurant.dao.mtm.MenuDishDAO;
 import it.team1Restaurant.dao.mtm.MenuDrinkDAO;
 import it.team1Restaurant.foods.Dish;
@@ -14,8 +15,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuDAO {
+public class MenuDAO implements IMenuDAO {
 
+    protected MenuDAO(){ }
+
+    @Override
     public void createTable(){
 
         try (Connection conn = DriverJDBC.getConnection()) {
@@ -46,6 +50,7 @@ public class MenuDAO {
 
     }
 
+    @Override
     public void insertMenu(Menu menu){
 
         try (Connection conn = DriverJDBC.getConnection()) {
@@ -70,6 +75,7 @@ public class MenuDAO {
 
     }
 
+    @Override
     public List<Menu> selectAllMenu(){
 
         List<Menu> menuList = new ArrayList<>();
@@ -104,6 +110,7 @@ public class MenuDAO {
 
     }
 
+    @Override
     public Menu selectMenuById(Integer id){
 
         Menu menu = null;
@@ -138,6 +145,7 @@ public class MenuDAO {
 
     }
 
+    @Override
     public void addDishToMenu(Integer menuId, Integer dishId){
 
         Menu menu = this.selectMenuById(menuId);
@@ -154,6 +162,7 @@ public class MenuDAO {
 
     }
 
+    @Override
     public void addDrinkToMenu(Integer menuId, Integer drinkId){
 
         Menu menu = this.selectMenuById(menuId);
@@ -170,6 +179,7 @@ public class MenuDAO {
 
     }
 
+    @Override
     public List<Drink> selectDrinksByMenu(Menu menu){
 
         List<Drink> drinkList = new ArrayList<>();
@@ -209,6 +219,7 @@ public class MenuDAO {
 
     }
 
+    @Override
     public List<Dish> selectDishesByMenu(Menu menu){
 
         List<Dish> dishList = new ArrayList<>();
@@ -248,6 +259,7 @@ public class MenuDAO {
 
     }
 
+    @Override
     public void selectFoodsByMenu(Menu menu){
 
         try (Connection conn = DriverJDBC.getConnection()) {

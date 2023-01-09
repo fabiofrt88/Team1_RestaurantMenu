@@ -3,6 +3,7 @@ package it.team1Restaurant.application;
 import it.team1Restaurant.controller.DishController;
 import it.team1Restaurant.controller.DrinkController;
 import it.team1Restaurant.controller.IngredientController;
+import it.team1Restaurant.controller.MenuController;
 
 import static spark.Spark.*;
 
@@ -31,6 +32,11 @@ public class Main {
 
         get("/restaurant/ingredients", (req, res) -> IngredientController.getAllIngredients(req, res));
         get("/restaurant/ingredients/:id", (req, res) -> IngredientController.getIngredientById(req, res));
+
+        //menu REST API
+
+        get("/restaurant/menu", (req, res) -> MenuController.getAllMenu(req, res));
+        get("/restaurant/menu/:id", (req, res) -> MenuController.getMenuById(req, res));
 
     }
 
