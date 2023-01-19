@@ -1,5 +1,7 @@
 package it.team1Restaurant.dao;
 
+import it.team1Restaurant.dao.interfaces.IDishDAO;
+import it.team1Restaurant.exception.DataAccessException;
 import it.team1Restaurant.foods.Dish;
 import it.team1Restaurant.foods.TypeCourseEnum;
 import it.team1Restaurant.jdbc.DriverJDBC;
@@ -8,9 +10,12 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DishDAO {
+public class DishDAO implements IDishDAO {
 
-    public void createTable(){
+    protected DishDAO(){ }
+
+    @Override
+    public void createTable() {
 
         try (Connection conn = DriverJDBC.getConnection()) {
 
@@ -37,10 +42,12 @@ public class DishDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
 
+    @Override
     public void insertDish(Dish dish){
 
         try (Connection conn = DriverJDBC.getConnection()) {
@@ -61,10 +68,12 @@ public class DishDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
 
+    @Override
     public void createViewByTypeCourse(TypeCourseEnum typeCourseEnum){
 
         String nameView = typeCourseEnum.getTypeCourseName().replaceAll("\\s+", "_").toLowerCase();
@@ -89,10 +98,12 @@ public class DishDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
 
+    @Override
     public List<Dish> selectAllDishesByView(TypeCourseEnum typeCourseEnum){
 
         String nameView = typeCourseEnum.getTypeCourseName().replaceAll("\\s+", "_").toLowerCase();
@@ -120,12 +131,14 @@ public class DishDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return dishList;
 
     }
 
+    @Override
     public List<Dish> selectAllDishes(){
 
         List<Dish> dishList = new ArrayList<>();
@@ -155,12 +168,14 @@ public class DishDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return dishList;
 
     }
 
+    @Override
     public Dish selectDishById(Integer id){
 
         Dish dish = null;
@@ -190,6 +205,7 @@ public class DishDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return dish;
