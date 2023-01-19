@@ -1,5 +1,7 @@
 package it.team1Restaurant.dao;
 
+import it.team1Restaurant.dao.interfaces.IIngredientDAO;
+import it.team1Restaurant.exception.DataAccessException;
 import it.team1Restaurant.foods.Ingredient;
 import it.team1Restaurant.jdbc.DriverJDBC;
 
@@ -7,9 +9,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class IngredientDAO {
+public class IngredientDAO implements IIngredientDAO {
 
-    public void createTable(){
+    protected IngredientDAO(){}
+@Override
+    public void createTableIngredient(){
 
         try (Connection conn = DriverJDBC.getConnection()) {
 
@@ -30,10 +34,11 @@ public class IngredientDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
-
+@Override
     public void insertIngredient(Ingredient ingredient){
 
         try (Connection conn = DriverJDBC.getConnection()) {
@@ -53,10 +58,11 @@ public class IngredientDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw  new DataAccessException();
         }
 
     }
-
+@Override
     public List<Ingredient> selectAllIngredients(){
 
         List<Ingredient> ingredientList = new ArrayList<>();
@@ -84,12 +90,13 @@ public class IngredientDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return ingredientList;
 
     }
-
+@Override
     public Ingredient selectIngredientById(Integer id){
 
         Ingredient ingredient = null;
@@ -116,6 +123,7 @@ public class IngredientDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return ingredient;
