@@ -19,7 +19,7 @@ public abstract class DriverJDBC {
         password = pros.getProperty("PASSWORD");
     }
 
-    public static Properties getProperties(String filename) {
+    private static Properties getProperties(String filename) {
 
         Properties pros = new Properties();
         try (FileInputStream f = new FileInputStream(filename)) {

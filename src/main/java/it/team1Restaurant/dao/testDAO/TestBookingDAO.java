@@ -1,10 +1,10 @@
 package it.team1Restaurant.dao.testDAO;
 
 import it.team1Restaurant.bookings.Booking;
-import it.team1Restaurant.dao.ClientDAO;
 import it.team1Restaurant.dao.ServiceDAOFactory;
 import it.team1Restaurant.exception.DataAccessException;
 import it.team1Restaurant.service.BookingService;
+import it.team1Restaurant.service.ClientService;
 import it.team1Restaurant.user.Client;
 
 import java.time.LocalDate;
@@ -19,12 +19,12 @@ public class TestBookingDAO {
         try {
 
             BookingService bookingService = ServiceDAOFactory.getBookingService();
-            ClientDAO clientDAO = new ClientDAO();
+            ClientService clientService = ServiceDAOFactory.getClientService();
 
             bookingService.createTable();
 
-            Client client1 = clientDAO.selectClientById(1);
-            Client client2 = clientDAO.selectClientById(2);
+            Client client1 = clientService.selectClientById(1);
+            Client client2 = clientService.selectClientById(2);
 
             Booking booking1 = Client.book(client1, new ArrayList<>(List.of(client1)), LocalDate.of(2023, 1, 10), LocalTime.of(12, 30));
             Booking booking2 = Client.book(client1, new ArrayList<>(List.of(client1)), LocalDate.of(2023, 1, 12), LocalTime.of(20, 0));
