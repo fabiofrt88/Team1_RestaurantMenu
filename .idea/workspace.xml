@@ -6,10 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="e26885f8-4eec-486d-a28c-cd9a679d6e83" name="Changes" comment="Fix all Test class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/DishDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/DishDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestDishDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestDishDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/DishDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/DishDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestDishDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestDishDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/IngredientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/IngredientDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/ServiceDAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/ServiceDAOFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestBookingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestBookingDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestIngredientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestIngredientDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/IngredientDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/IngredientDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/ServiceDAOFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/ServiceDAOFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestBookingDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestBookingDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestClientDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestClientDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestIngredientDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestIngredientDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestMenuDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestMenuDAO.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +79,20 @@
       <recent name="C:\Java\workspaces\intelliJ\git-projects\restourantMenu-develhope-admin-frattarelli\restourantMenu-develhope\Team1_RestaurantMenu" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.TestIngredientDAO">
+    <configuration name="TestIngredientDAO" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="it.team1Restaurant.dao.testDAO.TestIngredientDAO" />
+      <module name="Team1_RestaurantMenu" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="it.team1Restaurant.dao.testDAO.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestBookingsMap" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="Team1_RestaurantMenu" />
       <extension name="coverage">
@@ -94,6 +112,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestIngredientDAO" />
         <item itemvalue="TestNG.TestBookingsMap" />
       </list>
     </recent_temporary>
@@ -128,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672329904927</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add IIngredientDAO + IngredientService, edit IngredientDAO + ServiceDAOFactory + TestIngredientDAO">
+      <created>1674135788971</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1674135788971</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -158,6 +184,7 @@
     <MESSAGE value="Fix all Test class" />
     <MESSAGE value="Aggiunzione nuovi Dish per Vegetariani e creazione VegetarianMenu" />
     <MESSAGE value="database connection (utente Dino)" />
-    <option name="LAST_COMMIT_MESSAGE" value="database connection (utente Dino)" />
+    <MESSAGE value="Add IIngredientDAO + IngredientService, edit IngredientDAO + ServiceDAOFactory + TestIngredientDAO" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add IIngredientDAO + IngredientService, edit IngredientDAO + ServiceDAOFactory + TestIngredientDAO" />
   </component>
 </project>

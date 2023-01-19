@@ -20,7 +20,6 @@ public class TestBookingDAO {
 
             BookingService bookingService = ServiceDAOFactory.getBookingService();
             ClientService clientService = ServiceDAOFactory.getClientService();
-
             bookingService.createTable();
 
             Client client1 = clientService.selectClientById(1);

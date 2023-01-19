@@ -12,7 +12,8 @@ import java.util.List;
 public class IngredientDAO implements IIngredientDAO {
 
     protected IngredientDAO(){}
-@Override
+
+    @Override
     public void createTableIngredient(){
 
         try (Connection conn = DriverJDBC.getConnection()) {
@@ -38,7 +39,7 @@ public class IngredientDAO implements IIngredientDAO {
         }
 
     }
-@Override
+    @Override
     public void insertIngredient(Ingredient ingredient){
 
         try (Connection conn = DriverJDBC.getConnection()) {
@@ -58,11 +59,11 @@ public class IngredientDAO implements IIngredientDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
-            throw  new DataAccessException();
+            throw new DataAccessException();
         }
 
     }
-@Override
+    @Override
     public List<Ingredient> selectAllIngredients(){
 
         List<Ingredient> ingredientList = new ArrayList<>();
@@ -96,7 +97,7 @@ public class IngredientDAO implements IIngredientDAO {
         return ingredientList;
 
     }
-@Override
+    @Override
     public Ingredient selectIngredientById(Integer id){
 
         Ingredient ingredient = null;
