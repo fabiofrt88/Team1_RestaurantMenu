@@ -5,13 +5,14 @@ import it.team1Restaurant.menu.Menu;
 import it.team1Restaurant.menu.TypeFoodEnum;
 import it.team1Restaurant.service.MenuService;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class TestMenuDAO {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
         MenuService menuService = ServiceDAOFactory.getMenuService();
 

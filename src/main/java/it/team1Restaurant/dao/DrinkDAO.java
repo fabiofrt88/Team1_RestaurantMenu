@@ -1,6 +1,7 @@
 package it.team1Restaurant.dao;
 
 import it.team1Restaurant.dao.interfaces.IDrinkDAO;
+import it.team1Restaurant.exception.DataAccessException;
 import it.team1Restaurant.foods.Drink;
 import it.team1Restaurant.foods.TypeDrinkEnum;
 import it.team1Restaurant.jdbc.DriverJDBC;
@@ -164,6 +165,7 @@ public class DrinkDAO implements IDrinkDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return drinkList;

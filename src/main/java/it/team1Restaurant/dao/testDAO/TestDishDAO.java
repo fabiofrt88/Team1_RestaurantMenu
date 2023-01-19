@@ -6,11 +6,12 @@ import it.team1Restaurant.foods.FoodStorageSql;
 import it.team1Restaurant.foods.TypeCourseEnum;
 import it.team1Restaurant.service.DishService;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class TestDishDAO {
 
-    public static void main(String[] args) throws NoSuchMethodException {
+    public static void main(String[] args) throws NoSuchMethodException, SQLException {
 
         DishService dishService = ServiceDAOFactory.getDishService();
 

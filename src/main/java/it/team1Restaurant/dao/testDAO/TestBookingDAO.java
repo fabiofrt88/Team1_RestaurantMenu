@@ -22,7 +22,7 @@ public class TestBookingDAO {
         Client client1 = clientDAO.selectClientById(1);
         Client client2 = clientDAO.selectClientById(2);
 
-        Booking booking1 = Client.book(client1, new ArrayList<>(List.of(client1)), LocalDate.of(2023, 1, 10), LocalTime.of(12, 30));
+        /*Booking booking1 = Client.book(client1, new ArrayList<>(List.of(client1)), LocalDate.of(2023, 1, 10), LocalTime.of(12, 30));
         Booking booking2 = Client.book(client1, new ArrayList<>(List.of(client1)), LocalDate.of(2023, 1, 12), LocalTime.of(20, 0));
         Booking booking3 = Client.book(client2, new ArrayList<>(List.of(client2)), LocalDate.of(2023, 1, 12), LocalTime.of(13, 30));
         Booking booking4 = Client.book(client2, new ArrayList<>(List.of(client2)), LocalDate.of(2023, 2, 14), LocalTime.of(21, 0));
@@ -30,7 +30,7 @@ public class TestBookingDAO {
         bookingDAO.insertBooking(booking1);
         bookingDAO.insertBooking(booking2);
         bookingDAO.insertBooking(booking3);
-        bookingDAO.insertBooking(booking4);
+        bookingDAO.insertBooking(booking4);*/
 
         System.out.println("selectAllBookings\n");
         List<Booking> bookingList = bookingDAO.selectAllBookings();

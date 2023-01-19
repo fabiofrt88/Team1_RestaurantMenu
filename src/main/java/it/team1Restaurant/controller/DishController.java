@@ -8,27 +8,39 @@ import it.team1Restaurant.service.DishService;
 import spark.Request;
 import spark.Response;
 
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DishController {
 
-    private static DishService dishService = ServiceDAOFactory.getDishService();
+    private final DishService dishService = ServiceDAOFactory.getDishService();
 
-    public static String getAllDishesByView(Request request, Response response){
+    public String getAllDishesByView(Request request, Response response){
         String typeCourse = request.params(":type_course");
         TypeCourseEnum typeCourseEnum = TypeCourseEnum.getTypeCourseByName(typeCourse);
         List<Dish> dishList = dishService.selectAllDishesByView(typeCourseEnum);
         return new GsonBuilder().setPrettyPrinting().create().toJson(dishList);
     }
 
-    public static String getAllDishes(Request request, Response response){
-        List<Dish> dishList = dishService.selectAllDishes();
+    public String getAllDishes(Request request, Response response){
+        List<Dish> dishList = new ArrayList<>();
+        try{
+            dishList = dishService.selectAllDishes();
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
         return new GsonBuilder().setPrettyPrinting().create().toJson(dishList);
     }
 
-    public static String getDishById(Request request, Response response) throws NumberFormatException {
+    public String getDishById(Request request, Response response) throws NumberFormatException {
         Integer id = Integer.parseInt(request.params(":id"));
-        Dish dish = dishService.selectDishById(id);
+        Dish dish = null;
+        try{
+            dish = dishService.selectDishById(id);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
         return new GsonBuilder().setPrettyPrinting().create().toJson(dish);
     }
 

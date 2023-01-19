@@ -1,6 +1,7 @@
 package it.team1Restaurant.dao.testDAO;
 
 import it.team1Restaurant.dao.ServiceDAOFactory;
+import it.team1Restaurant.exception.DataAccessException;
 import it.team1Restaurant.foods.Drink;
 import it.team1Restaurant.foods.FoodStorageSql;
 import it.team1Restaurant.foods.TypeDrinkEnum;
@@ -9,7 +10,7 @@ import it.team1Restaurant.service.DrinkService;
 import java.util.List;
 
 public class TestDrinkDAO {
-    public static void main(String[] args) throws NoSuchMethodException {
+    public static void main(String[] args) throws DataAccessException {
 
         DrinkService drinkService = ServiceDAOFactory.getDrinkService();
 

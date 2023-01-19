@@ -5,6 +5,7 @@ import it.team1Restaurant.foods.Dish;
 import it.team1Restaurant.foods.Drink;
 import it.team1Restaurant.menu.Menu;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public class MenuService {
@@ -28,7 +29,7 @@ public class MenuService {
         return menuDAO.selectMenuById(id);
     }
 
-    public void addDishToMenu(Integer menuId, Integer dishId){
+    public void addDishToMenu(Integer menuId, Integer dishId) throws SQLException {
         menuDAO.addDishToMenu(menuId, dishId);
     }
 

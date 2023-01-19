@@ -134,7 +134,7 @@ public class DishDAO implements IDishDAO {
     }
 
     @Override
-    public List<Dish> selectAllDishes(){
+    public List<Dish> selectAllDishes() throws SQLException {
 
         List<Dish> dishList = new ArrayList<>();
 
@@ -163,6 +163,7 @@ public class DishDAO implements IDishDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw ex;
         }
 
         return dishList;
@@ -170,7 +171,7 @@ public class DishDAO implements IDishDAO {
     }
 
     @Override
-    public Dish selectDishById(Integer id){
+    public Dish selectDishById(Integer id) throws SQLException {
 
         Dish dish = null;
 
@@ -199,6 +200,7 @@ public class DishDAO implements IDishDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw ex;
         }
 
         return dish;

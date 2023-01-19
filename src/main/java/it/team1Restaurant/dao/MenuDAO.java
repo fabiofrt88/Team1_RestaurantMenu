@@ -146,7 +146,7 @@ public class MenuDAO implements IMenuDAO {
     }
 
     @Override
-    public void addDishToMenu(Integer menuId, Integer dishId){
+    public void addDishToMenu(Integer menuId, Integer dishId) throws SQLException {
 
         Menu menu = this.selectMenuById(menuId);
         Dish dish = new DishDAO().selectDishById(dishId);

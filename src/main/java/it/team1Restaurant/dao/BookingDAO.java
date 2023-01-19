@@ -14,7 +14,7 @@ import java.util.List;
 
 public class BookingDAO {
 
-    public void createTable(){
+    public void createTable() {
 
         try (Connection conn = DriverJDBC.getConnection()) {
 
