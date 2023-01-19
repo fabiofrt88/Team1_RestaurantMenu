@@ -1,7 +1,6 @@
 package it.team1Restaurant.dao;
 
 import it.team1Restaurant.service.DishService;
-import it.team1Restaurant.service.IngredientService;
 
 public class ServiceDAOFactory {
 

@@ -1,5 +1,7 @@
 package it.team1Restaurant.dao;
 
+import it.team1Restaurant.dao.interfaces.IClientDAO;
+import it.team1Restaurant.exception.DataAccessException;
 import it.team1Restaurant.jdbc.DriverJDBC;
 import it.team1Restaurant.user.Client;
 
@@ -7,8 +9,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClientDAO {
+public class ClientDAO implements IClientDAO {
 
+    protected ClientDAO(){ }
+
+    @Override
     public void createTable(){
 
         try (Connection conn = DriverJDBC.getConnection()) {
@@ -35,10 +40,12 @@ public class ClientDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
 
+    @Override
     public void insertClient(Client client){
 
         try (Connection conn = DriverJDBC.getConnection()) {
@@ -59,10 +66,12 @@ public class ClientDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
 
+    @Override
     public List<Client> selectAllClients(){
 
         List<Client> clientList = new ArrayList<>();
@@ -90,12 +99,14 @@ public class ClientDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return clientList;
 
     }
 
+    @Override
     public Client selectClientById(Integer id){
 
         Client client = null;
@@ -125,6 +136,7 @@ public class ClientDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return client;
