@@ -5,6 +5,7 @@ import it.team1Restaurant.exception.DataAccessException;
 import it.team1Restaurant.menu.Menu;
 import it.team1Restaurant.menu.TypeFoodEnum;
 import it.team1Restaurant.service.MenuService;
+import it.team1Restaurant.service.ServiceEnum;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,7 +17,7 @@ public class TestMenuDAO {
 
         try {
 
-            MenuService menuService = ServiceDAOFactory.getMenuService();
+            MenuService menuService = (MenuService) ServiceDAOFactory.getService(ServiceEnum.MENU);
 
             menuService.createTableMenu();
 
@@ -149,10 +150,8 @@ public class TestMenuDAO {
                 System.out.println(menu.getMenuDetails() + "\n");
             }
 
-        } catch (DataAccessException e) {
+        } catch (DataAccessException | ClassCastException | NullPointerException e) {
             System.out.println(e.getMessage());
-        } catch (NullPointerException ex) {
-            System.out.println("No menu's data found");
         }
 
     }

@@ -1,6 +1,7 @@
 package it.team1Restaurant.dao;
 
 import it.team1Restaurant.service.*;
+import it.team1Restaurant.service.interfaces.IService;
 
 public class ServiceDAOFactory {
 
@@ -33,6 +34,48 @@ public class ServiceDAOFactory {
     public static ClientService getClientService(){
         ClientDAO clientDAO = new ClientDAO();
         return new ClientService(clientDAO);
+    }
+
+    public static IService getService(ServiceEnum serviceEnum){
+
+        IService service = null;
+
+        switch(serviceEnum) {
+
+            case DISH: //DishService
+                DishDAO dishDAO = new DishDAO();
+                service = new DishService(dishDAO);
+                break;
+
+            case DRINK: //DrinkService
+                DrinkDAO drinkDAO = new DrinkDAO();
+                service = new DrinkService(drinkDAO);
+                break;
+
+            case INGREDIENT: //IngredientService
+                IngredientDAO ingredientDAO = new IngredientDAO();
+                service = new IngredientService(ingredientDAO);
+                break;
+
+            case MENU: //MenuService
+                MenuDAO menuDAO = new MenuDAO();
+                service = new MenuService(menuDAO);
+                break;
+
+            case BOOKING: //BookingService
+                BookingDAO bookingDAO = new BookingDAO();
+                service = new BookingService(bookingDAO);
+                break;
+
+            case CLIENT: //ClientService
+                ClientDAO clientDAO = new ClientDAO();
+                service = new ClientService(clientDAO);
+                break;
+
+        }
+
+        return service;
+
     }
 
 }

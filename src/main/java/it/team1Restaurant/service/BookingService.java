@@ -1,18 +1,18 @@
 package it.team1Restaurant.service;
 
 import it.team1Restaurant.bookings.Booking;
-import it.team1Restaurant.dao.BookingDAO;
 import it.team1Restaurant.dao.interfaces.IBookingDAO;
+import it.team1Restaurant.service.interfaces.IService;
 import it.team1Restaurant.user.Client;
 
 import java.time.LocalDate;
 import java.util.List;
 
-public class BookingService {
+public class BookingService implements IService {
 
     private IBookingDAO bookingDAO;
 
-    public BookingService(BookingDAO bookingDAO){
+    public BookingService(IBookingDAO bookingDAO){
         this.bookingDAO = bookingDAO;
     }
 

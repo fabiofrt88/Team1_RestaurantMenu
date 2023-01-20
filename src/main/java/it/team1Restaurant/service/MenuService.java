@@ -1,18 +1,18 @@
 package it.team1Restaurant.service;
 
-import it.team1Restaurant.dao.MenuDAO;
 import it.team1Restaurant.dao.interfaces.IMenuDAO;
 import it.team1Restaurant.foods.Dish;
 import it.team1Restaurant.foods.Drink;
 import it.team1Restaurant.menu.Menu;
+import it.team1Restaurant.service.interfaces.IService;
 
 import java.util.List;
 
-public class MenuService {
+public class MenuService implements IService {
 
     private IMenuDAO menuDAO;
 
-    public MenuService(MenuDAO menuDAO) {
+    public MenuService(IMenuDAO menuDAO) {
         this.menuDAO = menuDAO;
     }
 

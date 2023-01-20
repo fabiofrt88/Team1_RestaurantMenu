@@ -1,16 +1,16 @@
 package it.team1Restaurant.service;
 
-import it.team1Restaurant.dao.IngredientDAO;
 import it.team1Restaurant.dao.interfaces.IIngredientDAO;
 import it.team1Restaurant.foods.Ingredient;
+import it.team1Restaurant.service.interfaces.IService;
 
 import java.util.List;
 
-public class IngredientService {
+public class IngredientService implements IService {
 
     private IIngredientDAO ingredientDAO;
 
-    public IngredientService(IngredientDAO ingredientDAO){
+    public IngredientService(IIngredientDAO ingredientDAO){
         this.ingredientDAO = ingredientDAO;
     }
 

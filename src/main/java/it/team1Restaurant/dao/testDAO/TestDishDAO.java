@@ -6,6 +6,8 @@ import it.team1Restaurant.foods.Dish;
 import it.team1Restaurant.foods.FoodStorageSql;
 import it.team1Restaurant.foods.TypeCourseEnum;
 import it.team1Restaurant.service.DishService;
+import it.team1Restaurant.service.ServiceEnum;
+import it.team1Restaurant.service.interfaces.IService;
 
 import java.util.List;
 
@@ -15,7 +17,7 @@ public class TestDishDAO {
 
         try {
 
-            DishService dishService = ServiceDAOFactory.getDishService();
+            DishService dishService = (DishService) ServiceDAOFactory.getService(ServiceEnum.DISH);
 
             dishService.createTable();
 
@@ -41,7 +43,7 @@ public class TestDishDAO {
             Dish dish = dishService.selectDishById(5);
             System.out.println(dish);
 
-        } catch (DataAccessException e) {
+        } catch (DataAccessException | ClassCastException | NullPointerException e) {
             System.out.println(e.getMessage());
         }
 

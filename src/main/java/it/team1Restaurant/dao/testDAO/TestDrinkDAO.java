@@ -4,6 +4,7 @@ import it.team1Restaurant.dao.ServiceDAOFactory;
 import it.team1Restaurant.exception.DataAccessException;
 import it.team1Restaurant.foods.*;
 import it.team1Restaurant.service.DrinkService;
+import it.team1Restaurant.service.ServiceEnum;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class TestDrinkDAO {
 
         try {
 
-            DrinkService drinkService = ServiceDAOFactory.getDrinkService();
+            DrinkService drinkService = (DrinkService) ServiceDAOFactory.getService(ServiceEnum.DRINK);
 
             drinkService.createTable();
 
@@ -38,7 +39,7 @@ public class TestDrinkDAO {
             Drink drink = drinkService.selectDrinkById(6);
             System.out.println(drink);
 
-        } catch (DataAccessException e) {
+        } catch (DataAccessException | ClassCastException | NullPointerException e) {
             System.out.println(e.getMessage());
         }
 

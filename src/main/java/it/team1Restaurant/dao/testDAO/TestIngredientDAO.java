@@ -5,6 +5,7 @@ import it.team1Restaurant.exception.DataAccessException;
 import it.team1Restaurant.foods.FoodStorageSql;
 import it.team1Restaurant.foods.Ingredient;
 import it.team1Restaurant.service.IngredientService;
+import it.team1Restaurant.service.ServiceEnum;
 
 import java.util.*;
 
@@ -14,7 +15,7 @@ public class TestIngredientDAO {
 
         try {
 
-            IngredientService ingredientService = ServiceDAOFactory.getIngredientService();
+            IngredientService ingredientService = (IngredientService) ServiceDAOFactory.getService(ServiceEnum.INGREDIENT);
 
             ingredientService.createTableIngredient();
 
@@ -29,7 +30,7 @@ public class TestIngredientDAO {
             Ingredient ingredient = ingredientService.selectIngredientById(1);
             System.out.println(ingredient);
 
-        } catch (DataAccessException e) {
+        } catch (DataAccessException | ClassCastException | NullPointerException e) {
             System.out.println(e.getMessage());
         }
 
