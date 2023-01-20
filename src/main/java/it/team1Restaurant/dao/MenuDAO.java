@@ -1,5 +1,6 @@
 package it.team1Restaurant.dao;
 
+import it.team1Restaurant.dao.interfaces.IMenuDAO;
 import it.team1Restaurant.dao.mtm.MenuDishDAO;
 import it.team1Restaurant.dao.mtm.MenuDrinkDAO;
 import it.team1Restaurant.foods.Dish;
@@ -14,9 +15,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuDAO {
+public class MenuDAO implements IMenuDAO {
 
-    public void createTable(){
+    public void createTableMenu(){
 
         try (Connection conn = DriverJDBC.getConnection()) {
 

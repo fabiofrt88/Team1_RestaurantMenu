@@ -14,7 +14,7 @@ public class TestMenuDAO {
 
         MenuDAO menuDAO = new MenuDAO();
 
-        menuDAO.createTable();
+        menuDAO.createTableMenu();
 
         menuDAO.insertMenu(new Menu(null, "Generico", TypeFoodEnum.GENERIC));
         menuDAO.insertMenu(new Menu(null, "Bambini", TypeFoodEnum.CHILD));
