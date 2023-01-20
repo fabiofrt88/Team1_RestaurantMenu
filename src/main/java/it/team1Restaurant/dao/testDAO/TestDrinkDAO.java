@@ -23,8 +23,6 @@ public class TestDrinkDAO {
             drinkService.createViewByTypeDrink(TypeDrinkEnum.FRUIT_JUICE);
             drinkService.createViewByTypeDrink(TypeDrinkEnum.LIQUOR);
 
-
-
             List<Drink> drinkList = FoodStorageSql.getDrinkList();
             drinkList.forEach(drinkService::insertDrink);
 
@@ -43,7 +41,6 @@ public class TestDrinkDAO {
         } catch (DataAccessException e) {
             System.out.println(e.getMessage());
         }
-
 
     }
 }

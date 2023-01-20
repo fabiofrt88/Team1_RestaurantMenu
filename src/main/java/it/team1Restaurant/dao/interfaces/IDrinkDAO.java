@@ -6,6 +6,7 @@ import it.team1Restaurant.foods.TypeDrinkEnum;
 import java.util.List;
 
 public interface IDrinkDAO {
+
     void createTable();
 
     void insertDrink(Drink drink);
@@ -17,4 +18,5 @@ public interface IDrinkDAO {
     List<Drink> selectAllDrinks();
 
     Drink selectDrinkById(Integer id);
+
 }

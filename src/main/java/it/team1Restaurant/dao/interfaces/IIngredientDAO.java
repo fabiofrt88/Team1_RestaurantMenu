@@ -11,5 +11,4 @@ public interface IIngredientDAO {
     List<Ingredient> selectAllIngredients();
     Ingredient selectIngredientById(Integer id);
 
-
 }

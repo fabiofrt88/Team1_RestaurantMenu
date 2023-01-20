@@ -5,14 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e26885f8-4eec-486d-a28c-cd9a679d6e83" name="Changes" comment="Fix all Test class">
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/interfaces/IMenuDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/service/MenuService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_09_33__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_09_33__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/MenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/MenuDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/ServiceDAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/ServiceDAOFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/interfaces/IDrinkDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/interfaces/IDrinkDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/interfaces/IIngredientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/interfaces/IIngredientDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/interfaces/IMenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/interfaces/IMenuDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestDrinkDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestDrinkDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestIngredientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestIngredientDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestMenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestMenuDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/service/MenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/service/MenuService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

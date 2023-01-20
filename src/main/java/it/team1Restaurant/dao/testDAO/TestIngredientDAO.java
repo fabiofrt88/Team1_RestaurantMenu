@@ -4,7 +4,6 @@ import it.team1Restaurant.dao.ServiceDAOFactory;
 import it.team1Restaurant.exception.DataAccessException;
 import it.team1Restaurant.foods.FoodStorageSql;
 import it.team1Restaurant.foods.Ingredient;
-import it.team1Restaurant.service.DishService;
 import it.team1Restaurant.service.IngredientService;
 
 import java.util.*;
@@ -33,6 +32,7 @@ public class TestIngredientDAO {
         } catch (DataAccessException e) {
             System.out.println(e.getMessage());
         }
+
     }
 }
 

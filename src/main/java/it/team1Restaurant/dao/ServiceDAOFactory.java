@@ -4,11 +4,6 @@ import it.team1Restaurant.service.*;
 
 public class ServiceDAOFactory {
 
-    public static MenuService getMenuService() {
-        MenuDAO menuDAO = new MenuDAO();
-        return new MenuService(menuDAO);
-    }
-
 
     public static DishService getDishService(){
         DishDAO dishDAO = new DishDAO();
@@ -23,6 +18,11 @@ public class ServiceDAOFactory {
     public static IngredientService getIngredientService(){
         IngredientDAO ingredientDAO = new IngredientDAO();
         return new IngredientService(ingredientDAO);
+    }
+
+    public static MenuService getMenuService() {
+        MenuDAO menuDAO = new MenuDAO();
+        return new MenuService(menuDAO);
     }
 
     public static BookingService getBookingService(){

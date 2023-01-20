@@ -1,10 +1,10 @@
 package it.team1Restaurant.service;
 
-
 import it.team1Restaurant.dao.MenuDAO;
 import it.team1Restaurant.dao.interfaces.IMenuDAO;
+import it.team1Restaurant.foods.Dish;
+import it.team1Restaurant.foods.Drink;
 import it.team1Restaurant.menu.Menu;
-
 
 import java.util.List;
 
@@ -32,7 +32,25 @@ public class MenuService {
         return menuDAO.selectMenuById(id);
     }
 
+    public void addDishToMenu(Integer menuId, Integer dishId) {
+        menuDAO.addDishToMenu(menuId, dishId);
+    }
 
+    public void addDrinkToMenu(Integer menuId, Integer drinkId) {
+        menuDAO.addDrinkToMenu(menuId, drinkId);
+    }
+
+    public List<Drink> selectDrinksByMenu(Menu menu) {
+        return menuDAO.selectDrinksByMenu(menu);
+    }
+
+    public List<Dish> selectDishesByMenu(Menu menu) {
+        return menuDAO.selectDishesByMenu(menu);
+    }
+
+    public void selectFoodsByMenu(Menu menu) {
+        menuDAO.selectFoodsByMenu(menu);
+    }
 
 
 }

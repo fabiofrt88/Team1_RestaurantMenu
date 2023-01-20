@@ -3,6 +3,7 @@ package it.team1Restaurant.dao;
 import it.team1Restaurant.dao.interfaces.IMenuDAO;
 import it.team1Restaurant.dao.mtm.MenuDishDAO;
 import it.team1Restaurant.dao.mtm.MenuDrinkDAO;
+import it.team1Restaurant.exception.DataAccessException;
 import it.team1Restaurant.foods.Dish;
 import it.team1Restaurant.foods.Drink;
 import it.team1Restaurant.foods.TypeCourseEnum;
@@ -17,6 +18,9 @@ import java.util.List;
 
 public class MenuDAO implements IMenuDAO {
 
+    protected MenuDAO(){ }
+
+    @Override
     public void createTableMenu(){
 
         try (Connection conn = DriverJDBC.getConnection()) {
@@ -43,10 +47,12 @@ public class MenuDAO implements IMenuDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
 
+    @Override
     public void insertMenu(Menu menu){
 
         try (Connection conn = DriverJDBC.getConnection()) {
@@ -67,10 +73,12 @@ public class MenuDAO implements IMenuDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
 
+    @Override
     public List<Menu> selectAllMenu(){
 
         List<Menu> menuList = new ArrayList<>();
@@ -99,12 +107,14 @@ public class MenuDAO implements IMenuDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return menuList;
 
     }
 
+    @Override
     public Menu selectMenuById(Integer id){
 
         Menu menu = null;
@@ -133,12 +143,14 @@ public class MenuDAO implements IMenuDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return menu;
 
     }
 
+    @Override
     public void addDishToMenu(Integer menuId, Integer dishId){
 
         Menu menu = this.selectMenuById(menuId);
@@ -155,6 +167,7 @@ public class MenuDAO implements IMenuDAO {
 
     }
 
+    @Override
     public void addDrinkToMenu(Integer menuId, Integer drinkId){
 
         Menu menu = this.selectMenuById(menuId);
@@ -171,6 +184,7 @@ public class MenuDAO implements IMenuDAO {
 
     }
 
+    @Override
     public List<Drink> selectDrinksByMenu(Menu menu){
 
         List<Drink> drinkList = new ArrayList<>();
@@ -204,12 +218,14 @@ public class MenuDAO implements IMenuDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return drinkList;
 
     }
 
+    @Override
     public List<Dish> selectDishesByMenu(Menu menu){
 
         List<Dish> dishList = new ArrayList<>();
@@ -243,12 +259,14 @@ public class MenuDAO implements IMenuDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return dishList;
 
     }
 
+    @Override
     public void selectFoodsByMenu(Menu menu){
 
         try (Connection conn = DriverJDBC.getConnection()) {
@@ -307,6 +325,7 @@ public class MenuDAO implements IMenuDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
