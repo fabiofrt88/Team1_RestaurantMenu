@@ -5,17 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e26885f8-4eec-486d-a28c-cd9a679d6e83" name="Changes" comment="Fix all Test class">
+      <change afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/interfaces/IDrinkDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/IngredientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/IngredientDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/ServiceDAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/ServiceDAOFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestBookingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestBookingDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestIngredientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestIngredientDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/IngredientDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/IngredientDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/ServiceDAOFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/ServiceDAOFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestBookingDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestBookingDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestClientDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestClientDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestIngredientDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestIngredientDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestMenuDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestMenuDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/DrinkDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/DrinkDAO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +18,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -77,6 +69,10 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Java\workspaces\intelliJ\git-projects\restourantMenu-develhope-admin-frattarelli\restourantMenu-develhope\Team1_RestaurantMenu" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="it.team1Restaurant.dao.interfaces" />
+      <recent name="it.team1Restaurant.dao" />
     </key>
   </component>
   <component name="RunManager" selected="Application.TestIngredientDAO">
