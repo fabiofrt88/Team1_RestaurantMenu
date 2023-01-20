@@ -1,40 +1,49 @@
 package it.team1Restaurant.dao.testDAO;
 
-import it.team1Restaurant.dao.DrinkDAO;
-import it.team1Restaurant.foods.Drink;
-import it.team1Restaurant.foods.FoodStorageSql;
-import it.team1Restaurant.foods.TypeDrinkEnum;
+import it.team1Restaurant.dao.ServiceDAOFactory;
+import it.team1Restaurant.exception.DataAccessException;
+import it.team1Restaurant.foods.*;
+import it.team1Restaurant.service.DrinkService;
 
 import java.util.List;
 
 public class TestDrinkDAO {
     public static void main(String[] args) throws NoSuchMethodException {
 
-        DrinkDAO drinkDAO = new DrinkDAO();
+        try {
 
-        drinkDAO.createTable();
+            DrinkService drinkService = ServiceDAOFactory.getDrinkService();
 
-        drinkDAO.createViewByTypeDrink(TypeDrinkEnum.WINE);
-        drinkDAO.createViewByTypeDrink(TypeDrinkEnum.FRUIT_JUICE);
-        drinkDAO.createViewByTypeDrink(TypeDrinkEnum.SOFT_DRINK);
-        drinkDAO.createViewByTypeDrink(TypeDrinkEnum.COCKTAIL);
-        drinkDAO.createViewByTypeDrink(TypeDrinkEnum.BEER);
-        drinkDAO.createViewByTypeDrink(TypeDrinkEnum.LIQUOR);
+            drinkService.createTable();
 
-        List<Drink> drinkList = FoodStorageSql.getDrinkList();
-        drinkList.forEach(drinkDAO::insertDrink);
+            drinkService.createViewByTypeDrink(TypeDrinkEnum.SOFT_DRINK);
+            drinkService.createViewByTypeDrink(TypeDrinkEnum.WINE);
+            drinkService.createViewByTypeDrink(TypeDrinkEnum.BEER);
+            drinkService.createViewByTypeDrink(TypeDrinkEnum.COCKTAIL);
+            drinkService.createViewByTypeDrink(TypeDrinkEnum.FRUIT_JUICE);
+            drinkService.createViewByTypeDrink(TypeDrinkEnum.LIQUOR);
 
-        System.out.println("selectAllDrinksByView wine_drinks\n");
-        List<Drink> wineDrinks = drinkDAO.selectAllDrinksByView(TypeDrinkEnum.WINE);
-        wineDrinks.forEach(System.out::println);
 
-        System.out.println("\nselectAllDrinks\n");
-        List<Drink> drinks = drinkDAO.selectAllDrinks();
-        drinks.forEach(System.out::println);
 
-        System.out.println("\nselectDrinkById\n");
-        Drink drink = drinkDAO.selectDrinkById(5);
-        System.out.println(drink);
+            List<Drink> drinkList = FoodStorageSql.getDrinkList();
+            drinkList.forEach(drinkService::insertDrink);
+
+            System.out.println("selectAllDrinkByView soft_drink\n");
+            List<Drink> softDrink = drinkService.selectAllDrinksByView(TypeDrinkEnum.SOFT_DRINK);
+            softDrink.forEach(System.out::println);
+
+            System.out.println("\nselectAllDrink\n");
+            List<Drink> drinks = drinkService.selectAllDrinks();
+            drinks.forEach(System.out::println);
+
+            System.out.println("\nselectDrinkById\n");
+            Drink drink = drinkService.selectDrinkById(6);
+            System.out.println(drink);
+
+        } catch (DataAccessException e) {
+            System.out.println(e.getMessage());
+        }
+
 
     }
 }
