@@ -18,7 +18,7 @@ public class IngredientController {
         return new GsonBuilder().setPrettyPrinting().create().toJson(ingredientList);
     }
 
-    public static String getIngredientById(Request request, Response response) throws NumberFormatException {
+    public static String getIngredientById(Request request, Response response){
         Integer id = Integer.parseInt(request.params(":id"));
         Ingredient ingredient = ingredientService.selectIngredientById(id);
         return new GsonBuilder().setPrettyPrinting().create().toJson(ingredient);

@@ -2,6 +2,7 @@ package it.team1Restaurant.dao;
 
 import it.team1Restaurant.bookings.Booking;
 import it.team1Restaurant.dao.interfaces.IBookingDAO;
+import it.team1Restaurant.exception.DataAccessException;
 import it.team1Restaurant.jdbc.DriverJDBC;
 import it.team1Restaurant.user.Client;
 
@@ -44,6 +45,7 @@ public class BookingDAO implements IBookingDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
@@ -70,6 +72,7 @@ public class BookingDAO implements IBookingDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
@@ -114,6 +117,7 @@ public class BookingDAO implements IBookingDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return bookingList;
@@ -160,6 +164,7 @@ public class BookingDAO implements IBookingDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return booking;
@@ -207,6 +212,7 @@ public class BookingDAO implements IBookingDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return bookingList;
@@ -254,6 +260,7 @@ public class BookingDAO implements IBookingDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return bookingList;
@@ -301,6 +308,7 @@ public class BookingDAO implements IBookingDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return bookingList;

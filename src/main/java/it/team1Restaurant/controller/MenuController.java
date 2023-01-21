@@ -18,7 +18,7 @@ public class MenuController {
         return new GsonBuilder().setPrettyPrinting().create().toJson(menuList);
     }
 
-    public static String getMenuById(Request request, Response response) throws NumberFormatException {
+    public static String getMenuById(Request request, Response response){
         Integer id = Integer.parseInt(request.params(":id"));
         Menu menu = menuService.selectMenuById(id);
         menuService.selectFoodsByMenu(menu);

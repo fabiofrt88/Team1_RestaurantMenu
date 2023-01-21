@@ -4,7 +4,6 @@ import it.team1Restaurant.dao.interfaces.IDishDAO;
 import it.team1Restaurant.foods.Dish;
 import it.team1Restaurant.foods.TypeCourseEnum;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class DishService {
@@ -31,11 +30,11 @@ public class DishService {
         return dishDAO.selectAllDishesByView(typeCourseEnum);
     }
 
-    public List<Dish> selectAllDishes() throws SQLException {
+    public List<Dish> selectAllDishes(){
         return dishDAO.selectAllDishes();
     }
 
-    public Dish selectDishById(Integer id) throws SQLException {
+    public Dish selectDishById(Integer id){
         return dishDAO.selectDishById(id);
     }
 

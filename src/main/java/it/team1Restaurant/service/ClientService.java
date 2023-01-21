@@ -1,15 +1,15 @@
 package it.team1Restaurant.service;
 
-import it.team1Restaurant.dao.ClientDAO;
+import it.team1Restaurant.dao.interfaces.IClientDAO;
 import it.team1Restaurant.user.Client;
 
 import java.util.List;
 
 public class ClientService {
 
-    private ClientDAO clientDAO;
+    private IClientDAO clientDAO;
 
-    public ClientService(ClientDAO clientDAO){
+    public ClientService(IClientDAO clientDAO){
         this.clientDAO = clientDAO;
     }
 

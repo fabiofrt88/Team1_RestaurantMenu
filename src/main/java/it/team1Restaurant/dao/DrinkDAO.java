@@ -43,6 +43,7 @@ public class DrinkDAO implements IDrinkDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
@@ -68,6 +69,7 @@ public class DrinkDAO implements IDrinkDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
@@ -97,6 +99,7 @@ public class DrinkDAO implements IDrinkDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
@@ -129,6 +132,7 @@ public class DrinkDAO implements IDrinkDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return drinkList;
@@ -202,6 +206,7 @@ public class DrinkDAO implements IDrinkDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return drink;

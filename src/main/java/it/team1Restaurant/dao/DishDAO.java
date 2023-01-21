@@ -1,6 +1,7 @@
 package it.team1Restaurant.dao;
 
 import it.team1Restaurant.dao.interfaces.IDishDAO;
+import it.team1Restaurant.exception.DataAccessException;
 import it.team1Restaurant.foods.Dish;
 import it.team1Restaurant.foods.TypeCourseEnum;
 import it.team1Restaurant.jdbc.DriverJDBC;
@@ -41,6 +42,7 @@ public class DishDAO implements IDishDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
@@ -66,6 +68,7 @@ public class DishDAO implements IDishDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
@@ -95,6 +98,7 @@ public class DishDAO implements IDishDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
@@ -127,6 +131,7 @@ public class DishDAO implements IDishDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return dishList;
@@ -134,7 +139,7 @@ public class DishDAO implements IDishDAO {
     }
 
     @Override
-    public List<Dish> selectAllDishes() throws SQLException {
+    public List<Dish> selectAllDishes(){
 
         List<Dish> dishList = new ArrayList<>();
 
@@ -163,7 +168,7 @@ public class DishDAO implements IDishDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
-            throw ex;
+            throw new DataAccessException();
         }
 
         return dishList;
@@ -171,7 +176,7 @@ public class DishDAO implements IDishDAO {
     }
 
     @Override
-    public Dish selectDishById(Integer id) throws SQLException {
+    public Dish selectDishById(Integer id){
 
         Dish dish = null;
 
@@ -200,7 +205,7 @@ public class DishDAO implements IDishDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
-            throw ex;
+            throw new DataAccessException();
         }
 
         return dish;

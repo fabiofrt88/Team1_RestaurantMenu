@@ -1,6 +1,7 @@
 package it.team1Restaurant.dao;
 
 import it.team1Restaurant.dao.interfaces.IClientDAO;
+import it.team1Restaurant.exception.DataAccessException;
 import it.team1Restaurant.jdbc.DriverJDBC;
 import it.team1Restaurant.user.Client;
 
@@ -39,6 +40,7 @@ public class ClientDAO implements IClientDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
@@ -64,6 +66,7 @@ public class ClientDAO implements IClientDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
@@ -96,6 +99,7 @@ public class ClientDAO implements IClientDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return clientList;
@@ -132,6 +136,7 @@ public class ClientDAO implements IClientDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return client;

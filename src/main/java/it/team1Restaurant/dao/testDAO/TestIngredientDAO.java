@@ -1,6 +1,7 @@
 package it.team1Restaurant.dao.testDAO;
 
 import it.team1Restaurant.dao.ServiceDAOFactory;
+import it.team1Restaurant.exception.DataAccessException;
 import it.team1Restaurant.foods.FoodStorageSql;
 import it.team1Restaurant.foods.Ingredient;
 import it.team1Restaurant.service.IngredientService;
@@ -11,20 +12,26 @@ public class TestIngredientDAO {
 
     public static void main(String[] args) {
 
-        IngredientService ingredientService = ServiceDAOFactory.getIngredientService();
+        try {
 
-        ingredientService.createTable();
+            IngredientService ingredientService = ServiceDAOFactory.getIngredientService();
 
-        List<Ingredient> ingredients = FoodStorageSql.getIngredientList();
-        ingredients.forEach(ingredientService::insertIngredient);
+            ingredientService.createTable();
 
-        System.out.println("selectAllIngredients\n");
-        List<Ingredient> ingredientList = ingredientService.selectAllIngredients();
-        ingredientList.forEach(System.out::println);
+            List<Ingredient> ingredients = FoodStorageSql.getIngredientList();
+            ingredients.forEach(ingredientService::insertIngredient);
 
-        System.out.println("\nselectIngredientById\n");
-        Ingredient ingredient = ingredientService.selectIngredientById(1);
-        System.out.println(ingredient);
+            System.out.println("selectAllIngredients\n");
+            List<Ingredient> ingredientList = ingredientService.selectAllIngredients();
+            ingredientList.forEach(System.out::println);
+
+            System.out.println("\nselectIngredientById\n");
+            Ingredient ingredient = ingredientService.selectIngredientById(1);
+            System.out.println(ingredient);
+
+        } catch (DataAccessException | ClassCastException | NullPointerException e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 

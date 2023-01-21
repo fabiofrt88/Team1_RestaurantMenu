@@ -1,6 +1,7 @@
 package it.team1Restaurant.dao;
 
 import it.team1Restaurant.dao.interfaces.IIngredientDAO;
+import it.team1Restaurant.exception.DataAccessException;
 import it.team1Restaurant.foods.Ingredient;
 import it.team1Restaurant.jdbc.DriverJDBC;
 
@@ -34,6 +35,7 @@ public class IngredientDAO implements IIngredientDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
@@ -58,6 +60,7 @@ public class IngredientDAO implements IIngredientDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
@@ -90,6 +93,7 @@ public class IngredientDAO implements IIngredientDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return ingredientList;
@@ -123,6 +127,7 @@ public class IngredientDAO implements IIngredientDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return ingredient;

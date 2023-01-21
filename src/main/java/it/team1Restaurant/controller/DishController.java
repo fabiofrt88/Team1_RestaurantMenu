@@ -8,7 +8,6 @@ import it.team1Restaurant.service.DishService;
 import spark.Request;
 import spark.Response;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,22 +24,14 @@ public class DishController {
 
     public String getAllDishes(Request request, Response response){
         List<Dish> dishList = new ArrayList<>();
-        try{
-            dishList = dishService.selectAllDishes();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+        dishList = dishService.selectAllDishes();
         return new GsonBuilder().setPrettyPrinting().create().toJson(dishList);
     }
 
     public String getDishById(Request request, Response response) throws NumberFormatException {
         Integer id = Integer.parseInt(request.params(":id"));
         Dish dish = null;
-        try{
-            dish = dishService.selectDishById(id);
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        }
+        dish = dishService.selectDishById(id);
         return new GsonBuilder().setPrettyPrinting().create().toJson(dish);
     }
 

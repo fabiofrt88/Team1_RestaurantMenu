@@ -3,6 +3,7 @@ package it.team1Restaurant.dao;
 import it.team1Restaurant.dao.interfaces.IMenuDAO;
 import it.team1Restaurant.dao.mtm.MenuDishDAO;
 import it.team1Restaurant.dao.mtm.MenuDrinkDAO;
+import it.team1Restaurant.exception.DataAccessException;
 import it.team1Restaurant.foods.Dish;
 import it.team1Restaurant.foods.Drink;
 import it.team1Restaurant.foods.TypeCourseEnum;
@@ -46,6 +47,7 @@ public class MenuDAO implements IMenuDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
@@ -71,6 +73,7 @@ public class MenuDAO implements IMenuDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
@@ -104,6 +107,7 @@ public class MenuDAO implements IMenuDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return menuList;
@@ -139,6 +143,7 @@ public class MenuDAO implements IMenuDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return menu;
@@ -146,7 +151,7 @@ public class MenuDAO implements IMenuDAO {
     }
 
     @Override
-    public void addDishToMenu(Integer menuId, Integer dishId) throws SQLException {
+    public void addDishToMenu(Integer menuId, Integer dishId) {
 
         Menu menu = this.selectMenuById(menuId);
         Dish dish = new DishDAO().selectDishById(dishId);
@@ -213,6 +218,7 @@ public class MenuDAO implements IMenuDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return drinkList;
@@ -253,6 +259,7 @@ public class MenuDAO implements IMenuDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
         return dishList;
@@ -318,6 +325,7 @@ public class MenuDAO implements IMenuDAO {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage() + "\n");
+            throw new DataAccessException();
         }
 
     }
