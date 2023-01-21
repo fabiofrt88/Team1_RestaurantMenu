@@ -17,6 +17,9 @@ public class Main {
     public static void main(String[] args) {
 
         DishController dishController = new DishController();
+        DrinkController drinkController = new DrinkController();
+        IngredientController ingredientController = new IngredientController();
+        MenuController menuController = new MenuController();
         ExceptionHandler exceptionHandler = new ExceptionHandler();
 
         port(PORT);
@@ -33,23 +36,24 @@ public class Main {
 
         //drinks REST API
 
-        get("/restaurant/drinks", "application/json", (req, res) -> DrinkController.getAllDrinks(req, res));
-        get("/restaurant/drinks/:id", (req, res) -> DrinkController.getDrinkById(req, res));
-        get("/restaurant/drinks/view/:type_drink", (req, res) -> DrinkController.getAllDrinksByView(req, res));
+        get("/restaurant/drinks", "application/json", (req, res) -> drinkController.getAllDrinks(req, res));
+        get("/restaurant/drinks/:id", (req, res) -> drinkController.getDrinkById(req, res));
+        get("/restaurant/drinks/view/:type_drink", (req, res) -> drinkController.getAllDrinksByView(req, res));
 
         //ingredients REST API
 
-        get("/restaurant/ingredients", (req, res) -> IngredientController.getAllIngredients(req, res));
-        get("/restaurant/ingredients/:id", (req, res) -> IngredientController.getIngredientById(req, res));
+        get("/restaurant/ingredients", (req, res) -> ingredientController.getAllIngredients(req, res));
+        get("/restaurant/ingredients/:id", (req, res) -> ingredientController.getIngredientById(req, res));
 
         //menu REST API
 
-        get("/restaurant/menu", (req, res) -> MenuController.getAllMenu(req, res));
-        get("/restaurant/menu/:id", (req, res) -> MenuController.getMenuById(req, res));
+        get("/restaurant/menu", (req, res) -> menuController.getAllMenu(req, res));
+        get("/restaurant/menu/:id", (req, res) -> menuController.getMenuById(req, res));
 
         //exception
 
         exception(DataAccessException.class, (e, req, res) -> exceptionHandler.handleInternalServerError(e, req, res));
+        exception(ClassCastException.class, (e, req, res) -> exceptionHandler.handleClassCastException(e, req, res));
         exception(NotFoundException.class, (e, req, res) -> exceptionHandler.handleNotFoundException(e, req, res));
         exception(NumberFormatException.class, (e, req, res) -> exceptionHandler.handleNumberFormatException(e, req, res));
 

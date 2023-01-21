@@ -4,6 +4,7 @@ import it.team1Restaurant.dao.ServiceDAOFactory;
 import it.team1Restaurant.exception.DataAccessException;
 import it.team1Restaurant.menu.TypeFoodEnum;
 import it.team1Restaurant.service.ClientService;
+import it.team1Restaurant.service.ServiceEnum;
 import it.team1Restaurant.user.Client;
 
 import java.util.EnumSet;
@@ -15,7 +16,7 @@ public class TestClientDAO {
 
         try {
 
-            ClientService clientService = ServiceDAOFactory.getClientService();
+            ClientService clientService = (ClientService) ServiceDAOFactory.getService(ServiceEnum.CLIENT);
 
             clientService.createTable();
 

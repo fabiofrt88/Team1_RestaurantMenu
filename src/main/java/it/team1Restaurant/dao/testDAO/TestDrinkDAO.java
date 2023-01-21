@@ -6,6 +6,7 @@ import it.team1Restaurant.foods.Drink;
 import it.team1Restaurant.foods.FoodStorageSql;
 import it.team1Restaurant.foods.TypeDrinkEnum;
 import it.team1Restaurant.service.DrinkService;
+import it.team1Restaurant.service.ServiceEnum;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class TestDrinkDAO {
 
         try {
 
-            DrinkService drinkService = ServiceDAOFactory.getDrinkService();
+            DrinkService drinkService = (DrinkService) ServiceDAOFactory.getService(ServiceEnum.DRINK);
 
             drinkService.createTable();
 

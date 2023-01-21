@@ -3,10 +3,11 @@ package it.team1Restaurant.service;
 import it.team1Restaurant.dao.interfaces.IDrinkDAO;
 import it.team1Restaurant.foods.Drink;
 import it.team1Restaurant.foods.TypeDrinkEnum;
+import it.team1Restaurant.service.interfaces.IService;
 
 import java.util.List;
 
-public class DrinkService {
+public class DrinkService implements IService {
 
     private IDrinkDAO drinkDAO;
 

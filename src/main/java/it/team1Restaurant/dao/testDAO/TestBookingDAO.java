@@ -5,6 +5,7 @@ import it.team1Restaurant.dao.ServiceDAOFactory;
 import it.team1Restaurant.exception.DataAccessException;
 import it.team1Restaurant.service.BookingService;
 import it.team1Restaurant.service.ClientService;
+import it.team1Restaurant.service.ServiceEnum;
 import it.team1Restaurant.user.Client;
 
 import java.time.LocalDate;
@@ -18,8 +19,8 @@ public class TestBookingDAO {
 
         try{
 
-            BookingService bookingService = ServiceDAOFactory.getBookingService();
-            ClientService clientService = ServiceDAOFactory.getClientService();
+            BookingService bookingService = (BookingService) ServiceDAOFactory.getService(ServiceEnum.BOOKING);
+            ClientService clientService = (ClientService) ServiceDAOFactory.getService(ServiceEnum.CLIENT);
 
             bookingService.createTable();
 

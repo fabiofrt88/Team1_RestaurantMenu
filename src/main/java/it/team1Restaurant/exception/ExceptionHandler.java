@@ -12,6 +12,13 @@ public class ExceptionHandler {
         return response;
     }
 
+    public Response handleClassCastException(ClassCastException e, Request request, Response response) {
+        System.out.println(e.getMessage()+ "\n");
+        response.status(500);
+        response.body("{\"error\":{\"code\": 500,\"message\":\"500 Internal Server Error\"}}");
+        return response;
+    }
+
     public Response handleNotFoundException(NotFoundException e, Request request, Response response) {
         System.out.println(e.getMessage()+ "\n");
         response.status(404);

@@ -5,6 +5,7 @@ import it.team1Restaurant.exception.DataAccessException;
 import it.team1Restaurant.menu.Menu;
 import it.team1Restaurant.menu.TypeFoodEnum;
 import it.team1Restaurant.service.MenuService;
+import it.team1Restaurant.service.ServiceEnum;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class TestMenuDAO {
 
         try {
 
-            MenuService menuService = ServiceDAOFactory.getMenuService();
+            MenuService menuService = (MenuService) ServiceDAOFactory.getService(ServiceEnum.MENU);
 
             menuService.createTable();
 

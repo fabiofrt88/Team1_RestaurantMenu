@@ -1,11 +1,12 @@
 package it.team1Restaurant.service;
 
 import it.team1Restaurant.dao.interfaces.IClientDAO;
+import it.team1Restaurant.service.interfaces.IService;
 import it.team1Restaurant.user.Client;
 
 import java.util.List;
 
-public class ClientService {
+public class ClientService implements IService {
 
     private IClientDAO clientDAO;
 

@@ -5,6 +5,7 @@ import it.team1Restaurant.dao.ServiceDAOFactory;
 import it.team1Restaurant.foods.Dish;
 import it.team1Restaurant.foods.TypeCourseEnum;
 import it.team1Restaurant.service.DishService;
+import it.team1Restaurant.service.ServiceEnum;
 import spark.Request;
 import spark.Response;
 
@@ -13,7 +14,7 @@ import java.util.List;
 
 public class DishController {
 
-    private final DishService dishService = ServiceDAOFactory.getDishService();
+    private DishService dishService = (DishService) ServiceDAOFactory.getService(ServiceEnum.DISH);
 
     public String getAllDishesByView(Request request, Response response){
         String typeCourse = request.params(":type_course");

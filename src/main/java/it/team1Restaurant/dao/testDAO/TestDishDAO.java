@@ -6,6 +6,7 @@ import it.team1Restaurant.foods.Dish;
 import it.team1Restaurant.foods.FoodStorageSql;
 import it.team1Restaurant.foods.TypeCourseEnum;
 import it.team1Restaurant.service.DishService;
+import it.team1Restaurant.service.ServiceEnum;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -16,7 +17,7 @@ public class TestDishDAO {
 
         try {
 
-            DishService dishService = ServiceDAOFactory.getDishService();
+            DishService dishService = (DishService) ServiceDAOFactory.getService(ServiceEnum.DISH);
 
             dishService.createTable();
 

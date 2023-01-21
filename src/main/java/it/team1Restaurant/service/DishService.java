@@ -3,10 +3,11 @@ package it.team1Restaurant.service;
 import it.team1Restaurant.dao.interfaces.IDishDAO;
 import it.team1Restaurant.foods.Dish;
 import it.team1Restaurant.foods.TypeCourseEnum;
+import it.team1Restaurant.service.interfaces.IService;
 
 import java.util.List;
 
-public class DishService {
+public class DishService implements IService {
 
     private IDishDAO dishDAO;
 

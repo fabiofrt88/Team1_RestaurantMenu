@@ -6,26 +6,24 @@
   <component name="ChangeListManager">
     <list default="true" id="e26885f8-4eec-486d-a28c-cd9a679d6e83" name="Changes" comment="Fix all Test class">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/application/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/controller/DishController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/controller/DishController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/controller/DrinkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/controller/DrinkController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/controller/IngredientController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/controller/IngredientController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/controller/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/BookingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/BookingDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/ClientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/ClientDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/DishDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/DishDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/DrinkDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/DrinkDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/IngredientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/IngredientDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/MenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/MenuDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/interfaces/IDishDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/interfaces/IDishDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/interfaces/IMenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/interfaces/IMenuDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/ServiceDAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/ServiceDAOFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestBookingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestBookingDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestClientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestClientDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestDishDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestDishDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestDrinkDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestDrinkDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestIngredientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestIngredientDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestMenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestMenuDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/exception/ExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/exception/ExceptionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/service/BookingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/service/ClientService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/service/DishService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/service/DishService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/service/DrinkService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/service/DrinkService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/service/IngredientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/service/IngredientService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/service/MenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/service/MenuService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,9 +34,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Class" />
         <option value="Interface" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
