@@ -1,5 +1,6 @@
 package it.team1Restaurant.dao;
 
+import it.team1Restaurant.dao.interfaces.IClientDAO;
 import it.team1Restaurant.jdbc.DriverJDBC;
 import it.team1Restaurant.user.Client;
 
@@ -7,8 +8,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClientDAO {
+public class ClientDAO implements IClientDAO {
 
+    protected ClientDAO(){ }
+
+    @Override
     public void createTable(){
 
         try (Connection conn = DriverJDBC.getConnection()) {
@@ -39,6 +43,7 @@ public class ClientDAO {
 
     }
 
+    @Override
     public void insertClient(Client client){
 
         try (Connection conn = DriverJDBC.getConnection()) {
@@ -63,6 +68,7 @@ public class ClientDAO {
 
     }
 
+    @Override
     public List<Client> selectAllClients(){
 
         List<Client> clientList = new ArrayList<>();
@@ -96,6 +102,7 @@ public class ClientDAO {
 
     }
 
+    @Override
     public Client selectClientById(Integer id){
 
         Client client = null;

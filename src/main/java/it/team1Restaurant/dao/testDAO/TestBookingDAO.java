@@ -1,8 +1,9 @@
 package it.team1Restaurant.dao.testDAO;
 
 import it.team1Restaurant.bookings.Booking;
-import it.team1Restaurant.dao.BookingDAO;
-import it.team1Restaurant.dao.ClientDAO;
+import it.team1Restaurant.dao.ServiceDAOFactory;
+import it.team1Restaurant.service.BookingService;
+import it.team1Restaurant.service.ClientService;
 import it.team1Restaurant.user.Client;
 
 import java.time.LocalDate;
@@ -14,30 +15,30 @@ public class TestBookingDAO {
 
     public static void main(String[] args) {
 
-        BookingDAO bookingDAO = new BookingDAO();
-        ClientDAO clientDAO = new ClientDAO();
+        BookingService bookingService = ServiceDAOFactory.getBookingService();
+        ClientService clientService = ServiceDAOFactory.getClientService();
 
-        bookingDAO.createTable();
+        bookingService.createTable();
 
-        Client client1 = clientDAO.selectClientById(1);
-        Client client2 = clientDAO.selectClientById(2);
+        Client client1 = clientService.selectClientById(1);
+        Client client2 = clientService.selectClientById(2);
 
-        /*Booking booking1 = Client.book(client1, new ArrayList<>(List.of(client1)), LocalDate.of(2023, 1, 10), LocalTime.of(12, 30));
+        Booking booking1 = Client.book(client1, new ArrayList<>(List.of(client1)), LocalDate.of(2023, 1, 10), LocalTime.of(12, 30));
         Booking booking2 = Client.book(client1, new ArrayList<>(List.of(client1)), LocalDate.of(2023, 1, 12), LocalTime.of(20, 0));
         Booking booking3 = Client.book(client2, new ArrayList<>(List.of(client2)), LocalDate.of(2023, 1, 12), LocalTime.of(13, 30));
         Booking booking4 = Client.book(client2, new ArrayList<>(List.of(client2)), LocalDate.of(2023, 2, 14), LocalTime.of(21, 0));
 
-        bookingDAO.insertBooking(booking1);
-        bookingDAO.insertBooking(booking2);
-        bookingDAO.insertBooking(booking3);
-        bookingDAO.insertBooking(booking4);*/
+        bookingService.insertBooking(booking1);
+        bookingService.insertBooking(booking2);
+        bookingService.insertBooking(booking3);
+        bookingService.insertBooking(booking4);
 
         System.out.println("selectAllBookings\n");
-        List<Booking> bookingList = bookingDAO.selectAllBookings();
+        List<Booking> bookingList = bookingService.selectAllBookings();
         bookingList.forEach(Booking::printDetails);
 
         System.out.println("selectBookingById\n");
-        Booking booking = bookingDAO.selectBookingById(4);
+        Booking booking = bookingService.selectBookingById(4);
         if(booking != null){
             booking.printDetails();
         }
@@ -46,15 +47,15 @@ public class TestBookingDAO {
         }
 
         System.out.println("selectBookingsByClient\n");
-        bookingList = bookingDAO.selectBookingsByClient(client2);
+        bookingList = bookingService.selectBookingsByClient(client2);
         bookingList.forEach(Booking::printDetails);
 
         System.out.println("selectBookingsByDate\n");
-        bookingList = bookingDAO.selectBookingsByDate(LocalDate.of(2023,1,12));
+        bookingList = bookingService.selectBookingsByDate(LocalDate.of(2023,1,12));
         bookingList.forEach(Booking::printDetails);
 
         System.out.println("selectBookingsByInterval\n");
-        bookingList = bookingDAO.selectBookingsByInterval(LocalDate.of(2023,1,1), LocalDate.of(2023, 1, 31));
+        bookingList = bookingService.selectBookingsByInterval(LocalDate.of(2023,1,1), LocalDate.of(2023, 1, 31));
         bookingList.forEach(Booking::printDetails);
 
     }

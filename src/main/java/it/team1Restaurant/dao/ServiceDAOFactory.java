@@ -1,9 +1,6 @@
 package it.team1Restaurant.dao;
 
-import it.team1Restaurant.service.DishService;
-import it.team1Restaurant.service.DrinkService;
-import it.team1Restaurant.service.IngredientService;
-import it.team1Restaurant.service.MenuService;
+import it.team1Restaurant.service.*;
 
 public class ServiceDAOFactory {
 
@@ -25,6 +22,16 @@ public class ServiceDAOFactory {
     public static MenuService getMenuService(){
         MenuDAO menuDAO = new MenuDAO();
         return new MenuService(menuDAO);
+    }
+
+    public static BookingService getBookingService(){
+        BookingDAO bookingDAO = new BookingDAO();
+        return new BookingService(bookingDAO);
+    }
+
+    public static ClientService getClientService(){
+        ClientDAO clientDAO = new ClientDAO();
+        return new ClientService(clientDAO);
     }
 
 }

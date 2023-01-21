@@ -1,8 +1,7 @@
 package it.team1Restaurant.dao;
 
 import it.team1Restaurant.bookings.Booking;
-import it.team1Restaurant.foods.Dish;
-import it.team1Restaurant.foods.TypeCourseEnum;
+import it.team1Restaurant.dao.interfaces.IBookingDAO;
 import it.team1Restaurant.jdbc.DriverJDBC;
 import it.team1Restaurant.user.Client;
 
@@ -12,8 +11,11 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BookingDAO {
+public class BookingDAO implements IBookingDAO {
 
+    protected BookingDAO(){ }
+
+    @Override
     public void createTable() {
 
         try (Connection conn = DriverJDBC.getConnection()) {
@@ -46,6 +48,7 @@ public class BookingDAO {
 
     }
 
+    @Override
     public void insertBooking(Booking booking){
 
         try (Connection conn = DriverJDBC.getConnection()) {
@@ -71,6 +74,7 @@ public class BookingDAO {
 
     }
 
+    @Override
     public List<Booking> selectAllBookings(){
 
         List<Booking> bookingList = new ArrayList<>();
@@ -116,6 +120,7 @@ public class BookingDAO {
 
     }
 
+    @Override
     public Booking selectBookingById(Integer id){
 
         Booking booking = null;
@@ -161,6 +166,7 @@ public class BookingDAO {
 
     }
 
+    @Override
     public List<Booking> selectBookingsByClient(Client client){
 
         List<Booking> bookingList = new ArrayList<>();
@@ -207,6 +213,7 @@ public class BookingDAO {
 
     }
 
+    @Override
     public List<Booking> selectBookingsByDate(LocalDate date){
 
         List<Booking> bookingList = new ArrayList<>();
@@ -253,6 +260,7 @@ public class BookingDAO {
 
     }
 
+    @Override
     public List<Booking> selectBookingsByInterval(LocalDate startDate, LocalDate endDate){
 
         List<Booking> bookingList = new ArrayList<>();

@@ -5,39 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e26885f8-4eec-486d-a28c-cd9a679d6e83" name="Changes" comment="Fix all Test class">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_13_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_09_33__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_09_33__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_09_33_[Changes]/TypeClientMenuEnum.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_09_33_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_09_33__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/application/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/application/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/controller/DishController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/controller/DishController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/controller/DrinkController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/controller/DrinkController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/BookingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/BookingDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/DishDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/DishDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/DrinkDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/DrinkDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/MenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/MenuDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/interfaces/IDishDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/interfaces/IDishDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/interfaces/IMenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/interfaces/IMenuDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/ClientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/ClientDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/ServiceDAOFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/ServiceDAOFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestBookingDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestBookingDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestDishDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestDishDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestDrinkDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestDrinkDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestMenuDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestMenuDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/service/DishService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/service/DishService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/service/MenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/service/MenuService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/application/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/application/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/controller/DishController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/controller/DishController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/controller/DrinkController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/controller/DrinkController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/DishDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/DishDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/DrinkDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/DrinkDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/MenuDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/MenuDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/interfaces/IDishDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/interfaces/IDishDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/interfaces/IMenuDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/interfaces/IMenuDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestBookingDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestBookingDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestDishDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestDishDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestMenuDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/dao/testDAO/TestMenuDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/service/DishService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/service/DishService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/service/DrinkService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/service/DrinkService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/it/team1Restaurant/service/MenuService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/it/team1Restaurant/service/MenuService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestClientDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/dao/testDAO/TestClientDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/jdbc/DriverJDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/it/team1Restaurant/jdbc/DriverJDBC.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,8 +26,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -100,30 +78,6 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Java\workspaces\intelliJ\git-projects\restourantMenu-develhope-admin-frattarelli\restourantMenu-develhope\Team1_RestaurantMenu" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="TestBookingsMap" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="Team1_RestaurantMenu" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test.it.bookings.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test.it.bookings" />
-      <option name="MAIN_CLASS_NAME" value="test.it.bookings.TestBookingsMap" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="TestNG.TestBookingsMap" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
