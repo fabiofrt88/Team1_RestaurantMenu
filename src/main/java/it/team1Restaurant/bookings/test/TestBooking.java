@@ -39,7 +39,7 @@ public class TestBooking {
 
         calendarBookings.printDetails();
 
-        System.out.println("------------------------LIST BOOKINGS CLIENT----------------------------\n");
+        /*System.out.println("------------------------LIST BOOKINGS CLIENT----------------------------\n");
         client.printBookingsDetails();
 
         System.out.println("\n----------------------CALENDAR BOOKINGS CLIENT------------------------\n");
@@ -48,7 +48,7 @@ public class TestBooking {
         System.out.println("\n----------------------GET BOOKING BY BOOKING NUMBER-------------------\n");
         System.out.println(client.getCalendarBookingsClient().getBookingByBookingNumber(1).getBookingDetails());
 
-        System.out.println("-------------------------------------------------------");
+        System.out.println("-------------------------------------------------------");*/
 
     }
 

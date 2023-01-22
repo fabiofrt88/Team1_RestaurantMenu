@@ -1,12 +1,12 @@
 package it.team1Restaurant.application;
 
-import it.team1Restaurant.controller.DishController;
-import it.team1Restaurant.controller.DrinkController;
-import it.team1Restaurant.controller.IngredientController;
-import it.team1Restaurant.controller.MenuController;
+import com.google.gson.JsonIOException;
+import it.team1Restaurant.controller.*;
 import it.team1Restaurant.exception.DataAccessException;
 import it.team1Restaurant.exception.ExceptionHandler;
 import it.team1Restaurant.exception.NotFoundException;
+
+import java.time.format.DateTimeParseException;
 
 import static spark.Spark.*;
 
@@ -20,6 +20,9 @@ public class Main {
         DrinkController drinkController = new DrinkController();
         IngredientController ingredientController = new IngredientController();
         MenuController menuController = new MenuController();
+        ClientController clientController = new ClientController();
+        BookingController bookingController = new BookingController();
+
         ExceptionHandler exceptionHandler = new ExceptionHandler();
 
         port(PORT);
@@ -50,12 +53,27 @@ public class Main {
         get("/restaurant/menu", (req, res) -> menuController.getAllMenu(req, res));
         get("/restaurant/menu/:id", (req, res) -> menuController.getMenuById(req, res));
 
+        //clients REST API
+
+        get("/restaurant/clients", (req, res) -> clientController.getAllClients(req, res));
+        get("/restaurant/clients/:id", (req, res) -> clientController.getClientById(req, res));
+
+        //bookings REST API
+
+        get("/restaurant/bookings", (req, res) -> bookingController.getAllBookings(req, res));
+        get("/restaurant/bookings/:id", (req, res) -> bookingController.getBookingById(req, res));
+        get("/restaurant/bookings/client/:id", (req, res) -> bookingController.getBookingsByClient(req, res));
+        get("/restaurant/bookings/date/:date", (req, res) -> bookingController.getBookingsByDate(req, res));
+        get("/restaurant/bookings/date/:startDate/:endDate", (req, res) -> bookingController.getBookingsByInterval(req, res));
+
         //exception
 
         exception(DataAccessException.class, (e, req, res) -> exceptionHandler.handleInternalServerError(e, req, res));
         exception(ClassCastException.class, (e, req, res) -> exceptionHandler.handleClassCastException(e, req, res));
         exception(NotFoundException.class, (e, req, res) -> exceptionHandler.handleNotFoundException(e, req, res));
         exception(NumberFormatException.class, (e, req, res) -> exceptionHandler.handleNumberFormatException(e, req, res));
+        exception(JsonIOException.class, (e, req, res) -> exceptionHandler.handleJsonIOException(e, req, res));
+        exception(DateTimeParseException.class, (e, req, res) -> exceptionHandler.handleDateTimeParseException(e, req, res));
 
         /*exception(DataAccessException.class, (e, request, response) -> {
             System.out.println(e.getMessage()+ "\n");

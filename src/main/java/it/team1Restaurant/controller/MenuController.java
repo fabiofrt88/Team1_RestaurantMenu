@@ -2,6 +2,7 @@ package it.team1Restaurant.controller;
 
 import com.google.gson.GsonBuilder;
 import it.team1Restaurant.dao.ServiceDAOFactory;
+import it.team1Restaurant.exception.NotFoundException;
 import it.team1Restaurant.menu.Menu;
 import it.team1Restaurant.service.MenuService;
 import it.team1Restaurant.service.ServiceEnum;
@@ -22,6 +23,9 @@ public class MenuController {
     public String getMenuById(Request request, Response response){
         Integer id = Integer.parseInt(request.params(":id"));
         Menu menu = menuService.selectMenuById(id);
+        if(menu == null){
+            throw new NotFoundException();
+        }
         menuService.selectFoodsByMenu(menu);
         return new GsonBuilder().setPrettyPrinting().create().toJson(menu);
     }

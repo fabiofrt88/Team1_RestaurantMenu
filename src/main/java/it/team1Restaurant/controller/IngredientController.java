@@ -2,6 +2,7 @@ package it.team1Restaurant.controller;
 
 import com.google.gson.GsonBuilder;
 import it.team1Restaurant.dao.ServiceDAOFactory;
+import it.team1Restaurant.exception.NotFoundException;
 import it.team1Restaurant.foods.Ingredient;
 import it.team1Restaurant.service.IngredientService;
 import it.team1Restaurant.service.ServiceEnum;
@@ -22,6 +23,9 @@ public class IngredientController {
     public String getIngredientById(Request request, Response response){
         Integer id = Integer.parseInt(request.params(":id"));
         Ingredient ingredient = ingredientService.selectIngredientById(id);
+        if(ingredient == null){
+            throw new NotFoundException();
+        }
         return new GsonBuilder().setPrettyPrinting().create().toJson(ingredient);
     }
 

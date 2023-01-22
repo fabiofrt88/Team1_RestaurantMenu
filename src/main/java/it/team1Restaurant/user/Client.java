@@ -52,9 +52,9 @@ public class Client {
      */
     private boolean isChild;
 
-    private List<Booking> bookingList = new ArrayList<>();
+    /*private List<Booking> bookingList = new ArrayList<>();
 
-    private CalendarBookingsClient calendarBookingsClient = new CalendarBookingsClient();
+    private CalendarBookingsClient calendarBookingsClient = new CalendarBookingsClient();*/
 
     /**
      * Metodo costruttore della classe {@link it.team1Restaurant.user.Client},
@@ -188,7 +188,7 @@ public class Client {
         this.typeSet = typeSet;
     }
 
-    public List<Booking> getBookingList() {
+    /*public List<Booking> getBookingList() {
         return bookingList;
     }
 
@@ -202,17 +202,17 @@ public class Client {
 
     public void setCalendarBookingsClient(CalendarBookingsClient calendarBookingsClient) {
         this.calendarBookingsClient = calendarBookingsClient;
-    }
+    }*/
 
     public EnumSet<TypeFoodEnum> initTypeSet(EnumSet<TypeFoodEnum> typeSet){
         return (typeSet != null) ? typeSet : EnumSet.noneOf(TypeFoodEnum.class);
     }
 
-    public static Booking book(Client client, List<Client> clientList, LocalDate date, LocalTime time) throws NullPointerException {
+    public static Booking book(Client client, List<Client> clientList, LocalDate date, LocalTime time){
         return new Booking(null, client, clientList, Booking.getBookedAtDate(), date, time);
     }
 
-    public void printBookingsDetails(){
+    /*public void printBookingsDetails(){
         System.out.printf("Bookings of %s %s\n\n", this.name, this.surname);
         for(Booking booking : bookingList){
             System.out.println(booking.getBookingDetails());
@@ -224,14 +224,14 @@ public class Client {
         calendarBookingsClient.printCalendarBookingDetails();
     }
 
-    public void addBooking(Booking booking){
+    /*public void addBooking(Booking booking){
         if(!this.bookingList.contains(booking)){
             this.bookingList.add(booking);
         }
         else{
             System.out.println("\nPrenotazione già inserita\n");
         }
-    }
+    }*/
 
     /**
      * Questo metodo stampa i dati del cliente.

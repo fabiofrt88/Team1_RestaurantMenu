@@ -140,8 +140,8 @@ public class CalendarBookings {
         Booking booking = new Booking(id, client, clientList, createBookedAtDate(), date, time);
 
         addBooking(booking);
-        client.addBooking(booking);
-        client.getCalendarBookingsClient().addBooking(booking);
+        //client.addBooking(booking);
+        //client.getCalendarBookingsClient().addBooking(booking);
         System.out.println("La prenotazione per " + client.getName() + " e' stata effettuata con successo:\n\n" + booking.getBookingDetails());
     }
 
